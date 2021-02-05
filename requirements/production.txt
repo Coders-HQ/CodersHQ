@@ -1,0 +1,10 @@
+# PRECAUTION: avoid production dependencies that aren't in development
+
+-r base.txt
+
+gunicorn==20.0.4  # https://github.com/benoitc/gunicorn
+psycopg2==2.8.6  # https://github.com/psycopg/psycopg2
+
+# Django
+# ------------------------------------------------------------------------------
+django-anymail[sendgrid]==8.2  # https://github.com/anymail/django-anymail
