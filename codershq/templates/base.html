@@ -48,7 +48,9 @@
 
   <body>
 
-    <div class="mb-1">
+
+
+        <div class="mb-1">
       <nav class="navbar navbar-expand-md navbar-light bg-light">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -87,6 +89,9 @@
       </nav>
 
     </div>
+ <div style="background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url('{% static 'images/splash/splash_1.jpg' %}');  background-size: 100% 100%; "> 
+
+<div class="vertical-center">
 
     <div class="container">
 
@@ -97,10 +102,11 @@
       {% endif %}
 
       {% block content %}
-        <p>Use this document as a way to quic5k start any new project.</p>
+        <p>Use this document as a way to quick start any new project.</p>
       {% endblock content %}
 
     </div> <!-- /container -->
+</div>
 
     {% block modal %}{% endblock modal %}
 
