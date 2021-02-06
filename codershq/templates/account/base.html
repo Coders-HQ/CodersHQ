@@ -6,7 +6,17 @@
 {% block content %}
 <div class="row">
   <div class="col-md-6 offset-md-3 align-middle">
+
+  <div class="card  mx-auto col d-flex  " style="width: 25rem; border-radius: 5%;">
+  <div class="card-body ">
+
+
+  <div class="container-fluid">
+    <img src="{% static 'images/logo/dark_text.png' %}" alt="My image" class="splash-image"  width="100%" >
+  </div>
     {% block inner %}{% endblock %}
+  </div>
+</div>
   </div>
 </div>
 {% endblock %}

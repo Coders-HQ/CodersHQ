@@ -9,13 +9,7 @@
 {% block inner %}
 
 
-<div class="card  mx-auto col d-flex  " style="width: 25rem; border-radius: 5%;">
-  <div class="card-body ">
 
-
-  <div class="container-fluid">
-    <img src="{% static 'images/logo/dark_text.png' %}" alt="My image" class="splash-image"  width="100%" >
-  </div>
 
 
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
@@ -30,7 +24,6 @@
 
       <p class="text-end">{% blocktrans %} <a href="{{ login_url }}">Already have an account? Login</a>.{% endblocktrans %}</p>
     </form>
-  </div>
-</div>
+
 {% endblock %}
 
