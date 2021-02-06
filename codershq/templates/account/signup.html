@@ -8,9 +8,7 @@
 
 {% block inner %}
 
-
-
-
+<p class="text-center">{% trans "Sign Up" %}</p>
 
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
@@ -19,7 +17,7 @@
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
       <div class="text-center">
-        <button class="btn btn-primary d-grid gap-2 col-10 mx-auto" type="submit">{% trans "Register" %} </button>
+        <button class="btn btn-primary d-grid gap-2 col-10 mx-auto" type="submit">{% trans "Sign Up" %} </button>
       </div>
 
       <p class="text-end">{% blocktrans %} <a href="{{ login_url }}">Already have an account? Login</a>.{% endblocktrans %}</p>
