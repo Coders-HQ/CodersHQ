@@ -8,31 +8,30 @@
 
   <div class="row">
     <div class="col-sm-12">
-      <div class="card  mx-auto col d-flex  " style="width: 25rem; border-radius: 5%;">
+      <div class="card  mx-auto col d-flex">
         <div class="card-body ">
-      <h2>{{ object.username }}</h2>
-      {% if object.name %}
-        <p>{{ object.name }}</p>
-      {% endif %}
+          <h2>{{ object.username }}</h2>
+          {% if object.name %}
+          <p>{{ object.name }}</p>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
-{% if object == request.user %}
-<!-- Action buttons -->
-<div class="row">
+  {% if object == request.user %}
+  <!-- Action buttons -->
+  <div class="row">
 
-  <div class="col-sm-12">
-    <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-    <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
-    <!-- Your Stuff: Custom user template urls -->
+    <div class="col-sm-12">
+      <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
+      <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
+      <!-- Your Stuff: Custom user template urls -->
+    </div>
+
   </div>
-
-</div>
-<!-- End Action buttons -->
-{% endif %}
+  <!-- End Action buttons -->
+  {% endif %}
 
 
 </div>
 {% endblock content %}
-
