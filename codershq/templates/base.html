@@ -23,8 +23,10 @@
   <!-- Your stuff: Third-party CSS libraries go here -->
   {% compress css %}
   <!-- This file stores project-specific CSS -->
-  <link href="{% static 'css/codershq.css' %}" rel="stylesheet">
   <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  <link href="{% static 'css/codershq.css' %}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
 
   {% endcompress %}
   {% endblock %}
@@ -50,6 +52,7 @@
 
 <body>
 
+  {% block navbar %}
   <div class="mb-1">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -89,11 +92,8 @@
         </ul>
       </div>
     </nav>
-
   </div>
-
-
-  <div class="container">
+  {% endblock %}
 
     {% if messages %}
     {% for message in messages %}
@@ -102,11 +102,13 @@
     {% endfor %}
     {% endif %}
 
+    {% block sidebar %}
+    {% endblock sidebar %}
+
     {% block content %}
     <p>Use this document as a way to quick start any new project.</p>
     {% endblock content %}
 
-  </div> <!-- /container -->
 
   {% block modal %}{% endblock modal %}
 
