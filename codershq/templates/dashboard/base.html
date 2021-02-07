@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static i18n compress%}
 
+{% block navbar %}
+{% endblock navbar %}
+
 {% block css %}
 {% compress css %}
 <!-- Your stuff: Third-party CSS libraries go here -->
@@ -234,7 +237,6 @@
 
 
 {% block content %}
-
 <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
     <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
@@ -253,8 +255,9 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+
             <li class="nav-item active ">
-                <a class="nav-link" href="./user.html">
+                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">
                     <i class="material-icons">person</i>
                     <p>User Profile</p>
                 </a>
@@ -376,6 +379,15 @@
     </nav>
     <!-- End Navbar -->
     <div class="content">
+        {% block messages %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button"
+                class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endblock %}
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
