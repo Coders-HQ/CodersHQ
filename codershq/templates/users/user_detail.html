@@ -1,9 +1,14 @@
-{% extends "base.html" %}
+{% extends "dashboard/base.html" %}
 {% load static %}
 
 {% block title %}User: {{ object.username }}{% endblock %}
 
-{% block content %}
+{% block cardTitle %}
+<h4 class="card-title">Profile</h4>
+<p class="card-category">View Your Profile</p>
+{% endblock cardTitle %}
+
+{% block inner %}
 <div class="container">
 
   <div class="row">
@@ -34,4 +39,4 @@
 
 
 </div>
-{% endblock content %}
+{% endblock inner %}

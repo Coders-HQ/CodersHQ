@@ -95,19 +95,19 @@
   </div>
   {% endblock %}
 
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button"
-        class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
-    {% endfor %}
-    {% endif %}
+  {% block messages %}
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button"
+      class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>
+  {% endfor %}
+  {% endif %}
+  {% endblock  %}
 
-    {% block sidebar %}
-    {% endblock sidebar %}
 
-    {% block content %}
-    <p>Use this document as a way to quick start any new project.</p>
-    {% endblock content %}
+  {% block content %}
+  <p>Use this document as a way to quick start any new project.</p>
+  {% endblock content %}
 
 
   {% block modal %}{% endblock modal %}
