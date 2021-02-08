@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from codershq.users.models import User
 
 class Hackathon(models.Model):
     description = models.TextField(_("Describe the Hackathon"),max_length=5000)
@@ -8,4 +9,6 @@ class Hackathon(models.Model):
     rules = models.TextField(_("Describe rules for the hackathon"),max_length=5000)
     prizes = models.TextField(_("Describe how the prize money will be distributed"),max_length=5000)
     prize_money = models.PositiveIntegerField(_("Total prize money"), default=0)
-
+    date_start = models.DateField(_("Hackathon start date"))
+    date_end = models.DateField(_("Hackathon end date"))
+    competitors = models.ManyToManyField(User)

@@ -1,0 +1,16 @@
+{% extends "dashboard/profile.html" %}
+
+
+{% load static %}
+
+
+{% block cardTitle %}
+{% endblock cardTitle %}
+
+{% block inner %}
+{% for hackathon in hackathons %}
+    <li>{{ hackathon.description }} - {{ hackathon.evaluation }}</li>
+{% empty %}
+    <li>No articles yet.</li>
+{% endfor %}
+{% endblock %}

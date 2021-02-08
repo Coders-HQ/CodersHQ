@@ -41,10 +41,15 @@
                     <p>User Profile</p>
                 </a>
             </li>
+            {% url 'hackathon:list' as hackathon_url %}
+            {% if request.get_full_path == hackathon_url %}
+            <li class="nav-item active ">
+                {% else %}
             <li class="nav-item ">
-                <a class="nav-link" href="./tables.html">
+                {% endif %}
+                <a class="nav-link" href="{% url 'hackathon:list' %}">
                     <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+                    <p>Hackathon</p>
                 </a>
             </li>
             <li class="nav-item ">
