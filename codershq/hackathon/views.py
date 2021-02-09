@@ -8,5 +8,4 @@ class HackathonList(ListView):
 
 class HackathonDetail(DetailView):
     model = Hackathon
-    slug_field = "title"
-    # slug_url_kwarg = "hackathon"
+   
