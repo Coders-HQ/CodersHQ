@@ -10,7 +10,9 @@
 {% block inner %}
 {% for hackathon in hackathons %}
     <li>{{ hackathon.description }} - {{ hackathon.evaluation }}</li>
-{% empty %}
+    <a class="btn btn-primary" href="{% url 'hackathon:detail' hackathon.slug %}" role="button">Link</a>
+    {% empty %}
     <li>No articles yet.</li>
-{% endfor %}
+    
+    {% endfor %}
 {% endblock %}
