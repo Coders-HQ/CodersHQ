@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from codershq.users.models import User
 
 class Hackathon(models.Model):
+    title = models.CharField(_("Title of Hackathon"), max_length=100)
     description = models.TextField(_("Describe the Hackathon"),max_length=5000)
     evaluation = models.TextField(_("Describe how will the hackathon be evaluated"),max_length=5000)
     timeline = models.TextField(_("Describe the Hackathon's timeline"),max_length=5000)

@@ -1,0 +1,9 @@
+{% extends "dashboard/profile.html" %}
+{% load static %}
+
+{% block inner %}
+<h2>{{ object.title }}</h2>
+{% if object.description %}
+<p>{{ object.evaluation }}</p>
+{% endif %}
+{% endblock %}
