@@ -6,14 +6,19 @@
 {% if object.description %}
 <p>{{ object.evaluation }}</p>
 {% endif %}
+<p>competitors {{ object.competitors.count }}</p>
 
 <form class="form-horizontal" method="post" action="{% url 'hackathon:detail' object.slug %}">
-{% csrf_token %}
-<div class="control-group">
-      <div class="controls">
-        <button type="submit" class="btn btn-primary">Update</button>
-      </div>
+    {% csrf_token %}
+    <div class="control-group">
+        <div class="controls">
+            {% if user in object.competitors.all %}
+            <button type="submit" class="btn btn-primary">Leave</button>
+            {% else %}
+            <button type="submit" class="btn btn-primary">Join</button>
+            {% endif %}
+        </div>
     </div>
-  </form>
+</form>
 
 {% endblock %}

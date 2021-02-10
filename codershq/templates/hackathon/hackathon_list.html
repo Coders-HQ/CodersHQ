@@ -11,8 +11,8 @@
 {% for hackathon in hackathons %}
     <li>{{ hackathon.description }} - {{ hackathon.evaluation }}</li>
     <a class="btn btn-primary" href="{% url 'hackathon:detail' hackathon.slug %}" role="button">Link</a>
+    {{hackathon.competitors.count }}
     {% empty %}
     <li>No articles yet.</li>
-    
     {% endfor %}
 {% endblock %}

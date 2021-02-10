@@ -16,9 +16,13 @@ class HackathonDetail(DetailView):
         if not request.user.is_authenticated:
             return HttpResponseForbidden()
 
-        # Look up the author we're interested in.
+        # add user if not exists
+        # if user exists remove user
         self.object = self.get_object()
-        self.object.competitors.add(request.user)
+        if request.user in self.object.competitors.all():
+            self.object.competitors.remove(request.user)
+        else:
+            self.object.competitors.add(request.user)
 
 
         return HttpResponseRedirect(reverse('hackathon:detail', kwargs={'slug': self.object.slug}))
