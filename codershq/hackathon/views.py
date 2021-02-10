@@ -11,7 +11,7 @@ class HackathonList(ListView):
 
 class HackathonDetail(DetailView):
     model = Hackathon
-   
+
     def post(self, request, *args, **kwargs):
         if not request.user.is_authenticated:
             return HttpResponseForbidden()
@@ -23,6 +23,5 @@ class HackathonDetail(DetailView):
             self.object.competitors.remove(request.user)
         else:
             self.object.competitors.add(request.user)
-
 
         return HttpResponseRedirect(reverse('hackathon:detail', kwargs={'slug': self.object.slug}))

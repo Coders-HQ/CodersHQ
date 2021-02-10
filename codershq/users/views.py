@@ -22,9 +22,9 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     model = User
     fields = ["name",
-              "bio", 
-              "cv", 
-              "github_profile", 
+              "bio",
+              "cv",
+              "github_profile",
               "front_end_score",
               "back_end_score",
               "database_score",

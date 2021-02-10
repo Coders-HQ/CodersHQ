@@ -35,7 +35,7 @@
                 {% else %}
             <li class="nav-item ">
                 {% endif %}
-                <a class="nav-link" href="{% url 'users:detail' request.user.username  %}">
+                <a class="nav-link" href="{% url 'users:redirect'   %}">
                     <i class="material-icons">person</i>
                     <p>User Profile</p>
                 </a>
