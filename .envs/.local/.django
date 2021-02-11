@@ -13,4 +13,8 @@ REDIS_URL=redis://redis:6379/0
 CELERY_FLOWER_USER=nYOWFzWvHvZsBrVxvnBTsszjnnqeWMBF
 CELERY_FLOWER_PASSWORD=v86SOikTo78meIOnC7ulDzA8H8HPeMAdHqos9OM4s4sPakePVsGfCr5nd42ksyTZ
 
-GITHUB_TOKEN=
+# GitHub
+# ------------------------------------------------------------------------------
+# GITHUB_TOKEN=
+# GITHUB_CLIENT_ID=
+# GITHUB_CLIENT_SECRET=

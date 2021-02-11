@@ -17,6 +17,7 @@ services:
     volumes:
       - .:/app:z
     env_file:
+      - ./.envs/.production/.django
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres
     ports:
