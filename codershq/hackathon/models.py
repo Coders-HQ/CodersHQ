@@ -6,14 +6,38 @@ from codershq.users.models import User
 
 
 class Hackathon(models.Model):
+
+    VIRTUAL = 'VI'
+    PHYSICAL = 'PH'
+    HYBRID = 'HY'
+    HACKATHON_TYPE = [
+        (VIRTUAL, 'Virtual'),
+        (PHYSICAL, 'Physical'),
+        (HYBRID, 'Hybrid'),
+    ]
+
     title = models.CharField(_("Title of Hackathon"), max_length=100)
     slug = AutoSlugField(populate_from='title')
-    description = models.TextField(_("Describe the Hackathon"), max_length=5000)
-    evaluation = models.TextField(_("Describe how will the hackathon be evaluated"), max_length=5000)
-    timeline = models.TextField(_("Describe the Hackathon's timeline"), max_length=5000)
-    rules = models.TextField(_("Describe rules for the hackathon"), max_length=5000)
-    prizes = models.TextField(_("Describe how the prize money will be distributed"), max_length=5000)
+    hackathon_type = models.CharField(_("Hackathon Type"),
+                                      max_length=2,
+                                      choices=HACKATHON_TYPE,
+                                      default=VIRTUAL)
+    description = models.TextField(_("Hackathon description"), max_length=5000,
+                                   help_text="Describe the Hackathon")
+    evaluation = models.TextField(_("Hackathon evaluation"), max_length=5000,
+                                  help_text="Describe how will the hackathon be evaluated")
+    timeline = models.TextField(_("Hackathon timeline"), max_length=5000,
+                                help_text="Describe the Hackathon's timeline")
+    rules = models.TextField(_("Hackathon rules"), max_length=5000,
+                             help_text="Describe rules for the hackathon")
+    prizes = models.TextField(_("Hackathon prize distrebution"), max_length=5000,
+                              help_text="Describe how the prize money will be distributed")
     prize_money = models.PositiveIntegerField(_("Total prize money"), default=0)
+    join_date = models.DateField(_("Hackathon join date"),
+                                 help_text="When the competitors can start joining")
     date_start = models.DateField(_("Hackathon start date"))
-    date_end = models.DateField(_("Hackathon end date"))
+    date_end = models.DateField(_("Hackathon end date"),
+                                help_text="Hackathon end date, no competitor can join after this date")
+    last_join_date = models.DateField(_("Last join date"),
+                                      help_text="Last date competitors can join")
     competitors = models.ManyToManyField(User)
