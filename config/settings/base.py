@@ -69,6 +69,7 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "django_celery_beat",
+    "allauth.socialaccount.providers.github"
 ]
 
 LOCAL_APPS = [
@@ -295,3 +296,16 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': 'c3af5fcd8de5fe4cff35',
+            'secret': 'f3b86d9f9a4330b18c0c484b5870c7fa02f725b6',
+            'key': ''
+        }
+    }
+}
