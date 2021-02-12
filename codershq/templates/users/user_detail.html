@@ -22,7 +22,11 @@
           <p>{{ object.name }}</p>
           {% endif %}
           {% if object.github_score %}
+          {% if object.github_score is -1 %}
+          <p>getting your score</p>
+          {% else %}
           <p>{{ object.github_score }}</p>
+          {% endif %}
           {% endif %}
         </div>
       </div>

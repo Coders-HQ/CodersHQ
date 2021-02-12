@@ -1,5 +1,9 @@
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
+
+from config import celery_app
+
+
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -8,7 +12,6 @@ from django.utils.translation import gettext_lazy as _
 from codershq.users.scoring.score import CHQScore
 from codershq.users.validators import validate_github_profile
 
-# from codershq.users.tasks import update_github_score
 
 class User(AbstractUser):
     """Default user for Coders Headquarters."""
@@ -67,12 +70,16 @@ class User(AbstractUser):
                 # only get score when enough time has passed
                 if timezone.now()-timezone.timedelta(seconds=24) >= self.github_updated <= timezone.now():
                     # save current score and use it if api call fails
-                    self.github_score = chq_score.get_score(self.github_username)
                     self.github_updated = timezone.now()
-                    
+                    self.github_score = -1
+                    # celery_app.send_task('update_github_score')
+                    celery_app.send_task('codershq.users.tasks.update_github_score', (self.pk,))
                     # get score
             else:
                 # first time get score
-                self.github_score = chq_score.get_score(self.github_username)
+                # celery_app.send_task('update_github_score', (self.pk,))
+                self.github_score = -1
+                celery_app.send_task('codershq.users.tasks.update_github_score', (self.pk,))
+
                 self.github_updated = timezone.now()
         super(User, self).save(*args, **kwargs)

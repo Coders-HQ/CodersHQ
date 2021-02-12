@@ -43,6 +43,7 @@ services:
       context: .
       dockerfile: ./compose/local/docs/Dockerfile
     env_file:
+      - ./.envs/.production/.django
       - ./.envs/.local/.django
     volumes:
       - ./docs:/docs:z
