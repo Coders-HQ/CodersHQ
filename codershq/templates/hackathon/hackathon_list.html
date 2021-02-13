@@ -5,56 +5,36 @@
 
 {% block main %}
 
-<div class="col-12">
-    <div class="card">
-        <div class="table-responsive">
-            <table class="table table-vcenter table-mobile-md card-table">
-                <thead>
-                    <tr>
-                        <th data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Title</th>
-                        <th>Competitors</th>
-                        <th>Type</th>
-                        <th>Time Left</th>
-                        <th>Total Prize</th>
-                        <th class="w-1"></th>
-                    </tr>
-                </thead>
-                <tbody>
-{% for hackathon in hackathons %}
 
-                    <tr>
-                        <td data-label="Title">
-                                    <div class="font-weight-medium">{{hackathon.title}}</div>
-                        </td>
-                        <td data-label="Competitors">
-                            <div class="text-muted">{{hackathon.competitors.count }} competitors</div>
-                            
-                        </td>
-                        <td data-label="Type">
-                            <div class="text-muted">{{hackathon.get_hackathon_type_display}}</div>
-                        </td>
-                        <td  data-label="Time Left">
-                            {{hackathon.last_join_date|timeuntil}}
-                        </td>
-                        <td  data-label="Total Prize">
-                            {{hackathon.prize_display}}
-                        </td>
-                        <td>
-                            <div class="btn-list flex-nowrap">
-                                <a href="{% url 'hackathon:detail' hackathon.slug %}" class="btn btn-white">
-                                    More Details
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                    {% empty %}
-<li>No articles yet.</li>
-{% endfor %}
-                </tbody>
-            </table>
+{% for hackathon in hackathons %}
+<div class="card mb-2">
+    <div class="card-header">
+        {{ hackathon.get_hackathon_type_display }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{hackathon.title}}</h5>
+        <p class="card-text">In reality, trading for profit has always been a difficult problem to solve, even more so in today’s fast </p>
+        <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="9" cy="7" r="4" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></svg>
+        {{hackathon.competitors.count }}
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" /><circle cx="18" cy="18" r="4" /><path d="M15 3v4" /><path d="M7 3v4" /><path d="M3 11h16" /><path d="M18 16.496v1.504l1 1" /></svg>
+        {{hackathon.last_join_date|timeuntil}} to go
+    </p>
+    </div>
+    <div class="card-footer">
+        <div class="d-flex">
+            <a href="{% url 'hackathon:detail' hackathon.slug %}" class="btn btn-white">More Details</a>
+            <h2 class="ms-auto">{{ hackathon.prize_display }}</h2>
         </div>
     </div>
 </div>
+
+
+
+{% empty %}
+<li>No articles yet.</li>
+{% endfor %}
+
+
 
 
 {% endblock %}
