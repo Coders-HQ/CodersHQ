@@ -8,20 +8,35 @@
 
 {% block inner %}
 
-<p class="text-center">{% trans "Sign Up" %}</p>
 
-    <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-      {% csrf_token %}
-      {{ form|crispy }}
-      {% if redirect_field_value %}
-      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-      {% endif %}
-      <div class="text-center">
-        <button class="btn btn-primary d-grid gap-2 col-10 mx-auto" type="submit">{% trans "Sign Up" %} </button>
+
+
+      <div class="text-center mb-4">
+        <a href="."><img src="{% static 'images/logo/dark_text.png' %}" height="48" alt=""></a>
+      </div>
+      <form class="card card-md" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Create new account</h2>
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="mb-3">
+            <label class="form-check">
+              <input type="checkbox" class="form-check-input"/>
+              <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms and policy</a>.</span>
+            </label>
+          </div>
+          <div class="form-footer">
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <button type="submit" class="btn btn-primary w-100">Create new account</button>
+          </div>
+        </div>
+      </form>
+      <div class="text-center text-muted mt-3">
+        Already have account? <a href="{{ login_url }}" tabindex="-1">Sign in</a>
       </div>
 
-      <p class="text-end">{% blocktrans %} <a href="{{ login_url }}">Already have an account? Login</a>.{% endblocktrans %}</p>
-    </form>
 
 {% endblock %}
 

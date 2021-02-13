@@ -1,24 +1,68 @@
-{% extends "dashboard/profile.html" %}
+{% extends "dashboard/base.html" %}
 {% load static %}
 
-{% block inner %}
-<h2>{{ object.title }}</h2>
-{% if object.description %}
-<p>{{ object.evaluation }}</p>
-{% endif %}
-<p>competitors {{ object.competitors.count }}</p>
-
-<form class="form-horizontal" method="post" action="{% url 'hackathon:detail' object.slug %}">
-    {% csrf_token %}
-    <div class="control-group">
-        <div class="controls">
-            {% if user in object.competitors.all %}
-            <button type="submit" class="btn btn-primary">Leave</button>
-            {% else %}
-            <button type="submit" class="btn btn-primary">Join</button>
-            {% endif %}
+{% block main %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h3 class="card-title">{{ object.title }}</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque
+            minima
+            neque pariatur perferendis sed suscipit velit vitae voluptatem.</p>
+    </div>
+    <!-- Card footer -->
+    <div class="card-footer">
+        <div class="d-flex">
+            <form class="form-horizontal" method="post" action="{% url 'hackathon:detail' object.slug %}">
+                {% csrf_token %}
+                {% if user in object.competitors.all %}
+                <button type="submit" class="btn btn-danger">Leave</button>
+                {% else %}
+                <button type="submit" class="btn btn-primary">Join</button>
+                {% endif %}
+            </form>
+            <h2 href="#" class="ms-auto">{{ object.prize_display }}</h2>
         </div>
     </div>
-</form>
+</div>
+<div class="card">
+    <ul class="nav nav-tabs" data-bs-toggle="tabs">
+        <li class="nav-item">
+            <a href="#tabs-description-ex1" class="nav-link active" data-bs-toggle="tab">Description</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tabs-evaluation-ex1" class="nav-link" data-bs-toggle="tab">Evaluation</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tabs-timeline-ex1" class="nav-link" data-bs-toggle="tab">Timeline</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tabs-rules-ex1" class="nav-link" data-bs-toggle="tab">Rules</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tabs-prizes-ex1" class="nav-link" data-bs-toggle="tab">Prizes</a>
+        </li>
+    </ul>
+    <div class="card-body">
+        <div class="tab-content">
+            <div class="tab-pane active show" id="tabs-description-ex1">
+                <div>{{ object.description|linebreaks }}</div>
+            </div>
+            <div class="tab-pane" id="tabs-evaluation-ex1">
+                <div>{{ object.evaluation|linebreaks }}</div>
+            </div>
+            <div class="tab-pane" id="tabs-timeline-ex1">
+                <div>{{ object.timeline|linebreaks }}</div>
+            </div>
+            <div class="tab-pane" id="tabs-rules-ex1">
+                <div>{{ object.rules|linebreaks }}</div>
+            </div>
+            <div class="tab-pane" id="tabs-prizes-ex1">
+                <div>{{ object.prizes|linebreaks }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}

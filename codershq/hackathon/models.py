@@ -1,7 +1,7 @@
 from autoslug import AutoSlugField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from django.utils import timezone
 from codershq.users.models import User
 
 
@@ -21,7 +21,7 @@ class Hackathon(models.Model):
     hackathon_type = models.CharField(_("Hackathon Type"),
                                       max_length=2,
                                       choices=HACKATHON_TYPE,
-                                      default=VIRTUAL)
+                                      default=HACKATHON_TYPE[2])
     description = models.TextField(_("Hackathon description"), max_length=5000,
                                    help_text="Describe the Hackathon")
     evaluation = models.TextField(_("Hackathon evaluation"), max_length=5000,
@@ -41,3 +41,9 @@ class Hackathon(models.Model):
     last_join_date = models.DateField(_("Last join date"),
                                       help_text="Last date competitors can join")
     competitors = models.ManyToManyField(User)
+
+    @property
+    def prize_display(self):
+        return f"{self.prize_money:,} AED"
+
+    

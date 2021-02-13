@@ -1,6 +1,6 @@
 {% extends "account/base.html" %}
 
-{% load i18n %}
+{% load i18n static %}
 {% load account socialaccount %}
 {% load crispy_forms_tags %}
 
@@ -8,44 +8,44 @@
 
 {% block inner %}
 
-<p class="text-center">{% trans "Sign In" %}</p>
 
-{% get_providers as socialaccount_providers %}
 
-{% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please sign in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
 
-<div class="socialaccount_ballot">
+      <div class="text-center mb-4">
+        <a href="."><img src="{% static 'images/logo/dark_text.png' %}" height="48" alt=""></a>
+      </div>
+      <form class="card card-md" method="POST" action="{% url 'account_login' %}" autocomplete="on">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Login to your account</h2>
+          {% csrf_token %}
+          {{ form|crispy }}
 
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary w-100">Sign in</button>
+          </div>
+          <span class="form-label-description">
+            <a href="{% url 'account_reset_password' %}">I forgot password</a>
+          </span>
+        </div>
+        {% get_providers as socialaccount_providers %}
+        {% if socialaccount_providers %}
+        <div class="hr-text">or</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col"><a href="{% provider_login_url 'github' %}" class="btn btn-white w-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                Login with Github
+              </a></div>
+          </div>
+        </div>
+        {% endif %}
+      </form>
+      <div class="text-center text-muted mt-3">
+        Don't have account yet? <a href="{{ signup_url }}" tabindex="-1">Sign up</a>
 
-  <div class="login-or">{% trans 'or' %}</div>
+  <!-- Libs JS -->
+  <!-- Tabler Core -->
 
-</div>
-
-{% include "socialaccount/snippets/login_extra.html" %}
-
-{% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-{% endif %}
-
-<form class="login" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <div class="text-center">
-    <button class="btn btn-primary d-grid gap-2 col-10 mx-auto" type="submit">{% trans "Sign In" %} </button>
-  </div>
-  <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
-
-</form>
 
 {% endblock %}
 

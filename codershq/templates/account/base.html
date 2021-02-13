@@ -45,19 +45,11 @@
   </nav>
 </div>
 
-  <div class="row">
-    <div class="col-md-6 offset-md-3 align-middle">
-
-    <div class="card  mx-auto col d-flex  " style="width: 25rem; border-radius: 5%;">
-    <div class="card-body ">
-
-
-    <div class="container-fluid">
-      <img src="{% static 'images/logo/dark_text.png' %}" alt="My image" class="splash-image"  width="100%" >
-    </div>
+<body class="antialiased border-top-wide border-primary d-flex flex-column">
+  <div class="flex-fill d-flex flex-column justify-content-center py-4">
+    <div class="container-tight py-6">
       {% block inner %}{% endblock %}
     </div>
-    </div>
   </div>
-</div>
+</body>
 {% endblock %}

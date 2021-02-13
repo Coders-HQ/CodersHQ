@@ -1,18 +1,60 @@
-{% extends "dashboard/profile.html" %}
+{% extends "dashboard/base.html" %}
 
 
 {% load static %}
 
+{% block main %}
 
-{% block cardTitle %}
-{% endblock cardTitle %}
-
-{% block inner %}
+<div class="col-12">
+    <div class="card">
+        <div class="table-responsive">
+            <table class="table table-vcenter table-mobile-md card-table">
+                <thead>
+                    <tr>
+                        <th data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">Title</th>
+                        <th>Competitors</th>
+                        <th>Type</th>
+                        <th>Time Left</th>
+                        <th>Total Prize</th>
+                        <th class="w-1"></th>
+                    </tr>
+                </thead>
+                <tbody>
 {% for hackathon in hackathons %}
-<li>{{ hackathon.description }} - {{ hackathon.evaluation }}</li>
-<a class="btn btn-primary" href="{% url 'hackathon:detail' hackathon.slug %}" role="button">Link</a>
-{{hackathon.competitors.count }}
-{% empty %}
+
+                    <tr>
+                        <td data-label="Title">
+                                    <div class="font-weight-medium">{{hackathon.title}}</div>
+                        </td>
+                        <td data-label="Competitors">
+                            <div class="text-muted">{{hackathon.competitors.count }} competitors</div>
+                            
+                        </td>
+                        <td data-label="Type">
+                            <div class="text-muted">{{hackathon.get_hackathon_type_display}}</div>
+                        </td>
+                        <td  data-label="Time Left">
+                            {{hackathon.last_join_date|timeuntil}}
+                        </td>
+                        <td  data-label="Total Prize">
+                            {{hackathon.prize_display}}
+                        </td>
+                        <td>
+                            <div class="btn-list flex-nowrap">
+                                <a href="{% url 'hackathon:detail' hackathon.slug %}" class="btn btn-white">
+                                    More Details
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
 <li>No articles yet.</li>
 {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
 {% endblock %}
