@@ -3,19 +3,18 @@ from django.views.generic import DetailView, ListView
 from django.urls import reverse
 from codershq.hackathon.models import Hackathon
 from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class HackathonList(ListView):
+
+class HackathonList(LoginRequiredMixin, ListView):
     model = Hackathon
     context_object_name = 'hackathons'
 
 
-class HackathonDetail(DetailView):
+class HackathonDetail(LoginRequiredMixin, DetailView):
     model = Hackathon
 
     def post(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            return HttpResponseForbidden()
-
 
         # current hackathon instance 
         self.object = self.get_object()
