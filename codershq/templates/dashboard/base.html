@@ -82,7 +82,15 @@
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-card">
                 <div class="card">
                   <div class="card-body">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad amet consectetur exercitationem fugiat in ipsa ipsum, natus odio quidem quod repudiandae sapiente. Amet debitis et magni maxime necessitatibus ullam.
+                    {% block messages %}
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div>{{ message }}<button type="button"
+                            class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endblock %}
                   </div>
                 </div>
               </div>

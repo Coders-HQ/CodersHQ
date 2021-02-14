@@ -4,82 +4,18 @@
 <div class="main-panel">
 
     <div class="content">
-        {% block messages %}
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button"
-                class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% endblock %}
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
-                        {% block cardTitle %}{% endblock cardTitle %}
                         <div class="card-body">
                             {% block inner %}
                             {% endblock %}
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card card-profile">
-                        <div class="card-avatar">
-                            <a href="javascript:;">
-                                <img class="img" src="../assets/img/faces/marc.jpg" />
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                            <h4 class="card-title">Alec Thompson</h4>
-                            <p class="card-description">
-                                Don't be scared of the truth because we need to restart the human foundation in
-                                truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but
-                                the back is...
-                            </p>
-                            <a href="javascript:;" class="btn btn-primary btn-round">Follow</a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-    <footer class="footer">
-        <div class="container-fluid">
-            <nav class="float-left">
-                <ul>
-                    <li>
-                        <a href="https://www.creative-tim.com">
-                            Creative Tim
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://creative-tim.com/presentation">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://blog.creative-tim.com">
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.creative-tim.com/license">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright float-right">
-                &copy;
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>, made with <i class="material-icons">favorite</i> by
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-            </div>
-        </div>
-    </footer>
 </div>
 {% endblock main %}
