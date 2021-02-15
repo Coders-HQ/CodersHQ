@@ -17,6 +17,7 @@ class Hackathon(models.Model):
     ]
 
     title = models.CharField(_("Title of Hackathon"), max_length=100)
+    subtitle = models.CharField(_("Little info to explain the Hackathon."),max_length=150)
     slug = AutoSlugField(populate_from='title')
     hackathon_type = models.CharField(_("Hackathon Type"),
                                       max_length=2,
@@ -45,5 +46,7 @@ class Hackathon(models.Model):
     @property
     def prize_display(self):
         return f"{self.prize_money:,} AED"
+
+
 
     
