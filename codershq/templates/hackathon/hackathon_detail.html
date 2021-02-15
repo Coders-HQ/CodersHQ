@@ -2,6 +2,22 @@
 {% load static %}
 
 {% block main %}
+
+  <!-- Page title -->
+  <div class="page-header d-print-none">
+    <div class="row align-items-center">
+      <div class="col">
+        <!-- Page pre-title -->
+        <div class="page-pretitle">
+          Hackathon
+        </div>
+        <h2 class="page-title">
+          Detail
+        </h2>
+      </div>
+    </div>
+  </div>
+
 <div class="card mb-4">
     <div class="card-body">
         <h3 class="card-title">{{ object.title }}</h3>
@@ -12,18 +28,41 @@
     <!-- Card footer -->
     <div class="card-footer">
         <div class="d-flex">
-            <form class="form-horizontal" method="post" action="{% url 'hackathon:detail' object.slug %}">
-                {% csrf_token %}
+        
                 {% if user in object.competitors.all %}
-                <button type="submit" class="btn btn-danger">Leave</button>
+                <button  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modal-large">Leave</button>
                 {% else %}
-                <button type="submit" class="btn btn-primary">Join</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-large">Join</button>
                 {% endif %}
-            </form>
+
             <h2 class="ms-auto">{{ object.prize_display }}</h2>
         </div>
     </div>
 </div>
+<div class="modal modal-blur fade" id="modal-large" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{object.title}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to join this hackathon? It will start in {{ object.date_start }}.
+        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn me-auto" data-bs-dismiss="modal">Close</button>
+        <form class="form-horizontal" method="post" action="{% url 'hackathon:detail' object.slug %}">
+            {% csrf_token %}
+                {% if user in object.competitors.all %}
+                <button type="submit" class="btn btn-danger" >Leave</button>
+                {% else %}
+                <button type="submit" class="btn btn-primary" >Join</button>
+                {% endif %}
+        </form>
+    </div>
+    </div>
+    </div>
+  </div>
 <div class="card">
     <ul class="nav nav-tabs" data-bs-toggle="tabs">
         <li class="nav-item">
@@ -42,6 +81,7 @@
             <a href="#tabs-prizes-ex1" class="nav-link" data-bs-toggle="tab">Prizes</a>
         </li>
     </ul>
+   
     <div class="card-body">
         <div class="tab-content">
             <div class="tab-pane active show" id="tabs-description-ex1">
