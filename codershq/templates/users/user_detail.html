@@ -1,51 +1,122 @@
-{% extends "dashboard/profile.html" %}
+{% extends "dashboard/base.html" %}
 {% load static %}
 
 {% block title %}User: {{ object.username }}{% endblock %}
 
-{% block cardTitle %}
-<div class="card-header card-header-primary">
-  <h4 class="card-title">Profile</h4>
-  <p class="card-category">View Your Profile</p>
+{% block main %}
+
+<!-- Page title -->
+<div class="page-header d-print-none">
+  <div class="row align-items-center">
+    <div class="col">
+      <!-- Page pre-title -->
+      <div class="page-pretitle">
+        Profile
+      </div>
+      <h2 class="page-title">
+        Overview
+      </h2>
+    </div>
+    <!-- Page title actions -->
+    <div class="col-auto ms-auto d-print-none">
+      <div class="btn-list">
+        <span class="d-none d-sm-inline">
+          <a href="{% url 'users:update' %}" class="btn btn-white" >
+            Edit Profile
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
-{% endblock cardTitle %}
 
-{% block inner %}
-<div class="container">
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="card  mx-auto col d-flex">
-        <div class="card-body ">
-          <h2>{{ object.username }}</h2>
-          {% if object.name %}
-          <p>{{ object.name }}</p>
-          {% endif %}
-          {% if object.github_score %}
-          {% if object.github_score is -1 %}
-          <p>getting your score</p>
-          {% else %}
-          <p>{{ object.github_score }}</p>
-          {% endif %}
-          {% endif %}
+<div class="row row-cards">
+  <div class="col-md-6 col-xl-3">
+    <div class="row row-cards">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body p-4 text-center">
+            {% if user.profile_image %}
+            <span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url({{ object.profile_image.url }})"></span>
+            {% else %}
+            <span class="avatar avatar-xl mb-3 avatar-rounded" >{{object.username|make_list|slice:':2'|join:'' }}</span>
+            {% endif %}
+            <h3 class="m-0 mb-1"><a href="#">{{object.name}}</a></h3>
+            <div class="text-muted">{{object.username}}</div>
+          </div>
+            <div class="card-footer text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="GitHub Score">
+               {{object.github_score}}
+            </div>
         </div>
       </div>
     </div>
   </div>
-  {% if object == request.user %}
-  <!-- Action buttons -->
-  <div class="row">
 
-    <div class="col-sm-12">
-      <a class="btn btn-primary" href="{% url 'users:update' %}" role="button">My Info</a>
-      <a class="btn btn-primary" href="{% url 'account_email' %}" role="button">E-Mail</a>
-      <!-- Your Stuff: Custom user template urls -->
+  <div class="col-md-6 col-xl-9">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <div>
+            <h3 class="m-0 mb-1">Username</h3>
+            <div class="text-muted">{{object.username}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div>
+            <h3 class="m-0 mb-1">Biography</h3>
+            <div class="text-muted">{{object.bio}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div>
+            <h3 class="m-0 mb-1">Github Profile</h3>
+            <div class="text-muted">{{object.github_profile}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div>
+            <h3 class="m-0 mb-1">Frontend Score</h3>
+            <div class="text-muted">{{object.front_end_score}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div>
+            <h3 class="m-0 mb-1">Backend Score</h3>
+            <div class="text-muted">{{object.back_end_score}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div>
+            <h3 class="m-0 mb-1">Database Score</h3>
+            <div class="text-muted">{{object.database_score}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div>
+            <h3 class="m-0 mb-1">Devops Score</h3>
+            <div class="text-muted">{{object.devops_score}}</div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <div>
+            <h3 class="m-0 mb-1">Mobile Score</h3>
+            <div class="text-muted">{{object.mobile_score}}</div>
+          </div>
+        </li>
+      </ul>
     </div>
-
   </div>
-  <!-- End Action buttons -->
-  {% endif %}
 
 
 </div>
-{% endblock inner %}
+
+
+    
+
+
+{% if object == request.user %}
+
+{% endif %}
+
+
+{% endblock %}
