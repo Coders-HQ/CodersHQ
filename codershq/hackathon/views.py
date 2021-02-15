@@ -9,7 +9,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class HackathonList(LoginRequiredMixin, ListView):
     model = Hackathon
     context_object_name = 'hackathons'
+    paginate_by = 20  
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['now'] = timezone.now()
+        return context
 
 class HackathonDetail(LoginRequiredMixin, DetailView):
     model = Hackathon
