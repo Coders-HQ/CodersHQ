@@ -75,6 +75,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "codershq.users.apps.UsersConfig",
     "codershq.hackathon.apps.HackathonConfig",
+    "codershq.dashboard.apps.DashboardConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

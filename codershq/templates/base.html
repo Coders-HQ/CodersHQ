@@ -31,6 +31,7 @@
   <!-- Vendor dependencies bundled as one file-->
   {% compress js %}
   <script src="https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script defer src="{% static 'js/vendors.js' %}"></script>
   <script defer src="{% static 'js/project.js' %}"></script>
   {% endcompress %}
@@ -39,6 +40,9 @@
   <!-- place project specific Javascript in this file -->
   {% compress js %}
   <script defer src="{% static 'js/project.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
+        integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
+</script>
   {% endcompress %}
 
   {% endblock javascript %}

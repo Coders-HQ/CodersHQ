@@ -8,10 +8,14 @@ from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+import hashlib 
 
 from codershq.users.scoring.score import CHQScore
 from codershq.users.validators import validate_github_profile
 
+def user_image_path(instance, filename):
+    # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
+    return 'profile/image/{0}/{1}'.format(instance.username, filename)
 
 class User(AbstractUser):
     """Default user for Coders Headquarters."""
@@ -24,6 +28,7 @@ class User(AbstractUser):
     academic_qualification_file = models.FileField(null=True, blank=True, upload_to="academic")
     github_profile = models.CharField(_("User's GitHub profile"), blank=True, max_length=255,
                                       validators=[validate_github_profile])
+    profile_image = models.ImageField(_("Profile image"), upload_to=user_image_path, null=True, blank=True)
     github_updated = models.DateTimeField(null=True, blank=True)
     github_score = models.IntegerField(null=False, default=0)
     front_end_score = models.IntegerField(null=False, default=20)
@@ -53,6 +58,10 @@ class User(AbstractUser):
             user_name = split_url[-1]
         return user_name
 
+    @property
+    def gravatar(self):
+        return "https://www.gravatar.com/avatar/" + str(hashlib.md5(self.username.encode()).hexdigest())
+
     def save(self, *args, **kwargs):
         """
         Fails if score does not have a total of 100 and if news source is not available.
@@ -68,7 +77,7 @@ class User(AbstractUser):
             chq_score = CHQScore(settings.GITHUB_TOKEN)
             if self.github_updated != None:
                 # only get score when enough time has passed
-                if timezone.now()-timezone.timedelta(seconds=24) >= self.github_updated <= timezone.now():
+                if timezone.now()-timezone.timedelta(hours=24) >= self.github_updated <= timezone.now():
                     # save current score and use it if api call fails
                     self.github_updated = timezone.now()
                     self.github_score = -1
