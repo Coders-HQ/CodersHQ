@@ -22,6 +22,7 @@
 
 {% for hackathon in hackathons %}
 <div class="card mb-2">
+  <!-- <div class="card-status-start bg-primary"></div> -->
     <div class="card-header">
         {{ hackathon.get_hackathon_type_display }}
     </div>
@@ -42,13 +43,48 @@
     </div>
 </div>
 
-
-
 {% empty %}
 <li>No articles yet.</li>
 {% endfor %}
 
+{% if page_obj.has_previous or page_obj.has_next %}
+<div class="row row-cards">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
 
+        <ul class="pagination ">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <polyline points="15 6 9 12 15 18" />
+              </svg>
+            </a>
+          </li>
+          {% endif %}
 
+          <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</a></li>
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+      
 
 {% endblock %}
