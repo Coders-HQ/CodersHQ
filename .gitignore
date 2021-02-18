@@ -276,3 +276,4 @@ codershq/media/
 .env
 .envs/*
 !.envs/.local/
+!.envs/.production/
