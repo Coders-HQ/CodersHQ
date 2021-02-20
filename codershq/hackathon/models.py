@@ -1,7 +1,8 @@
 from autoslug import AutoSlugField
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+
 from codershq.users.models import User
 
 
@@ -47,6 +48,7 @@ class Hackathon(models.Model):
     def prize_display(self):
         return f"{self.prize_money:,} AED"
 
+  
 
 
     

@@ -4,40 +4,40 @@
 {% load static %}
 
 {% block main %}
-        <!-- Page title -->
-        <div class="page-header d-print-none">
-            <div class="row align-items-center">
-              <div class="col">
-                <!-- Page pre-title -->
-                <div class="page-pretitle">
-                  News
-                </div>
-                <h2 class="page-title">
-                  Reddit Programming
-                </h2>
-              </div>
-            </div>
-          </div>
-<div class="card">
-    <div class="card-body">
-        <div class="accordion" id="accordion-example">
-            {% for item in body%}
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="heading-{{forloop.counter}}">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{forloop.counter}}" aria-expanded="false">
-                        {{ item.data.title}}
-                    </button>
-                </h2>
-                <div id="collapse-{{forloop.counter}}" class="accordion-collapse collapse"
-                    data-bs-parent="#accordion-example">
-                    <div class="accordion-body pt-0">
-                        EXAMPLE
-                    </div>
-                </div>
-            </div>
-            {%endfor%}
-        </div>
+<!-- Page title -->
+<div class="page-header d-print-none">
+  <div class="row align-items-center">
+    <div class="col">
+      <!-- Page pre-title -->
+      <div class="page-pretitle">
+        News
+      </div>
+      <h2 class="page-title">
+        Reddit Programming
+      </h2>
     </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body">
+    <div class="accordion" id="accordion-example">
+      {% for item in body%}
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-{{forloop.counter}}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse-{{forloop.counter}}" aria-expanded="false">
+            {{ item.data.title}}
+          </button>
+        </h2>
+        <div id="collapse-{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#accordion-example">
+          <div class="accordion-body pt-0">
+            EXAMPLE
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
 </div>
 
 {% endblock %}
