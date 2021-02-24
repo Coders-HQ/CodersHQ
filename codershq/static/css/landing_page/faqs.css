@@ -1,0 +1,81 @@
+.faq {
+  background-color: #303741;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.25s all ease;
+  border-radius: 10px;
+}
+
+.faq:hover {
+  background-color: #1b2026;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.25s all ease;
+}
+
+.faq:after {
+  content: "\2212";
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.on:after {
+  content: "\002B";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.faqelement {
+  margin: auto;
+  float: initial;
+}
+
+.btn-primary {
+  background-color: #e4e4e4;
+  border-color: #e4e4e4;
+}
+
+.btn-primary:hover {
+  color: rgb(99, 133, 205);
+  background-color: #e4e4e4;
+  border-color: #e4e4e4;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #e4e4e4;
+  border-color: #e4e4e4;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background-color: #e4e4e4;
+  border-color: #e4e4e4;
+}
+
+.partner-logo {
+  margin-bottom: 8.5%;
+}
