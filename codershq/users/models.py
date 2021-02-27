@@ -36,6 +36,7 @@ class User(AbstractUser):
     database_score = models.IntegerField(null=False, default=20)
     devops_score = models.IntegerField(null=False, default=20)
     mobile_score = models.IntegerField(null=False, default=20)
+    fav_language = models.CharField(_("Favourite programming language based on GitHub"), blank=True, max_length=150)
 
     first_name = None  # type: ignore
     last_name = None  # type: ignore
@@ -77,17 +78,15 @@ class User(AbstractUser):
             chq_score = CHQScore(settings.GITHUB_TOKEN)
             if self.github_updated != None:
                 # only get score when enough time has passed
-                if timezone.now()-timezone.timedelta(hours=24) >= self.github_updated <= timezone.now():
+                if timezone.now()-timezone.timedelta(seconds=24) >= self.github_updated <= timezone.now():
                     # save current score and use it if api call fails
                     self.github_updated = timezone.now()
-                    self.github_score = -1
                     # celery_app.send_task('update_github_score')
                     celery_app.send_task('codershq.users.tasks.update_github_score', (self.pk,))
                     # get score
             else:
                 # first time get score
                 # celery_app.send_task('update_github_score', (self.pk,))
-                self.github_score = -1
                 celery_app.send_task('codershq.users.tasks.update_github_score', (self.pk,))
 
                 self.github_updated = timezone.now()

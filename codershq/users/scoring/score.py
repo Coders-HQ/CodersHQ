@@ -1,5 +1,6 @@
 from github import Github
 import concurrent.futures
+from statistics import mode
 
 
 class CHQScore:
@@ -11,6 +12,8 @@ class CHQScore:
             self.g = Github(auth)
         else:
             self.g = Github()
+
+        self.fav_language = ''
 
     def check_user_exists(self, user_name):
         """
@@ -89,7 +92,12 @@ class CHQScore:
         # per repo
         current_user_id = user.id
 
+        languages = []
         for repo in user.get_repos():
+            try:
+                languages.append(repo.language)
+            except:
+                pass
 
             if not repo.fork:
                 current_repo_score = 0
@@ -107,7 +115,7 @@ class CHQScore:
         commit_score *= m_low
         total_score = user_score+repo_score+commit_score
 
-        return total_score
+        return total_score, mode(languages)
 
 
 if __name__ == "__main__":
