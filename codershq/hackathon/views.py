@@ -18,6 +18,33 @@ class HackathonList(LoginRequiredMixin, ListView):
         context['now'] = timezone.now()
         return context
 
+class HackathonVirtualList(LoginRequiredMixin, ListView):
+    model = Hackathon
+    context_object_name = 'hackathons'
+    paginate_by = 10
+    ordering = ['-date_start']
+
+    def get_queryset(self):
+        return Hackathon.objects.filter(hackathon_type="VI")
+
+class HackathonPhysicalList(LoginRequiredMixin, ListView):
+    model = Hackathon
+    context_object_name = 'hackathons'
+    paginate_by = 10
+    ordering = ['-date_start']
+
+    def get_queryset(self):
+        return Hackathon.objects.filter(hackathon_type="PH")
+
+class HackathonHybridList(LoginRequiredMixin, ListView):
+    model = Hackathon
+    context_object_name = 'hackathons'
+    paginate_by = 10
+    ordering = ['-date_start']
+
+    def get_queryset(self):
+        return Hackathon.objects.filter(hackathon_type="HY")
+
 class HackathonDetail(LoginRequiredMixin, DetailView):
     model = Hackathon
 

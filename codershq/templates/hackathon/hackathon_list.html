@@ -20,6 +20,38 @@
     </div>
   </div>
 
+ <div class="col-xl-4">
+  <div class="mb-3">
+<label class="form-label">Filter By Type</label>
+
+        {% if request.path == "/hackathon/" %}
+        <a href="/hackathon/" type="button" class="btn btn-secondary m-2">All</a>
+        {% else %}
+        <a href="/hackathon/" type="button" class="btn btn-outline-secondary m-2">All</a>
+        {% endif %}
+        
+        {% if request.path == "/hackathon/virtual/" %}
+        <a href="/hackathon/virtual" type="button" class="btn btn-secondary m-2">Virtual</a>
+        {% else %}
+        <a href="/hackathon/virtual" type="button" class="btn btn-outline-secondary m-2">Virtual</a>
+        {% endif %}
+
+        {% if request.path == "/hackathon/physical/" %}
+        <a href="/hackathon/physical" type="button" class="btn btn-secondary m-2">Physical</a>
+        {% else %}
+        <a href="/hackathon/physical" type="button" class="btn btn-outline-secondary m-2">Physical</a>
+        {% endif %}
+        {% if request.path == "/hackathon/hybrid/" %}
+        <a href="/hackathon/hybrid" type="button" class="btn btn-secondary m-2">Hybrid</a>
+        {% else %}
+        <a href="/hackathon/hybrid" type="button" class="btn btn-outline-secondary m-2">Hybrid</a>
+        {% endif %}
+
+
+      </div>
+   </div>
+                          
+  
 {% for hackathon in hackathons %}
 <div class="card mb-2">
   <!-- <div class="card-status-start bg-primary"></div> -->
