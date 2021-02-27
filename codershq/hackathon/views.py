@@ -4,7 +4,8 @@ from django.urls import reverse
 from codershq.hackathon.models import Hackathon
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.utils.translation import gettext_lazy as _
+from django.contrib import messages
 
 class HackathonList(LoginRequiredMixin, ListView):
     model = Hackathon
@@ -20,6 +21,7 @@ class HackathonList(LoginRequiredMixin, ListView):
 class HackathonDetail(LoginRequiredMixin, DetailView):
     model = Hackathon
 
+
     def post(self, request, *args, **kwargs):
 
         # current hackathon instance 
@@ -29,8 +31,11 @@ class HackathonDetail(LoginRequiredMixin, DetailView):
         # if user exists remove user
         if request.user in self.object.competitors.all():
             self.object.competitors.remove(request.user)
+            messages.warning(request, 'You are removed from this hackathon')  
+
         else:
             if timezone.now().date() < self.object.last_join_date:
                 self.object.competitors.add(request.user)
+                messages.success(request, 'You were successfully added to the hackathon')  
 
         return HttpResponseRedirect(reverse('hackathon:detail', kwargs={'slug': self.object.slug}))

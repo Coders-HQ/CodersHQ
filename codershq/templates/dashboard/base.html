@@ -97,10 +97,16 @@
         </div>
       </header>
       
-      
-      
       <div class="content">
       
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">
+              {{ message }} 
+            </div>
+          {% endfor %}
+        {% endif %}
+
         <div class="container-xl">
           {% block main %}
           {% endblock main %}
@@ -108,5 +114,6 @@
         </div>
       </div>
       </div>
+
 
 {% endblock content %}
