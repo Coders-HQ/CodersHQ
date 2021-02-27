@@ -10,6 +10,7 @@ class HackathonList(LoginRequiredMixin, ListView):
     model = Hackathon
     context_object_name = 'hackathons'
     paginate_by = 10
+    ordering = ['-date_start']
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
