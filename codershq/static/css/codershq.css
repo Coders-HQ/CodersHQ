@@ -15,7 +15,6 @@
 
 body {
   font-size: 0.875rem;
-  transition: all 0.5s ease;
 }
 
 .feather {
@@ -78,6 +77,14 @@ body {
   text-transform: uppercase;
 }
 
+.hiddenSvg {
+  display: none;
+}
+
+/*
+ * Login & Register Forms
+ */
+
 /*
  * Content
  */
@@ -87,5 +94,42 @@ body {
 }
 
 /*
- * Navbar
+ * Dashboard
  */
+
+@media (min-width: 992px) {
+  #dashboardSidebar {
+    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  #dashboardSidebar.theme-dark {
+    background-color: #262d37;
+  }
+
+  #dashboardSidebar.theme-light {
+    background-color: #f2f5fa;
+  }
+
+  #mobileAvatar {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  #sidebarLogo {
+    width: 0;
+    display: none;
+  }
+
+  #userCard {
+    display: none;
+  }
+
+  #mobileAvatar {
+    display: block;
+  }
+
+  #navBar {
+    display: none;
+  }
+}
