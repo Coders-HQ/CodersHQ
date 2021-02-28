@@ -99,7 +99,7 @@ body {
 
 @media (min-width: 992px) {
   #dashboardSidebar {
-    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.1);
   }
 
   #dashboardSidebar.theme-dark {

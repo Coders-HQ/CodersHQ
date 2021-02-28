@@ -8956,7 +8956,7 @@ body .content :hover::-webkit-scrollbar-thumb {
 .navbar {
   align-items: stretch;
   min-height: 3.5rem;
-  background: 0 0;
+  background-color: #FFF;
   color: rgba(35, 46, 60, 0.7);
 }
 .navbar-collapse .navbar {
@@ -8992,7 +8992,7 @@ body .content :hover::-webkit-scrollbar-thumb {
 }
 .navbar .navbar-brand:focus,
 .navbar .navbar-brand:hover {
-  color: #303741;
+  color: #ff0000;
   opacity: 0.8;
 }
 .navbar .navbar-nav .nav-link {
@@ -9000,7 +9000,7 @@ body .content :hover::-webkit-scrollbar-thumb {
 }
 .navbar .navbar-nav .nav-link:focus,
 .navbar .navbar-nav .nav-link:hover {
-  color: #303741;
+  color: #ff0000;
 }
 .navbar .navbar-nav .nav-link.disabled {
   color: rgba(35, 46, 60, 0.3);
@@ -9009,7 +9009,7 @@ body .content :hover::-webkit-scrollbar-thumb {
 .navbar .navbar-nav .nav-link.active,
 .navbar .navbar-nav .nav-link.show,
 .navbar .navbar-nav .show > .nav-link {
-  color: #303741;
+  color: #ff0000;
 }
 .navbar .navbar-toggler {
   color: #303741;
