@@ -1,4 +1,8 @@
-{% extends 'base.html' %} {% load static i18n%} {% block content %}
+{% extends 'base.html' %} 
+
+{% load static i18n%} 
+
+{% block content %}
 
 <script>
   // Set the Navbar Active Link
@@ -363,15 +367,15 @@
             </div>
           </div>
         </div>
-        </div>
-      </header>
-      
+      </div>
+    </header>
+
       <div class="content">
-      
+
         {% if messages %}
           {% for message in messages %}
             <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-              {{ message }} 
+              {{ message }}
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           {% endfor %}
@@ -380,15 +384,9 @@
         <div class="container-xl">
           {% block main %}
           {% endblock main %}
-      
+
         </div>
       </div>
-    </div>
-  </header>
-
-  <div class="content">
-    <div class="container-xl">{% block main %} {% endblock main %}</div>
-  </div>
 </div>
 
 {% endblock content %}
