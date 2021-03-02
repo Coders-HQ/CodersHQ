@@ -7,7 +7,7 @@
 * Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
 */
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap);
 :root {
   --tblr-blue: #da0202;
   --tblr-azure: #4299e1;
@@ -29,8 +29,7 @@
   --tblr-danger: #d63939;
   --tblr-light: #f4f6fa;
   --tblr-dark: #303741;
-  --tblr-font-sans-serif: "Inter", -apple-system, BlinkMacSystemFont,
-    San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+  --tblr-font-sans-serif: "Poppins", sans-serif;
   --tblr-font-monospace: null, Menlo, Monaco, Consolas, Liberation Mono,
     Courier New, monospace;
   --tblr-gradient: linear-gradient(
@@ -52,11 +51,11 @@
 body {
   margin: 0;
   font-family: var(--tblr-font-sans-serif);
-  font-size: 0.875rem;
+  font-size: 0.975rem;
   font-weight: 400;
   line-height: 1.4285714;
   color: #303741;
-  background-color: #f4f6fa;
+  background-color: #f2f5fa;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
 }
@@ -1836,7 +1835,7 @@ progress {
 .form-control:focus {
   color: inherit;
   background-color: #fff;
-  border-color: #90b5e2;
+  border-color: #e29090;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
 }
@@ -2017,7 +2016,7 @@ textarea.form-control-lg {
   appearance: none;
 }
 .form-select:focus {
-  border-color: #90b5e2;
+  border-color: #e29090;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
 }
@@ -2082,7 +2081,7 @@ textarea.form-control-lg {
   filter: brightness(90%);
 }
 .form-check-input:focus {
-  border-color: #90b5e2;
+  border-color: #e29090;
   outline: 0;
   box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
 }
@@ -3076,7 +3075,7 @@ fieldset:disabled .btn {
 }
 .nav-tabs .nav-link:focus,
 .nav-tabs .nav-link:hover {
-  border-color: #f0f2f6 #f0f2f6 #e7eaef;
+  border-color: #ff0000 #ff0000 #f10808;
   isolation: isolate;
 }
 .nav-tabs .nav-link.disabled {
@@ -3088,7 +3087,7 @@ fieldset:disabled .btn {
 .nav-tabs .nav-link.active {
   color: #806e6e;
   background-color: #f4f6fa;
-  border-color: #e7eaef #e7eaef #f4f6fa;
+  border-color: #f50101 #ff0000 #ff0000;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -3410,18 +3409,18 @@ fieldset:disabled .btn {
   color: #fff;
 }
 .navbar-dark .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 0, 0, 0.7);
 }
 .navbar-dark .navbar-nav .nav-link:focus,
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 0, 0, 0.75);
 }
 .navbar-dark .navbar-nav .nav-link.disabled {
   color: rgba(255, 255, 255, 0.3);
 }
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .show > .nav-link {
-  color: #fff;
+  color: rgb(255, 0, 0);
 }
 .navbar-dark .navbar-toggler {
   color: rgba(255, 255, 255, 0.7);
@@ -3436,9 +3435,10 @@ fieldset:disabled .btn {
 .navbar-dark .navbar-text a,
 .navbar-dark .navbar-text a:focus,
 .navbar-dark .navbar-text a:hover {
-  color: #fff;
+  color: rgb(255, 0, 0);
 }
 .card {
+  /* USE THIS TO MODIFY CARD STYLING cardRadius etc..*/
   position: relative;
   display: flex;
   flex-direction: column;
@@ -3447,7 +3447,7 @@ fieldset:disabled .btn {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(119, 101, 101, 0.16);
-  border-radius: 4px;
+  border-radius: 20px;
 }
 .card > .hr,
 .card > hr {
@@ -8936,7 +8936,7 @@ body .content ::-webkit-scrollbar {
   transition: 0.3s background;
 }
 body .content ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
+  border-radius: 10px;
   background: #a0a6ae;
 }
 body .content ::-webkit-scrollbar-track {
@@ -9063,7 +9063,7 @@ body .content :hover::-webkit-scrollbar-thumb {
   }
   .theme-dark .navbar .navbar-nav .nav-link:focus,
   .theme-dark .navbar .navbar-nav .nav-link:hover {
-    color: #fff;
+    color: #ff0000;
   }
   .theme-dark .navbar .navbar-nav .nav-link.disabled {
     color: rgba(255, 255, 255, 0.3);
@@ -9072,7 +9072,7 @@ body .content :hover::-webkit-scrollbar-thumb {
   .theme-dark .navbar .navbar-nav .nav-link.active,
   .theme-dark .navbar .navbar-nav .nav-link.show,
   .theme-dark .navbar .navbar-nav .show > .nav-link {
-    color: #fff;
+    color: #ff0000;
   }
   .theme-dark .navbar .navbar-toggler {
     color: #fff;
@@ -9168,7 +9168,7 @@ body .content :hover::-webkit-scrollbar-thumb {
   }
   .theme-dark-auto .navbar .navbar-nav .nav-link:focus,
   .theme-dark-auto .navbar .navbar-nav .nav-link:hover {
-    color: #fff;
+    color: #ff0000;
   }
   .theme-dark-auto .navbar .navbar-nav .nav-link.disabled {
     color: rgba(255, 255, 255, 0.3);
@@ -9550,8 +9550,7 @@ body .content :hover::-webkit-scrollbar-thumb {
   }
   .navbar-expand-lg.navbar-vertical ~ .content,
   .navbar-expand-lg.navbar-vertical ~ .navbar {
-    -webkit-margin-start: 15rem;
-    margin-inline-start: 15rem;
+    -webkit-margin-start: 5rem;
   }
 }
 @media (max-width: 1199.98px) {
@@ -9944,7 +9943,7 @@ body .content :hover::-webkit-scrollbar-thumb {
 }
 .navbar-dark .navbar-nav .nav-link:focus,
 .navbar-dark .navbar-nav .nav-link:hover {
-  color: #fff;
+  color: #ff0000;
 }
 .navbar-dark .navbar-nav .nav-link.disabled {
   color: rgba(255, 255, 255, 0.3);
@@ -10310,7 +10309,7 @@ body .content :hover::-webkit-scrollbar-thumb {
     margin-right: calc(-1 * var(--tblr-gutter-x, 1.5rem));
   }
   .navbar-vertical.navbar-expand-lg .navbar-collapse .navbar-nav .nav-link {
-    padding: 0.5rem 1.5rem;
+    padding: 0.75rem 2rem;
     justify-content: flex-start;
   }
   .navbar-vertical.navbar-expand-lg .navbar-collapse .dropdown-menu-columns {
@@ -12770,7 +12769,7 @@ textarea[cols] {
 }
 .input-group-flat:focus-within .form-control,
 .input-group-flat:focus-within .input-group-text {
-  border-color: #90b5e2 !important;
+  border-color: #e29090 !important;
 }
 .input-group-flat .form-control:focus {
   border-color: #dadcde;
@@ -13044,12 +13043,12 @@ textarea[cols] {
   z-index: 1;
   color: #da0202;
   background: rgba(196, 32, 32, 0.04);
-  border-color: #90b5e2;
+  border-color: #e29090;
 }
 .form-selectgroup-input:focus + .form-selectgroup-label {
   z-index: 2;
   color: #da0202;
-  border-color: #90b5e2;
+  border-color: #e29090;
   box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.25);
 }
 .form-selectgroup-boxes .form-selectgroup-label {
