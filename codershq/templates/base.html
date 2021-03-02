@@ -16,6 +16,8 @@
 
   <link href="{% static 'css/project.css' %}" rel="stylesheet">
   <link href="{% static 'css/codershq.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/landing/videoBackground.css' %}" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
   <!-- Your stuff: Third-party CSS libraries go here -->
   {% compress css %}
   <!-- This file stores project-specific CSS -->
@@ -34,6 +36,7 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script defer src="{% static 'js/vendors.js' %}"></script>
   <script defer src="{% static 'js/project.js' %}"></script>
+  <script defer src="{% static 'js/theme.js' %}"></script>
   {% endcompress %}
 
 
@@ -49,7 +52,7 @@
 
 </head>
 
-<body>
+<body class="antialiased">
 
 
 
