@@ -10,7 +10,6 @@ celery==4.4.6  # pyup: < 5.0,!=4.4.7  # https://github.com/celery/celery
 django-celery-beat==2.2.0  # https://github.com/celery/django-celery-beat
 flower==0.9.7  # https://github.com/mher/flower
 django-autoslug==1.9.8  # https://github.com/justinmayer/django-autoslug/
-PyGithub==1.54.1   # https://github.com/PyGithub/PyGithub
 
 # Django
 # ------------------------------------------------------------------------------
@@ -21,3 +20,8 @@ django-allauth==0.44.0  # https://github.com/pennersr/django-allauth
 django-crispy-forms==1.11.0  # https://github.com/django-crispy-forms/django-crispy-forms
 django-compressor==2.4  # https://github.com/django-compressor/django-compressor
 django-redis==4.12.1  # https://github.com/jazzband/django-redis
+
+# Project
+# ------------------------------------------------------------------------------
+PyGithub==1.54.1   # https://github.com/PyGithub/PyGithub
+slackclient==2.9.3  # https://pypi.org/project/slackclient

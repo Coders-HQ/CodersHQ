@@ -1,21 +1,21 @@
+import hashlib
+
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
-
-from config import celery_app
-
-
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-import hashlib 
 
 from codershq.users.scoring.score import CHQScore
 from codershq.users.validators import validate_github_profile
+from config import celery_app
+
 
 def user_image_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
     return 'profile/image/{0}/{1}'.format(instance.username, filename)
+
 
 class User(AbstractUser):
     """Default user for Coders Headquarters."""
@@ -30,12 +30,17 @@ class User(AbstractUser):
                                       validators=[validate_github_profile])
     profile_image = models.ImageField(_("Profile image"), upload_to=user_image_path, null=True, blank=True)
     github_updated = models.DateTimeField(null=True, blank=True)
+    
     github_score = models.IntegerField(null=False, default=0)
     front_end_score = models.IntegerField(null=False, default=20)
     back_end_score = models.IntegerField(null=False, default=20)
     database_score = models.IntegerField(null=False, default=20)
     devops_score = models.IntegerField(null=False, default=20)
     mobile_score = models.IntegerField(null=False, default=20)
+    
+    fav_language = models.CharField(_("Favourite programming language based on GitHub"), blank=True, max_length=150)
+
+    completed_hackathons = models.PositiveIntegerField(_("Number of hackathons completed"), null=False, default=0)
 
     first_name = None  # type: ignore
     last_name = None  # type: ignore
@@ -77,17 +82,15 @@ class User(AbstractUser):
             chq_score = CHQScore(settings.GITHUB_TOKEN)
             if self.github_updated != None:
                 # only get score when enough time has passed
-                if timezone.now()-timezone.timedelta(hours=24) >= self.github_updated <= timezone.now():
+                if timezone.now()-timezone.timedelta(seconds=24) >= self.github_updated <= timezone.now():
                     # save current score and use it if api call fails
                     self.github_updated = timezone.now()
-                    self.github_score = -1
                     # celery_app.send_task('update_github_score')
                     celery_app.send_task('codershq.users.tasks.update_github_score', (self.pk,))
                     # get score
             else:
                 # first time get score
                 # celery_app.send_task('update_github_score', (self.pk,))
-                self.github_score = -1
                 celery_app.send_task('codershq.users.tasks.update_github_score', (self.pk,))
 
                 self.github_updated = timezone.now()

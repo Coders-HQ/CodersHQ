@@ -20,20 +20,17 @@ User = get_user_model()
 @celery_app.task()
 def update_github_score(pk):
     """
-    update_github_score takes user_name and id of user profile
-    and saves the user score to the profile.
-    This is an async functions
+    update_github_score update user's github score using
+    the scoring system
 
-    :param user_name: github username
-    :param id: profile id
-    :param old_score: get back old score if error getting new score
+    :param pk: user's primary key
     """
     user = User.objects.get(pk=pk)
     chq_score = CHQScore(settings.GITHUB_TOKEN)
 
     # try to get score
     try:
-        user.github_score = chq_score.get_score(user.github_username)
+        user.github_score, user.fav_language = chq_score.get_score(user.github_username)
         user.github_updated = timezone.now()
     except:
         # use old score (or 0) if api call fails

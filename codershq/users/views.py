@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, RedirectView, UpdateView
+from django.views.generic import DetailView, RedirectView, UpdateView, ListView
 
 User = get_user_model()
 
@@ -38,7 +38,7 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     def get_object(self):
         return self.request.user
-        
+
 
 user_update_view = UserUpdateView.as_view()
 
@@ -52,3 +52,12 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 
 user_redirect_view = UserRedirectView.as_view()
+
+class UserScoringListView(ListView):
+    template_name = "users/scoring_list.html"
+    model = User
+    context_object_name = 'users'
+    paginate_by = 50
+    ordering = ['-github_score']
+
+user_scoring_list_view = UserScoringListView.as_view()

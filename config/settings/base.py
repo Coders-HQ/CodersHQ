@@ -310,3 +310,5 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+# slack
+SLACK_TOKEN = env("SLACK_TOKEN")

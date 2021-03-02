@@ -1,7 +1,13 @@
 Coders Headquarters
 ===================
 
-CodersHQ source code
+Coders Headquarters (CodersHQ) is a social platform for developers to
+network, do challenges and gain points by contributing and helping
+others.
+
+Currently the platform is at the beta alpha stage with a lot of the
+foundations being set. It is built using django and deployed using
+docker.
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter
      :target: https://github.com/pydanny/cookiecutter-django/
@@ -13,13 +19,77 @@ CodersHQ source code
 
 :License: MIT
 
+Getting Up and Running Locally With Docker
+===========================================
 
-Settings
---------
 
-Moved to settings_.
+The steps below will get you up and running with a local development environment.
+All of these commands assume you are in the root of your generated project.
 
-.. _settings: http://cookiecutter-django.readthedocs.io/en/latest/settings.html
+
+.. note:: If you're new to Docker, please be aware that some resources are cached system-wide
+    and might reappear if you generate a project multiple times with the same name.
+..
+
+Prerequisites
+-------------
+
+* Docker; if you don't have it yet, follow the `installation instructions`_;
+* Docker Compose; refer to the official documentation for the `installation guide`_.
+
+.. _`installation instructions`: https://docs.docker.com/install/#supported-platforms
+.. _`installation guide`: https://docs.docker.com/compose/install/
+
+
+Build the Stack
+---------------
+
+This can take a while, especially the first time you run this particular command on your development system::
+
+    $ docker-compose -f local.yml build
+
+Generally, if you want to emulate production environment use ``production.yml`` instead. And this is true for any other actions you might need to perform: whenever a switch is required, just do it!
+
+
+Run the Stack
+-------------
+
+This brings up both Django and PostgreSQL. The first time it is run it might take a while to get started, but subsequent runs will occur quickly.
+
+Open a terminal at the project root and run the following for local development::
+
+    $ docker-compose -f local.yml up
+
+You can also set the environment variable ``COMPOSE_FILE`` pointing to ``local.yml`` like this::
+
+    $ export COMPOSE_FILE=local.yml
+
+And then run::
+
+    $ docker-compose up
+
+To run in a detached (background) mode, just::
+
+    $ docker-compose up -d
+
+
+Execute Management Commands
+---------------------------
+
+As with any shell command that we wish to run in our container, this is done using the ``docker-compose -f local.yml run --rm`` command: ::
+
+    $ docker-compose -f local.yml run --rm django python manage.py migrate
+    $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+
+Here, ``django`` is the target service we are executing the commands against.
+
+
+(Optionally) Designate your Docker Development Server IP
+--------------------------------------------------------
+
+When ``DEBUG`` is set to ``True``, the host is validated against ``['localhost', '127.0.0.1', '[::1]']``. This is adequate when running a ``virtualenv``. For Docker, in the ``config.settings.local``, add your host development server IP to ``INTERNAL_IPS`` or ``ALLOWED_HOSTS`` if the variable exists.
+
+
 
 Basic Commands
 --------------
@@ -60,14 +130,6 @@ Running tests with py.test
 
   $ pytest
 
-Live reloading and Sass CSS compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Moved to `Live reloading and SASS compilation`_.
-
-.. _`Live reloading and SASS compilation`: http://cookiecutter-django.readthedocs.io/en/latest/live-reloading-and-sass-compilation.html
-
-
 
 Celery
 ^^^^^^
@@ -82,8 +144,6 @@ To run a celery worker:
     celery -A config.celery_app worker -l info
 
 Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
-
-
 
 
 Email Server
