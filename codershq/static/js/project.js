@@ -1,7 +1,9 @@
+var theme = window.localStorage.getItem("preferredTheme");
+
 /* Project specific Javascript goes here. */
 (function () {
-    $('[data-toggle="tooltip"]').tooltip()
-  })
+  $('[data-toggle="tooltip"]').tooltip();
+});
 
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -28,3 +30,9 @@
   
   rangeSlider();
   
+var tooltipTriggerList = [].slice.call(
+  document.querySelectorAll('[data-bs-toggle="tooltip"]')
+);
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl);
+});

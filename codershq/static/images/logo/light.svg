@@ -3,7 +3,7 @@
 
  <g>
   <title>background</title>
-  <rect fill="#000000" id="canvas_background" height="222" width="691" y="-1" x="-1"/>
+  <rect fill="rgba(0,0,0,0)" id="canvas_background" height="222" width="691" y="-1" x="-1"/>
   <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
    <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
   </g>

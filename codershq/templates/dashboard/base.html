@@ -1,108 +1,381 @@
-{% extends 'base.html' %}
-{% load static i18n%}
+{% extends 'base.html' %} 
+
+{% load static i18n%} 
 
 {% block content %}
 
+<script>
+  // Set the Navbar Active Link
+  $(function () {
+    var current = location.pathname;
+    $(".nav-link").each(function () {
+      var $this = $(this);
+      // if the current path is like this link, make it active
+      if ($this.attr("id") === "homeLink" && current === "/") {
+        $this.addClass("active");
+      } else if (
+        $this.attr("id") === "hackathonLink" &&
+        current.includes("hackathon")
+      ) {
+        $this.addClass("active");
+      } else if (
+        $this.attr("id") === "profileLink" &&
+        current.includes($("#my-username").data().username) &&
+        $("#my-username").data().username !== ""
+      ) {
+        $this.addClass("active");
+      } else if ($this.attr("id") === "newsLink" && current.includes("news")) {
+        $this.addClass("active");
+      } else if ($this.attr("id") === "blogLink" && current.includes("blog")) {
+        $this.addClass("active");
+      }
+    });
+  });
+</script>
+<meta id="my-username" data-username="{{ request.user.username }}" />
 <div class="page">
-    <aside class="navbar navbar-vertical navbar-expand-lg navbar-transparent">
-        <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <h1 class="navbar-brand navbar-brand-autodark">
-            <a href=".">
-              <img src="{%  static 'images/logo/dark_notext.svg' %}" width="250" alt="Coders Headquarters" class="">
+  <aside
+    id="dashboardSidebar"
+    class="navbar navbar-vertical navbar-expand-lg pdark"
+  >
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbar-menu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <h1 class="navbar-brand navbar-brand-autodark">
+        <a href=".">
+          <img
+            id="sidebarLogo"
+            src="{%  static 'images/logo/dark_notext.svg' %}"
+            width="100%"
+            alt="Coders Headquarters"
+          />
+        </a>
+      </h1>
+      <div id="mobileAvatar" class="card pl-3 pr-3 mobileDiv">
+        <div class="navbar-nav flex-row order-md-last">
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link d-flex lh-1 text-reset p-0"
+              data-bs-toggle="dropdown"
+              aria-label="Open user menu"
+            >
+              {% if user.profile_image %}
+              <svg
+                style="background-image: url({{ request.user.profile_image.url }}); border-radius:100%;"
+                class="avatar avatar-sm"
+              >
+                profile
+              </svg>
+              {% else %}
+              <svg
+                style="background-image: url({{ user.profile_image.url }}); border-radius:100%;"
+                data-jdenticon-value="{{ user.username }}"
+                class="avatar avatar-sm"
+              >
+                profile
+              </svg>
+              {% endif %}
+              <div class="d-none d-xl-block ps-2">
+                <div>{{ request.user.username}}</div>
+              </div>
             </a>
-          </h1>
- 
-          <div class="collapse navbar-collapse" id="navbar-menu">
-
-            <ul class="navbar-nav pt-lg-3">
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'dashboard:home' %}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="5 12 3 12 12 3 21 12 19 12" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
-                  </span>
-                  <span class="nav-link-title">
-                    Home
-                  </span>
-                </a>
-              </li>
-              <li class="nav-item ">
-                <a class="nav-link " href="{% url 'hackathon:list' %}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3" /><line x1="12" y1="12" x2="20" y2="7.5" /><line x1="12" y1="12" x2="12" y2="21" /><line x1="12" y1="12" x2="4" y2="7.5" /><line x1="16" y1="5.25" x2="8" y2="9.75" /></svg>
-                  </span>
-                  <span class="nav-link-title">
-                    Hackathon
-                  </span>
-                </a>
-
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'dashboard:news' %}" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11" /><line x1="8" y1="8" x2="12" y2="8" /><line x1="8" y1="12" x2="12" y2="12" /><line x1="8" y1="16" x2="12" y2="16" /></svg>
-                  </span>
-                  <span class="nav-link-title">
-                    News
-                  </span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./form-elements.html" >
-                  <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><polyline points="9 11 12 14 20 6" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-                  </span>
-                  <span class="nav-link-title">
-                    Blog
-                  </span>
-                </a>
-              </li>
-            </ul>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <a href="#" class="dropdown-item">Set status</a>
+              <a href="{% url 'users:redirect' %}" class="dropdown-item"
+                >Profile & account</a
+              >
+              <a href="#" class="dropdown-item">Feedback</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Settings</a>
+              <a href=" {% url 'account_logout' %}" class="dropdown-item"
+                >Logout</a
+              >
+            </div>
           </div>
         </div>
-      </aside>
+      </div>
 
-      <header class="navbar navbar-expand-md  d-print-none">
-        <div class="container-xl">
-          <div class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="navbar-nav pt-lg-3">
+          <li class="nav-item">
+            <a id="homeLink" class="nav-link" href="{% url 'dashboard:home' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                </svg>
+              </span>
+              <span class="nav-link-title"> Home </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              id="hackathonLink"
+              class="nav-link"
+              href="{% url 'hackathon:list' %}"
+            >
+              <span class="nav-link-icon d-md-none d-lg-inline-block"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <polyline
+                    points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"
+                  />
+                  <line x1="12" y1="12" x2="20" y2="7.5" />
+                  <line x1="12" y1="12" x2="12" y2="21" />
+                  <line x1="12" y1="12" x2="4" y2="7.5" />
+                  <line x1="16" y1="5.25" x2="8" y2="9.75" />
+                </svg>
+              </span>
+              <span class="nav-link-title"> Hackathons </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              id="profileLink"
+              class="nav-link"
+              href="{% url 'users:redirect' %}"
+            >
+              <span class="nav-link-icon d-md-none d-lg-inline-block"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <circle cx="12" cy="7" r="4" />
+                  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                </svg>
+              </span>
+              <span class="nav-link-title"> Profile </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="newsLink" class="nav-link" href="{% url 'dashboard:news' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M16 6h3a1 1 0 0 1 1 1v11a2 2 0 0 1 -4 0v-13a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1v12a3 3 0 0 0 3 3h11"
+                  />
+                  <line x1="8" y1="8" x2="12" y2="8" />
+                  <line x1="8" y1="12" x2="12" y2="12" />
+                  <line x1="8" y1="16" x2="12" y2="16" />
+                </svg>
+              </span>
+              <span class="nav-link-title"> News </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="blogLink" class="nav-link" href="./form-elements.html">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <polyline points="9 11 12 14 20 6" />
+                  <path
+                    d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9"
+                  />
+                </svg>
+              </span>
+              <span class="nav-link-title"> Blog </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <header id="navBar" class="navbar navbar-expand-md d-print-none">
+    <div class="container-xl">
+      <div
+        class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3"
+      ></div>
+      <div id="userCard" class="pl-3 pr-3">
+        <div class="navbar-nav flex-row order-md-last">
+          <div class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link d-flex lh-1 text-reset p-0"
+              data-bs-toggle="dropdown"
+              aria-label="Open user menu"
+            >
+              {% if user.profile_image %}
+              <svg
+                style="background-image: url({{ request.user.profile_image.url }}); border-radius:100%;"
+                class="avatar avatar-sm"
+              >
+                profile
+              </svg>
+              {% else %}
+              <svg
+                style="background-image: url({{ user.profile_image.url }}); border-radius:100%;"
+                data-jdenticon-value="{{ user.username }}"
+                class="avatar avatar-sm"
+              >
+                profile
+              </svg>
+              {% endif %}
+              <div class="d-none d-xl-block ps-2">
+                <div>{{ request.user.username}}</div>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+              <a href="#" class="dropdown-item">Set status</a>
+              <a href="{% url 'users:redirect' %}" class="dropdown-item"
+                >Profile & account</a
+              >
+              <a href="#" class="dropdown-item">Feedback</a>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Settings</a>
+              <a href=" {% url 'account_logout' %}" class="dropdown-item"
+                >Logout</a
+              >
+            </div>
           </div>
-          <div class="card pl-3 pr-3">
-
-          
-          <div class="navbar-nav flex-row order-md-last " >
-            <div class="nav-item dropdown">
-              <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-                {% if object.profile_image %}
-                <svg style="background-image: url({{ object.profile_image.url }})" class="avatar avatar-sm">
-                  profile
-                </svg>
-                {% else %}
-                <svg data-jdenticon-value="{{ user.username }}" class="avatar avatar-sm">
-                  profile
-                </svg>
-                {% endif %}
-                <div class="d-none d-xl-block ps-2">
-                  <div>{{ request.user.username}}</div>
+          <div class="nav-item dropdown d-none d-md-flex me-1 ml-3">
+            <a
+              href="#"
+              class="nav-link px-0"
+              data-bs-toggle="dropdown"
+              tabindex="-1"
+              aria-label="Show notifications"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path
+                  d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6"
+                ></path>
+                <path d="M9 17v1a3 3 0 0 0 6 0v-1"></path>
+              </svg>
+              <span class="badge bg-red"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-card">
+              <div class="card">
+                <div class="card-body">
+                  This feature is a work in progress, check it out again soon!
+                  😉
                 </div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                <a href="#" class="dropdown-item">Set status</a>
-                <a href="{% url 'users:redirect' %}" class="dropdown-item">Profile & account</a>
-                <a href="#" class="dropdown-item">Feedback</a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">Settings</a>
-                <a href=" {% url 'account_logout' %}" class="dropdown-item">Logout</a>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item dropdown d-none d-md-flex me-1">
+            <a
+              href="#"
+              class="nav-link px-0"
+              data-bs-toggle="dropdown"
+              tabindex="-1"
+              aria-label="Show notifications"
+              aria-expanded="false"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-settings"
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+                />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-card">
+              <div class="card">
+                <div class="card-body">
+                  This feature is a work in progress, check it out again soon!
+                  😉
+                </div>
               </div>
             </div>
           </div>
         </div>
-        </div>
-      </header>
-      
+      </div>
+    </header>
+
       <div class="content">
-      
+
         {% if messages %}
           {% for message in messages %}
             <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-              {{ message }} 
+              {{ message }}
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           {% endfor %}
@@ -111,10 +384,9 @@
         <div class="container-xl">
           {% block main %}
           {% endblock main %}
-      
+
         </div>
       </div>
-      </div>
-
+</div>
 
 {% endblock content %}
