@@ -200,3 +200,8 @@ Bootstrap's javascript as well as its dependencies is concatenated into a single
 .. _Bootstrap docs: https://getbootstrap.com/docs/4.1/getting-started/theming/
 
 
+Slack
+-----
+
+This project has an associated slack page that is used when a new hackathon is created and discussions which relates to hackathons in general. The slack page is located at
+[codershq-hackathon.slack.com](https://codershq-hackathon.slack.com).
