@@ -116,7 +116,7 @@ body {
 }
 
 @media (max-width: 991px) {
-  #sidebarLogo {
+  .sidebarLogo {
     width: 0;
     display: none;
   }
@@ -132,4 +132,44 @@ body {
   #navBar {
     display: none;
   }
+}
+
+
+/* Profile Page */
+
+.custom-btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #6e7275;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: transparent;
+  border: 1px solid #787b7e41;
+  padding: 9px 12px;
+  padding: 0.375rem 0.75rem;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1;
+  border-radius: 10px;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.custom-btn:hover {
+  color: #ff0000;
+  cursor:pointer;
+  text-decoration: none;
+}
+
+.custom-btn.active, .custom-btn:focus{
+  color: #ff0000;
+  background-color: #ffffff;
+  cursor:pointer;
+  text-decoration: none;
 }
