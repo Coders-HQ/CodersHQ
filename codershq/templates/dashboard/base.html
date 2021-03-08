@@ -19,11 +19,19 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <h1 class="navbar-brand navbar-brand-autodark">
+      <h1 class="navbar-brand">
         <a href=".">
           <img
-            id="sidebarLogo"
+            id="darkLogo"
+            class="sidebarLogo"
             src="{%  static 'images/logo/dark_notext.svg' %}"
+            width="100%"
+            alt="Coders Headquarters"
+          />
+          <img
+            id="lightLogo"
+            class="sidebarLogo"
+            src="{%  static 'images/logo/light_notext.svg' %}"
             width="100%"
             alt="Coders Headquarters"
           />
@@ -43,15 +51,9 @@
                 style="background-image: url({{ request.user.profile_image.url }}); border-radius:100%;"
                 class="avatar avatar-sm"
               >
-                profile
               </svg>
               {% else %}
-              <svg
-                style="background-image: url({{ user.profile_image.url }}); border-radius:100%;"
-                data-jdenticon-value="{{ user.username }}"
-                class="avatar avatar-sm"
-              >
-                profile
+              <span class="avatar avatar-sm avatar-rounded" >{{user.username|make_list|slice:':2'|join:'' }}</span>
               </svg>
               {% endif %}
               <div class="d-none d-xl-block ps-2">
@@ -61,7 +63,7 @@
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
               <a href="#" class="dropdown-item">Set status</a>
               <a href="{% url 'users:redirect' %}" class="dropdown-item"
-                >Profile & account</a
+                >Profile</a
               >
               <a href="#" class="dropdown-item">Feedback</a>
               <div class="dropdown-divider"></div>
@@ -235,15 +237,9 @@
                 style="background-image: url({{ request.user.profile_image.url }}); border-radius:100%;"
                 class="avatar avatar-sm"
               >
-                profile
               </svg>
               {% else %}
-              <svg
-                style="background-image: url({{ user.profile_image.url }}); border-radius:100%;"
-                data-jdenticon-value="{{ user.username }}"
-                class="avatar avatar-sm"
-              >
-                profile
+              <span class="avatar avatar-sm avatar-rounded" >{{user.username|make_list|slice:':2'|join:'' }}</span>
               </svg>
               {% endif %}
               <div class="d-none d-xl-block ps-2">
@@ -307,7 +303,7 @@
               class="nav-link px-0"
               data-bs-toggle="dropdown"
               tabindex="-1"
-              aria-label="Show notifications"
+              aria-label="Show Settings"
               aria-expanded="false"
             >
               <svg
@@ -317,7 +313,7 @@
                 height="44"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
-                stroke="#2c3e50"
+                stroke="currentColor"
                 fill="none"
                 stroke-linecap="round"
                 stroke-linejoin="round"
@@ -343,17 +339,16 @@
     </header>
 
       <div class="content">
-
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-              {{ message }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {% endfor %}
-        {% endif %}
-
         <div class="container-xl">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+
           {% block main %}
           {% endblock main %}
 

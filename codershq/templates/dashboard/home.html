@@ -20,33 +20,103 @@
 <div class="row row-deck row-cards">
     <div class="row row-cards">
       <div class="col-md-3">
-        <div class="card" style="height: calc(25rem + 10px)">
-          <div class="card-body p-4 text-center">
+        <div class="card mb-3" style="height: calc(22.5rem + 10px)">
+          <div class="card-body p-3 text-center">
             {% if user.profile_image %}
-            <span class="avatar avatar-xl mb-4 avatar-rounded" style="background-image: url({{ user.profile_image.url }})"></span>
+            <span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url({{ user.profile_image.url }})"></span>
             {% else %}
-            <span class="avatar avatar-xl mb-4 avatar-rounded" >{{user.username|make_list|slice:':2'|join:'' }}</span>
+            <span class="avatar avatar-xl mb-3 avatar-rounded" >{{user.username|make_list|slice:':2'|join:'' }}</span>
             {% endif %}
             <h3 class="m-0 mb-2">{{user.name}}</h3>
             <div class="text-muted mb-3"><a href="{% url 'users:redirect' %}">@{{user.username}}</a></div>
-            <div class="text-muted">{{user.bio}}</div>
-          </div>
-            <div class="card-footer text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="GitHub Score">
-               {{user.github_score}}
+            <div class="text-muted mb-0">{{user.bio}}</div>
+            <hr class="mb-3">
+            <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="GitHub Score">
+               <span class="text-muted">Github Score</span> </br> {{user.github_score}}
             </div>
+          </div>
+        </div>
+        <div class="card" style="height: calc(22.5rem + 10px)">
+          <div class="card-header">
+            <h3 class="card-title">Top #5 Programming Languages</h3>
+          </div>
+          <table class="table card-table table-vcenter">
+            <thead>
+              <tr>
+                <th>Language</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 71%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 35.96%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 24.9%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 19.72%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 17.08%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
       <div class="col-md-6">
-        <div class="card" style="height: calc(25rem + 10px)">
+        <div class="card" style="height: calc(46.6rem + 10px)">
             <ul class="nav nav-tabs card-header" data-bs-toggle="tabs">
               <li class="nav-item">
-                <a href="#tabs-rules-ex1" class="nav-link active" data-bs-toggle="tab"
+                <a href="#tabs-general-ex1" class="nav-link active" data-bs-toggle="tab"
                   >General</a
                 >
               </li>
               <li class="nav-item">
                 <a
-                  href="#tabs-description-ex1"
+                  href="#tabs-devactivity-ex1"
                   class="nav-link"
                   data-bs-toggle="tab"
                   >Development Activity</a
@@ -54,7 +124,7 @@
               </li>
               <li class="nav-item">
                 <a
-                  href="#tabs-evaluation-ex1"
+                  href="#tabs-news-ex1"
                   class="nav-link"
                   data-bs-toggle="tab"
                   >News</a
@@ -62,7 +132,7 @@
               </li>
               <li class="nav-item">
                 <a
-                  href="#tabs-timeline-ex1"
+                  href="#tabs-blog-ex1"
                   class="nav-link"
                   data-bs-toggle="tab"
                   >Blog</a
@@ -71,11 +141,11 @@
             </ul>
             <div class="card-body">
               <div class="tab-content">
-                <div class="tab-pane show" id="tabs-description-ex1">
+                <div class="tab-pane show" id="tabs-devactivity-ex1">
                   <div
                     class="card"
                     style="
-                      height: calc(19rem + 9px);
+                      height: calc(40rem + 9px);
                       border: none;
                       box-shadow: none;
                     "
@@ -419,7 +489,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="tabs-evaluation-ex1">
+                <div class="tab-pane" id="tabs-devactivity-ex1">
                   <div>
                     <p>
                       Hybrid is amazing because hybrid means it's virtual and
@@ -427,27 +497,256 @@
                     </p>
                   </div>
                 </div>
-                <div class="tab-pane active" id="tabs-timeline-ex1">
-                  <div>
-                    <p>
-                      Hybrid is amazing because hybrid means it's virtual and
-                      global at the same time
-                    </p>
+                <div class="tab-pane active" id="tabs-general-ex1">
+                  <div
+                    class="card"
+                    style="
+                      height: calc(40rem + 9px);
+                      border: none;
+                      box-shadow: none;
+                    "
+                  >
+                    <div
+                      class="card-body card-body-scrollable card-body-scrollable-shadow"
+                    >
+                      <div class="divide-y-5">
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">JL</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Jeffie Lewzey</strong> commented on your
+                                <strong>"I'm not a witch."</strong> post.
+                              </div>
+                              <div class="text-muted">yesterday</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                It's <strong>Mallory Hulme</strong>'s birthday.
+                                Wish him well!
+                              </div>
+                              <div class="text-muted">2 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Dunn Slane</strong> posted
+                                <strong>"Well, what do you want?"</strong>.
+                              </div>
+                              <div class="text-muted">today</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/000f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Emmy Levet</strong> created a new
+                                project <strong>Morning alarm clock</strong>.
+                              </div>
+                              <div class="text-muted">4 days ago</div>
+                            </div>
+                            <div class="col-auto align-self-center">
+                              <div class="badge bg-primary"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/001f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Maryjo Lebarree</strong> liked your
+                                photo.
+                              </div>
+                              <div class="text-muted">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">EP</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Egan Poetz</strong> registered new
+                                client as <strong>Trilia</strong>.
+                              </div>
+                              <div class="text-muted">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/002f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Kellie Skingley</strong> closed a new
+                                deal on project
+                                <strong>Pen Pineapple Apple Pen</strong>.
+                              </div>
+                              <div class="text-muted">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/003f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Christabel Charlwood</strong> created a
+                                new project for <strong>Wikibox</strong>.
+                              </div>
+                              <div class="text-muted">4 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span class="avatar">HS</span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Haskel Shelper</strong> change status of
+                                <strong>Tabler Icons</strong> from
+                                <strong>open</strong> to
+                                <strong>closed</strong>.
+                              </div>
+                              <div class="text-muted">today</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/006m.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Lorry Mion</strong> liked
+                                <strong>Tabler UI Kit</strong>.
+                              </div>
+                              <div class="text-muted">yesterday</div>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="row">
+                            <div class="col-auto">
+                              <span
+                                class="avatar"
+                                style="
+                                  background-image: url(./static/avatars/004f.jpg);
+                                "
+                              ></span>
+                            </div>
+                            <div class="col">
+                              <div class="text-truncate">
+                                <strong>Leesa Beaty</strong> posted new video.
+                              </div>
+                              <div class="text-muted">2 days ago</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="tabs-rules-ex1">
+                <div class="tab-pane" id="tabs-news-ex1">
                   <div>
-                    <p>
-                      Hybrid is amazing because hybrid means it's virtual and
-                      global at the same time
-                    </p>
+                    <div class="accordion" id="accordion-example">
+                      {% for item in body%}
+                      <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-{{forloop.counter}}">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapse-{{forloop.counter}}" aria-expanded="false">
+                            {{ item.data.title}}
+                          </button>
+                        </h2>
+                        <div id="collapse-{{forloop.counter}}" class="accordion-collapse collapse" data-bs-parent="#accordion-example">
+                          <div class="accordion-body pt-0">
+                            EXAMPLE
+                          </div>
+                        </div>
+                      </div>
+                      {%endfor%}
+                    </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="tabs-prizes-ex1">
+                <div class="tab-pane" id="tabs-blog-ex1">
                   <div>
                     <p>
-                      Hybrid is amazing because hybrid means it's virtual and
-                      global at the same time
+                      test1
                     </p>
                   </div>
                 </div>
@@ -456,7 +755,76 @@
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
-        <div class="card" style="height: calc(25rem + 10px)">
+        <div class="card mb-3" style="height: calc(22.5rem + 10px)">
+          <div class="card-header">
+            <h3 class="card-title">Top #5 Programming Languages</h3>
+          </div>
+          <table class="table card-table table-vcenter">
+            <thead>
+              <tr>
+                <th>Language</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 71%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 35.96%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 24.9%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 19.72%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Python</td>
+                <td class="w-50">
+                  <div class="progress progress-xs">
+                    <div
+                      class="progress-bar bg-primary"
+                      style="width: 17.08%"
+                    ></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card" style="height: calc(22.5rem + 10px)">
           <div class="card-header">
             <h3 class="card-title">Top #5 Programming Languages</h3>
           </div>
