@@ -1,37 +1,9 @@
 {% extends 'base.html' %} 
 
-{% load static i18n%} 
+{% load static i18n %} 
 
 {% block content %}
 
-<script>
-  // Set the Navbar Active Link
-  $(function () {
-    var current = location.pathname;
-    $(".nav-link").each(function () {
-      var $this = $(this);
-      // if the current path is like this link, make it active
-      if ($this.attr("id") === "homeLink" && current === "/") {
-        $this.addClass("active");
-      } else if (
-        $this.attr("id") === "hackathonLink" &&
-        current.includes("hackathon")
-      ) {
-        $this.addClass("active");
-      } else if (
-        $this.attr("id") === "profileLink" &&
-        current.includes($("#my-username").data().username) &&
-        $("#my-username").data().username !== ""
-      ) {
-        $this.addClass("active");
-      } else if ($this.attr("id") === "newsLink" && current.includes("news")) {
-        $this.addClass("active");
-      } else if ($this.attr("id") === "blogLink" && current.includes("blog")) {
-        $this.addClass("active");
-      }
-    });
-  });
-</script>
 <meta id="my-username" data-username="{{ request.user.username }}" />
 <div class="page">
   <aside
@@ -390,3 +362,36 @@
 </div>
 
 {% endblock content %}
+
+
+  {% block inline_javascript %}
+  {# Script tags with only code, no src (defer by default) #}
+  <script>
+  // Set the Navbar Active Link
+  $(function () {
+    var current = location.pathname;
+    $(".nav-link").each(function () {
+      var $this = $(this);
+      // if the current path is like this link, make it active
+      if ($this.attr("id") === "homeLink" && current === "/") {
+        $this.addClass("active");
+      } else if (
+        $this.attr("id") === "hackathonLink" &&
+        current.includes("hackathon")
+      ) {
+        $this.addClass("active");
+      } else if (
+        $this.attr("id") === "profileLink" &&
+        current.includes($("#my-username").data().username) &&
+        $("#my-username").data().username !== ""
+      ) {
+        $this.addClass("active");
+      } else if ($this.attr("id") === "newsLink" && current.includes("news")) {
+        $this.addClass("active");
+      } else if ($this.attr("id") === "blogLink" && current.includes("blog")) {
+        $this.addClass("active");
+      }
+    });
+  });
+</script>
+  {% endblock inline_javascript %}
