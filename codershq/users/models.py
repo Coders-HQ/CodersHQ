@@ -20,6 +20,20 @@ def user_image_path(instance, filename):
 class User(AbstractUser):
     """Default user for Coders Headquarters."""
 
+    ENGLISH = 'EN'
+    ARABIC = 'AR'
+    LANGUAGE = [
+        (ENGLISH, 'English'),
+        (ARABIC, 'Arabic')
+    ]
+
+    LIGHT = 'LI'
+    DARK = 'DA'
+    THEME = [
+        (LIGHT, 'Light'),
+        (DARK, 'Dark')
+    ]
+
     #: First and last name do not cover name patterns around the globe
     name = models.CharField(_("Name of User"), blank=True, max_length=255)
     bio = models.TextField(_("Biography"), blank=True, max_length=500)
@@ -41,6 +55,19 @@ class User(AbstractUser):
     fav_language = models.CharField(_("Favourite programming language based on GitHub"), blank=True, max_length=150)
 
     completed_hackathons = models.PositiveIntegerField(_("Number of hackathons completed"), null=False, default=0)
+
+    language_preference = models.CharField(
+        max_length=2,
+        choices=LANGUAGE,
+        default=ENGLISH,
+    )
+
+    theme_preference = models.CharField(
+        max_length=2,
+        choices=THEME,
+        default=LIGHT,
+    )
+
 
     first_name = None  # type: ignore
     last_name = None  # type: ignore
