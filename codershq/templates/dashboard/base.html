@@ -37,11 +37,10 @@
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a href="#" class="dropdown-item">Set status</a>
               <a href="{% url 'users:redirect' %}" class="dropdown-item">Profile</a>
               <a href="#" class="dropdown-item">Feedback</a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">Settings</a>
+              <a href="{% url 'construction' %}" class="dropdown-item">Settings</a>
               <a href=" {% url 'account_logout' %}" class="dropdown-item">Logout</a>
             </div>
           </div>
@@ -110,7 +109,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="blogLink" class="nav-link" href="./form-elements.html">
+            <a id="blogLink" class="nav-link" href="{% url 'construction' %}">
               <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg"
                   class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                   fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -177,11 +176,11 @@
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a href="#" class="dropdown-item">Set status</a>
+              <a href="{% url 'construction' %}" class="dropdown-item">Set status</a>
               <a href="{% url 'users:redirect' %}" class="dropdown-item">Profile & account</a>
-              <a href="#" class="dropdown-item">Feedback</a>
+              <a href="{% url 'construction' %}" class="dropdown-item">Feedback</a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">Settings</a>
+              <a href="{% url 'construction' %}" class="dropdown-item">Settings</a>
               <a href=" {% url 'account_logout' %}" class="dropdown-item">Logout</a>
             </div>
           </div>
