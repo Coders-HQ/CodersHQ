@@ -2879,7 +2879,7 @@ fieldset:disabled .btn {
 }
 .dropdown-item:focus,
 .dropdown-item:hover {
-  color: inherit;
+  color: #da0202;
   text-decoration: none;
   background-color: rgba(119, 101, 101, 0.06);
 }
@@ -3447,7 +3447,7 @@ fieldset:disabled .btn {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(119, 101, 101, 0.16);
-  border-radius: 20px;
+  border-radius: 10px;
 }
 .card > .hr,
 .card > hr {
@@ -10872,7 +10872,6 @@ body .content :hover::-webkit-scrollbar-thumb {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #898f97;
   text-align: center;
   text-transform: uppercase;
   vertical-align: bottom;

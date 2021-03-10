@@ -69,7 +69,7 @@ body {
 
 .sidebar .nav-link:hover .feather,
 .sidebar .nav-link.active .feather {
-  color: inherit;
+  color: #da0202;
 }
 
 .sidebar-heading {
@@ -134,6 +134,13 @@ body {
   }
 }
 
+#userLink:hover > #userAvatar {
+  color: #ff0000;
+}
+
+#userLink:hover > #userCardName {
+  color: #ff0000;
+}
 
 /* Profile Page */
 
@@ -144,10 +151,10 @@ body {
   text-align: center;
   vertical-align: middle;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background-color: transparent;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #ffffff;
   border: 1px solid #787b7e41;
   padding: 9px 12px;
   padding: 0.375rem 0.75rem;
@@ -155,21 +162,150 @@ body {
   font-size: 1rem;
   line-height: 1;
   border-radius: 10px;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+    -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .custom-btn:hover {
   color: #ff0000;
-  cursor:pointer;
+  cursor: pointer;
   text-decoration: none;
 }
 
-.custom-btn.active, .custom-btn:focus{
-  color: #ff0000;
-  background-color: #ffffff;
-  cursor:pointer;
-  text-decoration: none;
+/* Skill Bar Styling */
+
+/* Beta Tag */
+
+.beta-tag {
+  position: absolute;
+  left: 9px;
+  overflow: hidden;
+  width: 50px;
+  height: 75px;
+  pointer-events: none;
+  z-index: 10;
+}
+.beta-tag__ribbon {
+  box-shadow: 0px 0px 9px 2px rgba(0, 0, 0, 0.4);
+  animation: beta-tag-slide 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94) 1300ms
+      forwards,
+    beta-tag-shimmer 4000ms ease infinite;
+  color: white;
+  background: linear-gradient(270deg, #8f0e0e, #ef0909);
+  background-size: 250% 250%;
+  font-size: 0.975rem;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+@keyframes beta-tag-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* DESKTOP VIEW */
+
+@media (min-width: 992px) {
+  #topBeta {
+    display: block;
+  }
+
+  #bottomBeta {
+    display: none;
+  }
+}
+
+/* Mobile, Tablet View */
+@media (max-width: 991px) {
+  #topBeta {
+    display: none;
+  }
+
+  #bottomBeta {
+    display: block;
+    top: 95.5%;
+    position: fixed;
+  }
+}
+
+/* Highcharts Styling */
+
+@import "https://code.highcharts.com/css/highcharts.css";
+
+.highcharts-color-0 {
+  fill: #da0202;
+  stroke: #da0202;
+}
+
+/* Titles */
+.highcharts-title {
+  fill: black;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.highcharts-button,
+.highcharts-legend,
+.highcharts-container > svg > text {
+  display: none;
+}
+
+.highcharts-figure,
+.highcharts-data-table table {
+  min-width: 320px;
+  max-width: 800px;
+  margin: 1em auto;
+}
+
+#container {
+  height: 450px;
+}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+.highcharts-data-table th {
+  font-weight: 600;
+  padding: 0.5em;
+}
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+  padding: 0.5em;
+}
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
 }
