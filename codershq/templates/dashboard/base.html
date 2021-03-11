@@ -37,11 +37,10 @@
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a href="#" class="dropdown-item">Set status</a>
               <a href="{% url 'users:redirect' %}" class="dropdown-item">Profile</a>
               <a href="#" class="dropdown-item">Feedback</a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">Settings</a>
+              <a href="{% url 'construction' %}" class="dropdown-item">Settings</a>
               <a href=" {% url 'account_logout' %}" class="dropdown-item">Logout</a>
             </div>
           </div>
@@ -110,7 +109,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a id="blogLink" class="nav-link" href="./form-elements.html">
+            <a id="blogLink" class="nav-link" href="{% url 'construction' %}">
               <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg"
                   class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                   fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -122,37 +121,66 @@
               <span class="nav-link-title"> Blog </span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href=" {% url 'account_logout' %}">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"
+                ><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-logout" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                <path d="M7 12h14l-3 -3m0 6l3 -3" />
+              </svg>
+              </span>
+              <span class="nav-link-title"> Logout </span>
+            </a>
+          </li>
         </ul>
+      </div>
+    </div>
+    <div id="topBeta" class="beta-tag" aria-hidden="true">
+      <div class="beta-tag__ribbon">
+        Beta
       </div>
     </div>
   </aside>
 
+  <div id="bottomBeta" class="beta-tag" aria-hidden="true">
+    <div class="beta-tag__ribbon">
+        Beta
+    </div>
+  </div>
+
   <header id="navBar" class="navbar navbar-expand-md d-print-none">
     <div class="container-xl">
-      <div class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3"></div>
+      <div
+        class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3"
+      >Coders Headquarters</div>
       <div id="userCard" class="pl-3 pr-3">
         <div class="navbar-nav flex-row order-md-last">
-          <div class="nav-item dropdown">
-            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
-              aria-label="Open user menu">
+          <div id="userLink" class="nav-item dropdown">
+            <a
+              href="#"
+              class="nav-link d-flex lh-1 p-0"
+              data-bs-toggle="dropdown"
+              aria-label="Open user menu"
+            >
               {% if user.profile_image %}
               <svg style="background-image: url({{ request.user.profile_image.url }}); border-radius:100%;"
                 class="avatar avatar-sm">
               </svg>
               {% else %}
-              <span class="avatar avatar-sm avatar-rounded">{{user.username|make_list|slice:':2'|join:'' }}</span>
+              <span id="userAvatar" class="avatar avatar-sm avatar-rounded" >{{user.username|make_list|slice:':2'|join:'' }}</span>
               </svg>
               {% endif %}
               <div class="d-none d-xl-block ps-2">
-                <div>{{ request.user.username}}</div>
+                <div id="userCardName">{{ request.user.username}}</div>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <a href="#" class="dropdown-item">Set status</a>
+              <a href="{% url 'construction' %}" class="dropdown-item">Set status</a>
               <a href="{% url 'users:redirect' %}" class="dropdown-item">Profile & account</a>
-              <a href="#" class="dropdown-item">Feedback</a>
+              <a href="{% url 'construction' %}" class="dropdown-item">Feedback</a>
               <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">Settings</a>
+              <a href="{% url 'construction' %}" class="dropdown-item">Settings</a>
               <a href=" {% url 'account_logout' %}" class="dropdown-item">Logout</a>
             </div>
           </div>
@@ -186,6 +214,34 @@
                 <path
                   d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
                 <circle cx="12" cy="12" r="3" />
+              </svg>
+            </a>
+            <div class="dropdown-menu dropdown-menu-end dropdown-menu-card">
+              <div class="card">
+                <div class="card-body">
+                  This feature is a work in progress, check it out again soon!
+                  😉
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-item dropdown d-none d-md-flex me-1">
+            <a
+              href="#"
+              class="nav-link px-0"
+              data-bs-toggle="dropdown"
+              tabindex="-1"
+              aria-label="Show Settings"
+              aria-expanded="false"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-lifebuoy" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="12" cy="12" r="9" />
+                <line x1="15" y1="15" x2="18.35" y2="18.35" />
+                <line x1="9" y1="15" x2="5.65" y2="18.35" />
+                <line x1="5.65" y1="5.65" x2="9" y2="9" />
+                <line x1="18.35" y1="5.65" x2="15" y2="9" />
               </svg>
             </a>
             <div class="dropdown-menu dropdown-menu-end dropdown-menu-card">
