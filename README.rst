@@ -19,6 +19,27 @@ docker.
 
 :License: MIT
 
+Quick Setup
+-----------
+
+Create a file inside `.envs/.production` called `.django` with the following values. ::
+
+    GITHUB_TOKEN=
+    GITHUB_CLIENT_ID=
+    GITHUB_CLIENT_SECRET=
+    SLACK_TOKEN=
+
+These can be obtained from github's settings section and slack's api section if you create a bot. 
+To build the stack and update the databse run ::
+    
+    $ docker-compose -f local.yml build
+    $ docker-compose -f local.yml run --rm django python manage.py makemigrations
+    $ docker-compose -f local.yml run --rm django python manage.py migrate
+    $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+
+Follow the rest of the README for more information and use `/admin` to edit and create hackathons.
+
+
 Getting Up and Running Locally With Docker
 ===========================================
 
