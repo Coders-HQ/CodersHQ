@@ -3484,8 +3484,7 @@ input[type="button"].btn-block {
   padding: 8px 16px;
   padding: 0.5rem 1rem; }
   .nav-link:hover, .nav-link:focus {
-    text-decoration: none;
-    color:#da0202; }
+    text-decoration: none; }
   .nav-link.disabled {
     color: #6c757d;
     pointer-events: none;
@@ -3575,7 +3574,6 @@ input[type="button"].btn-block {
             justify-content: space-between; }
 
 .navbar-brand {
-  transition: all 0.25s ease;
   display: inline-block;
   padding-top: 5px;
   padding-top: 0.3125rem;
