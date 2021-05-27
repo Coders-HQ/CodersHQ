@@ -24,7 +24,7 @@ The Wiki
 
 Have a look at the `wiki`_, we document everything over there. 
 We plan to migrate from the wiki to something more established, like readthedocs, once we have enough material 
-to work with. The wiki includes documents such as CHQ features we aim to have running soon.
+to work with.
 
 We also document the tasks in the `project`_ section and have a look at the `issues`_ section to find out what we are working on.
 
