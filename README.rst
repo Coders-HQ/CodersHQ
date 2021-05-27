@@ -19,11 +19,12 @@ docker.
 
 :License: MIT
 
-Our Wiki
+The Wiki
 --------
 
-Have a look at the `wiki`_ we document everything over there for now, we plan to migrate once the documentation is up and 
-running. The wiki includes documents such as the features we aim to have.
+Have a look at the `wiki`_, we document everything over there. 
+We plan to migrate from the wiki to something more established, like readthedocs, once we have enough material 
+to work with. The wiki includes documents such as CHQ features we aim to have running soon.
 
 .. _`wiki`: https://github.com/Coders-HQ/CodersHQ/wiki
 
