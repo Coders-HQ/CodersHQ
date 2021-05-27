@@ -5,7 +5,7 @@ Coders Headquarters (CodersHQ) is a social platform for developers to
 network, do challenges and gain points by contributing and helping
 others.
 
-Currently the platform is at the beta alpha stage with a lot of the
+Currently the platform is at the alpha stage with a lot of the
 foundations being set. It is built using django and deployed using
 docker.
 
@@ -18,6 +18,14 @@ docker.
 
 
 :License: MIT
+
+Our Wiki
+--------
+
+Have a look at the `wiki`_ we document everything over there for now, we plan to migrate once the documentation is up and 
+running. The wiki includes documents such as the features we aim to have.
+
+.. _`wiki`: https://github.com/Coders-HQ/CodersHQ/wiki
 
 Quick Setup
 -----------
