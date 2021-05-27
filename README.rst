@@ -35,7 +35,7 @@ We also document the tasks in the `project`_ section and have a look at the `iss
 Quick Setup
 -----------
 
-Create a file inside `.envs/.production` called `.django` with the following values. ::
+Create a file inside ``.envs/.production`` called ``.django`` with the following values. ::
 
     GITHUB_TOKEN=
     GITHUB_CLIENT_ID=
@@ -50,7 +50,7 @@ To build the stack and update the databse run ::
     $ docker-compose -f local.yml run --rm django python manage.py migrate
     $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 
-Follow the rest of the README for more information and use `/admin` to edit and create hackathons.
+Follow the rest of the README for more information and use ``/admin`` to edit and create hackathons.
 
 
 Getting Up and Running Locally With Docker
