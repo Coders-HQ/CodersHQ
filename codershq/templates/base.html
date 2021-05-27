@@ -13,15 +13,13 @@
   <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
 
   {% block css %}
-
-  <link href="{% static 'css/project.css' %}" rel="stylesheet">
-  <link href="{% static 'css/codershq.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/landing/videoBackground.css' %}" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
+
   <!-- Your stuff: Third-party CSS libraries go here -->
   {% compress css %}
   <!-- This file stores project-specific CSS -->
-
+  <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  <link href="{% static 'css/codershq.css' %}" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/tabler.min.css' %}">
   {% endcompress %}
   {% endblock %}
@@ -29,28 +27,27 @@
     ================================================== -->
   {# Placed at the top of the document so pages load faster with defer #}
   {% block javascript %}
-
-  <!-- Vendor dependencies bundled as one file-->
-  {% compress js %}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js"></script>
-  <script defer src="{% static 'js/vendors.js' %}"></script>
-  <script defer src="{% static 'js/project.js' %}"></script>
-  <script defer src="{% static 'js/theme.js' %}"></script>
-  <script defer src="{% static 'js/score_chart.js' %}"></script>
   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-  {% endcompress %}
+  <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
+        integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
+  </script>
 
+  <!-- Vendor dependencies bundled as one file-->
+  {% compress js %}
+  <script defer src="{% static 'js/vendors.js' %}"></script>
+  <script defer src="{% static 'js/project.js' %}"></script>
+  <script defer src="{% static 'js/theme.js' %}"></script>
+  <script defer src="{% static 'js/score_chart.js' %}"></script>
+  {% endcompress %}
 
   <!-- place project specific Javascript in this file -->
   {% compress js %}
   <script defer src="{% static 'js/project.js' %}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
-        integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
-</script>
   {% endcompress %}
 
   {% endblock javascript %}
