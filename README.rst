@@ -32,10 +32,10 @@ We also document the tasks in the `project`_ section and have a look at the `iss
 .. _`project`: https://github.com/Coders-HQ/CodersHQ/projects
 .. _`issues`: https://github.com/Coders-HQ/CodersHQ/issues
 
-Quick Setup
+Quick Setup to run locally
 -----------
 
-Create a file inside ``.envs/.production`` called ``.django`` with the following values. ::
+add the missing environment variables values in '.envs/.local/.django', such as the following values::
 
     GITHUB_TOKEN=
     GITHUB_CLIENT_ID=
@@ -43,6 +43,7 @@ Create a file inside ``.envs/.production`` called ``.django`` with the following
     SLACK_TOKEN=
 
 These can be obtained from github's settings section and slack's api section if you create a bot. 
+
 To build the stack and update the databse run ::
     
     $ docker-compose -f local.yml build
