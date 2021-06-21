@@ -77,8 +77,7 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
-    # "DJANGO_DEFAULT_FROM_EMAIL", default="Coders Headquarters <noreply@codershq.ae>"  ---- revert to this once noreply@codershq.ae is activated
-    "DJANGO_DEFAULT_FROM_EMAIL", default="musab.obaid@gmail.com"
+    "DJANGO_DEFAULT_FROM_EMAIL", default="Coders Headquarters <noreply@codershq.ae>"
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
