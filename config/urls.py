@@ -8,10 +8,13 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path("", include("codershq.dashboard.urls", namespace="dashboard")),
     path(
-        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
+        "dashboard/", TemplateView.as_view(template_name="pages/dashboard.html"), name="about"
     ),
     path(
-        "welcome/", TemplateView.as_view(template_name="pages/welcome.html"), name="landing_page"
+        "landing/", TemplateView.as_view(template_name="pages/landing.html"), name="about"
+    ),
+    path(
+        "profile/", TemplateView.as_view(template_name="pages/profile.html"), name="about"
     ),
     path(
         "construction/", TemplateView.as_view(template_name="underConstruction.html"), name="construction"
