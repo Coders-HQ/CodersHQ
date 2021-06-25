@@ -32,7 +32,7 @@ We also document the tasks in the `project`_ section and have a look at the `iss
 .. _`project`: https://github.com/Coders-HQ/CodersHQ/projects
 .. _`issues`: https://github.com/Coders-HQ/CodersHQ/issues
 
-Quick Setup to run locally
+Quick Setup
 -----------
 
 add the missing environment variables values in '.envs/.local/.django', such as the following values::
@@ -71,9 +71,11 @@ Prerequisites
 
 * Docker; if you don't have it yet, follow the `installation instructions`_;
 * Docker Compose; refer to the official documentation for the `installation guide`_.
+* (Windows) This repository can run on windows and was tested on `WSL2`_. Once you have WSL2, and a linux kernel, installed and running you need to install docker and you should be good to go. (Tested on Docker version 20.10.7, build f0df350 and Windows OS Build: 19042.1052)
 
 .. _`installation instructions`: https://docs.docker.com/install/#supported-platforms
 .. _`installation guide`: https://docs.docker.com/compose/install/
+.. _`WSL2`: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
 
 Build the Stack
@@ -220,7 +222,7 @@ See detailed `cookiecutter-django Docker documentation`_.
 
 
 Custom Bootstrap Compilation
-^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The generated CSS is set up with automatic Bootstrap recompilation with variables of your choice.
 Bootstrap v4 is installed using npm and customised by tweaking your variables in ``static/sass/custom_bootstrap_vars``.
