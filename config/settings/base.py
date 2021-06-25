@@ -311,4 +311,4 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 # slack
-SLACK_TOKEN = env("SLACK_TOKEN")
+SLACK_TOKEN = env.str("SLACK_TOKEN","")

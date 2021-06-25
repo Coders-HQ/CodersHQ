@@ -5,6 +5,8 @@ from django.db.models.signals import post_save
 from django.core.mail import send_mail
 from django.dispatch import receiver
 from codershq.hackathon.slack import create_channel
+from django.conf import settings
+
 
 
 def send_hackathon_mail(sender, **kwargs):
@@ -24,7 +26,12 @@ m2m_changed.connect(send_hackathon_mail, sender=Hackathon.competitors.through)
 
 @receiver(post_save, sender=Hackathon)
 def create_slack_channel(sender, instance, created, **kwargs):
-    if created:
+    # creates slack channel using slack api
 
-        # create slack channel
-        create_channel(instance.slug)
+    # check if slack token is available
+    if settings.SLACK_TOKEN != "":
+
+        # if a hackathon is created
+        if created:
+            # create slack channel
+            create_channel(instance.slug)
