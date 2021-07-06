@@ -104,9 +104,9 @@ class User(AbstractUser):
         #     raise ScoreNot100()
 
         # if profile has a github_profile
-        if self.github_profile != '':
+        if self.github_profile != '' and settings.GITHUB_TOKEN!='':
             # if profile score was updated
-            chq_score = CHQScore(settings.GITHUB_TOKEN)
+            # chq_score = CHQScore(settings.GITHUB_TOKEN)
             if self.github_updated != None:
                 # only get score when enough time has passed
                 if timezone.now()-timezone.timedelta(seconds=24) >= self.github_updated <= timezone.now():
