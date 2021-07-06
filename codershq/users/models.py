@@ -7,7 +7,6 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from codershq.users.scoring.score import CHQScore
 from codershq.users.validators import validate_github_profile
 from config import celery_app
 
@@ -106,7 +105,6 @@ class User(AbstractUser):
         # if profile has a github_profile
         if self.github_profile != '' and settings.GITHUB_TOKEN!='':
             # if profile score was updated
-            # chq_score = CHQScore(settings.GITHUB_TOKEN)
             if self.github_updated != None:
                 # only get score when enough time has passed
                 if timezone.now()-timezone.timedelta(seconds=24) >= self.github_updated <= timezone.now():
