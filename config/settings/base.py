@@ -299,7 +299,7 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # Provider specific settings
 
 # bool to check if github exists
-GITHUB_CLIENT_ID=env.str("GITHUB_CLIENT_ID")
+GITHUB_CLIENT_ID=env.str("GITHUB_CLIENT_ID", "")
 if GITHUB_CLIENT_ID!="":
     SOCIALACCOUNT_PROVIDERS = {
         'github': {
