@@ -6,7 +6,6 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path("", include("codershq.dashboard.urls", namespace="dashboard")),
     path(
         "dashboard/", TemplateView.as_view(template_name="pages/dashboard.html"), name="about"
     ),
@@ -23,9 +22,11 @@ urlpatterns = [
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("codershq.users.urls", namespace="users")),
-    path("hackathon/", include("codershq.hackathon.urls", namespace="hackathon")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
+    path("", include("codershq.dashboard.urls", namespace="dashboard")),
+    path("hackathon/", include("codershq.hackathon.urls", namespace="hackathon")),
+    path("companies/", include("codershq.companies.urls", namespace="companies")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
