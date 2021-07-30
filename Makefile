@@ -1,8 +1,8 @@
 SHELL := /bin/bash
 
-ifeq (,$(wildcard .envs/.production/.django))
-    $(error no .envs/.production/.django file located.)
-endif
+# ifeq (,$(wildcard .envs/.production/.django))
+#     $(error no .envs/.production/.django file located.)
+# endif
 
 
 help:

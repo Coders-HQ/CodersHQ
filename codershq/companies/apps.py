@@ -2,11 +2,12 @@ from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
 
 
-class DashboardConfig(AppConfig):
+class CompaniesConfig(AppConfig):
     name = 'codershq.companies'
+    verbose_name = _("Companies")
 
     def ready(self):
         try:
-            import codershq.dashboard.signals  # noqa F401
+            import codershq.companies.signals  # noqa F401
         except ImportError:
             pass

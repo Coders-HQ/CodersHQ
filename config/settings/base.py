@@ -74,6 +74,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "codershq.users.apps.UsersConfig",
     "codershq.hackathon.apps.HackathonConfig",
+    "codershq.companies.apps.CompaniesConfig",
     "codershq.dashboard.apps.DashboardConfig",
     # Your stuff: custom apps go here
 ]
@@ -299,8 +300,8 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # Provider specific settings
 
 # bool to check if github exists
-GITHUB_CLIENT_ID=env.str("GITHUB_CLIENT_ID", "")
-if GITHUB_CLIENT_ID!="":
+GITHUB_CLIENT_ID = env.str("GITHUB_CLIENT_ID", "")
+if GITHUB_CLIENT_ID != "":
     SOCIALACCOUNT_PROVIDERS = {
         'github': {
             # For each OAuth based provider, either add a ``SocialApp``
@@ -315,4 +316,4 @@ if GITHUB_CLIENT_ID!="":
     }
 
 # slack
-SLACK_TOKEN = env.str("SLACK_TOKEN","")
+SLACK_TOKEN = env.str("SLACK_TOKEN", "")
