@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import MaxValueValidator
+from django.urls import reverse
+from codershq.users.models import User
 
 
 class Company(models.Model):
@@ -9,6 +11,11 @@ class Company(models.Model):
     # logo size https://www.logaster.com/blog/logo-sizes/#company2
     logo = models.ImageField(_("Company logo"), upload_to='logos/', height_field=100, width_field=200, max_length=100)
     website = models.URLField(_("Company website"), max_length=200)
+    # to track the user who created the company
+    # created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('company-detail', kwargs={'pk': self.pk})
 
 
 class SponsorshipTypes(models.Model):
