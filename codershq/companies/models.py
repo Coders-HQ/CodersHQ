@@ -9,13 +9,14 @@ class Company(models.Model):
     """Main company model"""
     name = models.CharField(_("Comany name"), max_length=100)
     # logo size https://www.logaster.com/blog/logo-sizes/#company2
-    logo = models.ImageField(_("Company logo"), upload_to='logos/', height_field=100, width_field=200, max_length=100)
+    logo = models.ImageField(_("Company logo"), upload_to='logo/',
+                             max_length=100)
     website = models.URLField(_("Company website"), max_length=200)
     # to track the user who created the company
     # created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_absolute_url(self):
-        return reverse('company-detail', kwargs={'pk': self.pk})
+        return reverse('companies:company-list')
 
 
 class SponsorshipTypes(models.Model):
