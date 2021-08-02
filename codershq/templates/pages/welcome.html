@@ -1,149 +1,75 @@
 {% load static i18n compress%}
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <title>{% block title %}Coders Headquarters{% endblock title %}</title>
-    <link
-      rel="stylesheet"
-      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
-    />
-    <link
-      rel="icon"
-      href="{% static 'images/favicons/favicon.ico' %}"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Poppins"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
-    />
 
-    {% block css %} 
-    <link
-      rel="stylesheet"
-      href="{% static 'css/landing/videoBackground.css' %}"
-    />
-    {% compress css %}
-    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/landing_page/faqs.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/landing_page/typingEffect.css' %}"
-    />
-    <link rel="stylesheet" href="{% static 'css/landing_page/landing.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/landing_page/partners-box.css' %}"
-    />
-    <link rel="stylesheet" href="{% static 'css/landing_page/style.css' %}" />
-    
-    {% endcompress %} {% endblock %}
-  </head>
-  {% block content %}
-  <body id="page-top">
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
-      <div class="container">
-        <a
-          class="navbar-brand js-scroll-trigger"
-          href="#page-top"
-          style="font-family: Poppins, sans-serif"
-          >Coders HQ</a
-        ><button
-          data-toggle="collapse"
-          data-target="#navbarResponsive"
-          class="navbar-toggler navbar-toggler-right"
-          type="button"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fa fa-align-justify"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="nav navbar-nav ml-auto">
-            <li class="nav-item">
-              <a
-                class="nav-link js-scroll-trigger"
-                href="#incentive"
-                style="font-family: Poppins, sans-serif"
-                >Incentive</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link js-scroll-trigger"
-                href="#partners"
-                style="font-family: Poppins, sans-serif"
-                >Our Partners</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link js-scroll-trigger"
-                href="#faq"
-                style="font-family: Poppins, sans-serif"
-                >FAQs</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{% url 'account_signup' %}"
-                style="font-family: Poppins, sans-serif"
-                >Become a Member</a
-              >
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="{% url 'account_login' %}"
-                style="font-family: Poppins, sans-serif"
-                id="login-btn"
-                >Login</a
-              >
-            </li>
-          </ul>
-        </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+  <title>{% block title %}Coders Headquarters{% endblock title %}</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" type="image/x-icon" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
+
+  {% block css %}
+  <link rel="stylesheet" href="{% static 'css/landing/videoBackground.css' %}" />
+  {% compress css %}
+  <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/landing_page/faqs.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/landing_page/typingEffect.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/landing_page/landing.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/landing_page/partners-box.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/landing_page/style.css' %}" />
+
+  {% endcompress %} {% endblock %}
+</head>
+{% block content %}
+
+<body id="page-top">
+  <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top" style="font-family: Poppins, sans-serif">Coders
+        HQ</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right"
+        type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-align-justify"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#incentive"
+              style="font-family: Poppins, sans-serif">Incentive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#partners" style="font-family: Poppins, sans-serif">Our
+              Partners</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#faq" style="font-family: Poppins, sans-serif">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_signup' %}" style="font-family: Poppins, sans-serif">Become a
+              Member</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'account_login' %}" style="font-family: Poppins, sans-serif"
+              id="login-btn">Login</a>
+          </li>
+        </ul>
       </div>
-    </nav>
-    <header
-      class="masthead text-center text-white d-flex"
-      style="
+    </div>
+  </nav>
+  <header class="masthead text-center text-white d-flex" style="
         background: linear-gradient(rgb(33, 37, 41) 79%, rgb(33, 37, 41) 100%);
-      "
-    >
-      <div>
-        <div
-          class="overlay"
-          style="
+      ">
+    <div>
+      <div class="overlay" style="
             z-index: 1;
             position: absolute;
             width: 100%;
@@ -151,322 +77,219 @@
             -o-object-fit: cover;
             object-fit: cover;
             background: rgba(0, 0, 0, 0.8);
-          "
-        ></div>
-        <video
-          playsinline
-          autoplay
-          loop
-          muted
-          style="
+          "></div>
+      <video playsinline autoplay loop muted style="
             width: 100%;
             height: 100%;
             -o-object-fit: cover;
             object-fit: cover;
             background: #232a34;
             position: absolute;
-          "
-        >
-          <source src="{%  static 'videos/vid1.mp4' %}" type="video/mp4" />
-        </video>
-      </div>
+          ">
+        <source src="{%  static 'videos/vid1.mp4' %}" type="video/mp4" />
+      </video>
+    </div>
 
-      <div class="container animated my-auto" style="z-index: 2">
-        <div class="row" style="margin-top: 10%; z-index: 2">
-          <div class="col-lg-10 mx-auto">
-            <img
-              src="{%  static 'images/svgs/white_notext.svg' %}"
-              style="width: 40%; margin-bottom: 5%"
-            />
-            <h1 style="font-family: Poppins, sans-serif; font-size: 32px">
-              <div class="caption v-middle text-center">
-                <h1 class="cd-headline clip">
-                  <span class="cd-words-wrapper">
-                    <b class="is-visible">Building</b>
-                    <b>Developing</b>
-                    <b>Planning</b>
-                    <b>Creating</b>
-                  </span>
-                </h1>
-              </div>
-              <p
-                class="text-faded"
-                style="font-family: Poppins, sans-serif; font-weight: 300"
-              >
-                &nbsp;the future using code
+    <div class="container animated my-auto" style="z-index: 2">
+      <div class="row" style="margin-top: 10%; z-index: 2">
+        <div class="col-lg-10 mx-auto">
+          <img src="{%  static 'images/svgs/white_notext.svg' %}" style="width: 40%; margin-bottom: 5%" />
+          <h1 style="font-family: Poppins, sans-serif; font-size: 32px">
+            <div class="caption v-middle text-center">
+              <h1 class="cd-headline clip">
+                <span class="cd-words-wrapper">
+                  <b class="is-visible">Building</b>
+                  <b>Developing</b>
+                  <b>Planning</b>
+                  <b>Creating</b>
+                </span>
+              </h1>
+            </div>
+            <p class="text-faded" style="font-family: Poppins, sans-serif; font-weight: 300">
+              &nbsp;the future using code
+            </p>
+          </h1>
+          <hr />
+        </div>
+      </div>
+      <div class="col-lg-8 mx-auto" style="margin-bottom: 5%">
+        <p class="text-faded mb-5" style="font-family: Poppins, sans-serif; font-weight: 300">
+          As technology enhances, people's lives enhance too. We aim to
+          increase the number of people passionate about various technologies
+          by connecting them in a single network.&nbsp;
+        </p>
+        <a class="btn btn-dark btn-xl js-scroll-trigger" role="button" href="#incentive"
+          style="font-family: Poppins, sans-serif; border-radius: 10px">Learn More&nbsp;<i
+            class="fa fa-long-arrow-right"></i></a>
+      </div>
+    </div>
+  </header>
+  <section id="incentive" style="min-height: 650px; height: 1080px; background: #fff">
+    <div class="container" style="margin-bottom: 1%">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <img src="{%  static 'images/svgs/scholarships.svg' %}" style="margin-bottom: 1rem; width: 38%" />
+          <h2 class="section-heading">Incentive</h2>
+          <hr class="my-4" />
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-bottom: 10%">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 col-xl-4 offset-xl-0 text-center">
+          <div class="mx-auto service-box mt-5">
+            <i class="fa fa-globe fa-4x text-primary mb-3 sr-icons" data-aos="zoom-in" data-aos-duration="200"
+              data-aos-once="true"></i>
+            <h3 class="mb-3">1</h3>
+            <p class="mb-0" style="color: var(--dark)">
+              Global Virtual Challenge
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 col-xl-4 offset-xl-0 text-center">
+          <div class="mx-auto service-box mt-5">
+            <i class="fa fa-graduation-cap fa-4x text-primary mb-3 sr-icons" data-aos="zoom-in" data-aos-duration="200"
+              data-aos-delay="200" data-aos-once="true"></i>
+            <h3 class="mb-3">100</h3>
+            <p class="mb-0">Scholarships</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 col-xl-4 offset-xl-0 text-center">
+          <div class="mx-auto service-box mt-5">
+            <a id="git-link" href="https://github.com/coders-hq" target="_blank"
+              style="font-family: Poppins, sans-serif"><i class="fa fa-github fa-4x text-primary mb-3 sr-icons"
+                data-aos="zoom-in" data-aos-duration="200" data-aos-delay="400" data-aos-once="true"></i>
+              <h3 class="mb-3">Open Source</h3>
+              <p class="mb-0">
+                You can contribute in building our community of coders<br />
               </p>
-            </h1>
-            <hr />
-          </div>
-        </div>
-        <div class="col-lg-8 mx-auto" style="margin-bottom: 5%">
-          <p
-            class="text-faded mb-5"
-            style="font-family: Poppins, sans-serif; font-weight: 300"
-          >
-            As technology enhances, people's lives enhance too. We aim to
-            increase the number of people passionate about various technologies
-            by connecting them in a single network.&nbsp;
-          </p>
-          <a
-            class="btn btn-dark btn-xl js-scroll-trigger"
-            role="button"
-            href="#incentive"
-            style="font-family: Poppins, sans-serif; border-radius: 10px"
-            >Learn More&nbsp;<i class="fa fa-long-arrow-right"></i
-          ></a>
-        </div>
-      </div>
-    </header>
-    <section
-      id="incentive"
-      style="min-height: 650px; height: 1080px; background: #fff"
-    >
-      <div class="container" style="margin-bottom: 1%">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <img
-              src="{%  static 'images/svgs/scholarships.svg' %}"
-              style="margin-bottom: 1rem; width: 38%"
-            />
-            <h2 class="section-heading">Incentive</h2>
-            <hr class="my-4" />
+            </a>
           </div>
         </div>
       </div>
-      <div class="container" style="margin-bottom: 10%">
-        <div class="row">
-          <div class="col-md-6 col-lg-3 col-xl-4 offset-xl-0 text-center">
-            <div class="mx-auto service-box mt-5">
-              <i
-                class="fa fa-globe fa-4x text-primary mb-3 sr-icons"
-                data-aos="zoom-in"
-                data-aos-duration="200"
-                data-aos-once="true"
-              ></i>
-              <h3 class="mb-3">1</h3>
-              <p class="mb-0" style="color: var(--dark)">
-                Global Virtual Hackathon
-              </p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 col-xl-4 offset-xl-0 text-center">
-            <div class="mx-auto service-box mt-5">
-              <i
-                class="fa fa-graduation-cap fa-4x text-primary mb-3 sr-icons"
-                data-aos="zoom-in"
-                data-aos-duration="200"
-                data-aos-delay="200"
-                data-aos-once="true"
-              ></i>
-              <h3 class="mb-3">100</h3>
-              <p class="mb-0">Scholarships</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 col-xl-4 offset-xl-0 text-center">
-            <div class="mx-auto service-box mt-5">
-              <a
-                id="git-link"
-                href="https://github.com/coders-hq"
-                target="_blank"
-                style="font-family: Poppins, sans-serif"
-                ><i
-                  class="fa fa-github fa-4x text-primary mb-3 sr-icons"
-                  data-aos="zoom-in"
-                  data-aos-duration="200"
-                  data-aos-delay="400"
-                  data-aos-once="true"
-                ></i>
-                <h3 class="mb-3">Open Source</h3>
-                <p class="mb-0">
-                  You can contribute in building our community of coders<br />
-                </p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section
-      id="partners"
-      style="
+    </div>
+  </section>
+  <section id="partners" style="
         background: rgb(33, 37, 41);
         color: #ffffff;
         height: 1080px;
         min-height: 650px;
-      "
-    >
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <img
-              src="{%  static 'images/svgs/hackathons.svg' %}"
-              style="margin-bottom: 1rem; width: 38%"
-            />
-            <h2 class="section-heading">Our Partners</h2>
-            <hr class="my-4" />
+      ">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <img src="{%  static 'images/svgs/challenges.svg' %}" style="margin-bottom: 1rem; width: 38%" />
+          <h2 class="section-heading">Our Partners</h2>
+          <hr class="my-4" />
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row" style="max-height: 410.062px">
+        <div class="col-sm-4 col-md-6 col-lg-3 col-xl-2 text-center" style="font-size: 75%">
+          <div class="mx-auto service-box mt-5">
+            <img data-aos="zoom-in" data-aos-duration="200" data-aos-once="true" class="partner-logo"
+              style="width: 150px" src="{%  static 'images/svgs/white_notext.svg' %}" />
+            <h3 class="mb-3" style="font-size: 1rem; font-family: Poppins, sans-serif">
+              Partner Name
+            </h3>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-6 col-lg-3 col-xl-2 text-center" style="font-size: 75%">
+          <div class="mx-auto service-box mt-5">
+            <img data-aos="zoom-in" data-aos-duration="200" data-aos-once="true" class="partner-logo"
+              style="width: 150px" src="{%  static 'images/svgs/white_notext.svg' %}" />
+            <h3 class="mb-3" style="font-size: 1rem; font-family: Poppins, sans-serif">
+              Partner Name
+            </h3>
+          </div>
+        </div>
+        <div class="col-sm-4 col-md-6 col-lg-3 col-xl-2 text-center" style="font-size: 75%">
+          <div class="mx-auto service-box mt-5">
+            <img data-aos="zoom-in" data-aos-duration="200" data-aos-once="true" class="partner-logo"
+              style="width: 150px" src="{%  static 'images/svgs/white_notext.svg' %}" />
+            <h3 class="mb-3" style="font-size: 1rem; font-family: Poppins, sans-serif">
+              Partner Name
+            </h3>
           </div>
         </div>
       </div>
-      <div class="container">
-        <div class="row" style="max-height: 410.062px">
-          <div
-            class="col-sm-4 col-md-6 col-lg-3 col-xl-2 text-center"
-            style="font-size: 75%"
-          >
-            <div class="mx-auto service-box mt-5">
-              <img
-                data-aos="zoom-in"
-                data-aos-duration="200"
-                data-aos-once="true"
-                class="partner-logo"
-                style="width: 150px"
-                src="{%  static 'images/svgs/white_notext.svg' %}"
-              />
-              <h3
-                class="mb-3"
-                style="font-size: 1rem; font-family: Poppins, sans-serif"
-              >
-                Partner Name
-              </h3>
-            </div>
-          </div>
-          <div
-            class="col-sm-4 col-md-6 col-lg-3 col-xl-2 text-center"
-            style="font-size: 75%"
-          >
-            <div class="mx-auto service-box mt-5">
-              <img
-                data-aos="zoom-in"
-                data-aos-duration="200"
-                data-aos-once="true"
-                class="partner-logo"
-                style="width: 150px"
-                src="{%  static 'images/svgs/white_notext.svg' %}"
-              />
-              <h3
-                class="mb-3"
-                style="font-size: 1rem; font-family: Poppins, sans-serif"
-              >
-                Partner Name
-              </h3>
-            </div>
-          </div>
-          <div
-            class="col-sm-4 col-md-6 col-lg-3 col-xl-2 text-center"
-            style="font-size: 75%"
-          >
-            <div class="mx-auto service-box mt-5">
-              <img
-                data-aos="zoom-in"
-                data-aos-duration="200"
-                data-aos-once="true"
-                class="partner-logo"
-                style="width: 150px"
-                src="{%  static 'images/svgs/white_notext.svg' %}"
-              />
-              <h3
-                class="mb-3"
-                style="font-size: 1rem; font-family: Poppins, sans-serif"
-              >
-                Partner Name
-              </h3>
-            </div>
-          </div>
+    </div>
+  </section>
+  <section id="faq" style="height: 1080px; min-height: 650px; background: #fff">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <img src="{%  static 'images/svgs/community.svg' %}" style="margin-bottom: 1rem; width: 38%" />
+          <h2 class="section-heading">FAQs</h2>
+          <hr class="my-4" />
         </div>
       </div>
-    </section>
-    <section
-      id="faq"
-      style="height: 1080px; min-height: 650px; background: #fff"
-    >
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <img
-              src="{%  static 'images/svgs/community.svg' %}"
-              style="margin-bottom: 1rem; width: 38%"
-            />
-            <h2 class="section-heading">FAQs</h2>
-            <hr class="my-4" />
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-3 col-xl-12 text-center">
-            <section id="faq" style="padding: 2px; margin: 11px">
-              <h2 class="text-uppercase text-center" style="font-size: 48"></h2>
-              <div class="container">
-                <div class="faqelement">
-                  <button
-                    class="btn btn-dark faq on"
-                    type="button"
-                    style="box-shadow: none"
-                  >
-                    WHAT IS CODERS HQ?&nbsp;
-                  </button>
-                  <div class="panel">
-                    <p style="margin-top: 1rem">
-                      It's an initiative by The Office of the Minister of AI of
-                      The UAE National AI Program.
-                    </p>
-                  </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3 col-xl-12 text-center">
+          <section id="faq" style="padding: 2px; margin: 11px">
+            <h2 class="text-uppercase text-center" style="font-size: 48"></h2>
+            <div class="container">
+              <div class="faqelement">
+                <button class="btn btn-dark faq on" type="button" style="box-shadow: none">
+                  WHAT IS CODERS HQ?&nbsp;
+                </button>
+                <div class="panel">
+                  <p style="margin-top: 1rem">
+                    It's an initiative by The Office of the Minister of AI of
+                    The UAE National AI Program.
+                  </p>
                 </div>
-                <br />
-                <div class="faqelement">
-                  <button
-                    class="btn btn-dark faq on"
-                    type="button"
-                    style="box-shadow: none"
-                  >
-                    WHAT IS CODERS HQ?&nbsp;
-                  </button>
-                  <div class="panel">
-                    <p style="margin-top: 1rem">
-                      It's an initiative by The Office of the Minister of AI of
-                      The UAE National AI Program.
-                    </p>
-                  </div>
-                </div>
-                <br />
-                <div class="faqelement">
-                  <button
-                    class="btn btn-dark faq on"
-                    type="button"
-                    style="box-shadow: none"
-                  >
-                    WHAT IS CODERS HQ?&nbsp;
-                  </button>
-                  <div class="panel">
-                    <p style="margin-top: 1rem">
-                      It's an initiative by The Office of the Minister of AI of
-                      The UAE National AI Program.
-                    </p>
-                  </div>
-                </div>
-                <br />
               </div>
-            </section>
-          </div>
+              <br />
+              <div class="faqelement">
+                <button class="btn btn-dark faq on" type="button" style="box-shadow: none">
+                  WHAT IS CODERS HQ?&nbsp;
+                </button>
+                <div class="panel">
+                  <p style="margin-top: 1rem">
+                    It's an initiative by The Office of the Minister of AI of
+                    The UAE National AI Program.
+                  </p>
+                </div>
+              </div>
+              <br />
+              <div class="faqelement">
+                <button class="btn btn-dark faq on" type="button" style="box-shadow: none">
+                  WHAT IS CODERS HQ?&nbsp;
+                </button>
+                <div class="panel">
+                  <p style="margin-top: 1rem">
+                    It's an initiative by The Office of the Minister of AI of
+                    The UAE National AI Program.
+                  </p>
+                </div>
+              </div>
+              <br />
+            </div>
+          </section>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    {% endblock content %} 
-    {% block javascript %} 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    {% compress js %}
-    <script defer src="{%  static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script defer src="{%  static 'js/bs-init.js' %}"></script>
-    <script defer src="{%  static 'js/creative.js' %}"></script>
-    <script defer src="{%  static 'js/faqs.js' %}"></script>
-    <script defer src="{%  static 'js/videoBackground.js' %}"></script>
-    <script defer src="{%  static 'js/typingEffect.js' %}"></script>
-    {% endcompress %} 
-    {% endblock javascript %}
-  </body>
+  {% endblock content %}
+  {% block javascript %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  {% compress js %}
+  <script defer src="{%  static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  <script defer src="{%  static 'js/bs-init.js' %}"></script>
+  <script defer src="{%  static 'js/creative.js' %}"></script>
+  <script defer src="{%  static 'js/faqs.js' %}"></script>
+  <script defer src="{%  static 'js/videoBackground.js' %}"></script>
+  <script defer src="{%  static 'js/typingEffect.js' %}"></script>
+  {% endcompress %}
+  {% endblock javascript %}
+</body>
+
 </html>

@@ -1,15 +1,16 @@
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.views.generic import DetailView, ListView
 from django.urls import reverse
-from codershq.hackathon.models import Hackathon
+from codershq.challenge.models import Challenge
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 
-class HackathonList(LoginRequiredMixin, ListView):
-    model = Hackathon
-    context_object_name = 'hackathons'
+
+class ChallengeList(LoginRequiredMixin, ListView):
+    model = Challenge
+    context_object_name = 'challenges'
     paginate_by = 10
     ordering = ['-date_start']
 
@@ -18,51 +19,54 @@ class HackathonList(LoginRequiredMixin, ListView):
         context['now'] = timezone.now()
         return context
 
-class HackathonVirtualList(LoginRequiredMixin, ListView):
-    model = Hackathon
-    context_object_name = 'hackathons'
+
+class ChallengeVirtualList(LoginRequiredMixin, ListView):
+    model = Challenge
+    context_object_name = 'challenges'
     paginate_by = 10
     ordering = ['-date_start']
 
     def get_queryset(self):
-        return Hackathon.objects.filter(hackathon_type="VI")
+        return Challenge.objects.filter(challenge_type="VI")
 
-class HackathonPhysicalList(LoginRequiredMixin, ListView):
-    model = Hackathon
-    context_object_name = 'hackathons'
+
+class ChallengePhysicalList(LoginRequiredMixin, ListView):
+    model = Challenge
+    context_object_name = 'challenges'
     paginate_by = 10
     ordering = ['-date_start']
 
     def get_queryset(self):
-        return Hackathon.objects.filter(hackathon_type="PH")
+        return Challenge.objects.filter(challenge_type="PH")
 
-class HackathonHybridList(LoginRequiredMixin, ListView):
-    model = Hackathon
-    context_object_name = 'hackathons'
+
+class ChallengeHybridList(LoginRequiredMixin, ListView):
+    model = Challenge
+    context_object_name = 'challenges'
     paginate_by = 10
     ordering = ['-date_start']
 
     def get_queryset(self):
-        return Hackathon.objects.filter(hackathon_type="HY")
+        return Challenge.objects.filter(challenge_type="HY")
 
-class HackathonDetail(LoginRequiredMixin, DetailView):
-    model = Hackathon
 
+class ChallengeDetail(LoginRequiredMixin, DetailView):
+    model = Challenge
 
     def post(self, request, *args, **kwargs):
 
-        # current hackathon instance 
+        # current challenge instance
         self.object = self.get_object()
 
         # add user if not exists
         # if user exists remove user
         if request.user in self.object.competitors.all():
             self.object.competitors.remove(request.user)
-            messages.warning(request, 'You are removed from this hackathon')  
+            messages.warning(request, 'You are removed from this challenge')
 
         else:
             if timezone.now().date() < self.object.last_join_date:
                 self.object.competitors.add(request.user)
-                messages.success(request, 'You were successfully added to the hackathon')  
+                messages.success(request, 'You were successfully added to the challenge')
 
-        return HttpResponseRedirect(reverse('hackathon:detail', kwargs={'slug': self.object.slug}))
+        return HttpResponseRedirect(reverse('challenge:detail', kwargs={'slug': self.object.slug}))

@@ -73,7 +73,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "codershq.users.apps.UsersConfig",
-    "codershq.hackathon.apps.HackathonConfig",
+    "codershq.challenge.apps.ChallengeConfig",
     "codershq.companies.apps.CompaniesConfig",
     "codershq.dashboard.apps.DashboardConfig",
     # Your stuff: custom apps go here

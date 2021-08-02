@@ -1,0 +1,141 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}{{ "Challenges" }}{%endblock %}
+
+{% load static %}
+
+{% block main %}
+
+<!-- Page title -->
+<div class="page-header d-print-none">
+  <div class="row align-items-center">
+    <div class="col">
+      <!-- Page pre-title -->
+      <div class="page-pretitle">
+        Coders Headquarters
+      </div>
+      <h2 class="page-title">
+        Challenges
+      </h2>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-4">
+  <div class="mb-3">
+    <label class="form-label">Filter By Type</label>
+
+    {% if request.path == "/challenge/" %}
+    <a href="/challenge/" type="button" class="btn btn-secondary m-2">All</a>
+    {% else %}
+    <a href="/challenge/" type="button" class="btn btn-outline-secondary m-2">All</a>
+    {% endif %}
+
+    {% if request.path == "/challenge/virtual/" %}
+    <a href="/challenge/virtual" type="button" class="btn btn-secondary m-2">Virtual</a>
+    {% else %}
+    <a href="/challenge/virtual" type="button" class="btn btn-outline-secondary m-2">Virtual</a>
+    {% endif %}
+
+    {% if request.path == "/challenge/physical/" %}
+    <a href="/challenge/physical" type="button" class="btn btn-secondary m-2">Physical</a>
+    {% else %}
+    <a href="/challenge/physical" type="button" class="btn btn-outline-secondary m-2">Physical</a>
+    {% endif %}
+    {% if request.path == "/challenge/hybrid/" %}
+    <a href="/challenge/hybrid" type="button" class="btn btn-secondary m-2">Hybrid</a>
+    {% else %}
+    <a href="/challenge/hybrid" type="button" class="btn btn-outline-secondary m-2">Hybrid</a>
+    {% endif %}
+
+
+  </div>
+</div>
+
+
+{% for challenge in challenges %}
+<div class="card mb-2">
+  <!-- <div class="card-status-start bg-primary"></div> -->
+  <div class="card-header">
+    {{ challenge.get_challenge_type_display }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{challenge.title}}</h5>
+    <p class="card-text">In reality, trading for profit has always been a difficult problem to solve, even more so in
+      today’s fast </p>
+    <p class="card-text"><svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+        stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        <path d="M21 21v-2a4 4 0 0 0 -3 -3.85" />
+      </svg>
+      {{challenge.competitors.count }}
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
+        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+        <circle cx="18" cy="18" r="4" />
+        <path d="M15 3v4" />
+        <path d="M7 3v4" />
+        <path d="M3 11h16" />
+        <path d="M18 16.496v1.504l1 1" />
+      </svg>
+      {{challenge.last_join_date|timeuntil}} to go
+    </p>
+  </div>
+  <div class="card-footer">
+    <div class="d-flex">
+      <a href="{% url 'challenge:detail' challenge.slug %}" class="btn btn-white">More Details</a>
+      <h2 class="ms-auto">{{ challenge.prize_display }}</h2>
+    </div>
+  </div>
+</div>
+
+{% empty %}
+<li>No articles yet.</li>
+{% endfor %}
+
+{% if page_obj.has_previous or page_obj.has_next %}
+<div class="row row-cards">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <ul class="pagination ">
+          {% if page_obj.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page=1">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <polyline points="15 6 9 12 15 18" />
+              </svg>
+            </a>
+          </li>
+          {% endif %}
+
+          <li class="page-item"><a class="page-link" href="#">Page {{ page_obj.number }} of {{
+              page_obj.paginator.num_pages }}.</a></li>
+
+          {% if page_obj.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24"
+                stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <polyline points="9 6 15 12 9 18" />
+              </svg>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

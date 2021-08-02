@@ -51,7 +51,7 @@ To build the stack and update the databse run ::
     $ docker-compose -f local.yml run --rm django python manage.py migrate
     $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 
-Follow the rest of the README for more information and use ``/admin`` to edit and create hackathons.
+Follow the rest of the README for more information and use ``/admin`` to edit and create challenges.
 
 
 Getting Up and Running Locally With Docker
@@ -240,5 +240,5 @@ Bootstrap's javascript as well as its dependencies is concatenated into a single
 Slack
 -----
 
-This project has an associated slack page that is used when a new hackathon is created and discussions which relates to hackathons in general. The slack page is located at
-[codershq-hackathon.slack.com](https://codershq-hackathon.slack.com).
+This project has an associated slack page that is used when a new challenge is created and discussions which relates to challenges in general. The slack page is located at
+[codershq-challenge.slack.com](https://codershq-challenge.slack.com).

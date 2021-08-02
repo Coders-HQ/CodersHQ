@@ -25,7 +25,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
     path("", include("codershq.dashboard.urls", namespace="dashboard")),
-    path("hackathon/", include("codershq.hackathon.urls", namespace="hackathon")),
+    path("challenge/", include("codershq.challenge.urls", namespace="challenge")),
     path("companies/", include("codershq.companies.urls", namespace="companies")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
