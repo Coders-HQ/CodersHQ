@@ -4,21 +4,6 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView, FormVi
 from django.contrib.auth.mixins import LoginRequiredMixin
 from codershq.companies.models import Company
 
-from .forms import CompanyForm
-
-
-# class CompanyFormView(FormView):
-#     # specify the Form you want to use
-#     form_class = CompanyForm
-
-#     # specify name of template
-#     template_name = "companies/companymodel_form.html"
-
-#     # can specify success url
-#     # url to redirect after successfully
-#     # updating details
-#     success_url = "/thanks/"
-
 
 class CompanyListView(ListView, LoginRequiredMixin):
     model = Company
