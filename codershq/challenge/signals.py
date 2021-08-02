@@ -20,7 +20,7 @@ def send_challenge_mail(sender, **kwargs):
         )
 
 
-m2m_changed.connect(send_challenge_mail, sender=Challenge.competitors.through)
+# m2m_changed.connect(send_challenge_mail, sender=Challenge.competitors.through)
 
 
 @receiver(post_save, sender=Challenge)
