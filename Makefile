@@ -1,8 +1,8 @@
 SHELL := /bin/bash
 
-ifeq (,$(wildcard .envs/.production/.django))
-    $(error no .envs/.production/.django file located.)
-endif
+# ifeq (,$(wildcard .envs/.production/.django))
+#     $(error no .envs/.production/.django file located.)
+# endif
 
 
 help:
@@ -23,3 +23,5 @@ build:
 up:
 	docker-compose -f local.yml up
 
+down:
+	docker-compose -f local.yml down
