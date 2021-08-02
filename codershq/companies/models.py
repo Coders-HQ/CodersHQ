@@ -1,8 +1,9 @@
-from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.core.validators import MaxValueValidator
+from django.db import models
 from django.urls import reverse
-from codershq.users.models import User
+from django.utils.translation import gettext_lazy as _
+
+from codershq.challenge.models import Sprint
 
 
 class Company(models.Model):
@@ -21,6 +22,7 @@ class Company(models.Model):
 
 class SponsorshipTypes(models.Model):
     """Company sponsor types"""
+
     sponsorship_type = models.CharField(_("Company sponsorship type"), max_length=100)
     sponsorship_description = models.CharField(_("Company sponsorship description"), max_length=250)
 
@@ -33,6 +35,10 @@ class Sponsorships(models.Model):
     )
     sponsorship_type = models.OneToOneField(
         SponsorshipTypes,
+        on_delete=models.CASCADE,
+    )
+    sprint = models.ForeignKey(
+        Sprint,
         on_delete=models.CASCADE,
     )
     sponsorship_value = models.PositiveIntegerField(

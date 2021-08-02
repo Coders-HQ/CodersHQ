@@ -43,17 +43,17 @@ class User(AbstractUser):
                                       validators=[validate_github_profile])
     profile_image = models.ImageField(_("Profile image"), upload_to=user_image_path, null=True, blank=True)
     github_updated = models.DateTimeField(null=True, blank=True)
-    
+
     github_score = models.IntegerField(null=False, default=0)
     front_end_score = models.IntegerField(null=False, default=20)
     back_end_score = models.IntegerField(null=False, default=20)
     database_score = models.IntegerField(null=False, default=20)
     devops_score = models.IntegerField(null=False, default=20)
     mobile_score = models.IntegerField(null=False, default=20)
-    
+
     fav_language = models.CharField(_("Favourite programming language based on GitHub"), blank=True, max_length=150)
 
-    completed_hackathons = models.PositiveIntegerField(_("Number of hackathons completed"), null=False, default=0)
+    completed_challenges = models.PositiveIntegerField(_("Number of challenges completed"), null=False, default=0)
 
     language_preference = models.CharField(
         max_length=2,
@@ -66,7 +66,6 @@ class User(AbstractUser):
         choices=THEME,
         default=LIGHT,
     )
-
 
     first_name = None  # type: ignore
     last_name = None  # type: ignore
@@ -103,7 +102,7 @@ class User(AbstractUser):
         #     raise ScoreNot100()
 
         # if profile has a github_profile
-        if self.github_profile != '' and settings.GITHUB_TOKEN!='':
+        if self.github_profile != '' and settings.GITHUB_TOKEN != '':
             # if profile score was updated
             if self.github_updated != None:
                 # only get score when enough time has passed
