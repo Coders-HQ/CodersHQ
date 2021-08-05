@@ -18,7 +18,7 @@ class Challenge(models.Model):
     slack_group = models.TextField(_("Slack group"), default=None, max_length=100)
     cloud_provider = models.TextField(_("Cloud Provider"), default=None, max_length=100)
     cloud_provider_url = models.URLField(_("Cloud Provider URL"), default=None)
-    cloud_provider_toke = models.TextField(_("Cloud Provider token"), default=None, max_length=500)
+    cloud_provider_token = models.TextField(_("Cloud Provider token"), default=None, max_length=500)
 
 
 class Sprint(models.Model):
@@ -40,6 +40,6 @@ class ScoreCategory(models.Model):
 
 
 class Score(models.Model):
-    challenge_score_category = models.OneToOneField(ScoreCategory, on_delete=models.CASCADE)
+    score_category = models.OneToOneField(ScoreCategory, on_delete=models.CASCADE)
     sprints = models.OneToOneField(Sprint, on_delete=models.CASCADE)
     score = models.PositiveIntegerField(_("Sprint score"))
