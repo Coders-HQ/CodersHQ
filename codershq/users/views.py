@@ -23,14 +23,10 @@ class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = User
     fields = ["name",
               "bio",
-              "cv",
               "profile_image",
               "github_profile",
-              "front_end_score",
-              "back_end_score",
-              "database_score",
-              "devops_score",
-              "mobile_score"]
+              "academic_qualification",
+              "github_profile"]
     success_message = _("Information successfully updated")
 
     def get_success_url(self):
@@ -53,11 +49,13 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
 
 user_redirect_view = UserRedirectView.as_view()
 
+
 class UserScoringListView(ListView):
     template_name = "users/scoring_list.html"
     model = User
     context_object_name = 'users'
     paginate_by = 50
     ordering = ['-github_score']
+
 
 user_scoring_list_view = UserScoringListView.as_view()

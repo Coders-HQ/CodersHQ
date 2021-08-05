@@ -1,4 +1,3 @@
-import hashlib
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -20,9 +19,8 @@ class User(AbstractUser):
     # https://docs.djangoproject.com/en/3.2/ref/contrib/auth/#fields
 
     # personal details
-    name = models.CharField(_("Name of User"), blank=True, max_length=255)
-    bio = models.TextField(_("Biography"), blank=True, max_length=500)
-    cv = models.FileField(_("User's CV"), null=True, blank=True, upload_to="cv")
+    name = models.CharField(_("Enter your name"), blank=True, max_length=255)
+    bio = models.TextField(_("Bio"), blank=True, max_length=500)
     academic_qualification = models.CharField(_("User's highest qualification"), blank=True, max_length=30)
     github_profile = models.CharField(_("User's GitHub profile"), blank=True, max_length=255,
                                       validators=[validate_github_profile])
