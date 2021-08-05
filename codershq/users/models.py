@@ -65,14 +65,14 @@ class TeamTrophyRecord(models.Model):
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
 
-class UserScoreCategories(models.Model):
+class UserScoreCategory(models.Model):
     score_category = models.TextField(_("Score categories"), max_length=100)
     description = models.TextField(max_length=200)
 
 
 class UserScore(models.Model):
     """Score connected to a user"""
-    user_score_category = models.ForeignKey(UserScoreCategories, on_delete=models.PROTECT)
+    user_score_category = models.ForeignKey(UserScoreCategory, on_delete=models.PROTECT)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 

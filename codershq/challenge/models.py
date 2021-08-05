@@ -17,6 +17,9 @@ class Challenge(models.Model):
     cloud_provider_url = models.URLField(_("Cloud Provider URL"), default=None)
     cloud_provider_token = models.TextField(_("Cloud Provider token"), default=None, max_length=500)
 
+    def __str__(self) -> str:
+        return "Challenge: " + self.title
+
 
 class Sprint(models.Model):
     """Every challenge should have at least one sprint"""
@@ -46,4 +49,5 @@ class ChallengeScore(models.Model):
     score_category = models.OneToOneField(ScoreCategory, on_delete=models.CASCADE)
     sprints = models.OneToOneField(Sprint, on_delete=models.CASCADE)
     score = models.PositiveIntegerField(_("Sprint score"))
+    # cannot delete team if score is associated to it
     team = models.ForeignKey('users.Team', on_delete=models.PROTECT)
