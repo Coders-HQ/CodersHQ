@@ -1,9 +1,6 @@
-from autoslug import AutoSlugField
 from django.db import models
 from django.db.models.fields import DateTimeField
 from django.utils.translation import gettext_lazy as _
-
-from codershq.users.models import Team
 
 
 class Challenge(models.Model):
@@ -39,8 +36,14 @@ class ScoreCategory(models.Model):
     description = models.TextField(_("Category of challenge scoring"), max_length=100)
 
 
+class SprintEnrollment(models.Model):
+    """Shows which team is enrolled to which sprints"""
+    team = models.ForeignKey('users.Team', on_delete=models.CASCADE)
+    sprint = models.ForeignKey('Sprint', on_delete=models.CASCADE)
+
+
 class ChallengeScore(models.Model):
     score_category = models.OneToOneField(ScoreCategory, on_delete=models.CASCADE)
     sprints = models.OneToOneField(Sprint, on_delete=models.CASCADE)
     score = models.PositiveIntegerField(_("Sprint score"))
-    team = models.ForeignKey(Team, on_delete=models.PROTECT)
+    team = models.ForeignKey('users.Team', on_delete=models.PROTECT)

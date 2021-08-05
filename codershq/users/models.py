@@ -1,15 +1,11 @@
 import hashlib
 
-from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
-from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from codershq.users.validators import validate_github_profile
-from config import celery_app
-from codershq.challenge.models import Sprint
 
 
 def user_image_path(instance, filename):
@@ -34,7 +30,7 @@ class User(AbstractUser):
 
     # users can be part of a team
     # cannot delete team if a user is part of that team
-    teams = models.ForeignKey('Team', on_delete=models.RESTRICT)
+    teams = models.ForeignKey('Team', on_delete=models.PROTECT, null=True, blank=True)
 
     #: First and last name do not cover name patterns around the globe
     first_name = None  # type: ignore
@@ -62,12 +58,6 @@ class User(AbstractUser):
 class Team(models.Model):
     """team that a user will be part of"""
     team_name = models.TextField(_("Team name"), max_length=100)
-
-
-class SprintEnrollment(models.Model):
-    """Shows which team is enrolled to which sprints"""
-    team = models.ForeignKey(Team, on_delete=models.CASCADE)
-    sprint = models.ForeignKey(Sprint, on_delete=models.CASCADE)
 
 
 class TeamTrophyRecord(models.Model):
