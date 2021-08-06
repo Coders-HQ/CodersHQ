@@ -21,7 +21,7 @@
     <div class="col-auto ms-auto d-print-none">
       <div class="btn-list">
         <span class="d-none d-sm-inline">
-          <a href="{% url 'users:update' %}" class="btn btn-white" >
+          <a href="{% url 'users:update' %}" class="btn btn-white">
             Edit Profile
           </a>
         </span>
@@ -37,27 +37,18 @@
         <div class="card mb-3" style="height: calc(22.5rem + 10px)">
           <div class="card-body p-3 text-center">
             {% if user.profile_image %}
-            <span class="avatar avatar-xl mb-3 avatar-rounded" style="background-image: url({{ user.profile_image.url }})"></span>
+            <span class="avatar avatar-xl mb-3 avatar-rounded"
+              style="background-image: url({{ user.profile_image.url }})"></span>
             {% else %}
-            <span class="avatar avatar-xl mb-3 avatar-rounded" >{{user.username|make_list|slice:':2'|join:'' }}</span>
+            <span class="avatar avatar-xl mb-3 avatar-rounded">{{user.username|make_list|slice:':2'|join:'' }}</span>
             {% endif %}
             <h3 class="m-0 mb-2">{{user.name}}</h3>
             <div class="text-muted mb-3"><a href="{% url 'users:redirect' %}">@{{user.username}}</a></div>
             <div class="text-muted mb-0">{{user.bio}}</div>
             <hr class="mb-3">
             <div class="text-center" data-bs-toggle="tooltip" data-bs-placement="bottom" title="GitHub Score">
-               <span class="text-muted">Github Score</span> </br> {{user.github_score}}
+              <span class="text-muted">Teams</span> </br> {{user.teams}}
             </div>
-          </div>
-        </div>
-        <div class="bordered" style="height: calc(22.5rem + 10px)">
-          <div class="profile-btns">
-            <a class="custom-btn text-center p-3 mb-3 mr-4" style="width: 136px; height:100px" href="#"><svg class="mb-3" xmlns="http://www.w3.org/2000/svg" class="icon text-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path></svg><br>Github Profile</a>
-            <a class="custom-btn text-center p-3 mb-3" style="width: 136px; height:100px" href="#"><svg class="mb-3" xmlns="http://www.w3.org/2000/svg" class="icon text-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path></svg><br>Github Profile</a>
-          </div>
-          <div class="profile-btns">
-            <a class="custom-btn text-center p-3 mr-4" style="width: 136px; height:100px" href="#"><svg class="mb-3" xmlns="http://www.w3.org/2000/svg" class="icon text-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path></svg><br>Github Profile</a>
-            <a class="custom-btn text-center p-3" style="width: 136px; height:100px" href="#"><svg class="mb-3" xmlns="http://www.w3.org/2000/svg" class="icon text-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path></svg><br>Github Profile</a>
           </div>
         </div>
       </div>
@@ -66,108 +57,17 @@
 
   <div class="col-md-6 col-xl-9">
     <div class="card" style="height: calc(37rem + 8px)">
-        <ul class="nav nav-tabs" data-bs-toggle="tabs">
-            <li class="nav-item">
-                <a href="#tabs-general-ex1" class="nav-link active" data-bs-toggle="tab">General</a>
-            </li>
-            <li class="nav-item">
-                <a href="#tabs-devactivity-ex1" class="nav-link" data-bs-toggle="tab">Activities</a>
-            </li>
-            <li class="nav-item">
-                <a href="#tabs-score-ex1" class="nav-link" data-bs-toggle="tab">Score</a>
-            </li>
-            <li class="nav-item">
-                <a href="#tabs-blog-ex1" class="nav-link" data-bs-toggle="tab">Blog</a>
-            </li>
-        </ul>
-      
-        <div class="card-body">
-            <div class="tab-content">
-                <div class="tab-pane active show" id="tabs-general-ex1">
-                    <div>General</div>
-                </div>
-                <div class="tab-pane" id="tabs-devactivity-ex1">
-                    <div>Development Activity</div>
-                </div>
-                <div class="tab-pane" id="tabs-score-ex1">
-                    <div>
-                    <figure class="highcharts-figure" style="margin-top: 4rem;">
-                      <div id="container"></div>
-                    </figure>
-                    </div>
-                </div>
-                <div class="tab-pane" id="tabs-blog-ex1">
-                    <div>{{object.username}}'s Blog</div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-
-    <div class="col-md-6 col-xl-9">
-    <div class="card">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <div>
-            <h3 class="m-0 mb-1">Username</h3>
-            <div class="text-muted">{{object.username}}</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div>
-            <h3 class="m-0 mb-1">Biography</h3>
-            <div class="text-muted">{{object.bio}}</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-        <p class="wide">Front End Development</p>
-        <div class="back skillbar clearfix" data-percent="20%">
-          <div class="skill skillbar-bar" style="height:28px;width:0%;">20%</p></div>
-        </div>
-          <div>
-            <h3 class="m-0 mb-1">Github Profile</h3>
-            <div class="text-muted">{{object.github_profile}}</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div>
-            <h3 class="m-0 mb-1">Frontend Score</h3>
-            <div class="text-muted">{{object.front_end_score}}</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div>
-            <h3 class="m-0 mb-1">Favourite language</h3>
-            <div class="text-muted">{{object.fav_language}}</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div>
-            <h3 class="m-0 mb-1">Backend Score</h3>
-            <div class="text-muted">{{object.back_end_score}}</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div>
-            <h3 class="m-0 mb-1">Database Score</h3>
-            <div class="text-muted">{{object.database_score}}</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div>
-            <h3 class="m-0 mb-1">Devops Score</h3>
-            <div class="text-muted">{{object.devops_score}}</div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <div>
-            <h3 class="m-0 mb-1">Mobile Score</h3>
-            <div class="text-muted">{{object.mobile_score}}</div>
-          </div>
-        </li>
+      <ul class="list-group">
+        <li class="list-group-item">Name: {{object.name}}</li>
+        <li class="list-group-item">Biography: {{object.bio}}</li>
+        <li class="list-group-item">Academic Qualification: {{object.academic_qualification}}</li>
+        <li class="list-group-item">Github Profile: {{object.github_profile}}</li>
+        <li class="list-group-item">Teams: {{object.teams}}</li>
       </ul>
     </div>
   </div>
+
+
 </div>
 
 
