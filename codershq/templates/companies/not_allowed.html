@@ -1,0 +1,17 @@
+{% extends "dashboard/base.html" %}
+
+{% load i18n %}
+
+
+{% block main %}
+<div class="card">
+  <div class="card-body">
+    <h1>{% trans "Not Allowed" %}</h1>
+
+    <p>{% trans 'Sorry, You are not allowed to create company' %}</p>
+      <!-- <button class="btn btn-primary" type="submit">{% trans 'Sign Out' %}</button> -->
+      <a class="btn btn-primary" href="{% url 'dashboard:home' %}">Back to Home</a>
+  </div>
+</div>
+
+{% endblock %}

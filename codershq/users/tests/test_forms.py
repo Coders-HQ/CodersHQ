@@ -1,8 +1,10 @@
+from codershq.companies.forms import CompanyCreationForm
 import pytest
-
+from unittest.mock import MagicMock
+from django.core.files import File
 from codershq.users.forms import UserCreationForm
 from codershq.users.tests.factories import UserFactory
-
+from django.core.files.uploadedfile import SimpleUploadedFile
 pytestmark = pytest.mark.django_db
 
 

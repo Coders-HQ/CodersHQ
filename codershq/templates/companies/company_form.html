@@ -1,9 +1,38 @@
-{% extends "base.html" %}
+{% extends "dashboard/base.html" %}
 
-{% block content %}
-<form method="post" enctype='multipart/form-data'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
-</form>
+
+
+{% load i18n static %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+
+
+
+
+<div class="flex-fill d-flex flex-column justify-content-center py-4">
+    <div class="container-tight py-6">
+      <form class="card card-md" style="z-index:5;box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.12);" method="POST" action="{% url 'companies:company-add' %}" autocomplete="on" enctype="multipart/form-data">
+        <div class="card-body">
+          <div class="text-center mb-4">
+            <a href="."><img id="darkLogo" src="{% static 'images/logo/dark.svg' %}" width="250" alt=""><img id="lightLogo" src="{% static 'images/logo/light.svg' %}" width="250" alt=""></a>
+          </div>
+          <p>{{ error }}</p>
+          <h2 class="card-title text-center mb-4">Create your Company</h2>
+          {% csrf_token %}
+          {{ form|crispy }}
+
+          <div class="form-footer">
+            <button type="submit" class="btn btn-primary w-100">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+
+  <!-- Libs JS -->
+  <!-- Tabler Core -->
+
+
 {% endblock %}
+

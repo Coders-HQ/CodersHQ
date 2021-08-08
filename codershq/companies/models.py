@@ -4,10 +4,12 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
 from codershq.challenge.models import Sprint
+from codershq.users.models import User
 
 
 class Company(models.Model):
     """Main company model"""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(_("Comany name"), max_length=100)
     # logo size https://www.logaster.com/blog/logo-sizes/#company2
     logo = models.ImageField(_("Company logo"), upload_to='logo/',
@@ -16,8 +18,8 @@ class Company(models.Model):
     # to track the user who created the company
     # created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
-    def get_absolute_url(self):
-        return reverse('companies:company-list')
+    #def get_absolute_url(self):
+    #    return reverse('companies:company-list')
 
 
 class SponsorshipTypes(models.Model):

@@ -122,6 +122,19 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href=" {% url 'companies:company-add' %} ">
+              <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-logout" width="44" height="44" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                  <path d="M7 12h14l-3 -3m0 6l3 -3" />
+                </svg>
+              </span>
+              <span class="nav-link-title"> Create a company </span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href=" {% url 'account_logout' %}">
               <span class="nav-link-icon d-md-none d-lg-inline-block"><svg xmlns="http://www.w3.org/2000/svg"
                   class="icon icon-tabler icon-tabler-logout" width="44" height="44" viewBox="0 0 24 24"
@@ -174,6 +187,7 @@
               <a href="{% url 'construction' %}" class="dropdown-item">Set status</a>
               <a href="{% url 'users:redirect' %}" class="dropdown-item">Profile & account</a>
               <a href="{% url 'construction' %}" class="dropdown-item">Feedback</a>
+              <a href="{% url 'companies:company-list' %}" class="dropdown-item">My Companies</a>
               <div class="dropdown-divider"></div>
               <a href="{% url 'construction' %}" class="dropdown-item">Settings</a>
               <a href=" {% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -269,14 +283,13 @@
 
 {% endblock content %}
 
-
 {% block inline_javascript %}
 {# Script tags with only code, no src (defer by default) #}
 <script>
   // Set the Navbar Active Link
-  $(function () {
+  $(function() {
     var current = location.pathname;
-    $(".nav-link").each(function () {
+    $(".nav-link").each(function() {
       var $this = $(this);
       // if the current path is like this link, make it active
       if ($this.attr("id") === "homeLink" && current === "/") {
