@@ -12,13 +12,13 @@ class Challenge(models.Model):
     logo = models.ImageField(_("Challenge Logo"), upload_to='challenges/logo/')
     github_link = models.TextField(_("Challenge github link"), default=None)
     website = models.TextField(_("Website link"), max_length=100)
-    slack_group = models.TextField(_("Slack group"), default=None, max_length=100)
-    cloud_provider = models.TextField(_("Cloud Provider"), default=None, max_length=100)
-    cloud_provider_url = models.URLField(_("Cloud Provider URL"), default=None)
-    cloud_provider_token = models.TextField(_("Cloud Provider token"), default=None, max_length=500)
+    slack_group = models.TextField(_("Slack group"), null=True, blank=True, max_length=100)
+    cloud_provider = models.TextField(_("Cloud Provider"), null=True, blank=True, max_length=100)
+    cloud_provider_url = models.URLField(_("Cloud Provider URL"), null=True, blank=True)
+    cloud_provider_token = models.TextField(_("Cloud Provider token"), null=True, blank=True, max_length=500)
 
     def __str__(self) -> str:
-        return "Challenge: " + self.title
+        return "Challenge: " + self.name
 
 
 class Sprint(models.Model):
