@@ -157,7 +157,8 @@
         <div class="navbar-nav flex-row order-md-last">
           <div id="userLink" class="nav-item dropdown">
             <a href="#" class="nav-link d-flex lh-1 p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
-              {% if user.profile_image %}
+              {# Bug (fixed): If johndoe opens johndoe2's profile, johndoe2's image would replace johndoe in the navbar #}
+              {% if request.user.profile_image %}
               <svg style="background-image: url({{ request.user.profile_image.url }}); border-radius:100%;"
                 class="avatar avatar-sm">
               </svg>
