@@ -19,6 +19,7 @@
     </div>
     <!-- Page title actions -->
     <div class="col-auto ms-auto d-print-none">
+      {% if request.user.username == object.username %}
       <div class="btn-list">
         <span class="d-none d-sm-inline">
           <a href="{% url 'users:update' %}" class="btn btn-white">
@@ -26,6 +27,7 @@
           </a>
         </span>
       </div>
+      {% endif %}
     </div>
   </div>
 </div>
