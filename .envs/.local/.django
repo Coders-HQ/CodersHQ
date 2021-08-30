@@ -13,8 +13,12 @@ REDIS_URL=redis://redis:6379/0
 CELERY_FLOWER_USER=nYOWFzWvHvZsBrVxvnBTsszjnnqeWMBF
 CELERY_FLOWER_PASSWORD=v86SOikTo78meIOnC7ulDzA8H8HPeMAdHqos9OM4s4sPakePVsGfCr5nd42ksyTZ
 
-# GitHub
+# GITHUB
 # ------------------------------------------------------------------------------
-# GITHUB_TOKEN=
-# GITHUB_CLIENT_ID=
-# GITHUB_CLIENT_SECRET=
+GITHUB_TOKEN=c1b75c9a0a3f8eb494c0e7739176c858ae8894ab
+GITHUB_CLIENT_ID=c3af5fcd8de5fe4cff35
+GITHUB_CLIENT_SECRET=9d30019c987c86e8edd4f33293eaf927ec228231
+
+# SLACK
+# ------------------------------------------------------------------------------
+SLACK_TOKEN=xoxb-1835271736544-1830161031810-VovHkwU9mK3x8quSPkeG01iO
