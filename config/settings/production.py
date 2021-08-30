@@ -56,7 +56,8 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 
 # STATIC
 # ------------------------
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 # MEDIA
 # ------------------------------------------------------------------------------
 
@@ -68,7 +69,7 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
         "django.template.loaders.cached.Loader",
         [
             "django.template.loaders.filesystem.Loader",
-            "django.template.loaders.app_directories.Loader",
+            "django.template.loaders.app_directories. Loader",
         ],
     )
 ]
