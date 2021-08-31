@@ -7,7 +7,9 @@ from codershq.companies.models import Company
 from django.shortcuts import redirect, render
 from .forms import CompanyCreationForm
 from django.core.exceptions import ValidationError
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.urls import reverse
 
 class CompanyListView(TemplateView, LoginRequiredMixin):
     template_name = 'companies/my_companies.html'
@@ -25,7 +27,7 @@ class CompanyCreateView(TemplateView, LoginRequiredMixin):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            if request.user.allowed_to_create_company:
+            if request.user.is_company:
                 return render(request, self.template_name, {'form':CompanyCreationForm})
             else:
                 return render(request, 'companies/not_allowed.html')
@@ -47,9 +49,15 @@ class CompanyCreateView(TemplateView, LoginRequiredMixin):
             return render(request, self.template_name, {'form':CompanyCreationForm, 'error': err,})
 
 
-class CompanyUpdateView(UpdateView):
+class CompanyUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView): 
     model = Company
-    fields = ['name']
+    fields = ['name',
+              'logo',
+              'website']
+    success_message = _("Information successfully updated")
+
+    def get_success_url(self):
+        return reverse('companies:detail', kwargs={"username": self.request.user.username})
 
 
 class CompanyDeleteView(DeleteView):

@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='user',
-            name='allowed_to_create_company',
+            name='is_company',
             field=models.BooleanField(default=True),
         ),
     ]

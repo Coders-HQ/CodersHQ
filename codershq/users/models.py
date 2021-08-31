@@ -29,7 +29,7 @@ class User(AbstractUser):
     # users can be part of a team
     # cannot delete team if a user is part of that team
     teams = models.ForeignKey('Team', on_delete=models.PROTECT, null=True, blank=True)
-    allowed_to_create_company = models.BooleanField(default=False)
+    is_company = models.BooleanField(default=False)
 
     #: First and last name do not cover name patterns around the globe
     first_name = None  # type: ignore

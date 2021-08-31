@@ -30,6 +30,6 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "name", "is_superuser", "allowed_to_create_company"]
-    list_editable = ["allowed_to_create_company"]
+    list_display = ["username", "name", "is_superuser", "is_company"]
+    list_editable = ["is_company"]
     search_fields = ["name"]
