@@ -1,0 +1,35 @@
+{% extends "dashboard/base.html" %}
+
+{% load i18n %}
+
+{% block main %}
+{% if companies %}
+<h2>My Companies</h2>
+<div class="row row-deck row-cards">
+  <div class="row row-cards">
+    {% for company in companies %}
+
+    <div class="col-md-3">
+      <div class="card mb-3" style="height: calc(14.5rem + 10px)">
+        <div class="card-body p-3 text-center">
+          <span class="avatar avatar-xl mb-3 avatar-rounded"
+            style="background-image: url({{ company.logo.url }})"></span>
+          <h1>{{ company.name }}</h1>
+          <h5>{{ company.website }}</h5>
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+{% if not companies %}
+<div class="card">
+  <div class="card-body">
+    {{ msg }}
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}
