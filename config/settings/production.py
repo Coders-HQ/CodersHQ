@@ -1,5 +1,47 @@
 from .base import *  # noqa
 from .base import env
+from storages.backends.azure_storage import AzureStorage
+
+#Azure storage
+# AZURE_ACCOUNT_NAME = "codershq"
+# AZURE_ACCOUNT_KEY=
+# AZURE_CONTAINER=
+# AZURE_SSL
+# AZURE_UPLOAD_MAX_CONN
+# AZURE_CONNECTION_TIMEOUT_SECS
+# AZURE_BLOB_MAX_MEMORY_SIZE
+# AZURE_URL_EXPIRATION_SECS
+# AZURE_OVERWRITE_FILES
+# AZURE_LOCATION
+# AZURE_EMULATED_MODE
+
+
+
+AZURE_ACCOUNT_NAME = 'codershq' #storage account name
+AZURE_ACCOUNT_KEY = 'zUfEJFFT6aR3v5AhaabWTHv8kBPrtj09TZyKE1/vgQxqQHCtHWN9rcfRnyOmSjEURglPyfCbg8PI0ZwCk8x6+w=='
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+# AZURE_LOCATION = '<blob container name>'
+AZURE_CONTAINER = 'meida' # this containr should be created before running the code
+
+# STATIC_LOCATION = 'static'
+# STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+
+# STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+DEFAULT_FILE_STORAGE = 'AzureStorage'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # GENERAL
 # ------------------------------------------------------------------------------
