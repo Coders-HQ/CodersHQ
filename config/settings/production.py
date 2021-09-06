@@ -19,7 +19,7 @@ from .base import env
 AZURE_ACCOUNT_NAME = 'codershq' #storage account name
 AZURE_ACCOUNT_KEY = 'zUfEJFFT6aR3v5AhaabWTHv8kBPrtj09TZyKE1/vgQxqQHCtHWN9rcfRnyOmSjEURglPyfCbg8PI0ZwCk8x6+w=='
 AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
-# AZURE_LOCATION = '<blob container name>'
+AZURE_LOCATION = 'media'
 AZURE_CONTAINER = 'meida' # this containr should be created before running the code
 
 # STATIC_LOCATION = 'static'
