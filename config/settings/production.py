@@ -1,6 +1,5 @@
 from .base import *  # noqa
 from .base import env
-from storages.backends.azure_storage import AzureStorage
 
 #Azure storage
 # AZURE_ACCOUNT_NAME = "codershq"
@@ -27,7 +26,7 @@ AZURE_CONTAINER = 'meida' # this containr should be created before running the c
 # STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
 
 # STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-DEFAULT_FILE_STORAGE = 'AzureStorage'
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
 
 
