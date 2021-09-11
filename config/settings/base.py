@@ -63,7 +63,6 @@ DJANGO_APPS = [
     "django.forms",
 ]
 THIRD_PARTY_APPS = [
-    "storages",
     "crispy_forms",
     "allauth",
     "allauth.account",
