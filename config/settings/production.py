@@ -28,8 +28,8 @@ AZURE_CONTAINER = 'meida' # this containr should be created before running the c
 # STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 
-
-
+#override MEDIA_RL that was set in base.py
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/'
 
 
 
