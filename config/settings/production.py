@@ -1,40 +1,23 @@
 from .base import *  # noqa
 from .base import env
 
-#Azure storage
-# AZURE_ACCOUNT_NAME = "codershq"
-# AZURE_ACCOUNT_KEY=
-# AZURE_CONTAINER=
-# AZURE_SSL
-# AZURE_UPLOAD_MAX_CONN
-# AZURE_CONNECTION_TIMEOUT_SECS
-# AZURE_BLOB_MAX_MEMORY_SIZE
-# AZURE_URL_EXPIRATION_SECS
-# AZURE_OVERWRITE_FILES
-# AZURE_LOCATION
-# AZURE_EMULATED_MODE
 
-
-
-AZURE_ACCOUNT_NAME = 'codershq' #storage account name
-AZURE_ACCOUNT_KEY = 'A4FkUvc+AC8ggO3a0Qj2UnGq1qLOYGwx2IGKpd3TO26a88+JwuVi4dSV++iiwg6pICdO5yPpt08lyou5iUjYmA=='
+# Azure Storage for Media Files
+# ------------------------------------------------------------------------------
+#https://django-storages.readthedocs.io/en/latest/backends/azure.html
+#Make sure that the Azure Data Storage Account has the hierarchical option set to Enable when creating the account. It cannot be changed after creation!
+AZURE_ACCOUNT_NAME=env("AZURE_ACCOUNT_NAME")
+AZURE_ACCOUNT_KEY=env("AZURE_ACCOUNT_KEY")
 AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
-# AZURE_LOCATION = 'media'
-AZURE_CONTAINER = 'media' # this containr should be created before running the code
+AZURE_CONTAINER = 'media' # this containr must be created in Azure Storage Account before running the code. Subdirectories can be created during runtime. 
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/'     #override MEDIA_RL that was set in base.py
 
+
+# Static files are currently served using WhiteNoise and are stored on the VM. If we decide to move them to a separate Azure storage later on:
 # STATIC_LOCATION = 'static'
 # STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-
 # STATICFILES_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-
-#override MEDIA_RL that was set in base.py
-MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/'
-
-
-
-
-
 
 
 # GENERAL
