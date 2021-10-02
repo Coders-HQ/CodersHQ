@@ -1,19 +1,82 @@
 {% extends "dashboard/base.html" %}
 
-{% block title %}{{ "Challenges" }}{%endblock %}
-
-{% load static %}
+{% load i18n %}
 
 {% block main %}
 
+{% if submitted_challenges %}
+<h2>Submitted Challenges</h2>
+<div class="row row-deck row-cards">
+  <div class="row row-cards">
+    {% for challenge in submitted_challenges %}
+    <div class="col-md-3">
+      <div class="card mb-3" style="height: calc(15rem + 10px)">
+        <div class="card-body p-3 text-center">
+          <span class="avatar avatar-xl mb-3 avatar-rounded"
+            style="background-image: url({{ challenge.logo.url }})"></span>
+          <a href="{% url 'challenge:detail' challenge.id %}"><h1>{{ challenge.name }}</h1></a>
+          <h5 class="myspan">{{ challenge.description }}</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
 
-<h2>Challenges</h2>
-<ul>
-  {% for challenge in object_list %}
-  <li>{{ challenge.name }}</li>
-  <li>{{ challenge.description }}</li>
-  {% endfor %}
-</ul>
 
+{% if challenges %}
+<h2>Enrolled Challenges</h2>
+<div class="row row-deck row-cards">
+  <div class="row row-cards">
+    {% for challenge in challenges %}
+    <div class="col-md-3">
+      <div class="card mb-3" style="height: calc(15rem + 10px)">
+        <div class="card-body p-3 text-center">
+          <span class="avatar avatar-xl mb-3 avatar-rounded"
+            style="background-image: url({{ challenge.logo.url }})"></span>
+          <a href="{% url 'challenge:detail' challenge.id %}"><h1>{{ challenge.name }}</h1></a>
+          <h5 class="myspan">{{ challenge.description }}</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% if available_challenges %}
+<h2>Available Challenges - Get enrolled now!</h2>
+<div class="row row-deck row-cards">
+  <div class="row row-cards">
+    {% for challenge in available_challenges %}
+    <div class="col-md-3">
+      <div class="card mb-3" style="height: calc(15rem + 10px)">
+        <div class="card-body p-3 text-center">
+          <span class="avatar avatar-xl mb-3 avatar-rounded"
+            style="background-image: url({{ challenge.logo.url }})"></span>
+          <a href="{% url 'challenge:detail' challenge.id %}"><h1>{{ challenge.name }}</h1></a>
+          <h5 class="myspan">{{ challenge.description }}</h5>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+{% if not available_challenges %}
+<div class="card">
+  <div class="card-body">
+    {{ msg }}
+  </div>
+</div>
+{% endif %}
+<script>
+  if ($(".myspan").html().length > 90) {
+    short_text = $(".myspan").html().substr(0, 90);
+    $(".myspan").html(short_text + "...");
+  }
+</script>
 
 {% endblock %}
