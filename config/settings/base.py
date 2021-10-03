@@ -64,10 +64,10 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
+    "django_celery_beat",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "django_celery_beat",
     "allauth.socialaccount.providers.github"
 ]
 
@@ -112,9 +112,7 @@ PASSWORD_HASHERS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -277,11 +275,12 @@ CELERY_TASK_TIME_LIMIT = 5 * 60
 CELERY_TASK_SOFT_TIME_LIMIT = 60
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#beat-scheduler
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+
 # django-allauth
 # ------------------------------------------------------------------------------
 ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_AUTHENTICATION_METHOD = "username"
+ACCOUNT_AUTHENTICATION_METHOD = "email"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_REQUIRED = True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
@@ -300,14 +299,13 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # ------------------------------------------------------------------------------
 # Provider specific settings
 
+#https://django-allauth.readthedocs.io/en/latest/configuration.html
 # bool to check if github exists
 GITHUB_CLIENT_ID = env.str("GITHUB_CLIENT_ID", "")
 if GITHUB_CLIENT_ID != "":
     SOCIALACCOUNT_PROVIDERS = {
         'github': {
-            # For each OAuth based provider, either add a ``SocialApp``
-            # (``socialaccount`` app) containing the required client
-            # credentials, or list them here:
+            "VERIFIED_EMAIL": True,
             'APP': {
                 'client_id': env("GITHUB_CLIENT_ID"),
                 'secret': env("GITHUB_CLIENT_SECRET"),
