@@ -278,4 +278,5 @@ codershq/media/
 !.envs/.local/
 
 #min css files 
+project.css
 *.min.css
