@@ -11,6 +11,7 @@ services:
       dockerfile: ./compose/local/django/Dockerfile
     image: codershq_local_django
     container_name: django
+    platform: linux/amd64
     depends_on:
       - postgres
       - mailhog
@@ -29,6 +30,7 @@ services:
       dockerfile: ./compose/production/postgres/Dockerfile
     image: codershq_production_postgres
     container_name: postgres
+    platform: linux/amd64
     volumes:
       - local_postgres_data:/var/lib/postgresql/data:Z
       - local_postgres_data_backups:/backups:z
@@ -38,6 +40,7 @@ services:
   docs:
     image: codershq_local_docs
     container_name: docs
+    platform: linux/amd64
     build:
       context: .
       dockerfile: ./compose/local/docs/Dockerfile
@@ -48,12 +51,13 @@ services:
       - ./config:/app/config:z
       - ./codershq:/app/codershq:z
     ports:
-      - "7000:7000"
+      - "7001:7000"
     command: /start-docs
 
   mailhog:
     image: mailhog/mailhog:v1.0.0
     container_name: mailhog
+    platform: linux/amd64
     ports:
       - "8025:8025"
 
@@ -65,6 +69,7 @@ services:
     <<: *django
     image: codershq_local_celeryworker
     container_name: celeryworker
+    platform: linux/amd64
     depends_on:
       - redis
       - postgres
@@ -76,6 +81,7 @@ services:
     <<: *django
     image: codershq_local_celerybeat
     container_name: celerybeat
+    platform: linux/amd64
     depends_on:
       - redis
       - postgres
@@ -87,6 +93,7 @@ services:
     <<: *django
     image: codershq_local_flower
     container_name: flower
+    platform: linux/amd64
     ports:
       - "5555:5555"
     command: /start-flower
@@ -97,6 +104,7 @@ services:
       dockerfile: ./compose/local/node/Dockerfile
     image: codershq_local_node
     container_name: node
+    platform: linux/amd64
     depends_on:
       - django
     volumes:
