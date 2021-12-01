@@ -10,9 +10,6 @@ urlpatterns = [
         "dashboard/", TemplateView.as_view(template_name="pages/dashboard.html"), name="about"
     ),
     path(
-        "landing/", TemplateView.as_view(template_name="pages/landing.html"), name="about"
-    ),
-    path(
         "profile/", TemplateView.as_view(template_name="pages/profile.html"), name="about"
     ),
     path(

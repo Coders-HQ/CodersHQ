@@ -1,35 +1,24 @@
-{% load static i18n compress%}
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load static compress%}
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-  <title>{% block title %}Coders Headquarters{% endblock title %}</title>
-  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" type="image/x-icon" />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" />
-
-  {% block css %}
+{% block css %}
   <link rel="stylesheet" href="{% static 'css/landing_page/videoBackground.css' %}" />
-  {% compress css %}
-  <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}" />
   <link rel="stylesheet" href="{% static 'css/landing_page/faqs.css' %}" />
   <link rel="stylesheet" href="{% static 'css/landing_page/typingEffect.css' %}" />
   <link rel="stylesheet" href="{% static 'css/landing_page/landing.css' %}" />
   <link rel="stylesheet" href="{% static 'css/landing_page/partners-box.css' %}" />
   <link rel="stylesheet" href="{% static 'css/landing_page/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto" />
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" type="image/x-icon" />
+{% endblock %}
 
-  {% endcompress %} {% endblock %}
-</head>
+
 {% block content %}
 
 <body id="page-top">
