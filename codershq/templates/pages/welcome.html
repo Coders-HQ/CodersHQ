@@ -87,10 +87,10 @@
           </div>
 
           <div class="navbar-btn d-none d-sm-inline-block">
-            <a href="login.html" class="ud-main-btn ud-login-btn">
+            <a href="{% url 'account_login' %}" class="ud-main-btn ud-login-btn">
               Sign In
             </a>
-            <a class="ud-main-btn ud-white-btn" href="javascript:void(0)">
+            <a class="ud-main-btn ud-white-btn" href="{% url 'account_signup' %}">
               Sign Up
             </a>
           </div>
@@ -115,7 +115,7 @@
           </p>
           <ul class="ud-hero-buttons">
             <li>
-              <a href="https://links.uideck.com/play-bootstrap-download" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
+              <a href="{% url 'account_signup' %}" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
                 Sign Up
               </a>
             </li>
