@@ -18,6 +18,7 @@
       logo.style.filter="invert(100%)";
     } else {
       logo.src = "https://ai.gov.ae/wp-content/uploads/2021/10/CHQ-Yellow.png";
+      logo.style.filter="invert(0%)";
     }
 
     // show or hide the back-top-top button
