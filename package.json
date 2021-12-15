@@ -16,6 +16,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.2",
+    "wow": "^0.0.6", 
     "gulp-uglify-es": "^1.0.4",
     "pixrem": "^5.0.0"
   },
