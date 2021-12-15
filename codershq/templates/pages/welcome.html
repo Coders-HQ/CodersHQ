@@ -2,209 +2,1294 @@
 {% load static compress%}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/landing_page/videoBackground.css' %}" />
-<link rel="stylesheet" href="{% static 'css/landing_page/faqs.css' %}" />
-<link rel="stylesheet" href="{% static 'css/landing_page/typingEffect.css' %}" />
-<link rel="stylesheet" href="{% static 'css/landing_page/landing.css' %}" />
-<link rel="stylesheet" href="{% static 'css/landing_page/partners-box.css' %}" />
-<link rel="stylesheet" href="{% static 'css/landing_page/style.css' %}" />
-<!-- <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" /> -->
-<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+<link rel="stylesheet" href="{% static 'css/lineicons.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ud-styles.css' %}" />
 <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" type="image/x-icon" />
-<style>
-  .gradient {
-        background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
-  }
-</style>
 {% endblock %}
 
 
 {% block content %}
-  <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top" style="font-family: Poppins, sans-serif">Coders
-        HQ</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right"
-        type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fa fa-align-justify"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#incentive"
-              style="font-family: Poppins, sans-serif">Incentive</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#partners" style="font-family: Poppins, sans-serif">Our
-              Partners</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#faq" style="font-family: Poppins, sans-serif">FAQs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_signup' %}" style="font-family: Poppins, sans-serif">Become a
-              Member</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_login' %}" style="font-family: Poppins, sans-serif"
-              id="login-btn">Login</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <header class="masthead text-center text-white d-flex" style="
-        background: linear-gradient(rgb(33, 37, 41) 79%, rgb(33, 37, 41) 100%);
-      ">
-    <div>
-      <div class="overlay" style="
-            z-index: 1;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -o-object-fit: cover;
-            object-fit: cover;
-            background: rgba(0, 0, 0, 0.8);
-          "></div>
-      <video playsinline autoplay loop muted style="
-            width: 100%;
-            height: 100%;
-            -o-object-fit: cover;
-            object-fit: cover;
-            background: #232a34;
-            position: absolute;
-          ">
-        <source src="{%  static 'videos/vid1.mp4' %}" type="video/mp4" />
-      </video>
-    </div>
-
-    <div class="container animated my-auto" style="z-index: 2">
-      <div class="row" style="margin-top: 10%; z-index: 2">
-        <div class="col-lg-10 mx-auto">
-          <img src="{%  static 'images/svgs/white_notext.svg' %}" style="width: 40%; margin-bottom: 5%; display: inline;" />
-          <h1 style="font-family: Poppins, sans-serif; font-size: 32px">
-            <div class="caption v-middle text-center">
-              <h1 class="cd-headline clip">
-                <span class="cd-words-wrapper">
-                  <b class="is-visible">Building</b>
-                  <b>Developing</b>
-                  <b>Planning</b>
-                  <b>Creating</b>
-                </span>
-              </h1>
-            </div>
-            <p class="text-faded" style="font-family: Poppins, sans-serif; font-weight: 300">
-              &nbsp;the future using code
-            </p>
-          </h1>
-          <hr  style="margin: auto;" class="py-3"/>
-        </div>
-      </div>
-      <div class="col-lg-8 mx-auto" style="margin-bottom: 5%">
-        <p class="text-faded mb-5" style="font-family: Poppins, sans-serif; font-weight: 300">
-          As technology enhances, people's lives enhance too. We aim to
-          increase the number of people passionate about various technologies
-          by connecting them in a single network.&nbsp;
-        </p>
-        <a class="btn btn-dark btn-xl js-scroll-trigger" role="button" href="#incentive"
-          style="font-family: Poppins, sans-serif; border-radius: 10px">Learn More&nbsp;<i
-            class="fa fa-long-arrow-right"></i></a>
-      </div>
-    </div>
-  </header>
-
-    <!-- Details 1 -->
-    <div id="details" class="basic-2">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-5">
-                  <div class="text-container">
-                      <h2>Rank Coders in the UAE</h2>
-                      <p>Why is the ranking system important:</p>
-                      <p>Ranking coders is important to map out your coding skills. This is because, the rank conveys multiple points of information, such as a coder improvement points, these improvement points acts as feedback loop to the coder, which continuously acts as a motivation to enhance a coder individual ability.</p>
-                      <p>Benefits of being enlisted:</p>
-                      <ol>
-                        <li>Know your level in coding</li>
-                        <li>Use your score as strength point when getting hired to a coding-related occupation.</li>
-                      </ol>
-                  </div> <!-- end of text-container -->
-              </div> <!-- end of col -->
-              <div class="col-lg-7">
-                  <div class="image-container">
-                      <img class="img-fluid " src="https://ai.gov.ae/wp-content/uploads/2021/09/CHQ-Goal1.png" alt="alternative">
-                  </div> <!-- end of image-container -->
-              </div> <!-- end of col -->
-          </div> <!-- end of row -->
-      </div> <!-- end of container -->
-  </div> <!-- end of basic-2 -->
-  <!-- end of details 1 -->
-
-
-      <!-- Details 2 -->
-      <div class="basic-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-7">
-                    <div class="image-container ">
-                        <img class="img-fluid" src="https://ai.gov.ae/wp-content/uploads/2021/10/CHQ-Goal-3_1.png" alt="alternative">
-                    </div> <!-- end of image-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-5">
-                    <div class="text-container">
-                        <h2>Upskill Coders in the UAE</h2>
-                        <p>Why is the continuously upskilling important:</p>
-                        <p>Being continuously upskilled in various technical areas is extremely important, especially that technologies now days, have a short lifespan. After attaining your score (via ranking system), fill up your gaps and fill up your curiosity with our various upskilling courses provided by world-leading companies. </p>
-                        <p>Benefits:</p>
-                        <ol>
-                          <li>Being continuously aware of new coding tools</li>
-                          <li>Exposure to the world best practices in your coding field</li>
-                          <li>Meet interesting individuals in your industry</li>
-                        </ol>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-3 -->
-    <!-- end of details 2 -->
-
-
- 
-<!-- Details 3 -->
-<div id="details" class="basic-2">
+ <!-- ====== Header Start ====== -->
+ <header class="ud-header">
   <div class="container">
     <div class="row">
-      <div class="col-lg-5">
-        <div class="text-container">
-          <h2>Maximize Networking between Coders</h2>
-          <p>Meetups for different coding domains
-            Coders HQ will be hosting multiple meetup events across the year to cater to all coding domains. Meetups
-            will include a :</p>
-          <ul>
+      <div class="col-lg-12">
+        <nav class="navbar navbar-expand-lg">
+          <a class="navbar-brand" href="index.html">
+            <img src="https://ai.gov.ae/wp-content/uploads/2021/10/CHQ-Yellow.png" alt="Logo" />
+          </a>
+          <button class="navbar-toggler">
+            <span class="toggler-icon"> </span>
+            <span class="toggler-icon"> </span>
+            <span class="toggler-icon"> </span>
+          </button>
 
-            <li>Monthly meetup for Data science community</li>
-            <li>Monthly meetup for Web development community</li>
-            <li>Monthly meetup for Linux community</li>
-            <li>Monthly meetup for Open-source community</li>
-            <li>Monthly meetup for Ethical hacking community</li>
-            <li>Monthly meetup for App development community</li>
-            <li>Monthly meetup for DevOps community</li>
-            <li>Monthly meetup for EK Koders</li>
+          <div class="navbar-collapse">
+            <ul id="nav" class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="ud-menu-scroll" href="#home">Home</a>
+              </li>
 
+              <li class="nav-item">
+                <a class="ud-menu-scroll" href="#initiatives">Initiatives</a>
+              </li>
+              <li class="nav-item">
+                <a class="ud-menu-scroll" href="#team">Story</a>
+              </li>
+              <li class="nav-item">
+                <a class="ud-menu-scroll" href="#partners">Partners</a>
+              </li>
+              <li class="nav-item">
+                <a class="ud-menu-scroll" href="#info">Info</a>
+              </li>
+              <!-- additional pages if needed  -->
+              <!-- <li class="nav-item nav-item-has-children">
+                <a href="javascript:void(0)"> Pages </a>
+                <ul class="ud-submenu">
+                  <li class="ud-submenu-item">
+                    <a href="about.html" class="ud-submenu-link">
+                      About Page
+                    </a>
+                  </li>
+                  <li class="ud-submenu-item">
+                    <a href="pricing.html" class="ud-submenu-link">
+                      Pricing Page
+                    </a>
+                  </li>
+                  <li class="ud-submenu-item">
+                    <a href="contact.html" class="ud-submenu-link">
+                      Contact Page
+                    </a>
+                  </li>
+                  <li class="ud-submenu-item">
+                    <a href="blog.html" class="ud-submenu-link">
+                      Blog Grid Page
+                    </a>
+                  </li>
+                  <li class="ud-submenu-item">
+                    <a href="blog-details.html" class="ud-submenu-link">
+                      Blog Details Page
+                    </a>
+                  </li>
+                  <li class="ud-submenu-item">
+                    <a href="login.html" class="ud-submenu-link">
+                      Sign In Page
+                    </a>
+                  </li>
+                  <li class="ud-submenu-item">
+                    <a href="404.html" class="ud-submenu-link">404 Page</a>
+                  </li>
+                </ul>
+              </li> -->
+            </ul>
+          </div>
+
+          <div class="navbar-btn d-none d-sm-inline-block">
+            <a href="login.html" class="ud-main-btn ud-login-btn">
+              Sign In
+            </a>
+            <a class="ud-main-btn ud-white-btn" href="javascript:void(0)">
+              Sign Up
+            </a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- ====== Header End ====== -->
+
+<!-- ====== Hero Start ====== -->
+<section class="ud-hero" id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-hero-content wow fadeInUp" data-wow-delay=".2s">
+          <h1 class="ud-hero-title">
+            Empowering the next wave of (coders) 
+          </h1>
+          <p class="ud-hero-desc" style="color: #8193b2;">
+            Coders HQ is a community for all coders in the UAE to come and <font style="color: #fff;"> empower there skills and mindset with the power of code.</font>
+          </p>
+          <ul class="ud-hero-buttons">
+            <li>
+              <a href="https://links.uideck.com/play-bootstrap-download" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
+                Sign Up
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/uideck/play-bootstrap" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-link-btn">
+                Learn More <i class="lni lni-arrow-right"></i>
+              </a>
+            </li>
           </ul>
-        </div> <!-- end of text-container -->
-      </div> <!-- end of col -->
-      <div class="col-lg-7">
-        <div class="image-container">
-          <img class="img-fluid " src="https://ai.gov.ae/wp-content/uploads/2021/09/CHQ-Goal1.png" alt="alternative">
-        </div> <!-- end of image-container -->
-      </div> <!-- end of col -->
-    </div> <!-- end of row -->
-  </div> <!-- end of container -->
-</div> <!-- end of basic-2 -->
-<!-- end of details 3 -->
+        </div>
+        <div
+          class="ud-hero-brands-wrapper wow fadeInUp"
+          data-wow-delay=".3s"
+        >
+          <a href="https://github.com/Coders-HQ/CodersHQ" class="lni lni-github-original mx-4" style="transform: scale(3,3); "></a>
+          <a href="https://discord.gg/7udUcqNEGs" class="lni lni-discord" style="transform: scale(3,3); "></a>
+        </div>
+        <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
+          <img src="https://github.githubassets.com/images/modules/site/home/repo-browser.png" alt="hero-image" />
+          <img
+            src="{% static 'images/hero/dotted-shape.svg' %}"
+            alt="shape"
+            class="shape shape-1"
+          />
+          <img
+            src="{% static 'images/hero/dotted-shape.svg' %}"
+            alt="shape"
+            class="shape shape-2"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== Hero End ====== -->
+
+<!-- ====== Initiatives Start ====== -->
+<section id="initiatives" class="ud-features">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title">
+          <span>Features</span>
+          <h1><div class="gradient">Coders (HQ)</div> Initiatives</h1>
+          <p>
+            From Hackathons to live events, Coders HQ has multiple initiatives that you can be part of
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-sm-6">
+        <div class="ud-single-feature wow fadeInUp" data-wow-delay=".1s">
+          <div class="ud-feature-icon">
+            <i class="lni lni-notepad"></i>
+          </div>
+          <div class="ud-feature-content">
+            <h3 class="ud-feature-title">Hackathon</h3>
+            <p class="ud-feature-desc">
+              Hackathons are similar to challenges, the main difference is the timeframe compared to a challenge. A hackathon timeframe is between 24-72 hours, depending on the task that is wanted to be solved.
+            </p>
+            <a href="javascript:void(0)" class="ud-feature-link">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-6">
+        <div class="ud-single-feature wow fadeInUp" data-wow-delay=".15s">
+          <div class="ud-feature-icon">
+            <i class="lni lni-move"></i>
+          </div>
+          <div class="ud-feature-content">
+            <h3 class="ud-feature-title">Learn</h3>
+            <p class="ud-feature-desc">
+              Individuals will be able to test their selves, through the coders HQ assessment. Coders HQ partnered with Codechef to deliver the tests, in a seamless manner.
+            </p>
+            <a href="javascript:void(0)" class="ud-feature-link">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-6">
+        <div class="ud-single-feature wow fadeInUp" data-wow-delay=".2s">
+          <div class="ud-feature-icon">
+            <i class="lni lni-layers"></i>
+          </div>
+          <div class="ud-feature-content">
+            <h3 class="ud-feature-title">Challenges</h3>
+            <p class="ud-feature-desc">
+              HQ Challenges, is where coders showcase their ability to solve business-related challenges. Challenges are typically conducted in a timeline of 2-3 months depending on the challenge nature.
+            </p>
+            <a href="javascript:void(0)" class="ud-feature-link">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-6">
+        <div class="ud-single-feature wow fadeInUp" data-wow-delay=".25s">
+          <div class="ud-feature-icon">
+            <i class="lni lni-user"></i>
+          </div>
+          <div class="ud-feature-content">
+            <h3 class="ud-feature-title">Internship</h3>
+            <p class="ud-feature-desc">
+              This internship program is designed for fresh university undergraduates and is offered by companies and corporations that are considered pioneers in their fields. Members in Coders (HQ) will be able to participate in an internship.
+            </p>
+            <a href="javascript:void(0)" class="ud-feature-link">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== Initiatives End ====== -->
+
+<!-- ====== Team Start ====== -->
+<section id="team" class="ud-about">
+  <div class="container">
+    <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
+      <div class="ud-about-content-wrapper">
+        <div class="ud-about-content">
+          <span class="tag">About Us</span>
+          <h1>A Small Team With A <font class="gradient2" style="font-weight: 800;">Dream </font>To Code </h1>
+          <p>
+            Coders HQ is built with the love and passion of a really small team of coders. The development started in
+            November of 2020 and changed a lot since then. We started with 10 volunteers
+            which reduced to 5 and these 5 became the founding fathers of the project. We went through different cycles
+            and recreated the code base more than once until we achieved something resembling a stable source code.
+          </p>
+
+          <p>
+            What kept us going is the soul of Coders HQ. This project aims to literally change the direction of
+            programmers in the UAE by giving them
+            the tools and the ability to showcase themselves without the need of anything but pure raw talent and
+            dedication.
+          </p>
+          <a href="javascript:void(0)" class="ud-main-btn">Learn More</a>
+        </div>
+      </div>
+      <div class="ud-about-image">
+        <img src="{% static 'images/about/about-image.svg' %}" alt="about-image" />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== Team End ====== -->
+
+<!-- ====== Partners Start ====== -->
+<section id="partners" class="ud-pricing">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title mx-auto text-center">
+          <span>Partners</span>
+          <h2>Our Partners</h2>
+          <p>
+            We collaborate with an amazing team of partners locally and from across the globe
+          </p>
+        </div>
+      </div>
+    </div>
 
 
 
+    <div class="logo-wall">
+      <div><img src="{% static 'images/logo/partners/Locally/ALL-LOGOS_21.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Locally/ALL-LOGOS_22.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Locally/ALL-LOGOS_35.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Locally/ALL-LOGOS_51.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Locally/ALL-LOGOS_56.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Locally/ALL-LOGOS_60.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_05.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_07.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_12.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_19.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_20.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_33.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_34.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_40.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_41.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_42.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_43.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_45.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_54.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Globally/ALL-LOGOS_72.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Locally/ALL-LOGOS_58.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_77.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_78.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_82.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_90.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_93.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_94.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_97.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_100.png' %}" alt=""></div>
+      <div><img src="{% static 'images/logo/partners/Universities/ALL-LOGOS_102.png' %}" alt=""></div>
+      </div>
+    </div>
 
+    
 
+  </div>
+</section>
+<!-- ====== Partners End ====== -->
 
-  {% endblock content %}
+<!-- ====== Info Start ====== -->
+<section id="info" class="ud-faq">
+  <div class="shape">
+    <img src="{% static 'images/faq/shape.svg' %}" alt="shape" />
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title text-center mx-auto">
+          <span>Info</span>
+          <h2 style="color: white;">We Are Very <font class="gradient3">Active!</font></h2>
+          <p style="color: white;">
+            Coders HQ members can participate in a lot of activities and events, free of charge!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="ud-single-faq wow fadeInUp" data-wow-delay=".1s">
+          <div class="accordion">
+            <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              <span class="icon flex-shrink-0">
+                <i class="lni lni-chevron-down"></i>
+              </span>
+              <span> Learn</span>
+            </button>
+            <div id="collapseOne" class="accordion-collapse collapse">
+              <div class="ud-faq-body">
+                Coders will be exposed to courses in all coding-related fields such as:
+                <br>
+                <br>
+                <ul class="list-group list-group-flush">
+                  <li>1. Web Development</li>
+                  <li>2. App Development</li>
+                  <li>3. AI</li>
+                  <li>4. Cloud Computing</li>
+                  <li>5. DevOps</li>
+                  <li>6. Embedded System </li>
+                </ul>
+                <br>
+                All levels are carted :
+                <br>
+                <br>
+                ➞ Begginer
+                <br>
+                ➞ Intermediate
+                <br>
+                ➞ Expert
+                <br>
+                <br>
+                Individuals will be able to test their selves, through the coders HQ assessment .. Coders HQ partnered
+                with Codechef to deliver the tests, in a seamless manner.. After attempting the test individuals will be
+                and based on their result to get a rank .. Depending on your rank you will be able to unlock many perks
+                that coders HQ offer.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ud-single-faq wow fadeInUp" data-wow-delay=".15s">
+          <div class="accordion">
+            <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+              <span class="icon flex-shrink-0">
+                <i class="lni lni-chevron-down"></i>
+              </span>
+              <span>Assessment</span>
+            </button>
+            <div id="collapseTwo" class="accordion-collapse collapse">
+              <div class="ud-faq-body">
+                Individuals will be able to test their selves, through the coders HQ assessment .. Coders HQ partnered
+                with Codechef to deliver the tests, in a seamless manner.. After attempting the test individuals will be
+                and based on their result to get a rank .. Depending on your rank you will be able to unlock many perks
+                that coders HQ offer.
+                <br>
+                <br>
+                There are 6 main ranks in coders HQ:
+                <br>
+                <br>
+                <ol>
+                  <li>1. Novice</li>
+                  <li>2. Dexterous</li>
+                  <li>3. Maestro</li>
+                  <li>4. Master</li>
+                  <li>5. Grandmaster</li>
+                  <li>6. Top 50</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
+          <div class="accordion">
+            <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+              <span class="icon flex-shrink-0">
+                <i class="lni lni-chevron-down"></i>
+              </span>
+              <span>Meetups</span>
+            </button>
+            <div id="collapseThree" class="accordion-collapse collapse">
+              <div class="ud-faq-body">
+                A coder is a part of a bigger cause .. coders play a huge role in formulating how the global economy
+                will be shaped. The power of coders can be unleashed, when a community is created. When a community act
+                as a talent incubator to the talent.
+                <br>
+                <br>
+                <ol>
+                  <li><i class="lni lni-minus"></i> Data science community</li>
+                  <li><i class="lni lni-minus"></i> Web development community</li>
+                  <li><i class="lni lni-minus"></i> Linux community</li>
+                  <li><i class="lni lni-minus"></i> Open-source community</li>
+                  <li><i class="lni lni-minus"></i> Ethical hacking community</li>
+                  <li><i class="lni lni-minus"></i> App development community</li>
+                  <li><i class="lni lni-minus"></i> DevOps community</li>
+                  <li><i class="lni lni-minus"></i> EK Koders (Emirates airline community)</li>
+                </ol>
+                <br>
+                <br>
+                Meetups will include activities such as:
+                <br>
+                <br>
+                <ol>
+                  <li>1. Round table discussions around various topics.</li>
+                  <li>2. Debates related to the coding field</li>
+                  <li>3. Programming sessions with other peers</li>
+                  <li>4. Working on different projects collaboratively</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
+          <div class="accordion">
+            <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSeven">
+              <span class="icon flex-shrink-0">
+                <i class="lni lni-chevron-down"></i>
+              </span>
+              <span>021</span>
+            </button>
+            <div id="collapseSeven" class="accordion-collapse collapse">
+              <div class="ud-faq-body">
+                Lastly, The final project of coder (HQ) – includes combining most of the initiatives together in 1
+                initiative.
+                <br>
+                <br>
+                This initiative is called: <b>021</b>
+                <br>
+                <br>
+                <b>021</b> is a program that takes the whole process form ideation to commercialization. This happens
+                through
+                incubating 6-8 individuals, who are recent graduates, an take them through the whole process from
+                ideating the idea à developing the idea into a project à commercializing the product itself. This
+                program will have an immense impact building the mentality of individuals, by taking them through the
+                whole business cycle and support them with resources to enable them to reach to the program goal.
+                <br>
+                <br>
+                The program will help individuals, through enabling them to grow their hard skills and their soft skills
+                together.
+                <br>
+                <br>
+                This program is limited for Emirati individuals – and requires an investment from a corporation.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="ud-single-faq wow fadeInUp" data-wow-delay=".1s">
+          <div class="accordion">
+            <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+              <span class="icon flex-shrink-0">
+                <i class="lni lni-chevron-down"></i>
+              </span>
+              <span>Challenges</span>
+            </button>
+            <div id="collapseFour" class="accordion-collapse collapse">
+              <div class="ud-faq-body">
+                HQ Challenges, is where coders showcase their ability to solve business-related challenges .. Challenges
+                are typically conducted in a timeline of 2-3 months depending on the challenge nature.
+                <br>
+                <br>
+                These challenges play a big role in demonstrating an individual ability to solve real life challenges.
+                <br>
+                <br>
+                All challenges come with prizes, depending on the challenge itself.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ud-single-faq wow fadeInUp" data-wow-delay=".15s">
+          <div class="accordion">
+            <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+              <span class="icon flex-shrink-0">
+                <i class="lni lni-chevron-down"></i>
+              </span>
+              <span>Hackathon</span>
+            </button>
+            <div id="collapseFive" class="accordion-collapse collapse">
+              <div class="ud-faq-body">
+                Hackathons are similar to challenges, the main difference is the timeframe compared to a challenge. A
+                hackathon timeframe is between 24-72 hours, depending on the task that is wanted to be solved. The main
+                aim of a hackathon is to solve a problem that a corporation faces.
+                <br>
+                <br>
+                <ol>
+                  <li>Participate in a hackathon</li>
+                  <li>Win prizes</li>
+                  <li>Meet amazing individuals in your field</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
+          <div class="accordion">
+            <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+              <span class="icon flex-shrink-0">
+                <i class="lni lni-chevron-down"></i>
+              </span>
+              <span>Conferences</span>
+            </button>
+            <div id="collapseSix" class="accordion-collapse collapse">
+              <div class="ud-faq-body">
+                PyCon MEA is coming to the UAE .. Stay looped to receive excting events that coders HQ will be
+                conducting PyCon MEA 2022.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ud-single-faq wow fadeInUp" data-wow-delay=".2s">
+          <div class="accordion">
+            <button class="ud-faq-btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseEight">
+              <span class="icon flex-shrink-0">
+                <i class="lni lni-chevron-down"></i>
+              </span>
+              <span>Internship</span>
+            </button>
+            <div id="collapseEight" class="accordion-collapse collapse">
+              <div class="ud-faq-body">
+                Emerging talents to be the talent the disrupt industries. In the coding field, coding talent needs to be
+                nurtured and fostered from the beginning.
+                <br>
+                <br>
+                This is why coders HQ launches : (HQ) internships.
+                <br>
+                <br>
+
+                This internship program is designed for fresh university undergraduates and is offered by companies and
+                corporations that are considered pioneers in their fields. Members in Coders (HQ) will be able to
+                participate in an internship, via registering and applying through the coders HQ platform.
+                <br>
+                <br>
+
+                Entities will have access to some of the best-skilled students in the technical field, selecting interns
+                based on their skills through a wide variety of options. Corporations on the other hand will be able to
+                choose the talents they demand, additionally to that distribute what they are specifically looking for
+                in talents.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== Info End ====== -->
+
+<!-- ====== Testimonials Start ====== -->
+<section id="testimonials" class="ud-testimonials">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title mx-auto text-center">
+          <span>Testimonials</span>
+          <h2>What our Leadership Say</h2>
+          <p>
+            Coders HQ is built with the guidance of our leadership 
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="ud-single-testimonial wow fadeInUp"
+          data-wow-delay=".1s"
+        >
+          <div class="ud-testimonial-content">
+            <p>
+              "We want the UAE to become the world's most prepared country for Artificial Intelligence.
+            </p>
+          </div>
+          <div class="ud-testimonial-info">
+            <div class="ud-testimonial-image">
+              <img
+                src="https://www.mbru.ac.ae/wp-content/uploads/2019/03/HHSheikhMohammedUAEPrimeMinisterPix-370x370.jpg"
+                alt="author"
+              />
+            </div>
+            <div class="ud-testimonial-meta">
+              <h4>His Highness Sheikh Mohammed bin Rashid Al Maktoum</h4>
+              <p>Vice President and Prime Minister of the UAE and Ruler of Dubai</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="ud-single-testimonial wow fadeInUp"
+          data-wow-delay=".15s"
+        >
+          <div class="ud-testimonial-content">
+            <p>
+              "A.I will change the world
+            </p>
+          </div>
+          <div class="ud-testimonial-info">
+            <div class="ud-testimonial-image">
+              <img
+                src="https://ai.gov.ae/wp-content/uploads/2021/08/HIS-EXCELLENCY-OMAR-BIN-SULTAN-AL-OLAMA.png"
+                alt="author"
+              />
+            </div>
+            <div class="ud-testimonial-meta">
+              <h4>H.E Omar Al Olama</h4>
+              <p>Minister of State for Artificial Intelligence, Digital Economy and Remote Work Applications</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div
+          class="ud-single-testimonial wow fadeInUp"
+          data-wow-delay=".2s"
+        >
+          <div class="ud-testimonial-ratings">
+            <i class="lni lni-star-filled"></i>
+            <i class="lni lni-star-filled"></i>
+            <i class="lni lni-star-filled"></i>
+            <i class="lni lni-star-filled"></i>
+            <i class="lni lni-star-filled"></i>
+          </div>
+          <div class="ud-testimonial-content">
+            <p>
+              “Our members are so impressed. It's intuitive. It's clean.
+              It's distraction free. If you're building a community.
+            </p>
+          </div>
+          <div class="ud-testimonial-info">
+            <div class="ud-testimonial-image">
+              <img
+                src="{% static 'images/testimonials/author-03.png' %}"
+                alt="author"
+              />
+            </div>
+            <div class="ud-testimonial-meta">
+              <h4>William Smith</h4>
+              <p>Founder @GrayGrids</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- can have used by row if needed  -->
+    <!-- <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-brands wow fadeInUp" data-wow-delay=".2s">
+          <div class="ud-title">
+            <h6>Trusted and Used by</h6>
+          </div>
+          <div class="ud-brands-logo">
+            <div class="ud-single-logo">
+              <img src="{% static 'images/brands/ayroui.svg' %}" alt="ayroui" />
+            </div>
+            <div class="ud-single-logo">
+              <img src="{% static 'images/brands/uideck.svg' %}" alt="uideck" />
+            </div>
+            <div class="ud-single-logo">
+              <img
+                src="{% static 'images/brands/graygrids.svg' %}"
+                alt="graygrids"
+              />
+            </div>
+            <div class="ud-single-logo">
+              <img
+                src="{% static 'images/brands/lineicons.svg' %}"
+                alt="lineicons"
+              />
+            </div>
+            <div class="ud-single-logo">
+              <img
+                src="{% static 'images/brands/ecommerce-html.svg' %}"
+                alt="ecommerce-html"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</section>
+<!-- ====== Testimonials End ====== -->
+
+<!-- ====== Team Start ====== -->
+<section id="team" class="ud-team">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title mx-auto text-center">
+          <span>Our Team</span>
+          <h2>Meet The Team</h2>
+          <p>
+            There are many variations of passages of Lorem Ipsum available
+            but the majority have suffered alteration in some form.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xl-3 col-lg-3 col-sm-6">
+        <div class="ud-single-team wow fadeInUp" data-wow-delay=".1s">
+          <div class="ud-team-image-wrapper">
+            <div class="ud-team-image">
+              <img src="{% static 'images/team/team-01.png' %}" alt="team" />
+            </div>
+
+            <img
+              src="{% static 'images/team/dotted-shape.svg' %}"
+              alt="shape"
+              class="shape shape-1"
+            />
+            <img
+              src="{% static 'images/team/shape-2.svg' %}"
+              alt="shape"
+              class="shape shape-2"
+            />
+          </div>
+          <div class="ud-team-info">
+            <h5>Adveen Desuza</h5>
+            <h6>UI Designer</h6>
+          </div>
+          <ul class="ud-team-socials">
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-facebook-filled"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-twitter-filled"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-instagram-filled"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-6">
+        <div class="ud-single-team wow fadeInUp" data-wow-delay=".15s">
+          <div class="ud-team-image-wrapper">
+            <div class="ud-team-image">
+              <img src="{% static 'images/team/team-02.png' %}" alt="team" />
+            </div>
+
+            <img
+              src="{% static 'images/team/dotted-shape.svg' %}"
+              alt="shape"
+              class="shape shape-1"
+            />
+            <img
+              src="{% static 'images/team/shape-2.svg' %}"
+              alt="shape"
+              class="shape shape-2"
+            />
+          </div>
+          <div class="ud-team-info">
+            <h5>Jezmin uniya</h5>
+            <h6>Product Designer</h6>
+          </div>
+          <ul class="ud-team-socials">
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-facebook-filled"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-twitter-filled"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-instagram-filled"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-6">
+        <div class="ud-single-team wow fadeInUp" data-wow-delay=".2s">
+          <div class="ud-team-image-wrapper">
+            <div class="ud-team-image">
+              <img src="{% static 'images/team/team-03.png' %}" alt="team" />
+            </div>
+
+            <img
+              src="{% static 'images/team/dotted-shape.svg' %}"
+              alt="shape"
+              class="shape shape-1"
+            />
+            <img
+              src="{% static 'images/team/shape-2.svg' %}"
+              alt="shape"
+              class="shape shape-2"
+            />
+          </div>
+          <div class="ud-team-info">
+            <h5>Andrieo Gloree</h5>
+            <h6>App Developer</h6>
+          </div>
+          <ul class="ud-team-socials">
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-facebook-filled"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-twitter-filled"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-instagram-filled"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-sm-6">
+        <div class="ud-single-team wow fadeInUp" data-wow-delay=".25s">
+          <div class="ud-team-image-wrapper">
+            <div class="ud-team-image">
+              <img src="{% static 'images/team/team-04.png' %}" alt="team" />
+            </div>
+
+            <img
+              src="{% static 'images/team/dotted-shape.svg' %}"
+              alt="shape"
+              class="shape shape-1"
+            />
+            <img
+              src="{% static 'images/team/shape-2.svg' %}"
+              alt="shape"
+              class="shape shape-2"
+            />
+          </div>
+          <div class="ud-team-info">
+            <h5>Jackie Sanders</h5>
+            <h6>Content Writer</h6>
+          </div>
+          <ul class="ud-team-socials">
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-facebook-filled"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-twitter-filled"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://twitter.com/MusharofChy">
+                <i class="lni lni-instagram-filled"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== Team End ====== -->
+
+<!-- ====== Contact Start ====== -->
+<section id="contact" class="ud-contact">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-xl-8 col-lg-7">
+        <div class="ud-contact-content-wrapper">
+          <div class="ud-contact-title">
+            <span>CONTACT US</span>
+            <h2>
+              Let’s talk about <br />
+              Love to hear from you!
+            </h2>
+          </div>
+          <div class="ud-contact-info-wrapper">
+            <div class="ud-single-info">
+              <div class="ud-info-icon">
+                <i class="lni lni-map-marker"></i>
+              </div>
+              <div class="ud-info-meta">
+                <h5>Our Location</h5>
+                <p>Coders HQ, Ground Floor, Emirates Towers, Sheikh Zayed Road, Dubai</p>
+              </div>
+            </div>
+            <div class="ud-single-info">
+              <div class="ud-info-icon">
+                <i class="lni lni-envelope"></i>
+              </div>
+              <div class="ud-info-meta">
+                <h5>How Can We Help?</h5>
+                <p>info@codershq.ae</p>
+                <p>contact@codershq.ae</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- unlock this when email is set -->
+      <!-- <div class="col-xl-4 col-lg-5">
+        <div
+          class="ud-contact-form-wrapper wow fadeInUp"
+          data-wow-delay=".2s"
+        >
+          <h3 class="ud-contact-form-title">Send us a Message</h3>
+          <form class="ud-contact-form">
+            <div class="ud-form-group">
+              <label for="fullName">Full Name*</label>
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Adam Gelius"
+              />
+            </div>
+            <div class="ud-form-group">
+              <label for="email">Email*</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="example@yourmail.com"
+              />
+            </div>
+            <div class="ud-form-group">
+              <label for="phone">Phone*</label>
+              <input
+                type="text"
+                name="phone"
+                placeholder="+885 1254 5211 552"
+              />
+            </div>
+            <div class="ud-form-group">
+              <label for="message">Message*</label>
+              <textarea
+                name="message"
+                rows="1"
+                placeholder="type your message here"
+              ></textarea>
+            </div>
+            <div class="ud-form-group mb-0">
+              <button type="submit" class="ud-main-btn">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+<!-- ====== Contact End ====== -->
+
+<!-- ====== Footer Start ====== -->
+<footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+  <div class="shape shape-1">
+    <img src="{% static 'images/footer/shape-1.svg' %}" alt="shape" />
+  </div>
+  <div class="shape shape-2">
+    <img src="{% static 'images/footer/shape-2.svg' %}" alt="shape" />
+  </div>
+  <div class="shape shape-3">
+    <img src="{% static 'images/footer/shape-3.svg' %}" alt="shape" />
+  </div>
+  <div class="ud-footer-widgets">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-4 col-md-6">
+          <div class="ud-widget">
+            <a href="index.html" class="ud-footer-logo">
+              <img src="https://ai.gov.ae/wp-content/uploads/2021/10/CHQ-Yellow.png" alt="logo" />
+            </a>
+            <p class="ud-widget-desc">
+              We are a community of developers leveraging 
+              open source to tackle real world problems.
+            </p>
+            <ul class="ud-widget-socials">
+              <li>
+                <a href="https://twitter.com/MusharofChy">
+                  <i class="lni lni-facebook-filled"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/MusharofChy">
+                  <i class="lni lni-twitter-filled"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/MusharofChy">
+                  <i class="lni lni-instagram-filled"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://twitter.com/MusharofChy">
+                  <i class="lni lni-linkedin-original"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6">
+          <div class="ud-widget">
+            <h5 class="ud-widget-title">About Us</h5>
+            <ul class="ud-widget-links">
+              <li>
+                <a href="javascript:void(0)">Home</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)">Features</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)">About</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)">Testimonial</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+          <div class="ud-widget">
+            <h5 class="ud-widget-title">Features</h5>
+            <ul class="ud-widget-links">
+              <li>
+                <a href="javascript:void(0)">How it works</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)">Privacy policy</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)">Terms of service</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)">Refund policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
+          <div class="ud-widget">
+            <h5 class="ud-widget-title">Our Products</h5>
+            <ul class="ud-widget-links">
+              <li>
+                <a
+                  href="https://lineicons.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                  >Lineicons
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://ecommercehtml.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                  >Ecommerce HTML</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://ayroui.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                  >Ayro UI</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://graygrids.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                  >Plain Admin</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- <div class="col-xl-3 col-lg-6 col-md-8 col-sm-10">
+          <div class="ud-widget">
+            <h5 class="ud-widget-title">Partners</h5>
+            <ul class="ud-widget-brands">
+              <li>
+                <a
+                  href="https://ayroui.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                >
+                  <img
+                    src="{% static 'images/footer/brands/ayroui.svg' %}"
+                    alt="ayroui"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://ecommercehtml.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                >
+                  <img
+                    src="{% static 'images/footer/brands/ecommerce-html.svg' %}"
+                    alt="ecommerce-html"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://graygrids.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                >
+                  <img
+                    src="{% static 'images/footer/brands/graygrids.svg' %}"
+                    alt="graygrids"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://lineicons.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                >
+                  <img
+                    src="{% static 'images/footer/brands/lineicons.svg' %}"
+                    alt="lineicons"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://uideck.com/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                >
+                  <img
+                    src="{% static 'images/footer/brands/uideck.svg' %}"
+                    alt="uideck"
+                  />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://tailwindtemplates.co/"
+                  rel="nofollow noopner"
+                  target="_blank"
+                >
+                  <img
+                    src="{% static 'images/footer/brands/tailwindtemplates.svg' %}"
+                    alt="tailwindtemplates"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="ud-footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="ud-footer-bottom-left">
+            <li>
+              <a href="javascript:void(0)">Privacy policy</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Support policy</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)">Terms of service</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <p class="ud-footer-bottom-right">
+            Designed and Developed by
+            <a href="https://uideck.com" rel="nofollow">UIdeck</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- ====== Footer End ====== -->
+
+<!-- ====== Back To Top Start ====== -->
+<a href="javascript:void(0)" class="back-to-top">
+  <i class="lni lni-chevron-up"> </i>
+</a>
+<!-- ====== Back To Top End ====== -->
+
+<!-- ====== All Javascript Files ====== -->
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+  // ==== for menu scroll
+  const pageLink = document.querySelectorAll(".ud-menu-scroll");
+
+  pageLink.forEach((elem) => {
+    elem.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector(elem.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+        offsetTop: 1 - 60,
+      });
+    });
+  });
+
+  // section menu active
+  function onScroll(event) {
+    const sections = document.querySelectorAll(".ud-menu-scroll");
+    const scrollPos =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
+
+    for (let i = 0; i < sections.length; i++) {
+      const currLink = sections[i];
+      const val = currLink.getAttribute("href");
+      const refElement = document.querySelector(val);
+      const scrollTopMinus = scrollPos + 73;
+      if (
+        refElement.offsetTop <= scrollTopMinus &&
+        refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+      ) {
+        document
+          .querySelector(".ud-menu-scroll")
+          .classList.remove("active");
+        currLink.classList.add("active");
+      } else {
+        currLink.classList.remove("active");
+      }
+    }
+  }
+
+  window.document.addEventListener("scroll", onScroll);
+</script>  
+{% endblock content %}
