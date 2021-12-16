@@ -29,10 +29,6 @@
   {% block javascript %}
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
         integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
   </script>
@@ -45,13 +41,9 @@
   <script defer src="{% static 'js/vendors.js' %}"></script>
   <script defer src="{% static 'js/project.js' %}"></script>
   <script defer src="{% static 'js/theme.js' %}"></script>
-  <script defer src="{% static 'js/score_chart.js' %}"></script>
   <script defer src="{%  static 'bootstrap/js/bootstrap.min.js' %}"></script>
-  <script defer src="{%  static 'js/bs-init.js' %}"></script>
-  <script defer src="{%  static 'js/creative.js' %}"></script>
-  <script defer src="{%  static 'js/faqs.js' %}"></script>
-  <script defer src="{%  static 'js/videoBackground.js' %}"></script>
-  <script defer src="{%  static 'js/typingEffect.js' %}"></script>
+  <script src="{% static 'js/wow.min.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
   {% endcompress %}
 
   <!-- place project specific Javascript in this file -->
