@@ -15,10 +15,10 @@
 
     // === logo change
     if (ud_header.classList.contains("sticky")) {
-      logo.style.filter="invert(100%)";
+      logo.style.filter = "invert(100%)";
     } else {
       logo.src = "https://ai.gov.ae/wp-content/uploads/2021/10/CHQ-Yellow.png";
-      logo.style.filter="invert(0%)";
+      logo.style.filter = "invert(0%)";
     }
 
     // show or hide the back-top-top button
