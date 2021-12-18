@@ -277,10 +277,13 @@ codershq/media/
 .envs/*
 !.envs/.local/
 
-#css files 
+#css files
 project.css
 *.min.css
 
 #js files
 vendors.js
 *.min.js
+
+# Prettier Ignore
+.prettierignore
