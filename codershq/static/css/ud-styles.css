@@ -2789,7 +2789,7 @@ p {
   }
 }
 
-/* ====== WIP CSS ====== */
+/* ====== Construction CSS ====== */
 
 .ud-construction-banner {
   padding-top: 20px;
@@ -2817,7 +2817,7 @@ p {
   font-size: 36px;
   font-weight: 600;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 5px;
   width: 100%;
 }
 
@@ -2841,7 +2841,7 @@ p {
 
   .ud-construction-banner p {
     color: var(--white);
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 200;
     margin-bottom: 5px;
   }
@@ -2865,6 +2865,7 @@ p {
   -webkit-transition: all 0.4s ease-out 0s;
   transition: all 0.4s ease-out 0s;
   background: var(--primary-color);
+  margin-bottom: 10px;
 }
 
 .ud-construction-btn:hover {
@@ -2886,26 +2887,46 @@ p {
 .ud-single-issue {
   background: var(--white);
   color: var(--heading-color);
-  display: inline-block;
   text-align: center;
-  white-space: nowrap;
   vertical-align: middle;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 12px;
   border-radius: 5px;
-  padding: 15px 25px;
   border: 1px solid var(--white);
-  color: var(--white);
+  color: #212b36;
   cursor: pointer;
   z-index: 5;
   -webkit-transition: all 0.4s ease-out 0s;
   transition: all 0.4s ease-out 0s;
+  width: 100%;
+  margin-bottom: 25px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
-#issuesGrid {
-  display: grid;
-  grid-gap: 5px;
-  align-items: stretch;
+.ud-issues-grid {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  align-content: center;
 }
 
+.ud-issue-title {
+  font-size: 16px;
+}
+
+.ud-issue-author {
+  color: #212b36;
+  font-size: 16px;
+}
+
+.ud-single-issue:hover > .ud-issue-title {
+  text-decoration: underline;
+  color: #f00;
+}
 /*# sourceMappingURL=ud-styles.css.map */
