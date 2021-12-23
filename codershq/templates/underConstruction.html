@@ -2,33 +2,26 @@
 
 {% load static %}
 
-{% block title %}Page not found{% endblock %}
+{% block title %}Under Construction{% endblock %}
 
 {% block content %}
     <!-- ====== Banner Start ====== -->
     <section class="ud-construction-banner">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="ud-construction-banner-content ">
-              <img src="{% static 'images/construction/construction.svg' %}" width="70%" alt="teamwork-image" />
-              <p class="ud-subtitle-text">We appreciate your enthuasiasm but Coders HQ is still <b>under construction</b>, you can help us with finishing faster by contributing to the listed issues.</p>
-              <p id="issuesCount">coders(<span style="color: #FFFF00">hq</span>) currently has </p>
-              <a class="ud-construction-btn" href="{% url 'account_logout' %}">
-                Sign Out
-              </a>
-            </div>
-          </div>
-        </div>
+      <div class="ud-construction-banner-content ">
+        <h3 class="ud-construction-welcome">Welcome (username)!</h2><!-- We add the username using django here -->
+        <p class="ud-subtitle-text">We appreciate your enthuasiasm but Coders HQ is still <b>under construction</b>, you can help us with finishing faster by contributing to the listed issues.</p>
+        <a class="ud-construction-btn" href="{% url 'account_logout' %}">
+          Sign Out
+        </a>
       </div>
-      <div class="ud-issues-grid">
-          <div class="container">
-            <div class="row" id="issuesGrid">
-            </div>
-          </div>
+      <p id="issuesCount">coders(<span style="color: #FFFF00">hq</span>) currently has </p>
+      <div class="ud-issues-grid custom-scroll" id="issuesGrid">
       </div>
     </section>
+    <input type="hidden" id="imageLocation" name="imageLocation" value="{% static 'images/logo/CHQ-Invert.png' %}">
     <!-- ====== Banner End ====== -->
+
+
 
     <!--
       TODO: Create a card component for .ud-single-issue
