@@ -150,7 +150,7 @@ function fetchIssues(data) {
         });
       } else {
         $("#udLabels-" + issueCount).append(
-          `<div class="ud-issue-single-label" style="background-color: #232323">Unlabled</div>`
+          `<div class="ud-issue-single-label" style="background-color: #232323">Unlabelled</div>`
         );
       }
     }
