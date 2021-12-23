@@ -88,6 +88,8 @@ $(function () {
   });
 });
 
+var imageLocation = document.getElementById("imageLocation").value;
+
 function fetchIssues(data) {
   var allIssues = data.responseJSON;
   var issueCount = 0;
@@ -102,21 +104,29 @@ function fetchIssues(data) {
       var year = date.getFullYear();
       date_str = month + "/" + day + "/" + year;
       $("#issuesGrid").append(
-        `<div class="col-lg-4 col-md-6">
-          <div class="ud-single-issue">
+        `<div class="ud-single-issue">
               <div class="ud-issue-content">
-                  <span class="ud-blog-date">${date_str}</span>
-                  <h3 class="ud-issue-title"><a class="ud-issue-span" href="${issue.html_url}">${issue.title}</a></h3>
-                  <span class="ud-issue-author">${issue.user.login}</span>
+                  <img
+                    src="${imageLocation}"
+                    alt="Coders HQ Logo"
+                    class="ud-issue-chq-logo"
+                  />
+                  <h3 class="ud-issue-title"><a class="ud-issue-span" href="${
+                    issue.html_url
+                  }" target='_blank'>${
+          issue.title.length < 30
+            ? issue.title
+            : issue.title.substring(0, 20) + "..."
+        }</a></h3>
+                  <span class="ud-blog-date">Opened: ${date_str}</span>
               </div>
-          </div>
-      </div>`
+          </div>`
       );
     }
   });
   $("#issuesCount").append(
-    `<a href='https://github.com/Coders-HQ/CodersHQ/issues?q=is%3Aopen+is%3Aissue'>
-      <span class='issues-span'>${issueCount} issues.</span>
+    `<a target='_blank' href='https://github.com/Coders-HQ/CodersHQ/issues?q=is%3Aopen+is%3Aissue'>
+      <span class='issues-span'>${issueCount} open issues</span>
       </a>`
   );
 }
