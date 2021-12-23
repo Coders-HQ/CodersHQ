@@ -2828,10 +2828,14 @@ p {
 
 .ud-construction-banner p {
   color: var(--white);
-  font-size: 2vh;
+  font-size: 3vh;
   font-weight: 200;
   margin-bottom: 20px;
   margin-top: 20px;
+  text-align: center;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .ud-construction-btn {
@@ -2852,50 +2856,57 @@ p {
   -webkit-transition: all 0.4s ease-out 0s;
   transition: all 0.4s ease-out 0s;
   background: transparent;
-  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .ud-construction-btn:hover {
   -webkit-box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   background: #fefefe;
-  color: #f00;
+  color: rgba(100, 172, 255, 1);
 }
 
 .issues-span {
-  color: rgb(212, 75, 75);
+  color: rgba(100, 172, 255, 1);
   transition: all 0.4s ease-out 0s;
 }
 
 .issues-span:hover {
-  color: rgb(255, 0, 0);
+  color: rgb(21, 197, 241);
   text-decoration: underline;
   transition: all 0.4s ease-out 0s;
 }
 
 .ud-single-issue {
-  background: var(--white);
+  backdrop-filter: blur(25px) saturate(200%);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  background-color: rgba(17, 25, 40, 0.472);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  /* background: var(--white); */
   color: var(--heading-color);
   text-align: center;
   vertical-align: middle;
   font-weight: 500;
   font-size: 12px;
-  border-radius: 5px;
-  border: 1px solid var(--white);
-  color: #212b36;
+  /* border: 1px solid var(--white); */
   cursor: pointer;
   z-index: 5;
   -webkit-transition: all 0.4s ease-out 0s;
   transition: all 0.4s ease-out 0s;
-  width: 21vh;
+  width: 23vh;
   /* margin-bottom: 25px; */
-  height: 14vh;
+  height: 11.5vh;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0);
+}
+
+.ud-single-issue:hover {
+  background: #19253c;
 }
 
 .ud-issues-grid {
@@ -2914,23 +2925,29 @@ p {
 }
 
 .ud-issue-title {
-  font-size: 16px;
+  font-size: 1.5vh;
+  width: 100%;
+  height: 7vh;
+  color: #8193b2;
+  font-weight: 400;
+}
+
+.ud-issue-single-label {
+  padding: 0.25vh 0.5vh;
+  border-radius: 15px;
+  color: #bfbbbb;
 }
 
 .ud-issue-chq-logo {
-  width: 42%;
-  float: left;
-  margin-bottom: 14%;
+  width: 14%;
 }
 
-.ud-issue-author {
-  color: #212b36;
-  font-size: 16px;
-}
-
-.ud-single-issue:hover > .ud-issue-title {
-  text-decoration: underline;
-  color: #f00;
+.ud-single-issue:hover > .ud-issue-title,
+.ud-issue-repo-name,
+.ud-issue-labels {
+  text-decoration: none;
+  color: #8193b2;
+  font-weight: 500;
 }
 
 .ud-single-issue::hover {
@@ -2978,13 +2995,51 @@ p {
 .ud-construction-welcome {
   color: #f5f5f5;
   font-weight: 300;
-  margin-top: 30px;
+  margin-top: 3vh;
+  font-size: 4vh;
 }
 
 html,
 body,
 .ud-construction-banner {
   height: 100%;
+}
+
+.ud-issue-labels {
+  width: 100%;
+  float: left;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5vh;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5vh;
+  font-size: 1.25vh;
+  height: 23px;
+}
+
+.ud-issue-repo-name {
+  width: 71%;
+  font-size: 1.36vh;
+  height: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: row;
+}
+
+.ud-issue-upper-part {
+  display: flex;
+  gap: 0.75vh;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
 
 /* Mobile Design */
@@ -3037,6 +3092,44 @@ body,
     max-height: 35vh;
     overflow-y: auto;
     width: 100%;
+  }
+
+  .ud-construction-banner p {
+    color: var(--white);
+    font-size: 2.5vh;
+    font-weight: 200;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .ud-single-issue {
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    background-color: rgba(17, 25, 40, 0.472);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    /*background: var(--white);*/
+    color: var(--heading-color);
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 500;
+    font-size: 12px;
+    /*border: 1px solid var(--white);*/
+    cursor: pointer;
+    z-index: 5;
+    -webkit-transition: all 0.4s ease-out 0s;
+    transition: all 0.4s ease-out 0s;
+    width: 21vh;
+    /* margin-bottom: 25px; */
+    height: 11.5vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 }
 
