@@ -103,25 +103,56 @@ function fetchIssues(data) {
       var day = date.getDate();
       var year = date.getFullYear();
       date_str = month + "/" + day + "/" + year;
+      //style="color: #${issue.labels.color}"
+      var labels = issue.labels.flatMap((x) => x);
       $("#issuesGrid").append(
         `<div class="ud-single-issue">
+              <a href="${issue.html_url}" target='_blank'>
               <div class="ud-issue-content">
-                  <img
+                  <div class="ud-issue-upper-part">
+                    <img
                     src="${imageLocation}"
                     alt="Coders HQ Logo"
                     class="ud-issue-chq-logo"
-                  />
-                  <h3 class="ud-issue-title"><a class="ud-issue-span" href="${
-                    issue.html_url
-                  }" target='_blank'>${
-          issue.title.length < 30
-            ? issue.title
-            : issue.title.substring(0, 20) + "..."
-        }</a></h3>
-                  <span class="ud-blog-date">Opened: ${date_str}</span>
+                    />
+                    <div class="ud-issue-repo-name">Coders-HQ/CodersHQ</div>
+                  </div>
+                  <div class="ud-issue-labels" id="udLabels-${issueCount}">
+                  </div>
+                  <h3 class="ud-issue-title"><span class="ud-issue-span">${
+                    issue.title.length < 50
+                      ? issue.title
+                      : issue.title.substring(0, 40) + "..."
+                  }</span></h3>
               </div>
+              </a>
           </div>`
       );
+      //console.log(issueCount);
+      console.log(issue.labels.length);
+      let labelCount = 0;
+      if (issue.labels.length > 0) {
+        labels.forEach((label) => {
+          labelCount += 1;
+          if (labelCount <= 3) {
+            $("#udLabels-" + issueCount).append(
+              `<div class="ud-issue-single-label" style="background-color: #${
+                label.color
+              }">${
+                label.name.length < 5
+                  ? label.name
+                  : label.name.substring(0, 5) + "..."
+              }</div>`
+            );
+          } else {
+            return;
+          }
+        });
+      } else {
+        $("#udLabels-" + issueCount).append(
+          `<div class="ud-issue-single-label" style="background-color: #232323">Unlabled</div>`
+        );
+      }
     }
   });
   $("#issuesCount").append(
