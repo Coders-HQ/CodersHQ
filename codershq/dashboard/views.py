@@ -9,7 +9,7 @@ def index(request):
     if not request.user.is_authenticated:
         return render(request, 'pages/welcome.html')
 
-    return render(request, 'dashboard/home.html')
+    return render(request, 'pages/underConstruction.html')
 
 
 def news(request):

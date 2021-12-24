@@ -2965,7 +2965,7 @@ p {
   margin-bottom: 20px;
   max-height: 35vh;
   overflow-y: auto;
-  width: 50%;
+  width: 100%;
 }
 
 .ud-issue-title {
