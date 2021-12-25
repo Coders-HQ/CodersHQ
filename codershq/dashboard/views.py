@@ -11,6 +11,8 @@ def index(request):
 
     return render(request, 'pages/underConstruction.html')
 
+def landing(request):
+    return render(request, 'pages/welcome.html')
 
 def news(request):
     resp = requests.get(url=news_url, headers={'User-agent': 'your bot 0.1'})
