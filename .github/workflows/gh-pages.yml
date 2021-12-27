@@ -30,7 +30,6 @@ jobs:
       #     publish_dir: ./docs
 
       - run: ls -la
-        working-directory: ${{ github.workspace }}/tmp
       
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7
