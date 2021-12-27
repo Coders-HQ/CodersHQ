@@ -17,47 +17,37 @@
 
   <!-- Your stuff: Third-party CSS libraries go here -->
     {% compress css %}
-  <!-- This file stores project-specific CSS -->  
-  <link rel="stylesheet" href="https://unpkg.com/@tabler/core@latest/dist/css/tabler.min.css">
-  <link href="{% static 'css/codershq.css' %}" rel="stylesheet">  
-  <link href="{% static 'css/project.css' %}" rel="stylesheet">
+  <!-- This file stores project-specific CSS -->
+  <link href="{% static 'css/project.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/lineicons.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/ud-styles.css' %}" />
   {% endcompress %}
   {% endblock %}
   <!-- Le javascript
     ================================================== -->
   {# Placed at the top of the document so pages load faster with defer #}
   {% block javascript %}
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
-        integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-  <!-- Vendor dependencies bundled as one file-->
-  {% compress js %}
-  <script defer src="{% static 'js/vendors.js' %}"></script>
-  <script defer src="{% static 'js/project.js' %}"></script>
-  <script defer src="{% static 'js/theme.js' %}"></script>
-  <script defer src="{% static 'js/score_chart.js' %}"></script>
-  <script defer src="{%  static 'bootstrap/js/bootstrap.min.js' %}"></script>
-  <script defer src="{%  static 'js/bs-init.js' %}"></script>
-  <script defer src="{%  static 'js/creative.js' %}"></script>
-  <script defer src="{%  static 'js/faqs.js' %}"></script>
-  <script defer src="{%  static 'js/videoBackground.js' %}"></script>
-  <script defer src="{%  static 'js/typingEffect.js' %}"></script>
-  {% endcompress %}
 
-  <!-- place project specific Javascript in this file -->
-  {% compress js %}
-  <script defer src="{% static 'js/project.js' %}"></script>
-  {% endcompress %}
+    <!-- Vendor dependencies bundled as one file-->
+    <!--
+      Don't import project files first...
+      Import vendors such as jQuery, Axios etc.. then import the project files
+      because the javascript imports are done by line order.
+
+      And use defer for files that have to be loaded before the HTML document is loaded.
+      "-->
+    {% compress js %}
+    <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
+    integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script defer src="{% static 'js/project.js' %}"></script>
+    <script defer src="{% static 'js/main.js' %}"></script>
+    {% endcompress %}
 
   {% endblock javascript %}
 

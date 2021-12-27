@@ -1,0 +1,46 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - main
+      - landing_page
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: 'latest'
+
+        
+
+      - run: mdbook build
+        working-directory: ./docs
+      - run: mv ./docs/book/* .
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/landing_page' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - run: ls -la
+      - run: ls -la docs
+      - run: ls -la docs/book
+      
+      # - name: Deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@4.1.7
+      #   with:
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: ./docs/book # The folder the action should deploy.
+       
+       
+       
+
