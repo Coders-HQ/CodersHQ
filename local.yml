@@ -37,23 +37,6 @@ services:
     env_file:
       - ./.envs/.local/.postgres
 
-  # docs:
-  #   image: codershq_local_docs
-  #   container_name: docs
-  #   platform: linux/amd64
-  #   build:
-  #     context: .
-  #     dockerfile: ./compose/local/docs/Dockerfile
-  #   env_file:
-  #     - ./.envs/.local/.django
-  #   volumes:
-  #     - ./docs:/docs:z
-  #     - ./config:/app/config:z
-  #     - ./codershq:/app/codershq:z
-  #   ports:
-  #     - "7001:7000"
-  #   command: /start-docs
-
   docs:
       container_name: docs
       image: peaceiris/mdbook:v0.4.12            # Minimum image
