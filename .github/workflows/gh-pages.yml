@@ -20,8 +20,8 @@ jobs:
           mdbook-version: 'latest'
 
       - run: mdbook build
-      - name: Deploy
         working-directory: ./docs
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
