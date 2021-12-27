@@ -24,13 +24,12 @@ jobs:
 
       - run: mdbook build
         working-directory: ./docs
-      - run: mv ./docs/book/* ./docs
+      - run: mv ./docs/book/* .
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/main' || 'refs/heads/landing_page' }}
+        if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/landing_page' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
 
       - run: ls -la
       - run: ls -la docs
