@@ -28,8 +28,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
       
-      - name: Move content 
-        run: mv ./docs/book/* ./docs
+        - name: Deploy 🚀
+          uses: JamesIves/github-pages-deploy-action@4.1.7
+          with:
+            branch: gh-pages # The branch the action should deploy to.
+            folder: ./docs/book # The folder the action should deploy.
        
        
        
