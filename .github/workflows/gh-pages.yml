@@ -21,7 +21,6 @@ jobs:
         
       - run: mdbook build
         working-directory: ./docs
-      - run: cp ./README.rst ./docs/README.rst
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' || github.ref == 'refs/heads/landing_page' }}
