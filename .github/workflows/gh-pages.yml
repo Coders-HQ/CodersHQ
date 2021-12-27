@@ -30,6 +30,8 @@ jobs:
       #     publish_dir: ./docs
 
       - run: ls -la
+      - run: ls -la docs
+      - run: ls -la docs/book
       
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.7
