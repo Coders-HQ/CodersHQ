@@ -19,7 +19,6 @@ jobs:
         with:
           mdbook-version: 'latest'
         
-
       - run: mdbook build
         working-directory: ./docs
       - name: Deploy
