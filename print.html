@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="howto.html"><strong aria-hidden="true">1.</strong> How To</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">2.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">3.</strong> Features</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="howto.html"><strong aria-hidden="true">1.</strong> How To</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">2.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">3.</strong> Features</a></li><li class="chapter-item expanded "><a href="pages.html"><strong aria-hidden="true">4.</strong> Website Pages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -249,6 +249,64 @@ This feature can be a simple direct message chat function where all the data is 
 </ul>
 <h3 id="email-system"><a class="header" href="#email-system">Email System</a></h3>
 <p>The email should be integrated with django and an email should be sent when a user joins (this currently works using mailhog as a test bed). Admins should also have an easy way to send emails to multiple users or a single user.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="website-pages"><a class="header" href="#website-pages">Website Pages</a></h1>
+<p>We need to design and create multiple pages. These are listed in the following table according to the priority. Priority is higher for pages that need to be completed sooner.</p>
+<h2 id="priority"><a class="header" href="#priority">Priority</a></h2>
+<table><thead><tr><th>Page</th><th>Priority</th><th>Description</th></tr></thead><tbody>
+<tr><td>Landing Page</td><td>1</td><td>Page to show what coders HQ is about and basic information on how to join. There should be links to the source code and to the documentation.</td></tr>
+<tr><td>Sign up</td><td>1</td><td>basic sign up page, can use github</td></tr>
+<tr><td>Login page</td><td>1</td><td>basic login page, can use github</td></tr>
+<tr><td>Logout page</td><td>1</td><td>logout confirmation page</td></tr>
+<tr><td>Forget password page</td><td>1</td><td>basic forget password page</td></tr>
+<tr><td>Hackathon list</td><td>2</td><td>List of hackathon page</td></tr>
+<tr><td>Hackathon details</td><td>2</td><td>Details on the hackathon</td></tr>
+<tr><td>Dashboard</td><td>1</td><td>Basic information on user activities</td></tr>
+<tr><td>User profile page</td><td>1</td><td>More detailed information on user history</td></tr>
+<tr><td>User settings</td><td>2</td><td>User preferences</td></tr>
+<tr><td>Blog</td><td>3</td><td>Basic communication channel to communicate with programmers</td></tr>
+<tr><td>News</td><td>2</td><td>News page or part of dashboard</td></tr>
+<tr><td>Chat?</td><td>3</td><td>chat might be part of every page</td></tr>
+<tr><td>Company dashboard</td><td>3</td><td>page for companies to come up with hackathons</td></tr>
+<tr><td>Documentation</td><td>3</td><td>How to contribute and add to CHQ</td></tr>
+</tbody></table>
+<h2 id="content"><a class="header" href="#content">Content</a></h2>
+<h3 id="landing-page-1"><a class="header" href="#landing-page-1">Landing page</a></h3>
+<p>The landing page should have the following items</p>
+<ul>
+<li>Navigation bar
+<ul>
+<li>sign in and sign up button</li>
+<li>link to
+<ul>
+<li>docs</li>
+<li>Github source code</li>
+<li>how to contribute</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>join button or email</li>
+<li>general information</li>
+</ul>
+<h3 id="profile-page"><a class="header" href="#profile-page">Profile page</a></h3>
+<p>The following items should be in the profile page:</p>
+<ul>
+<li>GitHub score</li>
+<li>generic personal information</li>
+<li>hackathon joined/completed</li>
+<li>challenges joined/completed</li>
+<li>news preference</li>
+</ul>
+<h3 id="dashboard-1"><a class="header" href="#dashboard-1">Dashboard</a></h3>
+<p>The following items should be in the dashboard page:</p>
+<ul>
+<li>github score (number)</li>
+<li>github history (chart)</li>
+<li>challenges (model)</li>
+<li>hackathon (model)</li>
+<li>news (simple model)</li>
+<li>Skillset (progress bar, number)</li>
+</ul>
 
                     </main>
 

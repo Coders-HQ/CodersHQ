@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Contributing</title>
+        <title>Website Pages</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="howto.html"><strong aria-hidden="true">1.</strong> How To</a></li><li class="chapter-item expanded "><a href="contributing.html" class="active"><strong aria-hidden="true">2.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">3.</strong> Features</a></li><li class="chapter-item expanded "><a href="pages.html"><strong aria-hidden="true">4.</strong> Website Pages</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="howto.html"><strong aria-hidden="true">1.</strong> How To</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">2.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">3.</strong> Features</a></li><li class="chapter-item expanded "><a href="pages.html" class="active"><strong aria-hidden="true">4.</strong> Website Pages</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,60 +134,71 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="contributing-to-codershq"><a class="header" href="#contributing-to-codershq">Contributing to CodersHQ</a></h1>
-<p>We welcome your input! We want to make contributing to this project as easy and transparent as possible, whether it's:</p>
+                        <h1 id="website-pages"><a class="header" href="#website-pages">Website Pages</a></h1>
+<p>We need to design and create multiple pages. These are listed in the following table according to the priority. Priority is higher for pages that need to be completed sooner.</p>
+<h2 id="priority"><a class="header" href="#priority">Priority</a></h2>
+<table><thead><tr><th>Page</th><th>Priority</th><th>Description</th></tr></thead><tbody>
+<tr><td>Landing Page</td><td>1</td><td>Page to show what coders HQ is about and basic information on how to join. There should be links to the source code and to the documentation.</td></tr>
+<tr><td>Sign up</td><td>1</td><td>basic sign up page, can use github</td></tr>
+<tr><td>Login page</td><td>1</td><td>basic login page, can use github</td></tr>
+<tr><td>Logout page</td><td>1</td><td>logout confirmation page</td></tr>
+<tr><td>Forget password page</td><td>1</td><td>basic forget password page</td></tr>
+<tr><td>Hackathon list</td><td>2</td><td>List of hackathon page</td></tr>
+<tr><td>Hackathon details</td><td>2</td><td>Details on the hackathon</td></tr>
+<tr><td>Dashboard</td><td>1</td><td>Basic information on user activities</td></tr>
+<tr><td>User profile page</td><td>1</td><td>More detailed information on user history</td></tr>
+<tr><td>User settings</td><td>2</td><td>User preferences</td></tr>
+<tr><td>Blog</td><td>3</td><td>Basic communication channel to communicate with programmers</td></tr>
+<tr><td>News</td><td>2</td><td>News page or part of dashboard</td></tr>
+<tr><td>Chat?</td><td>3</td><td>chat might be part of every page</td></tr>
+<tr><td>Company dashboard</td><td>3</td><td>page for companies to come up with hackathons</td></tr>
+<tr><td>Documentation</td><td>3</td><td>How to contribute and add to CHQ</td></tr>
+</tbody></table>
+<h2 id="content"><a class="header" href="#content">Content</a></h2>
+<h3 id="landing-page"><a class="header" href="#landing-page">Landing page</a></h3>
+<p>The landing page should have the following items</p>
 <ul>
-<li>Reporting a bug</li>
-<li>Discussing the current state of the code</li>
-<li>Submitting a fix</li>
-<li>Proposing new features</li>
-<li>Becoming a maintainer</li>
-</ul>
-<h1 id="we-develop-with-github"><a class="header" href="#we-develop-with-github">We Develop with Github</a></h1>
-<p>We use github to host code, to track issues and feature requests, as well as accept pull requests.</p>
-<h1 id="we-use-github-flow-so-all-code-changes-happen-through-pull-requests"><a class="header" href="#we-use-github-flow-so-all-code-changes-happen-through-pull-requests">We Use Github Flow, So All Code Changes Happen Through Pull Requests</a></h1>
-<p>Pull requests are the best way to propose changes to the codebase (we use Github Flow). We actively welcome your pull requests:</p>
+<li>Navigation bar
 <ul>
-<li>Fork the repo and create your branch from master.</li>
-<li>If you've added code that should be tested, add tests.</li>
-<li>If you've changed APIs, update the documentation.</li>
-<li>Ensure the test suite passes.</li>
-<li>Make sure your code lints.</li>
-<li>Issue that pull request!</li>
-</ul>
-<h1 id="any-contributions-you-make-will-be-under-the-mit-software-license"><a class="header" href="#any-contributions-you-make-will-be-under-the-mit-software-license">Any contributions you make will be under the MIT Software License</a></h1>
-<p>In short, when you submit code changes, your submissions are understood to be under the same MIT License that covers the project. Feel free to contact the maintainers if that's a concern.</p>
-<h1 id="report-bugs-using-githubs-issues"><a class="header" href="#report-bugs-using-githubs-issues">Report bugs using Github's issues</a></h1>
-<p>We use GitHub issues to track public bugs. Report a bug by opening a new issue; it's that easy!</p>
-<h1 id="write-bug-reports-with-detail-background-and-sample-code"><a class="header" href="#write-bug-reports-with-detail-background-and-sample-code">Write bug reports with detail, background, and sample code</a></h1>
-<p><a href="http://stackoverflow.com/q/12488905/180626">This is an example of </a>of a bug report, and I think it's not a bad model. <a href="http://www.openradar.me/11905408">Here is another example.</a></p>
-<p>Great Bug Reports tend to have:</p>
+<li>sign in and sign up button</li>
+<li>link to
 <ul>
-<li>A quick summary and/or background</li>
-<li>Steps to reproduce</li>
-<li>Be specific!</li>
-<li>Give sample code if you can. My stackoverflow question includes sample code that anyone with a base R setup can run to reproduce what I was seeing</li>
-<li>What you expected would happen</li>
-<li>What actually happens</li>
-<li>Notes (possibly including why you think this might be happening, or stuff you tried that didn't work)</li>
-<li>People love thorough bug reports. I'm not even kidding.</li>
+<li>docs</li>
+<li>Github source code</li>
+<li>how to contribute</li>
 </ul>
-<h1 id="use-a-consistent-coding-style"><a class="header" href="#use-a-consistent-coding-style">Use a Consistent Coding Style</a></h1>
-<p><a href="https://github.com/facebookarchive/jcommon">From Facebook’s Guidelines</a></p>
-<h1 id="license"><a class="header" href="#license">License</a></h1>
-<p>By contributing, you agree that your contributions will be licensed under its MIT License.</p>
-<h1 id="references"><a class="header" href="#references">References</a></h1>
-<p>This document was adapted from the open-source contribution guidelines for Facebook's Draft</p>
+</li>
+</ul>
+</li>
+<li>join button or email</li>
+<li>general information</li>
+</ul>
+<h3 id="profile-page"><a class="header" href="#profile-page">Profile page</a></h3>
+<p>The following items should be in the profile page:</p>
+<ul>
+<li>GitHub score</li>
+<li>generic personal information</li>
+<li>hackathon joined/completed</li>
+<li>challenges joined/completed</li>
+<li>news preference</li>
+</ul>
+<h3 id="dashboard"><a class="header" href="#dashboard">Dashboard</a></h3>
+<p>The following items should be in the dashboard page:</p>
+<ul>
+<li>github score (number)</li>
+<li>github history (chart)</li>
+<li>challenges (model)</li>
+<li>hackathon (model)</li>
+<li>news (simple model)</li>
+<li>Skillset (progress bar, number)</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="howto.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="features.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a rel="next" href="features.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -195,11 +206,8 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="howto.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="features.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a rel="next" href="features.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
 
