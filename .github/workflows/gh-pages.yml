@@ -20,24 +20,27 @@ jobs:
         with:
           mdbook-version: 'latest'
 
+        
+
       - run: mdbook build
         working-directory: ./docs
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   if: ${{ github.ref == 'refs/heads/main' }}
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./docs
+      - run: mv ./docs/book/* ./docs
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
 
       - run: ls -la
       - run: ls -la docs
       - run: ls -la docs/book
       
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.7
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: ./docs/book # The folder the action should deploy.
+      # - name: Deploy 🚀
+      #   uses: JamesIves/github-pages-deploy-action@4.1.7
+      #   with:
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: ./docs/book # The folder the action should deploy.
        
        
        
