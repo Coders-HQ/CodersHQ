@@ -15,4 +15,4 @@ To build and serve docs, use the commands:
 
 Changes to files in `docs/src` will be picked up and reloaded automatically.
 
-`MdBook <https://rust-lang.github.io/mdBook/>`_ is the tool used to build documentation.
+[MdBook](https://rust-lang.github.io/mdBook) is the tool used to build documentation.
