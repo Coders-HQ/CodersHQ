@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="howto.html"><strong aria-hidden="true">1.1.</strong> Building the Docs</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">1.2.</strong> Contributing</a></li></ol></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">2.</strong> Features</a></li><li class="chapter-item expanded "><a href="pages.html"><strong aria-hidden="true">3.</strong> Website Pages</a></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">4.</strong> FAQ</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="intro.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="howto.html"><strong aria-hidden="true">1.1.</strong> Building the Docs</a></li><li class="chapter-item expanded "><a href="contributing.html"><strong aria-hidden="true">1.2.</strong> Contributing</a></li></ol></li><li class="chapter-item expanded "><a href="features.html"><strong aria-hidden="true">2.</strong> Platform</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="platform/challenges.html"><strong aria-hidden="true">2.1.</strong> Challenges</a></li><li class="chapter-item expanded "><a href="platform/pages.html"><strong aria-hidden="true">2.2.</strong> Website Pages</a></li></ol></li><li class="chapter-item expanded "><a href="faq.html"><strong aria-hidden="true">3.</strong> FAQ</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -364,7 +364,7 @@ general. The slack page is located at
 <p>By contributing, you agree that your contributions will be licensed under its MIT License.</p>
 <h2 id="references"><a class="header" href="#references">References</a></h2>
 <p>This document was adapted from the open-source contribution guidelines for Facebook's Draft</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="features"><a class="header" href="#features">Features</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="platform"><a class="header" href="#platform">Platform</a></h1>
 <p>This document lists the more import features of Coders HQ. The list and details should be updated and match the live version of CHQ.</p>
 <h3 id="user-system"><a class="header" href="#user-system">User System</a></h3>
 <p>There should be a way for users to join through the landing page. The creation of users should be done using the industry standard when dealing with password and user data. Users should be able to look into their own details within their own profile page.</p>
@@ -425,6 +425,42 @@ This feature can be a simple direct message chat function where all the data is 
 </ul>
 <h3 id="email-system"><a class="header" href="#email-system">Email System</a></h3>
 <p>The email should be integrated with django and an email should be sent when a user joins (this currently works using mailhog as a test bed). Admins should also have an easy way to send emails to multiple users or a single user.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="challenges-1"><a class="header" href="#challenges-1">Challenges</a></h1>
+<h2 id="introduction"><a class="header" href="#introduction">Introduction</a></h2>
+<p>Challenges should be a process and a tool for private companies to create challenges and post them to CHQ (Coders Headquarters) so that users would be able to enter and potentially win a reward.</p>
+<h2 id="requirements"><a class="header" href="#requirements">Requirements</a></h2>
+<h3 id="level-1-requirements"><a class="header" href="#level-1-requirements">Level 1 Requirements</a></h3>
+<p>These are the requirements that must be met when creating the challenge section.</p>
+<p>Companies should be able to create challenges
+Challenges should be viewed publicly in the website 
+Participants should be able to choose a challenge, or multiple challenges, and participate in them
+Participants should be able to send their solution to the challenges
+Companies should be able to view participants’ challenge entries
+Companies should be able to communicate with participants
+Companies should be able to send participants custom messages
+Companies should be able to select challenge winners</p>
+<h3 id="level-2-requirements"><a class="header" href="#level-2-requirements">Level 2 Requirements</a></h3>
+<p>These requirements are softer requirements yet require a very good reason not to meet any one of these.</p>
+<p>Questions
+These are yet unanswered questions. When answered these should be striked through and pushed into the relevant section.</p>
+<p>Should we save the interaction between users and companies
+How many attempts should we give users
+How often should we allow users 
+Should we give score to winners only
+How should we score winners</p>
+<h3 id="function-blocks"><a class="header" href="#function-blocks">Function Blocks</a></h3>
+<p>This section deals with breaking down the challenges into smaller blocks. Each block deals with its own specific problem while taking into consideration the flow of information to the next and previous block.
+Challenge Viewing and Communication Block
+This block deals with the flow of communication between the companies and the public. It also deals with the public viewing the challenges.</p>
+<h3 id="ideas-to-view-challenges"><a class="header" href="#ideas-to-view-challenges">Ideas to view challenges</a></h3>
+<p>Challenge Board: A place where challenges are posted, maybe sorted based on difficulty/estimated time to completion. Users can view all challenges and select a challenge based on their interest.</p>
+<p>By notification: Users can have challenges sent to them. Maybe they choose what interests them and have notification pop up if the challenge suits their interests. 
+Challenge Creation Block
+This block deals with creating challenges by companies and putting it out to the public.
+Challenge Ranking and Acceptance Block
+This block deals with ranking participants and the ways/methods a winner[s] can be chosen.
+Challenge Participation Block
+This block deals with participating in a challenge.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="website-pages"><a class="header" href="#website-pages">Website Pages</a></h1>
 <p>We need to design and create multiple pages. These are listed in the following table according to the priority. Priority is higher for pages that need to be completed sooner.</p>
 <h2 id="priority"><a class="header" href="#priority">Priority</a></h2>
