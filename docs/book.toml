@@ -3,3 +3,7 @@ authors = ['Rashed AlSuwaidi']
 language = "en"
 multilingual = false
 src = "src"
+
+[output.html]
+git-repository-url = "https://github.com/Coders-HQ/CodersHQ"
+edit-url-template = "https://github.com/Coders-HQ/CodersHQ/edit/main/docs/{path}"
