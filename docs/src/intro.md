@@ -14,11 +14,11 @@ docker.
 [![Black code style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 
-The Wiki
+The Docs
 --------
 
-Have a look at the [wiki](https://github.com/Coders-HQ/CodersHQ/wiki),
-we document everything over there. We plan to migrate from the wiki to
+Have a look at the [docs](https://coders-hq.github.io/CodersHQ/),
+we document everything over there. We plan to migrate from the docs to
 something more established, like readthedocs, once we have enough
 material to work with.
 

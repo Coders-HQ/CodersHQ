@@ -19,16 +19,16 @@ docker.
 
 :License: MIT
 
-The Wiki
+The Docs
 --------
 
-Have a look at the `wiki`_, we document everything over there. 
-We plan to migrate from the wiki to something more established, like readthedocs, once we have enough material 
+Have a look at the `docs`_, we document everything over there. 
+We plan to migrate from the docs to something more established, like readthedocs, once we have enough material 
 to work with.
 
 We also document the tasks in the `project`_ section and have a look at the `issues`_ section to find out what we are working on.
 
-.. _`wiki`: https://github.com/Coders-HQ/CodersHQ/wiki
+.. _`docs`: https://coders-hq.github.io/CodersHQ
 .. _`project`: https://github.com/Coders-HQ/CodersHQ/projects
 .. _`issues`: https://github.com/Coders-HQ/CodersHQ/issues
 
