@@ -311,15 +311,57 @@ a single file: <code>static/js/vendors.js</code>.</p>
 challenge is created and discussions which relates to challenges in
 general. The slack page is located at
 [codershq-challenge.slack.com](<a href="https://codershq-challenge.slack.com">https://codershq-challenge.slack.com</a>).</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="how-to---project-documentation"><a class="header" href="#how-to---project-documentation">How To - Project Documentation</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="project-documentation"><a class="header" href="#project-documentation">Project Documentation</a></h1>
 <h2 id="get-started"><a class="header" href="#get-started">Get Started</a></h2>
 <p>Documentation can be written as rst or md files in the <code>codershq/docs/src</code>.</p>
-<p>To build and serve docs, use the commands:
-::</p>
-<pre><code>    docker-compose -f local.yml up docs
+<p>To build and serve docs, use the commands:</p>
+<pre><code>docker-compose -f local.yml up docs
 </code></pre>
 <p>Changes to files in <code>docs/src</code> will be picked up and reloaded automatically.</p>
 <p><a href="https://rust-lang.github.io/mdBook">MdBook</a> is the tool used to build documentation.</p>
+<h2 id="ci"><a class="header" href="#ci">CI</a></h2>
+<p>Coders HQ has a CI workflow with github-pages in the <code>github-pages</code> branch which executes whenever a push happens to main like. </p>
+<p>An example workflow <code>.github/workflows/gh-pages.yml</code> with <a href="https://github.com/peaceiris/actions-gh-pages">GitHub Actions for GitHub Pages</a>.
+For the first deployment, we have to do this operation: <a href="https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-first-deployment-with-github_token">First Deployment with <code>GITHUB_TOKEN</code> - peaceiris/actions-gh-pages</a></p>
+<p><a href="https://github.com/peaceiris/actions-gh-pages"><img src="https://gh-card.dev/repos/peaceiris/actions-gh-pages.svg?fullname" alt="peaceiris/actions-gh-pages - GitHub" /></a></p>
+<pre><code class="language-yml">name: github pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup mdBook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: 'latest'
+        
+      - run: mdbook build
+        working-directory: ./docs
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main'}}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/book
+</code></pre>
+<h2 id="use-a-specific-version-of-mdbook"><a class="header" href="#use-a-specific-version-of-mdbook">Use a specific version of mdBook</a></h2>
+<p>Set <code>mdbook-version: '0.4.10'</code> to use version 0.4.10 of mdBook.</p>
+<pre><code class="language-yaml">- name: Setup mdBook
+  uses: peaceiris/actions-mdbook@v1
+  with:
+    mdbook-version: '0.4.10'
+</code></pre>
+<p>This action fetches the latest version of mdBook by <a href="https://formulae.brew.sh/formula/mdbook">mdbook — Homebrew Formulae</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="contributing-to-codershq"><a class="header" href="#contributing-to-codershq">Contributing to CodersHQ</a></h1>
 <p>We welcome your input! We want to make contributing to this project as easy and transparent as possible, whether it's:</p>
 <ul>
