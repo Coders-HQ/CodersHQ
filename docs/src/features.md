@@ -1,4 +1,4 @@
-# Features
+# Platform
 
 This document lists the more import features of Coders HQ. The list and details should be updated and match the live version of CHQ.
 
