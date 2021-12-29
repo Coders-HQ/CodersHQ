@@ -24,6 +24,7 @@ urlpatterns = [
     path("", include("codershq.dashboard.urls", namespace="dashboard")),
     path("challenge/", include("codershq.challenge.urls", namespace="challenge")),
     path("companies/", include("codershq.companies.urls", namespace="companies")),
+    path("events/", include("codershq.events.urls", namespace="events")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
