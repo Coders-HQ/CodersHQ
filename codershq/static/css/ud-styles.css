@@ -476,12 +476,6 @@ p {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   grid-gap: 1rem;
-  background: linear-gradient(
-    45deg,
-    rgba(4, 13, 33, 1) 55%,
-    rgba(9, 9, 121, 1) 77%,
-    rgba(100, 172, 255, 1) 100%
-  );
   /* background: var(--primary-color); */
 }
 .logo-wall > div {
