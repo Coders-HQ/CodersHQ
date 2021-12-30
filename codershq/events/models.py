@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from datetime import datetime
 from ckeditor.fields import RichTextField
+import uuid
 
 def event_image_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
@@ -23,3 +24,6 @@ class Event(models.Model):
 
     def is_over(self):
         return self.date_time < datetime.today().date()
+
+    def modal_id(self):
+        return uuid.uuid1()

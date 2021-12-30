@@ -20,7 +20,26 @@
                 </div>
             </div>
         </div>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="row row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F203426779%2F730363222533%2F1%2Foriginal.20211221-083047?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=171%2C24%2C834%2C417&s=f500a8f1249eb7300984fe62a10431b6"
+                        class="card-img-top" alt="Skyscrapers" />
+                    <div class="card-body">
+                        <h5 class="card-title">E-Koders - Node JS (Session 4)</h5>
+                        <p class="card-text">
+                            This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.
+                        </p>
+                        <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#exampleModal">More
+                            Info</a>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Done</li>
+                        <li class="list-group-item">Online</li>
+                    </ul>
+                </div>
+            </div>
             <div class="col">
                 <div class="card h-100">
                     <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F203426779%2F730363222533%2F1%2Foriginal.20211221-083047?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=171%2C24%2C834%2C417&s=f500a8f1249eb7300984fe62a10431b6"
@@ -60,18 +79,20 @@
             </div>
 
 
-            {% if event %}
+            {% if events %}
+
+            {% for event in events %}
 
             <div class="col">
                 <div class="card h-100">
-                    <img src=" {{MEDIA_URL}}{{event.image}}"
-                        class="card-img-top" alt="Skyscrapers" />
+                    <img src=" {{MEDIA_URL}}{{event.image}}" class="card-img-top" alt="Skyscrapers" />
                     <div class="card-body">
                         <h5 class="card-title">{{event.title}}</h5>
                         <div class="card-text">
                             {{event.short_description}}
                         </div>
-                        <a href="#" class="card-link">More Info</a>
+                        <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#exampleModal">More
+                            Info</a>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">{{event.date_time}}</li>
@@ -80,36 +101,40 @@
                 </div>
             </div>
 
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Dubai Data Science x Coders HQ meet-up
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{event.description|safe}}
 
-
-        </div>
-    </div>
-
-
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Dubai Data Science x Coders HQ meet-up
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    {{event.description|safe}}
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Join</button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Join</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            {% endfor %}
+            {% endif %}
+
+
+
         </div>
     </div>
 
-    {% endif %}
+
+
+
+
 
 
 
