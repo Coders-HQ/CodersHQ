@@ -21,62 +21,6 @@
             </div>
         </div>
         <div class="row row-cols-md-3 g-4">
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F203426779%2F730363222533%2F1%2Foriginal.20211221-083047?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=171%2C24%2C834%2C417&s=f500a8f1249eb7300984fe62a10431b6"
-                        class="card-img-top" alt="Skyscrapers" />
-                    <div class="card-body">
-                        <h5 class="card-title">E-Koders - Node JS (Session 4)</h5>
-                        <p class="card-text">
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                        </p>
-                        <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#exampleModal">More
-                            Info</a>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Done</li>
-                        <li class="list-group-item">Online</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F203426779%2F730363222533%2F1%2Foriginal.20211221-083047?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=171%2C24%2C834%2C417&s=f500a8f1249eb7300984fe62a10431b6"
-                        class="card-img-top" alt="Skyscrapers" />
-                    <div class="card-body">
-                        <h5 class="card-title">E-Koders - Node JS (Session 4)</h5>
-                        <p class="card-text">
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                        </p>
-                        <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#exampleModal">More
-                            Info</a>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Done</li>
-                        <li class="list-group-item">Online</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card h-100">
-                    <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F203426779%2F730363222533%2F1%2Foriginal.20211221-083047?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=171%2C24%2C834%2C417&s=f500a8f1249eb7300984fe62a10431b6"
-                        class="card-img-top" alt="Skyscrapers" />
-                    <div class="card-body">
-                        <h5 class="card-title">E-Koders - Node JS (Session 5)</h5>
-                        <p class="card-text">
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                        </p>
-                        <a href="#" class="card-link">More Info</a>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Done</li>
-                        <li class="list-group-item">Online</li>
-                    </ul>
-                </div>
-            </div>
 
 
             {% if events %}
@@ -95,7 +39,13 @@
                             Info</a>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{event.date_time}}</li>
+                        
+                            {% if event.is_over %}
+                            <li class="list-group-item text-danger"> {{event.date_time}} </li>
+                            {% else %}
+                            <li class="list-group-item">{{event.date_time}} </li>
+                            {% endif %}
+                            
                         <li class="list-group-item">{{event.event_location}}</li>
                     </ul>
                 </div>
@@ -113,7 +63,6 @@
                         </div>
                         <div class="modal-body">
                             {{event.description|safe}}
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
