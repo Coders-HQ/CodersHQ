@@ -91,7 +91,7 @@
                         <div class="card-text">
                             {{event.short_description}}
                         </div>
-                        <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#exampleModal">More
+                        <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#modal-{{ forloop.counter }}">More
                             Info</a>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -102,7 +102,7 @@
             </div>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="modal-{{ forloop.counter }}" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
