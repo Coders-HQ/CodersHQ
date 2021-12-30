@@ -25,3 +25,6 @@ up:
 
 down:
 	docker-compose -f local.yml down
+
+shell:
+	docker-compose -f local.yml run --rm django python manage.py shell

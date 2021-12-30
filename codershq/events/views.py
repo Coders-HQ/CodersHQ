@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from .models import Event
 
 # Create your views here.
 def index(request):
-    return render(request, 'events/main.html')
+    event = Event.objects.first()
+    context = {'event': event}
+    return render(request, 'events/main.html', context)

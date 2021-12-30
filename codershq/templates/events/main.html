@@ -15,7 +15,10 @@
                         <div class="gradient">Coders (HQ)</div> Events
                     </h1>
                     <p>
-                        From Hackathons to live events, Coders HQ has multiple initiatives that you can be part of
+                        From Hackathons to live events, Coders HQ has multiple initiatives that you can be part of.
+                        {% if event %}
+                            {{MEDIA_URL}}{{event.image}}
+                        {% endif %}
                     </p>
                 </div>
             </div>
@@ -58,24 +61,31 @@
                     </ul>
                 </div>
             </div>
+
+
+            {% if event %}
+
             <div class="col">
                 <div class="card h-100">
-                    <img src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F203852209%2F730363222533%2F1%2Foriginal.20211222-083610?w=800&auto=format%2Ccompress&q=75&sharp=10&rect=11%2C0%2C8978%2C4489&s=c7bc22bd90839af2555554cac5d3814f"
+                    <img src=" {{MEDIA_URL}}{{event.image}}"
                         class="card-img-top" alt="Skyscrapers" />
                     <div class="card-body">
-                        <h5 class="card-title">Dubai Data Science x Coders HQ meet-up</h5>
+                        <h5 class="card-title">{{event.title}}</h5>
                         <p class="card-text">
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
+                            {{event.description}}
                         </p>
                         <a href="#" class="card-link">More Info</a>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Sat, Jan 29, 10:00 AM</li>
-                        <li class="list-group-item">Emirates Towers, Dubai</li>
+                        <li class="list-group-item">{{event.date_time}}</li>
+                        <li class="list-group-item">{{event.event_location}}</li>
                     </ul>
                 </div>
             </div>
+            {% endif %}
+
+
+
         </div>
     </div>
 
