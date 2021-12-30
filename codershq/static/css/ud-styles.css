@@ -213,6 +213,29 @@ p {
   transition: all 0.3s ease-out 0s;
 }
 
+.ud-header-dark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  -webkit-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+.ud-header-dark .navbar-brand > img{
+  filter: invert(100%);
+}
+
+.ud-header-dark .ud-main-btn{
+  color: black;
+  border: 1px solid;
+}
+
+.ud-header-dark .nav-item{
+  color: black;
+}
+
 .sticky {
   position: fixed;
   z-index: 99;
