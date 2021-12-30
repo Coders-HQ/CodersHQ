@@ -25,3 +25,4 @@ django-redis==4.12.1  # https://github.com/jazzband/django-redis
 # ------------------------------------------------------------------------------
 PyGithub==1.54.1   # https://github.com/PyGithub/PyGithub
 slackclient==2.9.3  # https://pypi.org/project/slackclient
+django-ckeditor==6.2.0 # https://pypi.org/project/django-ckeditor/

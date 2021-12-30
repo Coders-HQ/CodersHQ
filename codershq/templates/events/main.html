@@ -16,9 +16,6 @@
                     </h1>
                     <p>
                         From Hackathons to live events, Coders HQ has multiple initiatives that you can be part of.
-                        {% if event %}
-                            {{MEDIA_URL}}{{event.image}}
-                        {% endif %}
                     </p>
                 </div>
             </div>
@@ -71,9 +68,9 @@
                         class="card-img-top" alt="Skyscrapers" />
                     <div class="card-body">
                         <h5 class="card-title">{{event.title}}</h5>
-                        <p class="card-text">
-                            {{event.description}}
-                        </p>
+                        <div class="card-text">
+                            {{event.short_description}}
+                        </div>
                         <a href="#" class="card-link">More Info</a>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -82,7 +79,6 @@
                     </ul>
                 </div>
             </div>
-            {% endif %}
 
 
 
@@ -102,15 +98,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5
-                        id="we-would-like-to-invite-you-to-attend-the-dubai-data-science-meet-up-that-will-be-hosted-in-coders-hq-">
-                        We would like to invite you to attend the Dubai Data Science meet-up that will be hosted in
-                        Coders HQ.</h5>
-                    <p>About this event</p>
-                    <h5 id="registration-link-">Registration link:</h5>
-                    <p><a href="https://forms.gle/8th2ShuvzaJtdA7U9">https://forms.gle/8th2ShuvzaJtdA7U9</a></p>
-                    <p>Please note that there are limited slots (15), please fill the form above to confirm your
-                        attendance.</p>
+                    {{event.description|safe}}
 
                 </div>
                 <div class="modal-footer">
@@ -121,6 +109,7 @@
         </div>
     </div>
 
+    {% endif %}
 
 
 
