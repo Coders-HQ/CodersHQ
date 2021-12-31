@@ -17,7 +17,7 @@
   --heading-color: #212b36;
   --primary-color: #040d21;
   --white: #ffffff;
-  --hue2: ;
+  --color-header-bg: #24292f;
 }
 
 body {
@@ -221,20 +221,10 @@ p {
   z-index: 99;
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
+  background: var(--color-header-bg);
 }
 
-.ud-header-dark .navbar-brand > img{
-  filter: invert(100%);
-}
 
-.ud-header-dark .ud-main-btn{
-  color: black;
-  border: 1px solid;
-}
-
-.ud-header-dark .nav-item{
-  color: black;
-}
 
 .sticky {
   position: fixed;

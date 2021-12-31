@@ -5,7 +5,6 @@
 
 {% include "pages/nav_dark.html" %}
 
-
 <section id="initiatives" class="ud-features">
     <div class="container">
         <div class="row">
@@ -36,17 +35,18 @@
                         <div class="card-text">
                             {{event.short_description}}
                         </div>
-                        <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#modal-{{ forloop.counter }}">More
+                        <a href="#" class="card-link" data-bs-toggle="modal"
+                            data-bs-target="#modal-{{ forloop.counter }}">More
                             Info</a>
                     </div>
                     <ul class="list-group list-group-flush">
-                        
-                            {% if event.is_over %}
-                            <li class="list-group-item text-danger"> {{event.date_time}} </li>
-                            {% else %}
-                            <li class="list-group-item">{{event.date_time}} </li>
-                            {% endif %}
-                            
+
+                        {% if event.is_over %}
+                        <li class="list-group-item text-danger"> {{event.date_time}} </li>
+                        {% else %}
+                        <li class="list-group-item">{{event.date_time}} </li>
+                        {% endif %}
+
                         <li class="list-group-item">{{event.event_location}}</li>
                     </ul>
                 </div>
@@ -76,20 +76,9 @@
             {% endfor %}
             {% endif %}
 
-
-
         </div>
     </div>
 
 
-
-
-
-
-
-
 </section>
-
-
-
 {% endblock content %}
