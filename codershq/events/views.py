@@ -25,3 +25,14 @@ def join(request, event_id):
         event.save()
         return redirect('events:index')
     return redirect('events:index')
+
+def leave(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    user = request.user
+
+    if user.is_authenticated:
+        event.attendees.remove(user)
+        event.save()
+        print(event.attendees.all())
+        return redirect('events:index')
+    return redirect('events:index')
