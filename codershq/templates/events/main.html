@@ -31,7 +31,15 @@
                 <div class="card h-100">
                     <img src=" {{MEDIA_URL}}{{event.image}}" class="card-img-top" alt="Skyscrapers" />
                     <div class="card-body">
-                        <h5 class="card-title">{{event.title}}</h5>
+                        <h5 class="card-title">{{event.title}}
+                        </h5>
+                        
+                        {% if event.joined %}
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            (Joined)
+                        </h6>
+                        {% endif %}
+
                         <div class="card-text">
                             {{event.short_description}}
                         </div>
@@ -58,7 +66,8 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Dubai Data Science x Coders HQ meet-up
+                            <h5 class="modal-title" id="exampleModalLabel">{{event.title}}
+
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -67,7 +76,11 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <!-- <button type="button" class="btn btn-primary">Join</button> -->
+
+                            {% if request.user.is_authenticated %}
+                            <a class="btn btn-primary" href="/events/{{event.id}}/join">Join</a>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>

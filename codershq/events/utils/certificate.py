@@ -22,13 +22,13 @@ class Certificate:
                            project_offset=80):
     
     empty_img = Image.open(self.template_name)
-    img_w, img_h= empty_img.size
+    img_w, _= empty_img.size
 
     # name
     name = self.attendee_name
     n_height = name_height
     font = ImageFont.truetype(font_style, name_size)
-    font_w, font_h = font.getsize(name)
+    font_w, _ = font.getsize(name)
     name_h_centre = img_w/2 - font_w/2 + name_offset
 
     # project
@@ -36,7 +36,7 @@ class Certificate:
     project_font_size = project_size
     p_height = project_height
     project_font = ImageFont.truetype(font_style, project_font_size)
-    p_font_w, p_font_h = font.getsize(project)
+    p_font_w, _ = font.getsize(project)
     project_h_centre = img_w/2 - p_font_w/2 + project_offset
 
     # name
