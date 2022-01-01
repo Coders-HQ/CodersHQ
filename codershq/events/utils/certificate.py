@@ -48,5 +48,4 @@ class Certificate:
     image_w_name = Image.open(file_name)
     image_editable_p = ImageDraw.Draw(image_w_name)
     image_editable_p.text((project_h_centre,p_height), project, project_color, font=project_font)
-    # image_w_name.save(file_name)
-    return image_w_name
+    image_w_name.save(file_name)

@@ -47,12 +47,14 @@
                             data-bs-target="#modal-{{ forloop.counter }}">More
                             Info</a>
 
-                        {% if request.user.is_authenticated %}
-                        {% if not event.joined %}
+                        {% if request.user.is_authenticated and not event.joined %}
                         <a href="/events/{{event.id}}/join" class="card-link">Join</a>
                         {% else %}
                         <a href="/events/{{event.id}}/leave" class="card-link">Leave</a>
                         {% endif %}
+
+                        {% if request.user.is_staff %}
+                        <a href="/events/{{event.id}}/download" class="card-link">Download</a>
                         {% endif %}
 
                     </div>
