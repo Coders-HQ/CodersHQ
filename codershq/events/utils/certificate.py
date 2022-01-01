@@ -2,7 +2,6 @@ from PIL import Image, ImageFont, ImageDraw
 import pandas as pd
 
 class Certificate:
-  
 
   def __init__(self, template_name, attendee_name, project_name):
     self.template_name = template_name
@@ -49,3 +48,38 @@ class Certificate:
     image_editable_p = ImageDraw.Draw(image_w_name)
     image_editable_p.text((project_h_centre,p_height), project, project_color, font=project_font)
     image_w_name.save(file_name)
+
+def serve_images(name_project_list):
+
+    # create image folder
+    img_folder = './'
+    try:
+        os.mkdir(img_folder)
+    except OSError:
+        pass
+
+    for name, project in name_project_list:
+        file_name = slugify(name) + '.png'
+
+        cert = Certificate('/app/staticfiles/images/certificate/empty_cert.png', name, project)
+        cert.generate_certificate('/app/staticfiles/fonts/Roboto-Thin.ttf', file_name=img_folder + file_name)
+
+    # cert_img.save(response, "PNG")
+    # return response
+
+
+def get_event_attendees(event: Event):
+    """
+    Returns a list of name and projects to an event
+    """
+
+    name_project_list = []
+
+    for attendee in event.attendees.all():
+        name = attendee.name
+
+        # dont add empty name
+        if name != '':
+            name_project_list.append([attendee.name, event.title])
+
+    return name_project_list
