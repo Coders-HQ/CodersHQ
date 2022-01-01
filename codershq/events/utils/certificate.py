@@ -68,7 +68,7 @@ def serve_images(name_project_list):
     # return response
 
 
-def get_event_attendees(event: Event):
+def get_event_attendees(event):
     """
     Returns a list of name and projects to an event
     """
