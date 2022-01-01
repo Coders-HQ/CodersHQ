@@ -65,6 +65,10 @@
                         {% endif %}
 
                         <li class="list-group-item">{{event.event_location}}</li>
+
+                        {% if request.user.is_authenticated and  request.user.is_staff %}
+                        <li class="list-group-item">There are {{event.attendees.all.count}} attendee[s]</li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -88,12 +92,10 @@
 
 
 
-                            {% if request.user.is_authenticated %}
-                            {% if not event.joined %}
+                            {% if request.user.is_authenticated and not event.joined %}
                             <a class="btn btn-primary" href="/events/{{event.id}}/join">Join</a>
                             {% else %}
                             <a class="btn btn-primary" href="/events/{{event.id}}/leave">Leave</a>
-                            {% endif %}
                             {% endif %}
 
                         </div>
