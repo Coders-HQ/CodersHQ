@@ -1,9 +1,7 @@
-import os
 
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
-from slugify import slugify
 
 from .models import Event
 from .utils.certificate import Certificate, serve_images, get_event_attendees
@@ -51,7 +49,9 @@ def leave(request, event_id):
 def download(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
 
+    # get all attendees and projects as a nested list
     attendee_list = get_event_attendees(event)
+    # get the image
     serve_images(attendee_list)
 
     return redirect('events:index')
