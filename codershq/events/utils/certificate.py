@@ -1,10 +1,9 @@
 import os
 
-import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 from slugify import slugify
 import shutil
-
+import csv
 
 class Certificate:
 
@@ -55,7 +54,7 @@ class Certificate:
         image_w_name.save(file_name)
 
 
-def serve_images(name_project_list):
+def serve_images(name_project_list, include_csv=True):
 
     # create image folder
     img_folder = './participants/'
@@ -64,14 +63,24 @@ def serve_images(name_project_list):
     except OSError:
         pass
 
-    for name, project in name_project_list:
+    for name, project,_ in name_project_list:
         file_name = slugify(name) + '.png'
 
         cert = Certificate('/app/staticfiles/images/certificate/empty_cert.png', name, project)
         cert.generate_certificate('/app/staticfiles/fonts/Roboto-Thin.ttf', file_name=img_folder + file_name)
 
+    # add csv
+    if include_csv:
+      fields = ['Name', 'Project', 'Email']
+
+      with open(img_folder+'all_participants.csv', 'w') as f:
+        write = csv.writer(f)
+        write.writerow(fields)
+        write.writerows(name_project_list)
+
     # make zip folder
     shutil.make_archive('participants', 'zip', img_folder)
+
 
     # delete folder after creating zip
     shutil.rmtree(img_folder)
@@ -89,6 +98,6 @@ def get_event_participants(event):
 
         # dont add empty name
         if name != '':
-            name_project_list.append([participant.name, event.title])
+            name_project_list.append([participant.name, event.title, participant.email])
 
     return name_project_list
