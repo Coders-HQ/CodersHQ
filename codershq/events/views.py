@@ -3,11 +3,10 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import ParticipantForm
-from django.core.exceptions import MultipleObjectsReturned
-
+from django.http import FileResponse
 from .models import Event
 from codershq.users.models import User
-from .utils.certificate import serve_images, get_event_attendees
+from .utils.certificate import serve_images, get_event_participants
 
 
 def index(request):
@@ -53,11 +52,13 @@ def download(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
 
     # get all attendees and projects as a nested list
-    attendee_list = get_event_attendees(event)
+    attendee_list = get_event_participants(event)
     # get the image
     serve_images(attendee_list)
 
-    return redirect('events:index')
+    zip_file = open('./participants.zip', 'rb')
+    return FileResponse(zip_file)
+    # return redirect('events:index')
 
 
 @staff_member_required

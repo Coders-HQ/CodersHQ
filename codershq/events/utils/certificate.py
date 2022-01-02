@@ -3,6 +3,7 @@ import os
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 from slugify import slugify
+import shutil
 
 
 class Certificate:
@@ -57,7 +58,7 @@ class Certificate:
 def serve_images(name_project_list):
 
     # create image folder
-    img_folder = './'
+    img_folder = './participants/'
     try:
         os.mkdir(img_folder)
     except OSError:
@@ -69,22 +70,29 @@ def serve_images(name_project_list):
         cert = Certificate('/app/staticfiles/images/certificate/empty_cert.png', name, project)
         cert.generate_certificate('/app/staticfiles/fonts/Roboto-Thin.ttf', file_name=img_folder + file_name)
 
+    # make zip folder 
+    shutil.make_archive('participants', 'zip', img_folder)
+
+    # delete folder after creating zip
+    shutil.rmtree(img_folder)
+
+
     # cert_img.save(response, "PNG")
     # return response
 
 
-def get_event_attendees(event):
+def get_event_participants(event):
     """
     Returns a list of name and projects to an event
     """
 
     name_project_list = []
 
-    for attendee in event.attendees.all():
-        name = attendee.name
+    for participant in event.participants.all():
+        name = participant.name
 
         # dont add empty name
         if name != '':
-            name_project_list.append([attendee.name, event.title])
+            name_project_list.append([participant.name, event.title])
 
     return name_project_list
