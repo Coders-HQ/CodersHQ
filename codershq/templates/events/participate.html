@@ -1,7 +1,8 @@
+
 {% load crispy_forms_tags %}
 <form action="" method="post">
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" value="Submit">
 </form>
-<a href="">Download</a>
+<a href="/events/{{event.id}}/download">Download</a>

@@ -70,15 +70,11 @@ def serve_images(name_project_list):
         cert = Certificate('/app/staticfiles/images/certificate/empty_cert.png', name, project)
         cert.generate_certificate('/app/staticfiles/fonts/Roboto-Thin.ttf', file_name=img_folder + file_name)
 
-    # make zip folder 
+    # make zip folder
     shutil.make_archive('participants', 'zip', img_folder)
 
     # delete folder after creating zip
     shutil.rmtree(img_folder)
-
-
-    # cert_img.save(response, "PNG")
-    # return response
 
 
 def get_event_participants(event):

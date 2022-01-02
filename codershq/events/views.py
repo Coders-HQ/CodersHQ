@@ -58,14 +58,13 @@ def download(request, event_id):
 
     zip_file = open('./participants.zip', 'rb')
     return FileResponse(zip_file)
-    # return redirect('events:index')
 
 
 @staff_member_required
 def participate(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
 
     if request.method == 'POST':
-        event = get_object_or_404(Event, pk=event_id)
 
         form = ParticipantForm(request.POST)
 
@@ -76,8 +75,8 @@ def participate(request, event_id):
             # get user
             user = get_object_or_404(User, email=email)
 
-            # check if user has name 
-            # add name if user doesnt have 
+            # check if user has name
+            # add name if user doesnt have
             if user.name == '':
                 user.name = name
 
@@ -93,8 +92,7 @@ def participate(request, event_id):
             # clear form
             form = ParticipantForm()
 
-
     else:
         form = ParticipantForm()
 
-    return render(request, 'events/participate.html', {'form': form})
+    return render(request, 'events/participate.html', {'form': form, 'event': event})

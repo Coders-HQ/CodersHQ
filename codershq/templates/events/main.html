@@ -54,10 +54,6 @@
                         {% endif %}
 
                         {% if request.user.is_staff %}
-                        <a href="/events/{{event.id}}/download" class="card-link">Download</a>
-                        {% endif %}
-
-                        {% if request.user.is_staff %}
                         <a href="/events/{{event.id}}/participate" class="card-link">Participate</a>
                         {% endif %}
 
