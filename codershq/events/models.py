@@ -21,7 +21,11 @@ class Event(models.Model):
     event_location = models.CharField(_("Event location (use 'Online' if its online)"),
                                       max_length=150, blank=True, null=True)
     seats = models.IntegerField(_("Number of seats available (if not online"), blank=True, null=True)
-    attendees = models.ManyToManyField(User)
+
+    # people who are intrested in the event
+    attendees = models.ManyToManyField(User, related_name='attended_events')
+    # people who actually joined the event
+    participants = models.ManyToManyField(User, related_name='participated_events')
 
     def __str__(self):
         return self.title
