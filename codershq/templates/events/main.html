@@ -57,6 +57,10 @@
                         <a href="/events/{{event.id}}/download" class="card-link">Download</a>
                         {% endif %}
 
+                        {% if request.user.is_staff %}
+                        <a href="/events/{{event.id}}/participate" class="card-link">Participate</a>
+                        {% endif %}
+
                     </div>
                     <ul class="list-group list-group-flush">
 
@@ -68,9 +72,10 @@
 
                         <li class="list-group-item">{{event.event_location}}</li>
 
-                        {% if request.user.is_authenticated and  request.user.is_staff %}
+                        {% if request.user.is_authenticated and request.user.is_staff %}
                         <li class="list-group-item">There are {{event.attendees.all.count}} attendee[s]</li>
                         {% endif %}
+
                     </ul>
                 </div>
             </div>

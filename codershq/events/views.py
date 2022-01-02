@@ -2,9 +2,12 @@
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
+from .forms import ParticipantForm
+from django.core.exceptions import MultipleObjectsReturned
 
 from .models import Event
-from .utils.certificate import Certificate, serve_images, get_event_attendees
+from codershq.users.models import User
+from .utils.certificate import serve_images, get_event_attendees
 
 
 def index(request):
@@ -57,3 +60,40 @@ def download(request, event_id):
     return redirect('events:index')
 
 
+@staff_member_required
+def participate(request, event_id):
+
+    if request.method == 'POST':
+        event = get_object_or_404(Event, pk=event_id)
+
+        form = ParticipantForm(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+
+            # get user
+            user = get_object_or_404(User, email=email)
+
+            # check if user has name 
+            # add name if user doesnt have 
+            if user.name == '':
+                user.name = name
+
+                # update db
+                user.save()
+
+            # add user to participant
+            event.participants.add(user)
+            event.save()
+
+            # TODO: Error handling
+
+            # clear form
+            form = ParticipantForm()
+
+
+    else:
+        form = ParticipantForm()
+
+    return render(request, 'events/participate.html', {'form': form})
