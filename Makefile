@@ -28,3 +28,6 @@ down:
 
 shell:
 	docker-compose -f local.yml run --rm django python manage.py shell
+
+collectstatic:
+	docker-compose -f local.yml run --rm django python manage.py collectstatic

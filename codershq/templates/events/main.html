@@ -31,13 +31,32 @@
                 <div class="card h-100">
                     <img src=" {{MEDIA_URL}}{{event.image}}" class="card-img-top" alt="Skyscrapers" />
                     <div class="card-body">
-                        <h5 class="card-title">{{event.title}}</h5>
+                        <h5 class="card-title">{{event.title}}
+                        </h5>
+
+                        {% if event.joined %}
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            (Joined)
+                        </h6>
+                        {% endif %}
+
                         <div class="card-text">
                             {{event.short_description}}
                         </div>
                         <a href="#" class="card-link" data-bs-toggle="modal"
                             data-bs-target="#modal-{{ forloop.counter }}">More
                             Info</a>
+
+                        {% if request.user.is_authenticated and not event.joined %}
+                        <a href="/events/{{event.id}}/join" class="card-link">Join</a>
+                        {% else %}
+                        <a href="/events/{{event.id}}/leave" class="card-link">Leave</a>
+                        {% endif %}
+
+                        {% if request.user.is_staff %}
+                        <a href="/events/{{event.id}}/participate" class="card-link">Participate</a>
+                        {% endif %}
+
                     </div>
                     <ul class="list-group list-group-flush">
 
@@ -48,6 +67,11 @@
                         {% endif %}
 
                         <li class="list-group-item">{{event.event_location}}</li>
+
+                        {% if request.user.is_authenticated and request.user.is_staff %}
+                        <li class="list-group-item">There are {{event.attendees.all.count}} attendee[s]</li>
+                        {% endif %}
+
                     </ul>
                 </div>
             </div>
@@ -58,7 +82,8 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Dubai Data Science x Coders HQ meet-up
+                            <h5 class="modal-title" id="exampleModalLabel">{{event.title}}
+
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -67,7 +92,15 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <!-- <button type="button" class="btn btn-primary">Join</button> -->
+
+
+
+                            {% if request.user.is_authenticated and not event.joined %}
+                            <a class="btn btn-primary" href="/events/{{event.id}}/join">Join</a>
+                            {% else %}
+                            <a class="btn btn-primary" href="/events/{{event.id}}/leave">Leave</a>
+                            {% endif %}
+
                         </div>
                     </div>
                 </div>
