@@ -4,26 +4,11 @@
 
 {% block title %}Under Construction{% endblock %}
 
-{% block content %}
+{% block navigation %}
 {% include "pages/nav.html" %}
-<!-- ====== Banner Start ====== -->
-<!-- <section class="ud-construction-banner">
-  <div class="ud-construction-banner-content ">
-    <div class="ud-section-title mx-auto text-center">
-      <h2 style="color:white">Welcome Coders!</h2>
-      <p>
-        We appreciate your enthuasiasm but Coders HQ is still <b>under construction</b>, you can help us with finishing
-        faster by contributing to the listed issues
-      </p>
-    </div>
-    <a class="ud-construction-btn" href="{% url 'account_logout' %}">
-      Sign Out
-    </a>
-  </div>
-</section> -->
-<!-- <input type="hidden" id="imageLocation" name="imageLocation" value="{% static 'images/construction/github.svg' %}"> -->
-<!-- ====== Banner End ====== -->
+{% endblock navigation %}
 
+{% block content %}
 
 
 <section class="ud-construction-banner" id="home">
