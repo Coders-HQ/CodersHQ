@@ -7,7 +7,7 @@ from django.http import FileResponse
 from .models import Event
 from codershq.users.models import User
 from .utils.certificate import serve_images, get_event_participants
-
+from django.contrib import messages
 
 def index(request):
     events = Event.objects.all().order_by('date_time')
@@ -30,6 +30,8 @@ def join(request, event_id):
     if user.is_authenticated:
         event.attendees.add(user)
         event.save()
+        messages.success(request, 'Successfully joined ' + event.title)
+
         return redirect('events:index')
     return redirect('events:index')
 
@@ -42,6 +44,7 @@ def leave(request, event_id):
     if user.is_authenticated:
         event.attendees.remove(user)
         event.save()
+        messages.success(request, 'You have been removed from ' + event.title)
         return redirect('events:index')
     return redirect('events:index')
 
@@ -86,6 +89,8 @@ def participate(request, event_id):
             # add user to participant
             event.participants.add(user)
             event.save()
+
+            messages.success(request, user.name +' has been added as a participant')
 
             # TODO: Error handling
 
