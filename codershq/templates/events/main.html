@@ -72,7 +72,7 @@
                         <li class="list-group-item">{{event.event_location}}</li>
 
                         {% if request.user.is_authenticated and request.user.is_staff %}
-                        <li class="list-group-item">There are {{event.attendees.all.count}} attendee[s]</li>
+                        <li class="list-group-item">There are {{event.attendees.all.count}} interested[s] and {{event.participants.all.count}} who joined</li>
                         {% endif %}
 
                     </ul>
