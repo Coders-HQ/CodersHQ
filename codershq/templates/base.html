@@ -37,14 +37,13 @@
 
       And use defer for files that have to be loaded before the HTML document is loaded.
       "-->
-  {% compress js %}
   <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
   <script src="https://unpkg.com/@tabler/core@latest/dist/js/tabler.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
     integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  {% compress js %}
   <script defer src="{% static 'js/project.js' %}"></script>
   <script defer src="{% static 'js/main.js' %}"></script>
   {% endcompress %}
