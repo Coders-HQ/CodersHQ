@@ -511,7 +511,6 @@ p {
 @media (max-width: 767px) {
   .logo-wall {
     grid-gap: 0.5rem;
-    background: var(--primary-color);
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
