@@ -4,8 +4,14 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
+from django.contrib.staticfiles.storage import staticfiles_storage
 
 urlpatterns = [
+    path(
+        "favicon.ico",
+        RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
+    ),
     path(
         "dashboard/", TemplateView.as_view(template_name="pages/dashboard.html"), name="about"
     ),
