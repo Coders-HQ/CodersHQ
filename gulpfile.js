@@ -19,7 +19,7 @@ const plumber = require('gulp-plumber')
 const postcss = require('gulp-postcss')
 const reload = browserSync.reload
 const rename = require('gulp-rename')
-const sass = require('gulp-sass')
+const sass = require('gulp-sass')(require('sass'))
 const spawn = require('child_process').spawn
 const uglify = require('gulp-uglify-es').default
 
@@ -28,15 +28,13 @@ function pathsConfig(appName) {
   this.app = `./${pjson.name}`
   const vendorsRoot = 'node_modules'
 
-  return {
-    
+  return { 
     bootstrapSass: `${vendorsRoot}/bootstrap/scss`,
     vendorsJs: [
       `${vendorsRoot}/jquery/dist/jquery.slim.js`,
-      `${vendorsRoot}/popper.js/dist/umd/popper.js`,
+      `${vendorsRoot}/@popperjs/core/dist/umd/popper.js`,
       `${vendorsRoot}/bootstrap/dist/js/bootstrap.js`,
     ],
-    
     app: this.app,
     templates: `${this.app}/templates`,
     css: `${this.app}/static/css`,
@@ -67,9 +65,7 @@ function styles() {
   return src(`${paths.sass}/project.scss`)
     .pipe(sass({
       includePaths: [
-        
         paths.bootstrapSass,
-        
         paths.sass
       ]
     }).on('error', sass.logError))
@@ -89,8 +85,6 @@ function scripts() {
     .pipe(rename({ suffix: '.min' }))
     .pipe(dest(paths.js))
 }
-
-
 // Vendor Javascript minification
 function vendorScripts() {
   return src(paths.vendorsJs)
@@ -102,15 +96,12 @@ function vendorScripts() {
     .pipe(dest(paths.js))
 }
 
-
 // Image compression
 function imgCompression() {
   return src(`${paths.images}/*`)
     .pipe(imagemin()) // Compresses PNG, JPEG, GIF and SVG images
     .pipe(dest(paths.images))
 }
-
-
 // Run django server
 function runServer(cb) {
   var cmd = spawn('python', ['manage.py', 'runserver'], {stdio: 'inherit'})
@@ -128,6 +119,9 @@ function initBrowserSync() {
         `${paths.js}/*.js`,
         `${paths.templates}/*.html`
       ], {
+        // https://www.browsersync.io/docs/options/#option-open
+        // Disable as it doesn't work from inside a container
+        open: false,
         // https://www.browsersync.io/docs/options/#option-proxy
         proxy:  {
           target: 'django:8000',
@@ -137,10 +131,7 @@ function initBrowserSync() {
               proxyReq.setHeader('Host', req.headers.host)
             }
           ]
-        },
-        // https://www.browsersync.io/docs/options/#option-open
-        // Disable as it doesn't work from inside a container
-        open: false
+        }
       }
     )
 }
@@ -155,8 +146,7 @@ function watchPaths() {
 // Generate all assets
 const generateAssets = parallel(
   styles,
-  scripts,
-  vendorScripts,
+  scripts,vendorScripts,
   imgCompression
 )
 

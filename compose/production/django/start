@@ -26,5 +26,4 @@ if compress_enabled; then
   # NOTE this command will fail if django-compressor is disabled
   python /app/manage.py compress
 fi
-
 /usr/local/bin/gunicorn config.wsgi --bind 0.0.0.0:5000 --chdir=/app

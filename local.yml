@@ -11,9 +11,9 @@ services:
       dockerfile: ./compose/local/django/Dockerfile
     image: codershq_local_django
     container_name: django
-    platform: linux/amd64
     depends_on:
       - postgres
+      - redis
       - mailhog
     volumes:
       - .:/app:z
@@ -66,7 +66,7 @@ services:
       - "8025:8025"
 
   redis:
-    image: redis:5.0
+    image: redis:6
     container_name: redis
 
   celeryworker:

@@ -1,7 +1,6 @@
-{% load static i18n compress%}
-<!DOCTYPE html>
-<html lang="en">
-
+{% load static i18n compress%}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -37,6 +36,9 @@
 
       And use defer for files that have to be loaded before the HTML document is loaded.
       "-->
+  {% compress js %}
+  <script defer src="{% static 'js/vendors.js' %}"></script>
+  {% endcompress %}
   <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
     integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
@@ -70,7 +72,6 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   {% endfor %}
-
   {% endif %}
   {% block content %}
   <p>Use this document as a way to quick start any new project.</p>
@@ -82,5 +83,4 @@
   {# Script tags with only code, no src (defer by default) #}
   {% endblock inline_javascript %}
 </body>
-
 </html>
