@@ -1,6 +1,6 @@
 Coders Headquarters
 ===================
-.. image:: https://img.shields.io/badge/CodersHQ-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white
+.. image:: https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white
      :target: https://discord.gg/CPQHAZrg8b
      :alt: Discord
 
