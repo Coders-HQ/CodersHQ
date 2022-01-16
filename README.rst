@@ -1,5 +1,9 @@
 Coders Headquarters
 ===================
+.. image:: https://img.shields.io/badge/CodersHQ-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white
+     :target: https://discord.gg/CPQHAZrg8b
+     :alt: Discord
+
 
 Coders Headquarters (CodersHQ) is a social platform for developers to
 network, do challenges and gain points by contributing and helping
@@ -15,9 +19,6 @@ docker.
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
      :target: https://github.com/ambv/black
      :alt: Black code style
-.. .. image:: https://img.shields.io/discord/591914197219016707.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2
-..      :target: https://discord.gg/CPQHAZrg8b
-..      :alt: Discord
 
 
 
