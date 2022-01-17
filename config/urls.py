@@ -22,7 +22,7 @@ urlpatterns = [
         "construction/", TemplateView.as_view(template_name="pages/underConstruction.html"), name="construction"
     ),
     path(
-        "commingSoon/", TemplateView.as_view(template_name="pages/commingSoon.html"), name='commingSoon'),
+        "comingSoon/", TemplateView.as_view(template_name="pages/comingSoon.html"), name='comingSoon'),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
