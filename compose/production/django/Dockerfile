@@ -1,6 +1,6 @@
 ARG PYTHON_VERSION=3.9-slim-bullseye
 
-FROM node:16-bullseye-slim as client-builder
+FROM node:17-bullseye-slim as client-builder
 
 ARG APP_HOME=/app
 WORKDIR ${APP_HOME}
