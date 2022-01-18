@@ -1,7 +1,6 @@
-{% load static i18n compress%}
-<!DOCTYPE html>
-<html lang="en">
-
+{% load static i18n compress%}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -46,8 +45,8 @@
     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   {% compress js %}
-  <script defer src="{% static 'js/project.js' %}"></script>
   <script defer src="{% static 'js/main.js' %}"></script>
+  <script defer src="{% static 'js/project.js' %}"></script>
   {% endcompress %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"
     integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g=="
@@ -73,7 +72,6 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   {% endfor %}
-
   {% endif %}
   {% block content %}
   <p>Use this document as a way to quick start any new project.</p>
@@ -85,5 +83,3 @@
   {# Script tags with only code, no src (defer by default) #}
   {% endblock inline_javascript %}
 </body>
-
-</html>

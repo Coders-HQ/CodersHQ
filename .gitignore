@@ -153,10 +153,14 @@ typings/
 
 ### VisualStudioCode template
 .vscode/*
-# !.vscode/settings.json
+!.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
 
 
 
@@ -266,24 +270,20 @@ Session.vim
 tags
 
 ### Project template
-
 codershq/media/
 
 .pytest_cache/
-
-
 .ipython/
+project.css
+project.min.css
+vendors.js
+*.min.js
 .env
 .envs/*
 !.envs/.local/
 
 #css files
-project.css
 *.min.css
-
-#js files
-vendors.js
-*.min.js
 
 # Prettier Ignore
 .prettierignore

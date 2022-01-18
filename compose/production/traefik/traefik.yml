@@ -32,7 +32,6 @@ http:
   routers:
     web-secure-router:
       rule: "Host(`codershq.ae`) || Host(`www.codershq.ae`)"
-      
       entryPoints:
         - web-secure
       middlewares:

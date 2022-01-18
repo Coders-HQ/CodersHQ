@@ -15,7 +15,7 @@ class Event(models.Model):
     image = models.ImageField(_("Event image"), upload_to=event_image_path)
     date_time = models.DateTimeField(_("Event date and time"))
     duration = models.IntegerField(_("Event duration (hrs)"), null=True, blank=True)
-    short_description = models.CharField(_("Short event description"), max_length=500)
+    short_description = models.CharField(_("Short event description"), max_length=500, default=None), 
     description = RichTextField()
     event_link = models.URLField(_("Event zoom link (only if online)"), blank=True, null=True)
     event_location = models.CharField(_("Event location (use 'Online' if its online)"),
