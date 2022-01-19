@@ -16,7 +16,7 @@ class Event(models.Model):
     date_time = models.DateTimeField(_("Event date and time"))
     duration = models.IntegerField(_("Event duration (hrs)"), null=True, blank=True)
     description = RichTextField()
-    short_description = models.CharField(_("Short event description"), max_length=500, default=None)
+    short_description = models.CharField(_("Short event description"), max_length=150, default=None)
     event_link = models.URLField(_("Event zoom link (only if online)"), blank=True, null=True)
     event_location = models.CharField(_("Event location (use 'Online' if its online)"),
                                       max_length=150, blank=True, null=True)
