@@ -8,7 +8,7 @@ from codershq.users.validators import validate_github_profile
 
 def user_image_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
-    return 'profile/image/{0}/{1}'.format(instance.username, filename)
+    return "profile/image/{0}/{1}".format(instance.username, filename)
 
 
 class User(AbstractUser):
@@ -20,14 +20,22 @@ class User(AbstractUser):
     # personal details
     name = models.CharField(_("Enter your name"), blank=True, max_length=255)
     bio = models.TextField(_("Bio"), blank=True, max_length=500)
-    academic_qualification = models.CharField(_("User's highest qualification"), blank=True, max_length=30)
-    github_profile = models.CharField(_("User's GitHub profile"), blank=True, max_length=255,
-                                      validators=[validate_github_profile])
-    profile_image = models.ImageField(_("Profile image"), upload_to=user_image_path, null=True, blank=True)
+    academic_qualification = models.CharField(
+        _("User's highest qualification"), blank=True, max_length=30
+    )
+    github_profile = models.CharField(
+        _("User's GitHub profile"),
+        blank=True,
+        max_length=255,
+        validators=[validate_github_profile],
+    )
+    profile_image = models.ImageField(
+        _("Profile image"), upload_to=user_image_path, null=True, blank=True
+    )
 
     # users can be part of a team
     # cannot delete team if a user is part of that team
-    teams = models.ForeignKey('Team', on_delete=models.PROTECT, null=True, blank=True)
+    teams = models.ForeignKey("Team", on_delete=models.PROTECT, null=True, blank=True)
 
     #: First and last name do not cover name patterns around the globe
     first_name = None  # type: ignore
@@ -44,8 +52,8 @@ class User(AbstractUser):
 
     @property
     def github_username(self):
-        split_url = self.github_profile.split('/')
-        if split_url[-1] == '':
+        split_url = self.github_profile.split("/")
+        if split_url[-1] == "":
             user_name = split_url[-2]
         else:
             user_name = split_url[-1]
@@ -54,11 +62,13 @@ class User(AbstractUser):
 
 class Team(models.Model):
     """team that a user will be part of"""
+
     team_name = models.TextField(_("Team name"), max_length=100)
 
 
 class TeamTrophyRecord(models.Model):
     """trophy records"""
+
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
 
@@ -69,6 +79,7 @@ class UserScoreCategory(models.Model):
 
 class UserScore(models.Model):
     """Score connected to a user"""
+
     user_score_category = models.ForeignKey(UserScoreCategory, on_delete=models.PROTECT)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

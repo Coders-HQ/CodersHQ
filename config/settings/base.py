@@ -73,7 +73,7 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
     "django_celery_beat",
     "allauth.socialaccount.providers.github",
-    "ckeditor"
+    "ckeditor",
 ]
 
 LOCAL_APPS = [
@@ -122,7 +122,9 @@ PASSWORD_HASHERS = [
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
@@ -239,7 +241,7 @@ EMAIL_TIMEOUT = 5
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
 # ADMINS = [("""Rashed Al Suwaidi""", "x.suwaidi@gmail.com"), ("""Musab Obaid""", "musab.obaid@gmail.com")] #removed Rashed for the time being because of the spam emails.
-ADMINS = [ ("""Musab Obaid""", "musab.obaid@gmail.com")]
+ADMINS = [("""Musab Obaid""", "musab.obaid@gmail.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
@@ -313,18 +315,18 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # ------------------------------------------------------------------------------
 # Provider specific settings
 
-#https://django-allauth.readthedocs.io/en/latest/configuration.html
+# https://django-allauth.readthedocs.io/en/latest/configuration.html
 # bool to check if github exists
 GITHUB_CLIENT_ID = env.str("GITHUB_CLIENT_ID", "")
 if GITHUB_CLIENT_ID != "":
     SOCIALACCOUNT_PROVIDERS = {
-        'github': {
+        "github": {
             "VERIFIED_EMAIL": True,
-            'APP': {
-                'client_id': env("GITHUB_CLIENT_ID"),
-                'secret': env("GITHUB_CLIENT_SECRET"),
-                'key': ''
-            }
+            "APP": {
+                "client_id": env("GITHUB_CLIENT_ID"),
+                "secret": env("GITHUB_CLIENT_SECRET"),
+                "key": "",
+            },
         }
     }
 

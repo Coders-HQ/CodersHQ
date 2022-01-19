@@ -1,11 +1,11 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
-from django.contrib.staticfiles.storage import staticfiles_storage
 
 urlpatterns = [
     path(
@@ -13,16 +13,25 @@ urlpatterns = [
         RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
     ),
     path(
-        "dashboard/", TemplateView.as_view(template_name="pages/dashboard.html"), name="about"
+        "dashboard/",
+        TemplateView.as_view(template_name="pages/dashboard.html"),
+        name="about",
     ),
     path(
-        "profile/", TemplateView.as_view(template_name="pages/profile.html"), name="about"
+        "profile/",
+        TemplateView.as_view(template_name="pages/profile.html"),
+        name="about",
     ),
     path(
-        "construction/", TemplateView.as_view(template_name="pages/underConstruction.html"), name="construction"
+        "construction/",
+        TemplateView.as_view(template_name="pages/underConstruction.html"),
+        name="construction",
     ),
     path(
-        "comingSoon/", TemplateView.as_view(template_name="pages/comingSoon.html"), name='comingSoon'),
+        "comingSoon/",
+        TemplateView.as_view(template_name="pages/comingSoon.html"),
+        name="comingSoon",
+    ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management

@@ -6,18 +6,20 @@ import re
 
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+
 # from users.CHQ_Scoring.github_score import CHQScore
 # from django.conf import settings
 # from users.utils import get_github_username
 
+
 def validate_github_profile(value):
     """validate github profile"""
 
-    pattern = r'^github.com\/[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*\/?$'
+    pattern = r"^github.com\/[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*\/?$"
     if re.search(pattern, value) is None:
         raise ValidationError(
-            _('%(value)s is not a valid github profile.'),
-            params={'value': value},
+            _("%(value)s is not a valid github profile."),
+            params={"value": value},
         )
 
 

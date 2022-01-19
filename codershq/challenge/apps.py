@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ChallengeConfig(AppConfig):
-    name = 'codershq.challenge'
+    name = "codershq.challenge"
     verbose_name = _("Challenges")
 
     def ready(self):

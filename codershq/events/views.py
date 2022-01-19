@@ -1,16 +1,18 @@
-
+from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
-from .forms import ParticipantForm
 from django.http import FileResponse
-from .models import Event
+from django.shortcuts import get_object_or_404, redirect, render
+
 from codershq.users.models import User
-from .utils.certificate import serve_images, get_event_participants
-from django.contrib import messages
+
+from .forms import ParticipantForm
+from .models import Event
+from .utils.certificate import get_event_participants, serve_images
+
 
 def index(request):
-    events = Event.objects.all().order_by('date_time')
+    events = Event.objects.all().order_by("date_time")
     user = request.user
     for event in events:
         if user.is_authenticated:
@@ -18,8 +20,8 @@ def index(request):
                 event.joined = True
             else:
                 event.joined = False
-    context = {'events': events}
-    return render(request, 'events/main.html', context)
+    context = {"events": events}
+    return render(request, "events/main.html", context)
 
 
 @login_required
@@ -30,10 +32,10 @@ def join(request, event_id):
     if user.is_authenticated:
         event.attendees.add(user)
         event.save()
-        messages.success(request, 'Successfully joined ' + event.title)
+        messages.success(request, "Successfully joined " + event.title)
 
-        return redirect('events:index')
-    return redirect('events:index')
+        return redirect("events:index")
+    return redirect("events:index")
 
 
 @login_required
@@ -44,9 +46,9 @@ def leave(request, event_id):
     if user.is_authenticated:
         event.attendees.remove(user)
         event.save()
-        messages.success(request, 'You have been removed from ' + event.title)
-        return redirect('events:index')
-    return redirect('events:index')
+        messages.success(request, "You have been removed from " + event.title)
+        return redirect("events:index")
+    return redirect("events:index")
 
 
 @login_required
@@ -59,7 +61,7 @@ def download(request, event_id):
     # get the image
     serve_images(attendee_list)
 
-    zip_file = open('./participants.zip', 'rb')
+    zip_file = open("./participants.zip", "rb")
     return FileResponse(zip_file)
 
 
@@ -67,20 +69,20 @@ def download(request, event_id):
 def participate(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
 
-    if request.method == 'POST':
+    if request.method == "POST":
 
         form = ParticipantForm(request.POST)
 
         if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
 
             # get user
             user = get_object_or_404(User, email=email)
 
             # check if user has name
             # add name if user doesnt have
-            if user.name == '':
+            if user.name == "":
                 user.name = name
 
                 # update db
@@ -90,7 +92,7 @@ def participate(request, event_id):
             event.participants.add(user)
             event.save()
 
-            messages.success(request, user.name +' has been added as a participant')
+            messages.success(request, user.name + " has been added as a participant")
 
             # TODO: Error handling
 
@@ -100,4 +102,4 @@ def participate(request, event_id):
     else:
         form = ParticipantForm()
 
-    return render(request, 'events/participate.html', {'form': form, 'event': event})
+    return render(request, "events/participate.html", {"form": form, "event": event})

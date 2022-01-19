@@ -1,10 +1,11 @@
 from django.core.management.base import BaseCommand, CommandError
-from codershq.challenge.models import Challenge
 from django.utils import timezone
+
+from codershq.challenge.models import Challenge
 
 
 class Command(BaseCommand):
-    help = 'Ends challenge and updates all users'
+    help = "Ends challenge and updates all users"
 
     def handle(self, *args, **options):
         for challenge in Challenge.objects.all():
@@ -14,4 +15,4 @@ class Command(BaseCommand):
                     competitor.completed_challenges += 1
                     competitor.save()
 
-        self.stdout.write(self.style.SUCCESS('Successfully checked challenge'))
+        self.stdout.write(self.style.SUCCESS("Successfully checked challenge"))

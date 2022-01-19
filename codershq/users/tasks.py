@@ -1,7 +1,8 @@
-from django.contrib.auth import get_user_model
-from django.conf import settings
-from codershq.users.scoring.score import CHQScore
 from celery.utils.log import get_task_logger
+from django.conf import settings
+from django.contrib.auth import get_user_model
+
+from codershq.users.scoring.score import CHQScore
 from config import celery_app
 
 logger = get_task_logger(__name__)
@@ -16,6 +17,7 @@ User = get_user_model()
 # def get_users_count():
 #     """A pointless Celery task to demonstrate usage."""
 #     return User.objects.count()
+
 
 @celery_app.task()
 def update_github_score(pk):

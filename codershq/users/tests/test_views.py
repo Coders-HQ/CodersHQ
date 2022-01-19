@@ -9,11 +9,7 @@ from django.test import RequestFactory
 from codershq.users.forms import UserChangeForm
 from codershq.users.models import User
 from codershq.users.tests.factories import UserFactory
-from codershq.users.views import (
-    UserRedirectView,
-    UserUpdateView,
-    user_detail_view,
-)
+from codershq.users.views import UserRedirectView, UserUpdateView, user_detail_view
 
 pytestmark = pytest.mark.django_db
 

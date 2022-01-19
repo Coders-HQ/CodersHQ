@@ -1,15 +1,16 @@
-from django.views.generic import ListView, DetailView
-from django.urls import reverse
-from codershq.challenge.models import Challenge
-from django.utils import timezone
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+from django.views.generic import DetailView, ListView
+
+from codershq.challenge.models import Challenge
 
 
 class ChallengeList(LoginRequiredMixin, ListView):
     model = Challenge
-    context_object_name = 'challenges'
+    context_object_name = "challenges"
     paginate_by = 10
 
 

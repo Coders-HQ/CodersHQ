@@ -1,10 +1,10 @@
-from github import Github
 import concurrent.futures
 from statistics import mode
 
+from github import Github
+
 
 class CHQScore:
-
     def __init__(self, auth=None):
 
         self.auth = auth
@@ -13,7 +13,7 @@ class CHQScore:
         else:
             self.g = Github()
 
-        self.fav_language = ''
+        self.fav_language = ""
 
     def check_user_exists(self, user_name):
         """
@@ -32,8 +32,9 @@ class CHQScore:
         """
 
         score_dict = {}
+
         def download(user_name):
-            score_dict[user_name]=self.get_score(user_name)
+            score_dict[user_name] = self.get_score(user_name)
 
         # thread all calls
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
@@ -113,7 +114,7 @@ class CHQScore:
         user_score *= m_high
         repo_score *= m_med
         commit_score *= m_low
-        total_score = user_score+repo_score+commit_score
+        total_score = user_score + repo_score + commit_score
 
         return total_score, mode(languages)
 

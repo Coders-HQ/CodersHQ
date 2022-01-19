@@ -12,7 +12,7 @@ SECRET_KEY = env(
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ["*"]
-GITHUB_TOKEN = env.str("GITHUB_TOKEN","")
+GITHUB_TOKEN = env.str("GITHUB_TOKEN", "")
 
 # CACHES
 # ------------------------------------------------------------------------------

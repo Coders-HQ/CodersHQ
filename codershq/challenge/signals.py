@@ -1,20 +1,20 @@
-from django.db.models.signals import m2m_changed
-from codershq.challenge.models import Challenge
 from allauth.account.models import EmailAddress
-from django.db.models.signals import post_save
-from django.core.mail import send_mail
-from django.dispatch import receiver
-from codershq.challenge.slack import create_channel
 from django.conf import settings
+from django.core.mail import send_mail
+from django.db.models.signals import m2m_changed, post_save
+from django.dispatch import receiver
+
+from codershq.challenge.models import Challenge
+from codershq.challenge.slack import create_channel
 
 
 def send_challenge_mail(sender, **kwargs):
-    if kwargs.get('action') == 'post_add':
-        email = EmailAddress.objects.get(pk=list(kwargs['pk_set'])[0])
+    if kwargs.get("action") == "post_add":
+        email = EmailAddress.objects.get(pk=list(kwargs["pk_set"])[0])
         send_mail(
-            'Subject here',
-            'Here is the message.',
-            'from@example.com',
+            "Subject here",
+            "Here is the message.",
+            "from@example.com",
             [email],
             fail_silently=True,
         )

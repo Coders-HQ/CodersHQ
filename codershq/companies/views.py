@@ -1,7 +1,8 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView, FormView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView, DeleteView, FormView, UpdateView
+
 from codershq.companies.models import Company
 
 
@@ -11,14 +12,14 @@ class CompanyListView(ListView, LoginRequiredMixin):
 
 class CompanyCreateView(CreateView):
     model = Company
-    fields = '__all__'
+    fields = "__all__"
 
 
 class CompanyUpdateView(UpdateView):
     model = Company
-    fields = ['name']
+    fields = ["name"]
 
 
 class CompanyDeleteView(DeleteView):
     model = Company
-    success_url = reverse_lazy('company-list')
+    success_url = reverse_lazy("company-list")

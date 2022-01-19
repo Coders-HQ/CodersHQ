@@ -3,8 +3,8 @@ from django.urls import path
 from codershq.users.views import (
     user_detail_view,
     user_redirect_view,
-    user_update_view,
     user_scoring_list_view,
+    user_update_view,
 )
 
 app_name = "users"
