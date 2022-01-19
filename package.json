@@ -14,7 +14,7 @@
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.0.0",
+    "gulp-sass": "^5.1.0",
     "wow": "^0.0.6",
     "gulp-uglify-es": "^3.0.0",
     "bootstrap": "^5.1.3",
