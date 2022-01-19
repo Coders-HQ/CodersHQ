@@ -9,7 +9,7 @@ from .base import env
 AZURE_ACCOUNT_NAME=env("AZURE_ACCOUNT_NAME")
 AZURE_ACCOUNT_KEY=env("AZURE_ACCOUNT_KEY")
 AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
-AZURE_CONTAINER = 'media' # this containr must be created in Azure Storage Account before running the code. Subdirectories can be created during runtime. 
+AZURE_CONTAINER = 'media' # this containr must be created in Azure Storage Account before running the code. Subdirectories can be created during runtime.
 DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
 MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/'     #override MEDIA_RL that was set in base.py
 
@@ -97,14 +97,14 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
-    "DJANGO_DEFAULT_FROM_EMAIL", 
+    "DJANGO_DEFAULT_FROM_EMAIL",
     default="Coders Headquarters <noreply@codershq.ae>",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
-    "DJANGO_EMAIL_SUBJECT_PREFIX", 
+    "DJANGO_EMAIL_SUBJECT_PREFIX",
     default="[Coders Headquarters]",
 )
 

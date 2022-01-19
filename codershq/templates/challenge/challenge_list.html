@@ -1,10 +1,11 @@
-{% extends "dashboard/base.html" %}
-
-{% block title %}{{ "Challenges" }}{%endblock %}
-
+{% extends "base.html" %}
 {% load static %}
 
-{% block main %}
+{% block navigation %}
+{% include "pages/nav_dark.html" %}
+{% endblock navigation %}
+
+{% block content %}
 
 
 <h2>Challenges</h2>

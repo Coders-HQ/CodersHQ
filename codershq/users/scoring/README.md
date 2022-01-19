@@ -1,6 +1,6 @@
 # CHQ_Scoring
 
-The scoring system looks at each attribute and attaches a modifier (currently set at 1,2 and 3) for the significance of said attribute. After that another modifier is applied for the class attribute, these are then added together to get the final score. 
+The scoring system looks at each attribute and attaches a modifier (currently set at 1,2 and 3) for the significance of said attribute. After that another modifier is applied for the class attribute, these are then added together to get the final score.
 
 ## Modifiers
 

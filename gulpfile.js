@@ -28,7 +28,7 @@ function pathsConfig(appName) {
   this.app = `./${pjson.name}`
   const vendorsRoot = 'node_modules'
 
-  return { 
+  return {
     bootstrapSass: `${vendorsRoot}/bootstrap/scss`,
     vendorsJs: [
       `${vendorsRoot}/jquery/dist/jquery.slim.js`,

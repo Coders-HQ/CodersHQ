@@ -30,7 +30,7 @@ class CHQScore:
         """
         Returns a dict of username and associated score
         """
-        
+
         score_dict = {}
         def download(user_name):
             score_dict[user_name]=self.get_score(user_name)

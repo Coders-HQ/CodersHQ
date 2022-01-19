@@ -28,8 +28,8 @@ docker.
 The Docs
 --------
 
-Have a look at the `docs`_, we document everything over there. 
-We plan to migrate from the docs to something more established, like readthedocs, once we have enough material 
+Have a look at the `docs`_, we document everything over there.
+We plan to migrate from the docs to something more established, like readthedocs, once we have enough material
 to work with.
 
 We also document the tasks in the `project`_ section and have a look at the `issues`_ section to find out what we are working on.
@@ -48,10 +48,10 @@ add the missing environment variables values in '.envs/.local/.django', such as 
     GITHUB_CLIENT_SECRET=
     SLACK_TOKEN=
 
-These can be obtained from github's settings section and slack's api section if you create a bot. 
+These can be obtained from github's settings section and slack's api section if you create a bot.
 
 To build the stack and update the databse run ::
-    
+
     $ docker-compose -f local.yml build
     $ docker-compose -f local.yml run --rm django python manage.py makemigrations
     $ docker-compose -f local.yml run --rm django python manage.py migrate
