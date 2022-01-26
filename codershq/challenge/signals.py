@@ -23,14 +23,14 @@ def send_challenge_mail(sender, **kwargs):
 # m2m_changed.connect(send_challenge_mail, sender=Challenge.competitors.through)
 
 
-@receiver(post_save, sender=Challenge)
-def create_slack_channel(sender, instance, created, **kwargs):
-    # creates slack channel using slack api
+# @receiver(post_save, sender=Challenge)
+# def create_slack_channel(sender, instance, created, **kwargs):
+#     # creates slack channel using slack api
 
-    # check if slack token is available
-    if settings.SLACK_TOKEN != "":
+#     # check if slack token is available
+#     if settings.SLACK_TOKEN != "":
 
-        # if a challenge is created
-        if created:
-            # create slack channel
-            create_channel(instance.slug)
+#         # if a challenge is created
+#         if created:
+#             # create slack channel
+#             create_channel(instance.slug)

@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from django.db.models.fields import DateTimeField
 from django.utils.translation import gettext_lazy as _
@@ -10,9 +11,9 @@ class Challenge(models.Model):
     description = models.TextField(
         _("Challenge description"), max_length=5000, help_text="Describe the Challenge"
     )
-    logo = models.ImageField(_("Challenge Logo"), upload_to="challenges/logo/")
-    github_link = models.TextField(_("Challenge github link"), default=None)
-    website = models.TextField(_("Website link"), max_length=100)
+    image = models.ImageField(_("Challenge Image"), upload_to="challenges/image/", blank=True, default=None)
+    github_link = models.TextField(_("Challenge github link"),  default=None, blank=True)
+    website = models.TextField(_("Website link"), max_length=100, default=None, blank=True)
     slack_group = models.TextField(
         _("Slack group"), null=True, blank=True, max_length=100
     )
