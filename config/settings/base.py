@@ -177,7 +177,7 @@ TEMPLATES = [
         # https://docs.djangoproject.com/en/dev/ref/settings/#dirs
         "DIRS": [str(APPS_DIR / "templates")],
         # https://docs.djangoproject.com/en/dev/ref/settings/#app-dirs
-        # "APP_DIRS": True,
+        "APP_DIRS": False,
         "OPTIONS": {
             # https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
             # https://docs.djangoproject.com/en/dev/ref/templates/api/#loader-types
