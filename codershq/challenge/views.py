@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, CreateView
 
 from codershq.challenge.models import Challenge
 
@@ -11,7 +11,7 @@ from codershq.challenge.models import Challenge
 class ChallengeList(LoginRequiredMixin, ListView):
     model = Challenge
     context_object_name = "challenges"
-    paginate_by = 10
+    paginate_by = 9
 
 
 class ChallengeDetail(LoginRequiredMixin, DetailView):
@@ -34,3 +34,7 @@ class ChallengeDetail(LoginRequiredMixin, DetailView):
     #             messages.success(request, 'You were successfully added to the challenge')
 
     #     return HttpResponseRedirect(reverse('challenge:detail', kwargs={'slug': self.object.slug}))
+
+# to create the challenge
+class ChallengeCreate(CreateView, LoginRequiredMixin):
+    model = Challenge

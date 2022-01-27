@@ -42,9 +42,9 @@
             </h5>
 
             <div class="card-text">
-              {{challenge.description}}
+              {{challenge.short_description}}
             </div>
-            <a href="#" class="card-link" data-bs-toggle="modal" data-bs-target="#modal-{{ forloop.counter }}">More
+            <a href="{{ challenge.get_absolute_url }}" class="card-link" data-bs-toggle="modal" data-bs-target="#modal-{{ forloop.counter }}">More
               Info</a>
 
 

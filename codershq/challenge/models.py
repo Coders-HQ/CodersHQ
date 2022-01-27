@@ -2,6 +2,8 @@ from django.db import models
 from django.db.models.fields import DateTimeField
 from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
+from codershq.users.models import User
+from django.urls import reverse
 
 
 class Challenge(models.Model):
@@ -9,16 +11,32 @@ class Challenge(models.Model):
 
     # the name of the challenge
     name = models.CharField(_("Name of Challenge"), max_length=100)
-
+    # short description of the challenge
     short_description = models.TextField(
-        _("Short challenge description"), max_length=20, help_text="Short description of the challenge"
+        _("Short challenge description"), max_length=150, help_text="Short description of the challenge"
     )
+    # full challenge description
     description = RichTextField()
+    # image to be placed in the smaller card and banner
     image = models.ImageField(_("Challenge Image"), upload_to="challenges/image/", blank=True, default=None, null=None)
-    github_link = models.URLField(_("Challenge github link"),  default=None, blank=True, null=True)
-    website = models.URLField(_("Website link"), null=True, blank=True)
+    # test and train data
     train_data = models.URLField(_("Train data link"), null=True, blank=True, help_text="Link to train data set")
     test_data = models.URLField(_("Test data link"), null=True, blank=True, help_text="Link to test data set")
+    # github link for additional information
+    github_link = models.URLField(_("Challenge github link"),  default=None, blank=True, null=True)
+    # website if companies need to add more data
+    website = models.URLField(_("Website link"), null=True, blank=True)
+    # end date of the challenge
+    end_date = models.DateTimeField(_("Challenge end date"))
+    # user who created the challenge
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def __str__(self) -> str:
         return "Challenge: " + self.name
+
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular instance of the model."""
+        return reverse('challenge:challenge-detail', kwargs={'pk' : self.pk})
+
