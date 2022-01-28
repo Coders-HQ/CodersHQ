@@ -9,26 +9,26 @@ Challenges should be a process and a tool for private companies to create challe
 ### Level 1 Requirements
 These are the requirements that must be met when creating the challenge section.
 
-Companies should be able to create challenges
-Challenges should be viewed publicly in the website 
-Participants should be able to choose a challenge, or multiple challenges, and participate in them
-Participants should be able to send their solution to the challenges
-Companies should be able to view participants’ challenge entries
-Companies should be able to communicate with participants
-Companies should be able to send participants custom messages
-Companies should be able to select challenge winners
++ Companies should be able to create challenges
++ Challenges should be viewed publicly in the website 
++ Participants should be able to choose a challenge, or multiple challenges, and participate in them
++ Participants should be able to send their solution to the challenges
++ Companies should be able to view participants’ challenge entries
++ Companies should be able to communicate with participants
++ Companies should be able to send participants custom messages
++ Companies should be able to select challenge winners
 
 ### Level 2 Requirements
 These requirements are softer requirements yet require a very good reason not to meet any one of these.
 
-Questions
+Questions: 
 These are yet unanswered questions. When answered these should be striked through and pushed into the relevant section.
 
-Should we save the interaction between users and companies
-How many attempts should we give users
-How often should we allow users 
-Should we give score to winners only
-How should we score winners
++ Should we save the interaction between users and companies?
++ How many attempts should we give users?
++ How often should we allow users?
++ Should we give score to winners only?
++ How should we score winners?
 
 
 
