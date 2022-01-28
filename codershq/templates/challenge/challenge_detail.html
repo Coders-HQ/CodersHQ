@@ -11,7 +11,7 @@
     <div class="container">
 
         <div class="card">
-            <h5 class="card-header">Challenge</h5>
+            <div class="card-header">Challenge 1</div>
             <div class="card-body">
                 <h5 class="card-title">
                     {{challenge.name}}
@@ -33,21 +33,21 @@
                                 aria-selected="true">Home</button>
                             <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-profile" type="button" role="tab"
-                                aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+                                aria-controls="v-pills-profile" aria-selected="false">Evaluation</button>
                             <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-messages" type="button" role="tab"
-                                aria-controls="v-pills-messages" aria-selected="false">Messages</button>
+                                aria-controls="v-pills-messages" aria-selected="false">Prizes</button>
                             <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-settings" type="button" role="tab"
-                                aria-controls="v-pills-settings" aria-selected="false">Settings</button>
+                                aria-controls="v-pills-settings" aria-selected="false">Rules</button>
                         </div>
-                        <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-content mt-2" id="v-pills-tabContent">
                             <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
                                 aria-labelledby="v-pills-home-tab">{{challenge.description|safe}}</div>
                             <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                aria-labelledby="v-pills-profile-tab">...</div>
+                                aria-labelledby="v-pills-profile-tab">{{challenge.evaluation|safe}}</div>
                             <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                aria-labelledby="v-pills-messages-tab">...</div>
+                                aria-labelledby="v-pills-messages-tab">{{challenge.reward|safe}}</div>
                             <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
                                 aria-labelledby="v-pills-settings-tab">...</div>
                         </div>
@@ -59,10 +59,18 @@
                 <div class="card">
                     <div class="card-header">Timeline</div>
                     <div class="card-body">
-                        <h5 class="card-title">Secondary card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
+                        <p class="card-text">
+
+                        <ul>
+                            <li>November 2, 2021 - Start Date</li>
+                            <li>January 25, 2022 - Entry deadline. You must accept the competition rules before this
+                                date in order to compete.</li>
+                            <li>January 25, 2022 - Team Merger deadline. This is the last day participants may join or
+                                merge teams.</li>
+                            <li>February 1, 2022 - Final submission deadline.</li>
+                        </ul>
+
+                        </p>
                     </div>
                 </div>
             </div>

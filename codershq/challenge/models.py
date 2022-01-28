@@ -17,6 +17,12 @@ class Challenge(models.Model):
     )
     # full challenge description
     description = RichTextField()
+    # how the challenge will be evaluated
+    evaluation = RichTextField()
+    # the reward structure
+    reward = RichTextField()
+    # total reward
+    prize_pool = models.IntegerField(_("Total prize pool"), default=0)
     # image to be placed in the smaller card and banner
     image = models.ImageField(_("Challenge Image"), upload_to="challenges/image/", blank=True, default=None, null=None)
     # test and train data
@@ -28,8 +34,12 @@ class Challenge(models.Model):
     website = models.URLField(_("Website link"), null=True, blank=True)
     # end date of the challenge
     end_date = models.DateTimeField(_("Challenge end date"))
+    # winner announcement 
+    winner = models.ForeignKey(User, related_name='winner',on_delete=models.CASCADE, null=True, blank=True)
     # user who created the challenge
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='owner',on_delete=models.CASCADE)
+    # participants
+    participants = models.ManyToManyField(User, related_name='participants', null=True, blank=True)
 
 
     def __str__(self) -> str:
