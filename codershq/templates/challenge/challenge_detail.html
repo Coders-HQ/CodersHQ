@@ -13,8 +13,9 @@
         <div class="card">
             <div class="card-header">Challenge 1</div>
             <div class="card-body">
-                <h5 class="card-title">
-                    {{challenge.name}}
+                <h5 class="card-title d-flex justify-content-between">
+                    <div>{{challenge.name}}</div>
+                    <div>{{challenge.get_reward}}</div>
                 </h5>
                 <p class="card-text">{{challenge.short_description}}</p>
                 {% if user in challenge.participants.all %}
