@@ -1,19 +1,21 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
-from .forms import ChallengeForm
-from .mixin import AdminStaffRequiredMixin
-from django.core.exceptions import PermissionDenied
 
 from codershq.challenge.models import Challenge
+
+from .forms import ChallengeForm
+from .mixin import AdminStaffRequiredMixin
 
 
 class ChallengeList(ListView):
     model = Challenge
     context_object_name = "challenges"
     paginate_by = 9
+    ordering = ['end_date']
 
 
 class ChallengeDetail(DetailView):
@@ -35,6 +37,7 @@ class ChallengeUpdate(AdminStaffRequiredMixin, UpdateView):
     form_class = ChallengeForm
     model = Challenge
 
+    # only users who are admin or owners can update
     def get(self, request, *args, **kwargs):
         if request.user != self.get_object().owner and not request.user.is_superuser:
                 raise PermissionDenied
