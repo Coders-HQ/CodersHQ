@@ -5,6 +5,7 @@ from codershq.challenge.views import (
     ChallengeList, 
     ChallengeDetail,
     ChallengeCreate,
+    ChallengeUpdate,
     join,
     leave)
 
@@ -15,4 +16,5 @@ urlpatterns = [
     path('<int:pk>/join', join, name='join'),
     path('<int:pk>/leave', leave, name='leave'),
     path("create/", ChallengeCreate.as_view(), name="challenge-create"),
+    path("<int:pk>/update/", ChallengeUpdate.as_view(), name="challenge-update"),
 ]
