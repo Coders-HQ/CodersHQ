@@ -4,6 +4,7 @@ from django.urls import path
 from codershq.challenge.views import (
     ChallengeList, 
     ChallengeDetail,
+    ChallengeCreate,
     join,
     leave)
 
@@ -13,4 +14,5 @@ urlpatterns = [
     path('<int:pk>/', ChallengeDetail.as_view(), name='challenge-detail'),
     path('<int:pk>/join', join, name='join'),
     path('<int:pk>/leave', leave, name='leave'),
+    path("create/", ChallengeCreate.as_view(), name="challenge-create"),
 ]

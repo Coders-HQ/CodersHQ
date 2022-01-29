@@ -1,9 +1,11 @@
+from dataclasses import field, fields
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DetailView, ListView
+from .forms import ChallengeForm
 
 from codershq.challenge.models import Challenge
 
@@ -37,7 +39,13 @@ class ChallengeDetail(LoginRequiredMixin, DetailView):
 
 # to create the challenge
 class ChallengeCreate(CreateView, LoginRequiredMixin):
-    model = Challenge
+    template_name = 'challenge/challenge_form.html'
+    form_class = ChallengeForm
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
 
 @login_required
 def join(request, pk):
