@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static crispy_forms_tags %}
+
+{% block navigation %}
+{% include "pages/nav_dark.html" %}
+{% endblock navigation %}
+
+{% block content %}
+
+<section id="initiatives" class="ud-features">
+    <div class="container">
+
+        <div class="card">
+            <form class="p-4" method="post">{% csrf_token %}
+                {{ form.media }}
+                {{ form|crispy }}
+                <input type="submit" value="Save" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+
+</section>
+
+{% endblock content %}

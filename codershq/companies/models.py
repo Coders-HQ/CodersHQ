@@ -3,8 +3,6 @@ from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-from codershq.challenge.models import Sprint
-
 
 class Company(models.Model):
     """Main company model"""
@@ -38,10 +36,6 @@ class Sponsorships(models.Model):
     )
     sponsorship_type = models.OneToOneField(
         SponsorshipTypes,
-        on_delete=models.CASCADE,
-    )
-    sprint = models.ForeignKey(
-        Sprint,
         on_delete=models.CASCADE,
     )
     sponsorship_value = models.PositiveIntegerField(

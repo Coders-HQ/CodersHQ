@@ -8,13 +8,67 @@
 {% block content %}
 
 
-<h2>Challenges</h2>
-<ul>
-  {% for challenge in object_list %}
-  <li>{{ challenge.name }}</li>
-  <li>{{ challenge.description }}</li>
-  {% endfor %}
-</ul>
+<section id="initiatives" class="ud-features">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ud-section-title">
+          <span>Features</span>
+          <h1>
+            <div class="gradient">Coders (HQ)</div> Challenges
+          </h1>
+          <p>
+            From Hackathons to live events, Coders HQ has multiple initiatives that you can be part of.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row row-cols-md-3 g-4">
 
+
+      {% if challenges %}
+
+      {% for challenge in challenges %}
+
+      <div class="col">
+        <div class="card h-100 hoverable-card">
+          {% if challenge.image %}
+          <img src=" {{MEDIA_URL}}{{challenge.image}}" class="card-img-top" alt="image" />
+          {% else %}
+          <img src="{% static 'images/challenges/default.png' %}" class="card-img-top" alt="default" />
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{challenge.name}}
+            </h5>
+
+            <div class="card-text">
+              {{challenge.short_description}}
+            </div>
+
+              <a href="{{ challenge.get_absolute_url }}" class="stretched-link"></a>
+
+          </div>
+          <ul class="list-group list-group-flush">
+
+            <li class="d-flex list-group-item justify-content-between">
+              <div > <strong>{{challenge.get_reward}} </strong></div> 
+              <div class="text-muted">{{challenge.get_time_left}} </div> 
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+
+      {% endfor %}
+      {% endif %}
+
+      
+
+    </div>
+  </div>
+
+
+</section>
 
 {% endblock %}

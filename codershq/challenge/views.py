@@ -1,36 +1,69 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
-from django.utils import timezone
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, ListView
+from django.views.generic import CreateView, DetailView, ListView, UpdateView
 
 from codershq.challenge.models import Challenge
 
+from .forms import ChallengeForm
+from .mixin import AdminStaffRequiredMixin
 
-class ChallengeList(LoginRequiredMixin, ListView):
+
+class ChallengeList(ListView):
     model = Challenge
     context_object_name = "challenges"
-    paginate_by = 10
+    paginate_by = 9
+    ordering = ['end_date']
 
 
-class ChallengeDetail(LoginRequiredMixin, DetailView):
+class ChallengeDetail(DetailView):
     model = Challenge
 
-    # def post(self, request, *args, **kwargs):
 
-    #     # current challenge instance
-    #     self.object = self.get_object()
+class ChallengeCreate(AdminStaffRequiredMixin, CreateView):
+    template_name = 'challenge/challenge_form.html'
+    form_class = ChallengeForm
 
-    #     # add user if not exists
-    #     # if user exists remove user
-    #     if request.user in self.object.competitors.all():
-    #         self.object.competitors.remove(request.user)
-    #         messages.warning(request, 'You are removed from this challenge')
+    def form_valid(self, form):
+        """save owner as the loged in user"""
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
-    #     else:
-    #         if timezone.now().date() < self.object.last_join_date:
-    #             self.object.competitors.add(request.user)
-    #             messages.success(request, 'You were successfully added to the challenge')
 
-    #     return HttpResponseRedirect(reverse('challenge:detail', kwargs={'slug': self.object.slug}))
+class ChallengeUpdate(AdminStaffRequiredMixin, UpdateView):
+    template_name = 'challenge/challenge_form.html'
+    form_class = ChallengeForm
+    model = Challenge
+
+    # only users who are admin or owners can update
+    def get(self, request, *args, **kwargs):
+        if request.user != self.get_object().owner and not request.user.is_superuser:
+                raise PermissionDenied
+        return super().get(request, *args, **kwargs)
+
+
+@login_required
+def join(request, pk):
+    challenge = get_object_or_404(Challenge, pk=pk)
+    user = request.user
+
+    if user.is_authenticated:
+        challenge.participants.add(user)
+        challenge.save()
+        messages.success(request, "Successfully joined " + challenge.name)
+
+    return redirect(challenge.get_absolute_url())
+
+@login_required
+def leave(request, pk):
+    challenge = get_object_or_404(Challenge, pk=pk)
+    user = request.user
+
+    if user.is_authenticated:
+        challenge.participants.remove(user)
+        challenge.save()
+        messages.success(request, "Successfully left " + challenge.name)
+
+    return redirect(challenge.get_absolute_url())

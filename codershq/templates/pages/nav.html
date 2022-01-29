@@ -35,15 +35,19 @@
               {% else %}
               <ul id="nav" class="navbar-nav mx-auto">
                 <li class="nav-item">
-                  <a class="ud-menu-scroll" href="{% url 'events:index' %}">Events</a>
+                    <a class="ud-menu-scroll" href="{% url 'challenge:challenge-list' %}">Challenges</a>
                 </li>
                 <li class="nav-item">
-                  <a class="ud-menu-scroll" href="{% url 'dashboard:home' %}">Issues</a>
+                    <a class="ud-menu-scroll" href="{% url 'events:index' %}">Events</a>
                 </li>
                 <li class="nav-item">
-                  <a class="ud-menu-scroll" href="https://coders-hq.github.io/CodersHQ/">Docs</a>
+                    <a class="ud-menu-scroll" href="{% url 'dashboard:home' %}">Issues</a>
                 </li>
-              </ul>
+                <li class="nav-item">
+                    <a class="ud-menu-scroll" href="https://coders-hq.github.io/CodersHQ/">Docs</a>
+                </li>
+            </ul>
+        </ul>
 
 
               <!-- additional pages if needed  -->
