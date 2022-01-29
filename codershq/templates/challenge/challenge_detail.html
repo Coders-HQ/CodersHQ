@@ -18,11 +18,15 @@
                     <div>{{challenge.get_reward}}</div>
                 </h5>
                 <p class="card-text">{{challenge.short_description}}</p>
-                {% if user in challenge.participants.all %}
-                <a href="/challenge/{{challenge.id}}/leave" class="btn btn-danger mt-2">Leave</a>
-                {% else %}
-                <a href="/challenge/{{challenge.id}}/join" class="btn btn-primary mt-2">Join</a>
-                {% endif %}
+
+                <div class="d-flex justify-content-end">
+                    {% if user in challenge.participants.all %}
+                    <a href="/challenge/{{challenge.id}}/leave" class="btn btn-danger mt-2">Leave Challenge</a>
+                    {% else %}
+                    <a href="/challenge/{{challenge.id}}/join" class="btn btn-primary mt-2">Join Challenge</a>
+                    {% endif %}
+                </div>
+
             </div>
         </div>
 
@@ -51,14 +55,10 @@
                             {% endif %}
                         </div>
                         <div class="tab-content m-2" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
-                                aria-labelledby="v-pills-home-tab">{{challenge.description|safe}}</div>
-                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
-                                aria-labelledby="v-pills-profile-tab">{{challenge.evaluation|safe}}</div>
-                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
-                                aria-labelledby="v-pills-messages-tab">{{challenge.reward|safe}}</div>
-                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"
-                                aria-labelledby="v-pills-settings-tab">{{challenge.rules|safe}}</div>
+                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"aria-labelledby="v-pills-home-tab">{{challenge.description|safe}}</div>
+                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"aria-labelledby="v-pills-profile-tab">{{challenge.evaluation|safe}}</div>
+                            <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"aria-labelledby="v-pills-messages-tab">{{challenge.reward|safe}}</div>
+                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel"aria-labelledby="v-pills-settings-tab">{{challenge.rules|safe}}</div>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                     </div>
                 </div>
 
-                {% if challenge.participants.count  %}
+                {% if challenge.participants.count %}
                 <div class="card mb-4">
                     <div class="card-header">Participants</div>
                     <div class="card-body">
