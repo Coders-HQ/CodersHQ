@@ -26,7 +26,7 @@ class Challenge(models.Model):
     # the reward structure
     reward = RichTextField(help_text="detailed reward structure")
     # addition rule detail
-    rules = RichTextField(help_text="Rules related to submission (optional)", null=True, blank=True)
+    rules = RichTextField(_("Rules (optional)"),help_text="Rules related to submission (optional)", null=True, blank=True)
     # is the reward cash
     is_monetary = models.BooleanField(_("Is the reward a cash prize?"), default=False)
     # total reward if its monetary
@@ -61,46 +61,39 @@ class Challenge(models.Model):
     def __str__(self) -> str:
         return "Challenge: " + self.name
 
+    @property
     def is_over(self):
         """return true if challenge is over"""
         return self.end_date < timezone.now()
 
     def save(self, *args, **kwargs):
         """Validate form"""
-
-        # dont save if is_monetary is True and prize_pool = 0
-        if self.is_monetary and self.prize_pool <= 0:
-            raise ValidationError('Cannot have both is_monetary True and prize_pool = 0')
-
-        # dont save if two reward types are chosen
-        if self.prize_pool > 0 and self.alternate_reward is not None:
-            raise ValidationError('Cannot have both prize_pool and alternate reward at the same time')
-
-        # prize must be chosen
-        if self.prize_pool <=0 and self.alternate_reward is None:
-            raise ValidationError("Prize pool cant be zero and Alternate reward empty at the same time")
-
-
+        validate_challenge(self)
         super(Challenge, self).save(*args, **kwargs)
 
     def clean(self):
         """Validate form"""
-
-        # dont save if is_monetary is True and prize_pool = 0
-        if self.is_monetary and self.prize_pool <= 0:
-            raise ValidationError('Cannot have both is_monetary True and prize_pool = 0')
-
-        # dont save if two reward types are chosen
-        if self.prize_pool > 0 and self.alternate_reward is not None:
-            raise ValidationError('Cannot have both prize_pool and alternate reward at the same time')
-
-        # prize must be chosen
-        if self.prize_pool <=0 and self.alternate_reward is None:
-            raise ValidationError("Prize pool cant be zero and Alternate reward empty at the same time")
-
-
+        validate_challenge(self)
 
     def get_absolute_url(self):
         """Returns the url to access a particular instance of the model."""
         return reverse('challenge:challenge-detail', kwargs={'pk' : self.pk})
 
+
+def validate_challenge(challenge:Challenge):
+    # dont save if is_monetary is True and prize_pool = 0
+    if challenge.is_monetary and challenge.prize_pool <= 0:
+        raise ValidationError('Cannot have both is_monetary True and prize_pool = 0')
+
+    # dont save if two reward types are chosen
+    if challenge.prize_pool > 0 and challenge.alternate_reward is not None:
+        raise ValidationError('Cannot have both prize_pool and alternate reward at the same time')
+
+    # prize must be chosen
+    if challenge.prize_pool <=0 and challenge.alternate_reward is None:
+        raise ValidationError("Prize pool cant be zero and Alternate reward empty at the same time")
+
+    # cannot choose winner before end date
+    if not challenge.is_over:
+        if challenge.gold_award is not None or challenge.silver_award is not None or challenge.bronze_award is not None:
+            raise ValidationError("Cannot choose winners before end date of challenge")
