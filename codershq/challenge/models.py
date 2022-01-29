@@ -66,6 +66,35 @@ class Challenge(models.Model):
         """return true if challenge is over"""
         return self.end_date < timezone.now()
 
+    def get_reward(self):
+        """return reward based on selected"""
+        if self.is_monetary:
+            return "AED " + str("{:,}".format(self.prize_pool))
+        else:
+            return self.alternate_reward
+
+    def get_time_left(self):
+        if not self.is_over:
+            time_now = timezone.now()
+            end_date = self.end_date
+            delta = end_date - time_now
+
+            days_left = delta.days
+            weeks_left = delta.days // 7
+            months_left = delta.days // 30
+
+            if days_left <= 7:
+                return str(days_left) + " day(s) to go"
+
+            if weeks_left <= 4:
+                return str(weeks_left) + " week(s) to go"
+
+            return str(months_left) + " month(s) to go"
+
+    @property
+    def end_date_pretty(self):
+        return self.end_date.strftime('%d %B, %Y')
+
     def save(self, *args, **kwargs):
         """Validate form"""
         validate_challenge(self)

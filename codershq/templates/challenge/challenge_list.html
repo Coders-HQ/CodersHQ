@@ -31,7 +31,7 @@
       {% for challenge in challenges %}
 
       <div class="col">
-        <div class="card h-100">
+        <div class="card h-100 hoverable-card">
           {% if challenge.image %}
           <img src=" {{MEDIA_URL}}{{challenge.image}}" class="card-img-top" alt="image" />
           {% else %}
@@ -44,13 +44,16 @@
             <div class="card-text">
               {{challenge.short_description}}
             </div>
-            <a href="{{ challenge.get_absolute_url }}" class="card-link" data-bs-toggle="modal" data-bs-target="#modal-{{ forloop.counter }}">More
-              Info</a>
+
+              <a href="{{ challenge.get_absolute_url }}" class="stretched-link"></a>
 
           </div>
           <ul class="list-group list-group-flush">
 
-            <li class="list-group-item">{{challenge.website}} </li>
+            <li class="d-flex list-group-item justify-content-between">
+              <div > <strong>{{challenge.get_reward}} </strong></div> 
+              <div class="text-muted">{{challenge.get_time_left}} </div> 
+            </li>
 
 
           </ul>
@@ -59,6 +62,8 @@
 
       {% endfor %}
       {% endif %}
+
+      
 
     </div>
   </div>

@@ -17,14 +17,18 @@
                     {{challenge.name}}
                 </h5>
                 <p class="card-text">{{challenge.short_description}}</p>
-                <a href="#" class="btn btn-primary mt-2">Go somewhere</a>
+                {% if user in challenge.participants.all %}
+                <a href="/challenge/{{challenge.id}}/leave" class="btn btn-danger mt-2">Leave</a>
+                {% else %}
+                <a href="/challenge/{{challenge.id}}/join" class="btn btn-primary mt-2">Join</a>
+                {% endif %}
             </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="row mt-4 challenge-spacing">
 
             <div class="col-sm-8">
-                <div class="card">
+                <div class="card mb-4">
                     <div class="d-flex align-items-start">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
@@ -60,12 +64,28 @@
             </div>
 
             <div class="col-sm-4">
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-header">Timeline</div>
                     <div class="card-body">
+                        {% if challenge.timeline %}
                         <p class="card-text">{{challenge.timeline|safe}}</p>
+                        {% else %}
+                        <p class="card-text">Challenge ends on <strong>{{challenge.end_date_pretty}}</strong></p>
+                        {% endif %}
+
                     </div>
                 </div>
+
+                {% if challenge.participants.count  %}
+                <div class="card mb-4">
+                    <div class="card-header">Participants</div>
+                    <div class="card-body">
+                        <p class="card-text">There are {{challenge.participants.count}} participants</p>
+
+                    </div>
+                </div>
+
+                {% endif %}
             </div>
         </div>
 

@@ -1,9 +1,9 @@
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.urls import reverse
-from django.utils import timezone
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.translation import gettext_lazy as _
-from django.views.generic import DetailView, ListView, CreateView
+from django.views.generic import CreateView, DetailView, ListView
 
 from codershq.challenge.models import Challenge
 
@@ -38,3 +38,27 @@ class ChallengeDetail(LoginRequiredMixin, DetailView):
 # to create the challenge
 class ChallengeCreate(CreateView, LoginRequiredMixin):
     model = Challenge
+
+@login_required
+def join(request, pk):
+    challenge = get_object_or_404(Challenge, pk=pk)
+    user = request.user
+
+    if user.is_authenticated:
+        challenge.participants.add(user)
+        challenge.save()
+        messages.success(request, "Successfully joined " + challenge.name)
+
+    return redirect(challenge.get_absolute_url())
+
+@login_required
+def leave(request, pk):
+    challenge = get_object_or_404(Challenge, pk=pk)
+    user = request.user
+
+    if user.is_authenticated:
+        challenge.participants.remove(user)
+        challenge.save()
+        messages.success(request, "Successfully left " + challenge.name)
+
+    return redirect(challenge.get_absolute_url())

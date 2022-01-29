@@ -3194,5 +3194,18 @@ body,
   border-radius:0px
 }
 
+/*
+
+  Challenge
+
+*/
+
+.hoverable-card:hover{
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+}
+
+.challenge-spacing, p{
+  margin-top: 10px;
+}
 
 /*# sourceMappingURL=ud-styles.css.map */
