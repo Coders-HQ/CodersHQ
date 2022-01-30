@@ -56,6 +56,8 @@ class Challenge(models.Model):
     owner = models.ForeignKey(User, related_name='owner',on_delete=models.CASCADE)
     # participants
     participants = models.ManyToManyField(User, related_name='participants', blank=True)
+    # submission email
+    submission_email = models.EmailField(_("Email for submission"))
 
 
     def __str__(self) -> str:

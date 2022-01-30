@@ -11,7 +11,7 @@
     <div class="container">
 
         <div class="card">
-            <div class="card-header">Challenge 1</div>
+            <div class="card-header">Challenge {{challenge.pk}}</div>
             <div class="card-body">
                 <h5 class="card-title d-flex justify-content-between">
                     <div>{{challenge.name}}</div>
@@ -89,6 +89,14 @@
                     </div>
                 </div>
 
+                <div class="card mb-4">
+                    <div class="card-header">Sumbission</div>
+                    <div class="card-body">
+                        <p class="card-text">Submissions should be sent to <a href="mailto:{{challenge.submission_email}}">{{challenge.submission_email}}</a></p>
+
+                    </div>
+                </div>
+
                 {% if challenge.participants.count %}
                 <div class="card mb-4">
                     <div class="card-header">Participants</div>
@@ -97,7 +105,6 @@
 
                     </div>
                 </div>
-
                 {% endif %}
             </div>
         </div>
