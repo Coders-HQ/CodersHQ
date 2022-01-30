@@ -12,12 +12,19 @@ def event_image_path(instance, filename):
 
 
 class Event(models.Model):
+    # event name
     title = models.CharField(_("Event title"), max_length=100)
+    # event image to be displayed in card
     image = models.ImageField(_("Event image"), upload_to=event_image_path)
+    # when the event starts
     date_time = models.DateTimeField(_("Event date and time"))
+    # how long the event will last
     duration = models.IntegerField(_("Event duration (hrs)"), null=True, blank=True)
-    description = RichTextField()
+    # short event description
     short_description = models.CharField(_("Short event description"), max_length=150, default=None)
+    # event description
+    description = RichTextField()
+    # event link
     event_link = models.URLField(_("Event zoom link (only if online)"), blank=True, null=True)
     event_location = models.CharField(
         _("Event location (use 'Online' if its online)"),
