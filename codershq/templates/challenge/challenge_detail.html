@@ -77,6 +77,21 @@
             </div>
 
             <div class="col-sm-4">
+
+                    {% if challenge.has_data and user in challenge.participants.all  %}
+                    <div class="card mb-4">
+                        <div class="card-header">Data</div>
+                        <div class="card-body">
+                            {% if challenge.train_data %}
+                            <p class="card-text"><a href="{{challenge.train_data}}">Train Data</a></p>
+                            {% endif %}
+                            {% if challenge.test_data %}
+                            <p class="card-text"><a href="{{challenge.test_data}}">Test Data</a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+
                 <div class="card mb-4">
                     <div class="card-header">Timeline</div>
                     <div class="card-body">
@@ -96,19 +111,7 @@
                     </div>
                 </div>
 
-                {% if challenge.has_data and user in challenge.participants.all  %}
-                <div class="card mb-4">
-                    <div class="card-header">Data</div>
-                    <div class="card-body">
-                        {% if challenge.train_data %}
-                        <p class="card-text"><a href="{{challenge.train_data}}">Train Data</a></p>
-                        {% endif %}
-                        {% if challenge.test_data %}
-                        <p class="card-text"><a href="{{challenge.test_data}}">Test Data</a></p>
-                        {% endif %}
-                    </div>
-                </div>
-                {% endif %}
+
 
                 {% if challenge.participants.count %}
                 <div class="card mb-4">

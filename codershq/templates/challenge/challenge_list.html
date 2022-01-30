@@ -21,12 +21,15 @@
             Challenges is one of the main features of Coders HQ. 
             Participate in a challenge to test your skills and get rewarded!
           </p>
+          {% if user.is_staff %}
+          <p>You are a staff you can <a href="{% url 'challenge:challenge-create'%}">create a challenge</a></p>
+          {% endif %}
         </div>
       </div>
     </div>
+
+
     <div class="row row-cols-md-3 g-4">
-
-
       {% if challenges %}
 
       {% for challenge in challenges %}
