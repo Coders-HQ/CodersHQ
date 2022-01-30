@@ -29,8 +29,8 @@
     </div>
 
 
+    {% if challenges %}
     <div class="row row-cols-md-3 g-4">
-      {% if challenges %}
 
       {% for challenge in challenges %}
 
@@ -65,11 +65,20 @@
       </div>
 
       {% endfor %}
-      {% endif %}
+     
 
       
 
     </div>
+
+    {% else %}
+    <div class="text-center ">
+
+          <p>There are no challenges yet, come back soon!</p>
+
+    </div>
+    {% endif %}
+
   </div>
 
 
