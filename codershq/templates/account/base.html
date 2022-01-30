@@ -1,15 +1,15 @@
 {% extends "base.html" %}
 {% load i18n static %}
 
+{% block additional_css %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}" />
+
+{% endblock %}
+
 {% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
 
 {% block content %}
-
-<body class="antialiased border-top-wide border-primary d-flex flex-column">
-  <div class="flex-fill d-flex flex-column justify-content-center py-4">
-    <div class="container-tight py-6">
-      {% block inner %}{% endblock %}
-    </div>
-  </div>
-</body>
+  
+    {% block inner %}{% endblock %}
+ 
 {% endblock %}

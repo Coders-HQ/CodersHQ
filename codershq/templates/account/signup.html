@@ -7,31 +7,20 @@
 
 
 {% block inner %}
-      <form class="card card-md" style="z-index: 5;box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.15);" id="signup_form" method="post" action="{% url 'account_signup' %}">
-        <div class="card-body">
-          <div class="text-center mb-4">
-            <a href="/welcome"><img id="darkLogo" src="{% static 'images/logo/dark.svg' %}" width="250" alt=""><img id="lightLogo" src="{% static 'images/logo/light.svg' %}" width="250" alt=""></a>
-          </div>
-          <h2 class="card-title text-center mb-4">Create a new account</h2>
-          {% csrf_token %}
-          {{ form|crispy }}
-          <div class="mb-3">
-            <label class="form-check form-switch">
-              <input required type="checkbox" class="form-check-input"/>
-              <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms and policy</a>.</span>
-            </label>
-          </div>
-          <div class="form-footer">
-            {% if redirect_field_value %}
-            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-            {% endif %}
-            <button type="submit" class="btn btn-primary w-100">Create new account</button>
-          </div>
-        </div>
-        <div class="text-center text-muted mb-4">
-          Already have account? <a href="{{ login_url }}" tabindex="-1">Sign in</a>
-        </div>
-      </form>
+<div class="card p-4">
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button class="primaryAction btn btn-primary btn-block my-3" style="width: 100%;" type="submit">{% translate "Sign Up" %}</button>
+</form>
 
+<div>
+  Already have an account? 
+  <a href="{% url 'account_login' %}">Sign in</a>
+</div>
 
+</div>
 {% endblock %}
