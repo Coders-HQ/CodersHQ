@@ -68,6 +68,13 @@ class Challenge(models.Model):
         """return true if challenge is over"""
         return self.end_date < timezone.now()
 
+    @property
+    def has_data(self):
+        # returns true if has either test or train data
+        if self.train_data is not None or self.test_data is not None:
+            return True
+        return False
+
     def get_reward(self):
         """return reward based on selected"""
         if self.is_monetary:

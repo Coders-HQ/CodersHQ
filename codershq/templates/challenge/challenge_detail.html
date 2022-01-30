@@ -93,9 +93,22 @@
                     <div class="card-header">Sumbission</div>
                     <div class="card-body">
                         <p class="card-text">Submissions should be sent to <a href="mailto:{{challenge.submission_email}}">{{challenge.submission_email}}</a></p>
-
                     </div>
                 </div>
+
+                {% if challenge.has_data and user in challenge.participants.all  %}
+                <div class="card mb-4">
+                    <div class="card-header">Data</div>
+                    <div class="card-body">
+                        {% if challenge.train_data %}
+                        <p class="card-text"><a href="{{challenge.train_data}}">Train Data</a></p>
+                        {% endif %}
+                        {% if challenge.test_data %}
+                        <p class="card-text"><a href="{{challenge.test_data}}">Test Data</a></p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endif %}
 
                 {% if challenge.participants.count %}
                 <div class="card mb-4">
