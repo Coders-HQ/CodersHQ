@@ -960,6 +960,20 @@ p {
   width: 50%;
 }
 
+.innitiative-card{
+  background-color:#f4f5f7;
+}
+
+.innitiative-card .card-title{
+  background: -webkit-linear-gradient(45deg,#DF6AE9, #6A6DE9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-size: 1.5em;
+}
+
+.innitiative-card i{
+  background: black ; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
 
 /* ===== About CSS ===== */
 .ud-about {
