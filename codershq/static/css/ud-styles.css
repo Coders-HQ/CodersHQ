@@ -1066,7 +1066,6 @@ p {
 .ud-about-content p {
   font-size: 16px;
   line-height: 28px;
-  margin-bottom: 40px;
 }
 
 .ud-about-content .ud-main-btn:hover {
@@ -2912,6 +2911,13 @@ p {
 
 .challenge-spacing, p{
   margin-top: 10px;
+}
+
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 400px;
+  /* The width is the width of the web page */
 }
 
 /*# sourceMappingURL=ud-styles.css.map */
