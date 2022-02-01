@@ -1,15 +1,12 @@
 import requests
 from django.shortcuts import render
-from django.urls import reverse
+from django.shortcuts import redirect
 
 news_url = "https://www.reddit.com/r/programming/.json"
 
 
 def index(request):
-    if not request.user.is_authenticated:
-        return render(request, "pages/welcome.html")
-
-    return render(request, "pages/underConstruction.html")
+    return redirect("https://ai.gov.ae/codershq")
 
 
 def landing(request):
