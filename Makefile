@@ -45,7 +45,7 @@ pro-build:
 	docker-compose -f production.yml build
 
 pro-up:
-	docker-compose -f production.yml up
+	docker-compose -f production.yml up -d
 
 pro-down:
 	docker-compose -f production.yml down
