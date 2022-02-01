@@ -24,9 +24,6 @@
           </p>
           <ul class="ud-hero-buttons">
             <li>
-              <!-- <a href="{% url 'account_signup' %}" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
-                Sign Up
-              </a> -->
               <a href="{% url 'account_signup' %}" rel="nofollow noopener" target="_blank" class="ud-main-btn ud-white-btn">
                 Sign Up
               </a>
@@ -40,7 +37,7 @@
           </ul>
         </div>
         <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-          <img src="https://github.githubassets.com/images/modules/site/home/repo-browser.png" alt="hero-image" />
+          <img src="{% static 'images/hero/chq-github.png' %}" alt="hero-image" />
           <img
             src="{% static 'images/hero/dotted-shape.svg' %}"
             alt="shape"
