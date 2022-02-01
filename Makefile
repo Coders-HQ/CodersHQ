@@ -31,3 +31,27 @@ shell:
 
 collectstatic:
 	docker-compose -f local.yml run --rm django python manage.py collectstatic
+
+pro-migrations:
+	docker-compose -f production.yml run --rm django python manage.py makemigrations
+
+pro-migrate:
+	docker-compose -f production.yml run --rm django python manage.py migrate
+
+pro-superuser:
+	docker-compose -f production.yml run --rm django python manage.py createsuperuser
+
+pro-build:
+	docker-compose -f production.yml build
+
+pro-up:
+	docker-compose -f production.yml up
+
+pro-down:
+	docker-compose -f production.yml down
+
+pro-shell:
+	docker-compose -f production.yml run --rm django python manage.py shell
+
+pro-collectstatic:
+	docker-compose -f production.yml run --rm django python manage.py collectstatic
