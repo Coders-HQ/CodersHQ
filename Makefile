@@ -32,6 +32,9 @@ shell:
 collectstatic:
 	docker-compose -f local.yml run --rm django python manage.py collectstatic
 
+rebuild:
+	make down && git pull && make build && make up
+
 pro-migrations:
 	docker-compose -f production.yml run --rm django python manage.py makemigrations
 
