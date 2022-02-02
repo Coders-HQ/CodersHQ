@@ -65,7 +65,6 @@ function styles() {
   return src(`${paths.sass}/project.scss`)
     .pipe(sass({
       includePaths: [
-        paths.bootstrapSass,
         paths.sass
       ]
     }).on('error', sass.logError))
@@ -111,6 +110,23 @@ function runServer(cb) {
   })
 }
 
+// tailwind
+function tailwindGenerate(){
+  console.log(`${paths.app}/../`)
+  return src(`${paths.sass}/project.scss`).pipe(sass({
+    includePaths: [
+      paths.sass
+    ]
+  }).on('error', sass.logError))
+    .pipe(dest(paths.css))
+    .pipe(postcss([
+      require('tailwindcss'),
+      require('autoprefixer'),
+    ]))
+    .pipe(concat({ path: 'style.css'}))
+    .pipe(dest(paths.css));
+}
+
 // Browser sync server for live reload
 function initBrowserSync() {
     browserSync.init(
@@ -147,7 +163,8 @@ function watchPaths() {
 const generateAssets = parallel(
   styles,
   scripts,vendorScripts,
-  imgCompression
+  imgCompression,
+  tailwindGenerate
 )
 
 // Set up dev environment

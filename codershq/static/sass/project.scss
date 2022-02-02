@@ -1,6 +1,24 @@
 
- @import "custom_bootstrap_vars";
- @import "bootstrap";
+@import "custom_bootstrap_vars";
+@import "variables";
+@import "mixin";
+@import "common";
+@import "header";
+@import "hero";
+@import "features";
+@import "about";
+@import "pricing";
+@import "faq";
+@import "testimonials";
+@import "team";
+@import "contact";
+@import "footer";
+@import "banner";
+@import "login";
+@import "blog";
+@import "blog-details";
+@import "404";
+//  @import "bootstrap";
 
 
 
@@ -27,14 +45,14 @@
  // bootstrap alert CSS, translated to the django-standard levels of
  // debug, info, success, warning, error
 
- .alert-debug {
-   background-color: $white;
-   border-color: $mint-green;
-   color: $black;
- }
+//  .alert-debug {
+//    background-color: $white;
+//    border-color: $mint-green;
+//    color: $black;
+//  }
 
- .alert-error {
-   background-color: $pink;
-   border-color: $dark-pink;
-   color: $red;
- }
+//  .alert-error {
+//    background-color: $pink;
+//    border-color: $dark-pink;
+//    color: $red;
+//  }
