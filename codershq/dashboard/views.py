@@ -6,7 +6,10 @@ news_url = "https://www.reddit.com/r/programming/.json"
 
 
 def index(request):
-    return redirect("https://ai.gov.ae/codershq")
+    if not request.user.is_authenticated:
+        return redirect("https://ai.gov.ae/codershq")
+
+    return render(request, "pages/underConstruction.html")
 
 
 def landing(request):
