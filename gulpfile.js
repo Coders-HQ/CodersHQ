@@ -11,8 +11,9 @@ const autoprefixer = require('autoprefixer')
 const browserSync = require('browser-sync').create()
 
 const concat = require('gulp-concat')
+const run = require('gulp-run');
 
-const cssnano = require ('cssnano')
+const cssnano = require('cssnano')
 const imagemin = require('gulp-imagemin')
 const pixrem = require('pixrem')
 const plumber = require('gulp-plumber')
@@ -29,11 +30,9 @@ function pathsConfig(appName) {
   const vendorsRoot = 'node_modules'
 
   return {
-    bootstrapSass: `${vendorsRoot}/bootstrap/scss`,
     vendorsJs: [
       `${vendorsRoot}/jquery/dist/jquery.slim.js`,
       `${vendorsRoot}/@popperjs/core/dist/umd/popper.js`,
-      `${vendorsRoot}/bootstrap/dist/js/bootstrap.js`,
     ],
     app: this.app,
     templates: `${this.app}/templates`,
@@ -54,12 +53,12 @@ var paths = pathsConfig()
 // Styles autoprefixing and minification
 function styles() {
   var processCss = [
-      autoprefixer(), // adds vendor prefixes
-      pixrem(),       // add fallbacks for rem units
+    autoprefixer(), // adds vendor prefixes
+    pixrem(),       // add fallbacks for rem units
   ]
 
   var minifyCss = [
-      cssnano({ preset: 'default' })   // minify result
+    cssnano({ preset: 'default' })   // minify result
   ]
 
   return src(`${paths.sass}/project.scss`)
@@ -103,16 +102,16 @@ function imgCompression() {
 }
 // Run django server
 function runServer(cb) {
-  var cmd = spawn('python', ['manage.py', 'runserver'], {stdio: 'inherit'})
-  cmd.on('close', function(code) {
+  var cmd = spawn('python', ['manage.py', 'runserver'], { stdio: 'inherit' })
+  cmd.on('close', function (code) {
     console.log('runServer exited with code ' + code)
     cb(code)
   })
 }
 
 // tailwind
-function tailwindGenerate(){ 
-  const tailwindcss = require('tailwindcss'); 
+function tailwindGenerate() {
+  const tailwindcss = require('tailwindcss');
   return src(`${paths.sass}/project.scss`).pipe(sass({
     includePaths: [
       paths.sass
@@ -124,48 +123,56 @@ function tailwindGenerate(){
       require('autoprefixer'),
 
     ]))
-    .pipe(concat({ path: 'style.css'}))
+    .pipe(concat({ path: 'style.css' }))
     .pipe(dest(paths.css));
+}
+
+// generate tailwind css
+function genTailwind() {
+  return run('npm run-script tailwind ').exec();
 }
 
 // Browser sync server for live reload
 function initBrowserSync() {
-    browserSync.init(
-      [
-        `${paths.css}/*.css`,
-        `${paths.js}/*.js`,
-        `${paths.templates}/*.html`
-      ], {
-        // https://www.browsersync.io/docs/options/#option-open
-        // Disable as it doesn't work from inside a container
-        open: false,
-        // https://www.browsersync.io/docs/options/#option-proxy
-        proxy:  {
-          target: 'django:8000',
-          proxyReq: [
-            function(proxyReq, req) {
-              // Assign proxy "host" header same as current request at Browsersync server
-              proxyReq.setHeader('Host', req.headers.host)
-            }
-          ]
+  browserSync.init(
+    [
+      `${paths.css}/*.css`,
+      `${paths.js}/*.js`,
+      `${paths.templates}/*.html`
+    ], {
+    // https://www.browsersync.io/docs/options/#option-open
+    // Disable as it doesn't work from inside a container
+    open: false,
+    // https://www.browsersync.io/docs/options/#option-proxy
+    proxy: {
+      target: 'django:8000',
+      proxyReq: [
+        function (proxyReq, req) {
+          // Assign proxy "host" header same as current request at Browsersync server
+          proxyReq.setHeader('Host', req.headers.host)
         }
-      }
-    )
+      ]
+    }
+  }
+  )
 }
+
+
 
 // Watch
 function watchPaths() {
   watch(`${paths.sass}/*.scss`, styles)
-  watch(`${paths.templates}/**/*.html`).on("change", reload)
+  watch(`${paths.templates}/**/*.html`).on("change", series(genTailwind, reload))
   watch([`${paths.js}/*.js`, `!${paths.js}/*.min.js`], scripts).on("change", reload)
 }
 
 // Generate all assets
 const generateAssets = parallel(
   styles,
-  scripts,vendorScripts,
+  scripts, vendorScripts,
   imgCompression,
-  tailwindGenerate
+  genTailwind
+
 )
 
 // Set up dev environment
