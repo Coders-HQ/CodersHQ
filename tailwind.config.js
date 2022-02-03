@@ -1,6 +1,5 @@
 module.exports = {
   content: [
-    "./codershq/static/**/*.js",
     "./codershq/templates/**/*.html",
     "./codershq/templates/*.html",
   ],

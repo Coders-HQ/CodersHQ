@@ -111,8 +111,8 @@ function runServer(cb) {
 }
 
 // tailwind
-function tailwindGenerate(){
-  console.log(`${paths.app}/../`)
+function tailwindGenerate(){ 
+  const tailwindcss = require('tailwindcss'); 
   return src(`${paths.sass}/project.scss`).pipe(sass({
     includePaths: [
       paths.sass
@@ -120,8 +120,9 @@ function tailwindGenerate(){
   }).on('error', sass.logError))
     .pipe(dest(paths.css))
     .pipe(postcss([
-      require('tailwindcss'),
+      tailwindcss('./tailwind.config.js'),
       require('autoprefixer'),
+
     ]))
     .pipe(concat({ path: 'style.css'}))
     .pipe(dest(paths.css));

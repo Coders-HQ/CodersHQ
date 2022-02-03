@@ -30,6 +30,7 @@
   ],
   "scripts": {
     "dev": "gulp",
-    "build": "gulp generate-assets"
+    "build": "gulp generate-assets",
+    "tailwind": "npx tailwind -i ./codershq/static/css/input.css -o ./codershq/static/css/tailwind.css"
   }
 }
