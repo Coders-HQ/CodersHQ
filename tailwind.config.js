@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: 'class',
   content: [
     "./codershq/templates/**/*.html",
     "./codershq/templates/*.html",
@@ -9,5 +10,5 @@ module.exports = {
   plugins: [
     require('tailwindcss'),
     require('autoprefixer')
-  ],
+  ]
 }

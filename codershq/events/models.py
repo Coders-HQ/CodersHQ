@@ -42,3 +42,8 @@ class Event(models.Model):
 
     def is_over(self):
         return self.date_time < timezone.now()
+
+    def location(self):
+        if self.event_location is not None and self.event_location.lower() != 'online':
+            return 'CHQ'
+        return 'online'
