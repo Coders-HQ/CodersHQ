@@ -47,3 +47,21 @@ class Event(models.Model):
         if self.event_location is not None and self.event_location.lower() != 'online':
             return 'CHQ'
         return 'online'
+
+    def get_time_left(self):
+        if not self.is_over():
+            time_now = timezone.now()
+            end_date = self.date_time
+            delta = end_date - time_now
+
+            days_left = delta.days
+            weeks_left = delta.days // 7
+            months_left = delta.days // 30
+
+            if days_left <= 7:
+                return str(days_left) + " days"
+
+            if weeks_left <= 4:
+                return str(weeks_left) + " weeks"
+
+            return str(months_left) + " months"
