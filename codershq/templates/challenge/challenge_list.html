@@ -2,86 +2,78 @@
 {% load static %}
 
 {% block navigation %}
-{% include "pages/nav_dark.html" %}
+{% include "pages/nav.html" %}
 {% endblock navigation %}
 
 {% block content %}
-
-
-<section id="initiatives" class="ud-features">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="ud-section-title">
-          <span>Features</span>
-          <h1>
-            <div class="gradient">Coders (HQ)</div> Challenges
-          </h1>
-          <p>
-            Challenges is one of the main features of Coders HQ. 
-            Participate in a challenge to test your skills and get rewarded!
-          </p>
-          {% if user.is_staff %}
-          <p>You are a staff you can <a href="{% url 'challenge:challenge-create'%}">create a challenge</a></p>
-          {% endif %}
-        </div>
-      </div>
-    </div>
+<header class="bg-white shadow">
+  <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">
+          Challenges
+      </h1>
+  </div>
+</header>
+<main>
+  <div class="max-w-7xl mx-auto py-6 md:px-6 lg:px-8">
 
 
     {% if challenges %}
-    <div class="row row-cols-md-3 g-4">
 
-      {% for challenge in challenges %}
 
-      <div class="col">
-        <div class="card h-100 hoverable-card">
+
+    {% for challenge in challenges %}
+    <!-- start grid  -->
+    <div class="flex justify-center grid lg:grid-cols-2 gap-2">
+
+    <!-- start card  -->
+    <div class="border-solid border border-slate-600 max-w-xl rounded-xl overflow-hidden md:max-w-2xl">
+      <div class="md:flex">
+  
+        <!-- challenge image  -->
+        <div class="md:shrink-0">
           {% if challenge.image %}
-          <img src=" {{MEDIA_URL}}{{challenge.image}}" class="card-img-top" alt="image" />
+          <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{MEDIA_URL}}{{challenge.image}}"alt="Man looking at item at a store">
           {% else %}
-          <img src="{% static 'images/challenges/default.png' %}" class="card-img-top" alt="default" />
+          <img class="h-48 w-full object-cover md:h-full md:w-48" src="{% static 'images/challenges/default.png' %}"alt="Man looking at item at a store">
           {% endif %}
-          <div class="card-body">
-            <h5 class="card-title">{{challenge.name}}
-            </h5>
-
-            <div class="card-text">
-              {{challenge.short_description}}
-            </div>
-
-              <a href="{{ challenge.get_absolute_url }}" class="stretched-link"></a>
-
-          </div>
-          <ul class="list-group list-group-flush">
-
-            <li class="d-flex list-group-item justify-content-between">
-              <div > <strong>{{challenge.get_reward}} </strong></div> 
-              <div class="text-muted">{{challenge.get_time_left}} </div> 
-            </li>
-
-
-          </ul>
         </div>
+        <!-- end challenge image  -->
+        
+        <div>
+          <span class="mt-3 ml-8 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
+            <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+            {{challenge.get_time_left}}
+          </span>
+        <div class="p-8">
+          <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Case study</div>
+          <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{challenge.name}}</a>
+          <p class="mt-2 text-slate-500">{{challenge.short_description}}</p>
+        </div>
+
+        <div class="flex justify-between px-8 pb-2.5 items-center">
+        <a href="#" class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+          Read more
+          <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+      </a>
+          <p class="font-bold dark:text-white">{{challenge.get_reward}}</p>
+        </div>
+        </div>
+
+
       </div>
-
-      {% endfor %}
-     
-
-      
-
     </div>
+    <!-- end card -->
+    
+  
+  </div>
+  <!-- end grid  -->
 
-    {% else %}
-    <div class="text-center ">
 
-          <p>There are no challenges yet, come back soon!</p>
-
-    </div>
+{% endfor %}
     {% endif %}
 
-  </div>
 
-
-</section>
+</div>
+</main>
 
 {% endblock %}

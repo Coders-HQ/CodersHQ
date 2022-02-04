@@ -34,8 +34,8 @@ def join(request, event_id):
         event.save()
         messages.success(request, "Successfully joined " + event.title)
 
-        return redirect("events:index")
-    return redirect("events:index")
+        return redirect("events:all")
+    return redirect("events:all")
 
 
 @login_required
@@ -47,8 +47,8 @@ def leave(request, event_id):
         event.attendees.remove(user)
         event.save()
         messages.success(request, "You have been removed from " + event.title)
-        return redirect("events:index")
-    return redirect("events:index")
+        return redirect("events:all")
+    return redirect("events:all")
 
 
 @login_required

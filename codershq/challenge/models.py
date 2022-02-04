@@ -99,6 +99,7 @@ class Challenge(models.Model):
                 return str(weeks_left) + " week(s) to go"
 
             return str(months_left) + " month(s) to go"
+        return "Ended"
 
     @property
     def end_date_pretty(self):
