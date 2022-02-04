@@ -46,7 +46,7 @@ class Event(models.Model):
     def location(self):
         if self.event_location is not None and self.event_location.lower() != 'online':
             return 'CHQ'
-        return 'online'
+        return 'Online'
 
     def get_time_left(self):
         if not self.is_over():
