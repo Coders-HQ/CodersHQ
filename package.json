@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "devDependencies": {
     "@popperjs/core": "^2.10.2",
+    "@tailwindcss/typography": "^0.5.1",
     "autoprefixer": "^10.4.0",
     "browser-sync": "^2.27.7",
     "cssnano": "^5.0.11",
