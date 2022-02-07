@@ -8,14 +8,12 @@
 {% block content %}
 
 <header class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-    <!-- This example requires Tailwind CSS v2.0+ -->
     <div class="lg:flex lg:items-center lg:justify-between">
         <div class="flex-1 min-w-0">
-            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Back End Developer</h2>
+            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Code Challenge</h2>
             <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                 {% if challenge.participants.count %}
                 <div class="mt-2 flex items-center text-sm text-gray-500">
-                    <!-- Heroicon name: users -->
                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path
@@ -26,7 +24,6 @@
                 {% endif %}
                 {% if user in challenge.participants.all %}
                 <div class="mt-2 flex items-center text-sm text-gray-500">
-                    <!-- Heroicon name: solid/location-marker -->
                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"
@@ -37,7 +34,6 @@
                 </div>
                 {% endif %}
                 <div class="mt-2 flex items-center text-sm text-gray-500">
-                    <!-- Heroicon name: solid/currency-dollar -->
                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"
@@ -47,7 +43,6 @@
                     {{challenge.prize_pool}}
                 </div>
                 <div class="mt-2 flex items-center text-sm text-gray-500">
-                    <!-- Heroicon name: solid/calendar -->
                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path fill-rule="evenodd"
@@ -116,9 +111,7 @@
                 </div>
                 <div class="p-8">
                     <p class="md:text-lg font-bold dark:text-white text-right">{{challenge.get_reward}}</p>
-                    <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Case study</div>
-                    <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">Finding
-                        customers for your new business</a>
+                    <div class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{challenge.name}}</div>
                     <p class="mt-2 text-slate-500">Getting a new business off the ground is a lot of hard work. Here are
                         five ideas you can use to find your first customers.</p>
                 </div>
