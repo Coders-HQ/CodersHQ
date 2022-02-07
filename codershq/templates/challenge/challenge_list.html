@@ -18,9 +18,10 @@
 
 
     {% if challenges %}
+
+     <!-- start grid  -->
+     <div class="flex justify-center grid lg:grid-cols-2 gap-2">
     {% for challenge in challenges %}
-    <!-- start grid  -->
-    <div class="flex justify-center grid lg:grid-cols-2 gap-2">
 
       <!-- start card  -->
       <div class="border-solid border border-slate-600 max-w-xl rounded-xl overflow-hidden md:max-w-2xl ">
@@ -77,11 +78,11 @@
       <!-- end card -->
 
 
-    </div>
-    <!-- end grid  -->
-
 
     {% endfor %}
+  </div>
+  <!-- end grid  -->
+
     {% endif %}
 
 
