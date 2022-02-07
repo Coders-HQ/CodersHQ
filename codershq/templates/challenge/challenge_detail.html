@@ -109,7 +109,7 @@
                     <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ MEDIA_URL }}{{ challenge.image }}"
                         alt="Man looking at item at a store">
                 </div>
-                <div class="p-8">
+                <div class="p-8 grow">
                     <p class="md:text-lg font-bold dark:text-white text-right">{{challenge.get_reward}}</p>
                     <div class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{challenge.name}}</div>
                     <p class="mt-2 text-slate-500">Getting a new business off the ground is a lot of hard work. Here are
@@ -128,15 +128,15 @@
                     role="tablist">
                     <li class="mr-2" role="presentation">
                         <button
-                            class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
+                            class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 active"
                             id="profile-tab" data-tabs-target="#profile" type="button" role="tab"
-                            aria-controls="profile" aria-selected="false">
+                            aria-controls="profile" aria-selected="true">
                             Home</button>
                     </li>
                     <li class="mr-2" role="presentation"><button
-                            class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 active"
+                            class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
                             id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
-                            aria-controls="dashboard" aria-selected="true">
+                            aria-controls="dashboard" aria-selected="false">
                             Evaluation</button></li>
                     <li class="mr-2" role="presentation"><button
                             class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
@@ -153,11 +153,11 @@
                     {% endif %}
                 </ul>
                 <div id="myTabContent" class="tab-content">
-                    <div class="prose md:prose-lg  hidden p-4 tab-pane rounded-lg dark:bg-gray-800" id="profile"
+                    <div class="prose md:prose-lg p-4 tab-pane rounded-lg dark:bg-gray-800" id="profile"
                         role="tabpanel" aria-labelledby="profile-tab">
                         {{challenge.description|safe}}
                     </div>
-                    <div class="prose md:prose-lg  p-4 tab-pane rounded-lg dark:bg-gray-800" id="dashboard"
+                    <div class="prose md:prose-lg hidden p-4 tab-pane rounded-lg dark:bg-gray-800" id="dashboard"
                         role="tabpanel" aria-labelledby="dashboard-tab">
                         {{challenge.evaluation|safe}}
                     </div>
