@@ -1,27 +1,6 @@
 
-@import "custom_bootstrap_vars";
-@import "variables";
-@import "mixin";
-@import "common";
-@import "header";
-@import "hero";
-@import "features";
-@import "about";
-@import "pricing";
-@import "faq";
-@import "testimonials";
-@import "team";
-@import "contact";
-@import "footer";
-@import "banner";
-@import "login";
-@import "blog";
-@import "blog-details";
-@import "404";
-//  @import "bootstrap";
-
-
-
+@import "_variables";
+@import "_forms";
 
  // project specific CSS goes here
 
