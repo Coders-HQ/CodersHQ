@@ -2,25 +2,28 @@
 {% load static crispy_forms_tags %}
 
 {% block navigation %}
-{% include "pages/nav_dark.html" %}
+{% include "pages/nav.html" %}
 {% endblock navigation %}
 
 {% block content %}
 
-<section id="initiatives" class="ud-features">
-    <div class="container">
-
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900"> {{challenge.name}}</h1>
+    </div>
+  </header>
+  <main>
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         More info on creating a challenge can be found <a href="https://suwaidi.notion.site/Structure-of-Challenge-e00edc45411248a2846190163c0248d2">here</a>
 
-        <div class="card">
-            <form class="p-4" method="post">{% csrf_token %}
-                {{ form.media }}
-                {{ form|crispy }}
-                <input type="submit" value="Save" class="btn btn-primary">
-            </form>
-        </div>
+        <form class="p-4" method="post">{% csrf_token %}
+            {{ form.media }}
+            {{ form|crispy }}
+            <input type="submit" value="Save" class="btn btn-primary">
+        </form>
     </div>
+  </main>
+</div>
 
-</section>
 
 {% endblock content %}
