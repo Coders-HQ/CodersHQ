@@ -18,9 +18,11 @@ def getClass(label='basic'):
 
 
 class ChallengeForm(ModelForm):
+    """Make form input pretty by using css classes"""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({'class': getClass(), 'type': 'text'})
+        self.fields['host_name'].widget.attrs.update({'class': getClass(), 'type': 'text'})
         self.fields['short_description'].widget.attrs.update({'class': getClass()})
         self.fields['is_monetary'].widget.attrs.update({'class': getClass('checkbox')})
         self.fields['image'].widget.attrs.update({'class': getClass('upload')})
