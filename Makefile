@@ -35,6 +35,12 @@ collectstatic:
 rebuild:
 	make down && git pull && make build && make up
 
+gulp:
+	docker-compose -f local.yml run --rm node gulp
+
+setup:
+	git pull && make build && make migrations && make migrate && make up
+
 pro-migrations:
 	docker-compose -f production.yml run --rm django python manage.py makemigrations
 
