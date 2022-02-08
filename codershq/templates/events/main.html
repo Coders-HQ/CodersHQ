@@ -18,13 +18,12 @@
 <main>
     <div class="max-w-7xl mx-auto py-6 md:px-6 lg:px-8">
 
-        <div class="flex justify-center grid md:grid-cols-3 gap-3">
+        <div class="flex justify-center grid  gap-2 xl:grid-cols-3 md:grid-cols-2 xl:gap-3">
         {% if events %}
         {% for event in events %}
         <div
-            class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <img class="h-48 object-cover rounded-t-lg" src="{{MEDIA_URL}}{{event.image}}" alt="">
-            </a>
+            class="mx-6 md:mx-0 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <img class="h-48 w-full object-cover rounded-t-lg" src="{{MEDIA_URL}}{{event.image}}" alt="">
 
             <!-- start pills  -->
             <div class="pl-4">

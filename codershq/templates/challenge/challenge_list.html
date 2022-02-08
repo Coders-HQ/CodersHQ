@@ -1,13 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block navigation %}
-{% include "pages/nav.html" %}
-{% endblock navigation %}
-
 {% block content %}
-<header class="bg-white shadow">
-  <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+<header class="bg-white shadow ">
+  <div class=" max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
     <h1 class="text-3xl font-bold text-gray-900">
       Challenges
     </h1>
@@ -16,15 +12,14 @@
 <main>
   <div class="max-w-7xl mx-auto py-6 md:px-6 lg:px-8">
 
-
     {% if challenges %}
 
-     <!-- start grid  -->
-     <div class="flex justify-center grid lg:grid-cols-2 gap-2">
-    {% for challenge in challenges %}
+    <!-- start grid  -->
+    <div class="flex justify-center grow grid min-w-full xl:grid-cols-2 gap-2">
+      {% for challenge in challenges %}
 
       <!-- start card  -->
-      <div class="border-solid border border-slate-600 max-w-xl rounded-xl overflow-hidden md:max-w-2xl ">
+      <div class=" border-solid border border-slate-600 rounded-xl overflow-hidden ">
         <div class="md:flex ">
 
           <!-- challenge image  -->
@@ -79,9 +74,9 @@
 
 
 
-    {% endfor %}
-  </div>
-  <!-- end grid  -->
+      {% endfor %}
+    </div>
+    <!-- end grid  -->
 
     {% endif %}
 
