@@ -109,23 +109,6 @@ function runServer(cb) {
   })
 }
 
-// tailwind
-function tailwindGenerate() {
-  const tailwindcss = require('tailwindcss');
-  return src(`${paths.sass}/project.scss`).pipe(sass({
-    includePaths: [
-      paths.sass
-    ]
-  }).on('error', sass.logError))
-    .pipe(dest(paths.css))
-    .pipe(postcss([
-      tailwindcss('./tailwind.config.js'),
-      require('autoprefixer'),
-
-    ]))
-    .pipe(concat({ path: 'style.css' }))
-    .pipe(dest(paths.css));
-}
 
 // generate tailwind css
 function genTailwind() {
@@ -162,7 +145,7 @@ function initBrowserSync() {
 // Watch
 function watchPaths() {
   watch(`${paths.sass}/*.scss`, styles)
-  watch(`${paths.templates}/**/*.html`).on("change", series(genTailwind, reload))
+  watch(`${paths.templates}/**/*.html`).on("change", series(genTailwind))
   watch([`${paths.js}/*.js`, `!${paths.js}/*.min.js`], scripts).on("change", reload)
 }
 
