@@ -113,8 +113,7 @@
                     <p class="md:text-lg font-bold dark:text-white text-right">{{challenge.get_reward}}</p>
                     <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{challenge.host_name}}</div>
                     <div class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{challenge.name}}</div>
-                    <p class="mt-2 text-slate-500">Getting a new business off the ground is a lot of hard work. Here are
-                        five ideas you can use to find your first customers.</p>
+                    <p class="mt-2 text-slate-500">{{challenge.short_description}}</p>
                 </div>
             </div>
         </div>
@@ -154,18 +153,18 @@
                     {% endif %}
                 </ul>
                 <div id="myTabContent" class="tab-content">
-                    <div class="prose md:prose-lg p-4 tab-pane rounded-lg dark:bg-gray-800" id="profile"
+                    <div class="prose p-4 tab-pane rounded-lg dark:bg-gray-800" id="profile"
                         role="tabpanel" aria-labelledby="profile-tab">
                         {{challenge.description|safe}}
                     </div>
-                    <div class="prose md:prose-lg hidden p-4 tab-pane rounded-lg dark:bg-gray-800" id="dashboard"
+                    <div class="prose hidden p-4 tab-pane rounded-lg dark:bg-gray-800" id="dashboard"
                         role="tabpanel" aria-labelledby="dashboard-tab">
                         {{challenge.evaluation|safe}}
                     </div>
-                    <div class="prose md:prose-lg  hidden p-4 tab-pane rounded-lg dark:bg-gray-800" id="settings"
+                    <div class="prose  hidden p-4 tab-pane rounded-lg dark:bg-gray-800" id="settings"
                         role="tabpanel" aria-labelledby="settings-tab">
                         {{challenge.reward|safe}} </div>
-                    <div class="prose md:prose-lg  hidden p-4 tab-pane rounded-lg dark:bg-gray-800" id="contacts"
+                    <div class="prose  hidden p-4 tab-pane rounded-lg dark:bg-gray-800" id="contacts"
                         role="tabpanel" aria-labelledby="contacts-tab">
                         {{challenge.rules|safe}}
                     </div>
