@@ -13,13 +13,17 @@
             <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Code Challenge</h2>
             <div class="mt-1 flex flex-col sm:flex-row sm:flex-wrap sm:mt-0 sm:space-x-6">
                 {% if challenge.participants.count %}
-                <div class="mt-2 flex items-center text-sm text-gray-500">
+                <div class="mt-2 flex items-center text-sm text-gray-500" data-tooltip-target="tooltip-count">
                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                         <path
                             d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
                     </svg>
                     {{challenge.participants.count}}
+                </div>
+                <div id="tooltip-count" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+                    Total members joined
+                    <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
                 {% endif %}
                 {% if user in challenge.participants.all %}
@@ -123,7 +127,7 @@
 
             <!-- tabs start  -->
             <!-- using prose to control markdown content https://tailwindcss.com/docs/typography-plugin  -->
-            <div class="grow border-solid border border-slate-600 rounded-lg md:flex items-start my-4">
+            <div class="grow border-solid border border-slate-600 rounded-lg md:flex items-start my-4 bg-white">
                 <ul class="flex md:flex-col md:flex-wrap border-b-0 pl-0 " id="myTab" data-tabs-toggle="#myTabContent"
                     role="tablist">
                     <li class="mr-2" role="presentation">
