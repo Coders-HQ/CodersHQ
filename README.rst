@@ -41,16 +41,7 @@ We also document the tasks in the `project`_ section and have a look at the `iss
 Quick Setup
 -----------
 
-add the missing environment variables values in '.envs/.local/.django', such as the following values::
-
-    GITHUB_TOKEN=
-    GITHUB_CLIENT_ID=
-    GITHUB_CLIENT_SECRET=
-    SLACK_TOKEN=
-
-These can be obtained from github's settings section and slack's api section if you create a bot.
-
-To build the stack and update the databse run ::
+Make sure you have Docker version 2+ and then do the following to build the stack and update the databse ::
 
     $ docker-compose -f local.yml build
     $ docker-compose -f local.yml run --rm django python manage.py makemigrations
