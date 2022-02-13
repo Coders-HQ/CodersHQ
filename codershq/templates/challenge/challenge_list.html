@@ -2,11 +2,29 @@
 {% load static %}
 
 {% block content %}
-<header class="bg-white shadow ">
-  <div class=" max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-bold text-gray-900">
-      Challenges
-    </h1>
+<header class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-between">
+      <div class="flex-1 min-w-0">
+          <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Challenge</h2>
+      </div>
+
+      <div class="mt-5 flex lg:mt-0 lg:ml-4">
+          {% if user.is_staff %}
+          <span class=" sm:block">
+              <a href="/challenge/create/"
+                  class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <!-- Heroicon name: solid/pencil -->
+                  <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                      fill="currentColor" aria-hidden="true">
+                      <path
+                          d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                  </svg>
+                  <p>Create Challenge</p>
+              </a>
+          </span>
+          {% endif %}
+
+      </div>
   </div>
 </header>
 <main>
@@ -15,7 +33,7 @@
     {% if challenges %}
 
     <!-- start grid  -->
-    <div class="flex flex-wrap justify-center ">
+    <div class="flex flex-wrap justify-center lg:justify-start ">
       {% for challenge in challenges %}
 
       <!-- start card  -->
