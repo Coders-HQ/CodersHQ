@@ -21,7 +21,7 @@ def index(request):
             else:
                 event.joined = False
     context = {"events": events}
-    return render(request, "events/main.html", context)
+    return render(request, "events/events_list.html", context)
 
 
 @login_required
