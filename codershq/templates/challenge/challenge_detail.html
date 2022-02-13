@@ -105,9 +105,9 @@
 </header>
 
 <main>
-    <div class="max-w-7xl mx-auto py-6 md:px-6 lg:px-8">
+    <div class="max-w-7xl py-6 md:px-6 lg:px-8">
         <!-- header start  -->
-        <div class="border-solid border border-slate-600 max-w-7xl bg-white rounded-lg overflow-hidden md:max-w-2xl">
+        <div class="m-4  border-solid border border-slate-600 max-w-7xl bg-white rounded-lg overflow-hidden md:max-w-2xl">
             <div class="md:flex">
                 <div class="md:shrink-0">
                     <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ MEDIA_URL }}{{ challenge.image }}"
@@ -123,11 +123,11 @@
         </div>
         <!-- header end  -->
 
-        <div class="lg:flex items-start ">
+        <div class="lg:flex m-2 items-start ">
 
             <!-- tabs start  -->
             <!-- using prose to control markdown content https://tailwindcss.com/docs/typography-plugin  -->
-            <div class="grow border-solid border border-slate-600 rounded-lg md:flex items-start my-4 bg-white">
+            <div class="grow border-solid border border-slate-600 rounded-lg md:flex items-start m-2 bg-white">
                 <ul class="flex md:flex-col md:flex-wrap border-b-0 pl-0 " id="myTab" data-tabs-toggle="#myTabContent"
                     role="tablist">
                     <li class="mr-2" role="presentation">
@@ -176,17 +176,17 @@
             </div>
             <!-- tabs end  -->
 
-            <div class="flex flex-row lg:flex-col mt-4 flex-wrap">
+            <div class="flex flex-row lg:flex-col flex-wrap">
                 <!-- timeline start -->
                 {% if challenge.timeline %}
                 <div
-                    class="mr-4 lg:mr-0 lg:ml-4 mb-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    class="m-2 lg:mr-0 lg:ml-4 mb-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Timeline</h5>
                     <div class="prose font-normal text-gray-700 dark:text-gray-400">{{challenge.timeline|safe}}</div>
                 </div>
                 {% else %}
                 <div
-                    class="mr-4 lg:mr-0 lg:ml-4 mb-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    class="m-2 lg:mr-0 lg:ml-4 mb-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Timeline</h5>
                     <div class="prose font-normal text-gray-700 dark:text-gray-400">Challenge ends on
                         <strong>{{challenge.end_date_pretty}}</strong>
@@ -198,7 +198,7 @@
                 {% if user in challenge.participants.all %}
                 <!-- submission start  -->
                 <div
-                    class="mr-4 lg:mr-0 lg:ml-4 mb-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    class="m-2 lg:mr-0 lg:ml-4 mb-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Submission</h5>
                     <div class="prose font-normal text-gray-700 dark:text-gray-400">Submission details should be sent to
                         <a href="mailto:{{challenge.submission_email}}">{{challenge.submission_email}}</a>
@@ -210,7 +210,7 @@
                 <!-- data start  -->
                 {% if challenge.has_data and user in challenge.participants.all %}
                 <div
-                    class="mr-4 lg:mr-0 lg:ml-4 mb-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    class="m-2 lg:mr-0 lg:ml-4 mb-4 block p-6 max-w-sm bg-white rounded-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Data</h5>
                     <div class="prose font-normal text-gray-700 dark:text-gray-400">
                         <ul>
