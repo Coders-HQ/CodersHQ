@@ -15,20 +15,20 @@
     {% if challenges %}
 
     <!-- start grid  -->
-    <div class="flex justify-center grow grid min-w-full xl:grid-cols-2 gap-2">
+    <div class="flex flex-wrap justify-center ">
       {% for challenge in challenges %}
 
       <!-- start card  -->
-      <div class=" border-solid border border-slate-600 rounded-xl overflow-hidden ">
-        <div class="md:flex ">
+      <div class="mx-2 my-2 max-w-sm border-solid border border-slate-600 rounded-xl overflow-hidden ">
+        <div class=" ">
 
           <!-- challenge image  -->
-          <div class="md:shrink-0">
+          <div class="">
             {% if challenge.image %}
-            <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{MEDIA_URL}}{{challenge.image}}"
+            <img class="h-48 w-full object-cover" src="{{MEDIA_URL}}{{challenge.image}}"
               alt="Man looking at item at a store">
             {% else %}
-            <img class="h-48 w-full object-cover md:h-full md:w-48" src="{% static 'images/challenges/default.png' %}"
+            <img class="h-48 w-full object-cover" src="{% static 'images/challenges/default.png' %}"
               alt="Man looking at item at a store">
             {% endif %}
           </div>
@@ -45,7 +45,7 @@
               {{challenge.get_time_left}}
             </span>
             <div class="px-8 pb-8 pt-4">
-              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">Case study</div>
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{challenge.host_name}}</div>
               <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
                 {{challenge.name}}
               </a>
@@ -71,7 +71,6 @@
         </div>
       </div>
       <!-- end card -->
-
 
 
       {% endfor %}
