@@ -24,6 +24,8 @@ class Event(models.Model):
     short_description = models.CharField(_("Short event description"), max_length=150, default=None)
     # event description
     description = RichTextField()
+    # event requiremens 
+    requirements = RichTextField(_("Event requirements (like PCR, Vaccine, etc)"), blank=True, default="")
     # event link
     event_link = models.URLField(_("Event zoom link (only if online)"), blank=True, null=True)
     event_location = models.CharField(
