@@ -23,6 +23,12 @@ def index(request):
     context = {"events": events}
     return render(request, "events/events_list.html", context)
 
+def detail(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    context = {"event": event}
+    return render(request, "events/event_detail.html", context)
+
+
 
 @login_required
 def join(request, event_id):

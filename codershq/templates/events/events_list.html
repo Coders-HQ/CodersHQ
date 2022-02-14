@@ -1,10 +1,5 @@
 {% extends "base.html" %}
 
-{% block navigation %}
-{% include "pages/nav.html" %}
-{% endblock navigation %}
-
-
 {% block content %}
 
 
@@ -17,132 +12,40 @@
 </header>
 <main>
     <div class="max-w-7xl mx-auto py-6 md:px-6 lg:px-8">
-
-        <div class="flex justify-center grid  gap-2 xl:grid-cols-3 md:grid-cols-2 xl:gap-3">
-        {% if events %}
-        {% for event in events %}
-        <div
-            class="mx-6 md:mx-0 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-                <img class="h-48 w-full object-cover rounded-t-lg" src="{{MEDIA_URL}}{{event.image}}" alt="">
-
-            <!-- start pills  -->
-            <div class="pl-4">
-                {% if event.is_over %}
-                <span data-tooltip-target="tooltip-over" class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Ended</span>
-                <div id="tooltip-over" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                    Event ended
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
-                {% else %}
-                  <span data-tooltip-target="tooltip-upcoming" class="bg-blue-100 text-blue-800 text-xs font-semibold inline-flex items-center px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">
+        <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-2 lg:grid-cols-3 lg:gap-3">
+            {% if events %}
+            {% for event in events %}
+            <div>
+                <p class="truncate">{{event.title}}</p>
+            <a href="/events/{{event.pk}}">
+                <img class="w-80 h-80 object-cover rounded-lg " src="{{MEDIA_URL}}{{event.image}}">
+            </a>
+            <!-- start pill -->
+            <div class="mt-1">
+                {% if not event.is_over %}
+                <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
                     <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
-                    {{event.get_time_left}}
-                  </span>
-                <div id="tooltip-upcoming" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                    Event upcoming
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
+                    <p> {{event.get_time_left}}</p>
+                    </span>
+                {% else %}
+                <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
+                    <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                    <p> over</p>
+                </span>
                 {% endif %}
-                {% if event.joined %}
-                <span data-tooltip-target="tooltip-joined" class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Joined</span>
-                <div id="tooltip-joined" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                    You joined the event
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
+                {% if request.user in event.attendees.all %}
+                <span class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
+                    <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" /></svg>
+                    <p> Joined</p>
+                </span>
                 {% endif %}
-                <span data-tooltip-target="tooltip-location" class="bg-indigo-100 text-indigo-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-indigo-200 dark:text-indigo-900">{{ event.location }}</span>
-                <div id="tooltip-location" role="tooltip" class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
-                    Event location
-                    <div class="tooltip-arrow" data-popper-arrow></div>
-                </div>
+                <span class="bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
+                    <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.496 2.132a1 1 0 00-.992 0l-7 4A1 1 0 003 8v7a1 1 0 100 2h14a1 1 0 100-2V8a1 1 0 00.496-1.868l-7-4zM6 9a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1zm3 1a1 1 0 012 0v3a1 1 0 11-2 0v-3zm5-1a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                    <p> {{event.location}}</p>
+                        
+                </span>
             </div>
-            <!-- end pills  -->
-
-            <div class="p-5">
-                <a href="#">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{event.title}}
-                    </h5>
-                </a>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> {{event.short_description}}</p>
-               
-                <div class="flow-root ">
-                <a href="#" data-modal-toggle="modal-{{event.pk}}"
-                    class="float-left inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                    Read more
-                        <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </a>
-
-                <p class="float-right">{{event.date_time}}</p>
-
-            </div>
-            </div>
-        </div>
-
-
-        <!-- Main modal -->
-        <div id="modal-{{event.pk}}" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed right-0 left-0 top-4 z-50 justify-center items-center h-modal md:h-full md:inset-0">
-            <div class="relative px-4 w-full max-w-2xl h-full md:h-auto">
-                <!-- Modal content -->
-                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                    <!-- Modal header -->
-                    <div class="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
-                        <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
-                            {{event.title}}
-                        </h3>
-                        <button type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                            data-modal-toggle="modal-{{event.pk}}">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <!-- Modal body -->
-                    <div class="p-6 space-y-6">
-                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                            {{event.description|safe}}
-                        </p>
-
-                        {% if request.user.is_authenticated and request.user.is_staff %}
-                        <p class="text-base leading-relaxed text-gray-300 dark:text-gray-400">
-                           There are {{event.attendees.all.count}} interested[s] and
-                                {{event.participants.all.count}} who joined
-                        </p>
-                        {% endif %}
-
-                    </div>
-                    <!-- Modal footer -->
-                    <div
-                        class="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-
-
-                            {% if request.user.is_authenticated and not event.joined %}
-                            <a  href="/events/{{event.id}}/join"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Join event
-                            </a>
-                            {% else %}
-                            <a  href="/events/{{event.id}}/leave"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Leave event</a>
-                            {% endif %}
-
-                            {% if request.user.is_staff %}
-                            <a href="/events/{{event.id}}/participate" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600">Add participants</a>
-                            {% endif %}
-
-
-
-                        <button data-modal-toggle="modal-{{event.pk}}" type="button"class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:ring-gray-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600">Cancel</button>
-                    </div>
-                </div>
-            </div>
+            <!-- end pill -->
         </div>
 
         {% endfor %}
