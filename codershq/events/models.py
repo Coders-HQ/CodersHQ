@@ -24,6 +24,8 @@ class Event(models.Model):
     short_description = models.CharField(_("Short event description"), max_length=150, default=None)
     # event description
     description = RichTextField()
+    # event requiremens 
+    requirements = RichTextField(_("Event requirements (like PCR, Vaccine, etc)"), blank=True, default="")
     # event link
     event_link = models.URLField(_("Event zoom link (only if online)"), blank=True, null=True)
     event_location = models.CharField(
@@ -42,3 +44,26 @@ class Event(models.Model):
 
     def is_over(self):
         return self.date_time < timezone.now()
+
+    def location(self):
+        if self.event_location is not None and self.event_location.lower() != 'online':
+            return 'CHQ'
+        return 'Online'
+
+    def get_time_left(self):
+        if not self.is_over():
+            time_now = timezone.now()
+            end_date = self.date_time
+            delta = end_date - time_now
+
+            days_left = delta.days
+            weeks_left = delta.days // 7
+            months_left = delta.days // 30
+
+            if days_left <= 7:
+                return str(days_left) + " days"
+
+            if weeks_left <= 4:
+                return str(weeks_left) + " weeks"
+
+            return str(months_left) + " months"

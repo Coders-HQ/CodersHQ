@@ -1,87 +1,104 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block navigation %}
-{% include "pages/nav_dark.html" %}
-{% endblock navigation %}
-
 {% block content %}
-
-
-<section id="initiatives" class="ud-features">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="ud-section-title">
-          <span>Features</span>
-          <h1>
-            <div class="gradient">Coders (HQ)</div> Challenges
-          </h1>
-          <p>
-            Challenges is one of the main features of Coders HQ. 
-            Participate in a challenge to test your skills and get rewarded!
-          </p>
-          {% if user.is_staff %}
-          <p>You are a staff you can <a href="{% url 'challenge:challenge-create'%}">create a challenge</a></p>
-          {% endif %}
-        </div>
+<header class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-between">
+      <div class="flex-1 min-w-0">
+          <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Challenge</h2>
       </div>
-    </div>
 
+      <div class="mt-5 flex lg:mt-0 lg:ml-4">
+          {% if user.is_staff %}
+          <span class=" sm:block">
+              <a href="/challenge/create/"
+                  class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <!-- Heroicon name: solid/pencil -->
+                  <svg class="-ml-1 mr-2 h-5 w-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                      fill="currentColor" aria-hidden="true">
+                      <path
+                          d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                  </svg>
+                  <p>Create Challenge</p>
+              </a>
+          </span>
+          {% endif %}
+
+      </div>
+  </div>
+</header>
+<main>
+  <div class="max-w-7xl mx-auto py-6 md:px-6 lg:px-8">
 
     {% if challenges %}
-    <div class="row row-cols-md-3 g-4">
 
+    <!-- start grid  -->
+    <div class="flex flex-wrap justify-center lg:justify-start ">
       {% for challenge in challenges %}
 
-      <div class="col">
-        <div class="card h-100 hoverable-card">
-          {% if challenge.image %}
-          <img src=" {{MEDIA_URL}}{{challenge.image}}" class="card-img-top" alt="image" />
-          {% else %}
-          <img src="{% static 'images/challenges/default.png' %}" class="card-img-top" alt="default" />
-          {% endif %}
-          <div class="card-body">
-            <h5 class="card-title">{{challenge.name}}
-            </h5>
+      <!-- start card  -->
+      <div class="mx-2 my-2 max-w-sm border-solid border border-slate-600 rounded-xl overflow-hidden ">
+        <div class=" ">
 
-            <div class="card-text">
-              {{challenge.short_description}}
+          <!-- challenge image  -->
+          <div class="">
+            {% if challenge.image %}
+            <img class="h-48 w-full object-cover" src="{{MEDIA_URL}}{{challenge.image}}"
+              alt="Man looking at item at a store">
+            {% else %}
+            <img class="h-48 w-full object-cover" src="{% static 'images/challenges/default.png' %}"
+              alt="Man looking at item at a store">
+            {% endif %}
+          </div>
+          <!-- end challenge image  -->
+
+          <div>
+            <span
+              class="mt-3 ml-8 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300">
+              <svg class="mr-1 w-3 h-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              {{challenge.get_time_left}}
+            </span>
+            <div class="px-8 pb-8 pt-4">
+              <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{challenge.host_name}}</div>
+              <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+                {{challenge.name}}
+              </a>
+              <p class="mt-2 text-slate-500">{{challenge.short_description}}</p>
             </div>
 
-              <a href="{{ challenge.get_absolute_url }}" class="stretched-link"></a>
-
+            <div class="flex justify-between px-8 pb-2.5 items-center">
+              <a href="/challenge/{{challenge.pk}}/"
+                class="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Read more
+                <svg class="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </a>
+              <p class="font-bold dark:text-white">{{challenge.get_reward}}</p>
+            </div>
           </div>
-          <ul class="list-group list-group-flush">
-
-            <li class="d-flex list-group-item justify-content-between">
-              <div > <strong>{{challenge.get_reward}} </strong></div> 
-              <div class="text-muted">{{challenge.get_time_left}} </div> 
-            </li>
 
 
-          </ul>
         </div>
       </div>
+      <!-- end card -->
+
 
       {% endfor %}
-     
-
-      
-
     </div>
+    <!-- end grid  -->
 
-    {% else %}
-    <div class="text-center ">
-
-          <p>There are no challenges yet, come back soon!</p>
-
-    </div>
     {% endif %}
 
+
   </div>
-
-
-</section>
+</main>
 
 {% endblock %}

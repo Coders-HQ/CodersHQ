@@ -21,6 +21,7 @@ django-crispy-forms==1.13.0  # https://github.com/django-crispy-forms/django-cri
 crispy-bootstrap5==0.6  # https://github.com/django-crispy-forms/crispy-bootstrap5
 django-compressor==3.1  # https://github.com/django-compressor/django-compressor
 django-redis==5.2.0  # https://github.com/jazzband/django-redis
+crispy-tailwind==0.5.0 # https://www.accordbox.com/blog/render-django-form-with-tailwind-css-style/
 
 # Project
 # ------------------------------------------------------------------------------

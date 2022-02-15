@@ -56,23 +56,14 @@
 </head>
 
 <body>
-
-  <div class="flex flex-col lg:flex-row">
+    {% include "_alert.html" %}
+    {% block content %}
+    <p>Use this document as a way to quick start any new project.</p>
+    {% endblock content %}
     
-    {% include "_dashboard.html" %}
-
-    <div class="grow md:overflow-y-scroll md:max-h-screen">
-      {% include "_alert.html" %}
-
-      {% block content %}
-      <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
-    </div>
-  </div>
-  {% block modal %}{% endblock modal %}
-
-  {% block inline_javascript %}
-  {# Script tags with only code, no src (defer by default) #}
-  {% endblock inline_javascript %}
-
+    {% block modal %}{% endblock modal %}
+    
+    {% block inline_javascript %}
+    {# Script tags with only code, no src (defer by default) #}
+    {% endblock inline_javascript %}
 </body>

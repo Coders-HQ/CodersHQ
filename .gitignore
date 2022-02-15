@@ -276,6 +276,7 @@ codershq/media/
 .ipython/
 project.css
 project.min.css
+style.css
 vendors.js
 *.min.js
 .env

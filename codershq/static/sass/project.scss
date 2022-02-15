@@ -1,10 +1,7 @@
 
- @import "custom_bootstrap_vars";
- @import "bootstrap";
-
-
-
-
+@import "_variables";
+@import "_forms";
+@import "_dashboard";
  // project specific CSS goes here
 
  ////////////////////////////////
@@ -27,14 +24,14 @@
  // bootstrap alert CSS, translated to the django-standard levels of
  // debug, info, success, warning, error
 
- .alert-debug {
-   background-color: $white;
-   border-color: $mint-green;
-   color: $black;
- }
+//  .alert-debug {
+//    background-color: $white;
+//    border-color: $mint-green;
+//    color: $black;
+//  }
 
- .alert-error {
-   background-color: $pink;
-   border-color: $dark-pink;
-   color: $red;
- }
+//  .alert-error {
+//    background-color: $pink;
+//    border-color: $dark-pink;
+//    color: $red;
+//  }

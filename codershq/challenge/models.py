@@ -17,6 +17,8 @@ class Challenge(models.Model):
 
     # the name of the challenge
     name = models.CharField(_("Name of Challenge"), max_length=100)
+    # host name
+    host_name = models.CharField(_("Challenge host name"), max_length=100)
     # short description of the challenge
     short_description = models.TextField(_("Short challenge description"), max_length=150, help_text="Short description of the challenge")
     # full challenge description
@@ -99,6 +101,7 @@ class Challenge(models.Model):
                 return str(weeks_left) + " week(s) to go"
 
             return str(months_left) + " month(s) to go"
+        return "Ended"
 
     @property
     def end_date_pretty(self):

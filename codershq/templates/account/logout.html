@@ -3,22 +3,28 @@
 {% load i18n %}
 
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
+{% block large_text %}Sign out{% endblock %}
 
 {% block inner %}
-<div class="card">
-  <div class="card-body">
-    <h1>{% trans "Sign Out" %}</h1>
+
 
     <p>{% trans 'Are you sure you want to sign out?' %}</p>
 
-    <form method="post" action="{% url 'account_logout' %}">
+    <form class="mt-8 space-y-6" method="post" action="{% url 'account_logout' %}">
       {% csrf_token %}
       {% if redirect_field_value %}
       <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
       {% endif %}
-      <button class="btn btn-danger" type="submit">{% trans 'Sign Out' %}</button>
+      <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+          <!-- Heroicon name: solid/lock-closed -->
+          <svg class="h-5 w-5 text-red-500 group-hover:text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+          </svg>
+        </span>
+        Sign Out
+      </button>
     </form>
-  </div>
-</div>
+
 
 {% endblock %}

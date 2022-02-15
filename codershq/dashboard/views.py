@@ -9,7 +9,7 @@ def index(request):
     if not request.user.is_authenticated:
         return redirect("https://ai.gov.ae/codershq")
 
-    return render(request, "pages/underConstruction.html")
+    return redirect("events:all")
 
 
 def landing(request):

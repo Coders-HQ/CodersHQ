@@ -21,7 +21,13 @@ def index(request):
             else:
                 event.joined = False
     context = {"events": events}
-    return render(request, "events/main.html", context)
+    return render(request, "events/events_list.html", context)
+
+def detail(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+    context = {"event": event}
+    return render(request, "events/event_detail.html", context)
+
 
 
 @login_required
@@ -34,8 +40,8 @@ def join(request, event_id):
         event.save()
         messages.success(request, "Successfully joined " + event.title)
 
-        return redirect("events:index")
-    return redirect("events:index")
+        return redirect("events:all")
+    return redirect("events:all")
 
 
 @login_required
@@ -47,8 +53,8 @@ def leave(request, event_id):
         event.attendees.remove(user)
         event.save()
         messages.success(request, "You have been removed from " + event.title)
-        return redirect("events:index")
-    return redirect("events:index")
+        return redirect("events:all")
+    return redirect("events:all")
 
 
 @login_required
