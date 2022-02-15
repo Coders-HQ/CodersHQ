@@ -114,14 +114,21 @@
 <main>
     <div class="max-w-7xl py-6 md:px-6 lg:px-8">
         <!-- header start  -->
-        <div class="m-4  border-solid border border-slate-600 max-w-7xl bg-white rounded-lg overflow-hidden md:max-w-2xl">
+        <div class="m-4 border-solid border border-slate-600 max-w-7xl bg-white rounded-lg overflow-hidden md:max-w-2xl">
             <div class="md:flex">
                 <div class="md:shrink-0">
                     <img class="h-48 w-full object-cover md:h-full md:w-48" src="{{ MEDIA_URL }}{{ challenge.image }}"
                         alt="Man looking at item at a store">
                 </div>
                 <div class="p-8 grow">
-                    <p class="md:text-lg font-bold dark:text-white text-right">{{challenge.get_reward}}</p>
+                    <div class="flex justify-between flex-wrap pb-4">
+                        <div>
+                            {% if challenge.host_logo %}
+                            <img class="h-10" src="{{ MEDIA_URL }}{{ challenge.host_logo }}">
+                            {% endif %}
+                        </div>
+                            <p class="md:text-lg font-bold dark:text-white text-right ">{{challenge.get_reward}}</p>
+                    </div>
                     <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{challenge.host_name}}</div>
                     <div class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{challenge.name}}</div>
                     <p class="mt-2 text-slate-500">{{challenge.short_description}}</p>

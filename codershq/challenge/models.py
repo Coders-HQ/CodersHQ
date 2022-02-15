@@ -20,6 +20,7 @@ class Challenge(models.Model):
     # host name
     host_name = models.CharField(_("Challenge host name"), max_length=100)
     # short description of the challenge
+    host_logo = models.ImageField(_("Your logo"), blank=True, null=True)
     short_description = models.TextField(_("Short challenge description"), max_length=150, help_text="Short description of the challenge")
     # full challenge description
     description = RichTextField(help_text="Detailed descripton of the challenge")
