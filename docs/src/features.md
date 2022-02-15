@@ -3,7 +3,6 @@
 This document lists the more import features of Coders HQ. The list and details should be updated and match the live version of CHQ.
 
 ### User System
-
 There should be a way for users to join through the landing page. The creation of users should be done using the industry standard when dealing with password and user data. Users should be able to look into their own details within their own profile page.
 
 ### Chat Feature
