@@ -41,6 +41,10 @@ gulp:
 setup:
 	git pull && make build && make migrations && make migrate && make up
 
+# 
+# this is for the production environment 
+#
+
 pro-migrations:
 	docker-compose -f production.yml run --rm django python manage.py makemigrations
 

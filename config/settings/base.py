@@ -85,6 +85,7 @@ LOCAL_APPS = [
     "codershq.companies.apps.CompaniesConfig",
     "codershq.dashboard.apps.DashboardConfig",
     "codershq.events.apps.EventsConfig",
+    "codershq.portfolio.apps.PortfolioConfig",
     "codershq.api.apps.APIConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
