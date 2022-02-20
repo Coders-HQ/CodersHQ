@@ -1,9 +1,26 @@
 {% extends "base.html" %}
 
-      {% block content %}
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-        <p>This document as a way to quick start the dashboard page.</p>
-        <p>Look into the base.html class which this page imports as a default.</p>
-        {% endblock content %}
+<!-- 
+  landing page content
+
+  introduction
+  who we are
+  what we do
+  
+ -->
+
+{% block content %}
+
+<main class="max-w-7xl mx-auto py-6 px-4 ">
+
+    
+
+      <div class=" my-6" id="profile" role="tabpanel"aria-labelledby="profile-tab">
+          {% include "pages/_overview.html" %}
+      </div>
+
+
+</main>
+
+
+{% endblock content %}
