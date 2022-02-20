@@ -1,70 +1,8 @@
-{% load static i18n compress%}
-<!DOCTYPE html>
-{% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE }}">
+{% extends "root.html" %}
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>{% block title %}Coders Headquarters{% endblock title %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="CodersHQ source code">
-  <meta name="author" content="Rashed Al Suwaidi">
+{% block data %}
 
-  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+{% block content %}
+{% endblock content %}
 
-  {% block css %}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
-  <!-- Your stuff: Third-party CSS libraries go here -->
-
-  {% compress css %}
-  <!-- This file stores project-specific CSS -->
-  <link rel="stylesheet" href="{% static 'css/lineicons.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  <link rel="stylesheet" href="{% static 'css/project.css' %}" />
-  {% block additional_css %}
-  {% endblock additional_css %}
-  {% endcompress %}
-  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.3.2/dist/flowbite.min.css" />
-  {% endblock %}
-  <!-- Le javascript
-    ================================================== -->
-  {# Placed at the top of the document so pages load faster with defer #}
-  {% block javascript %}
-
-  <!-- Vendor dependencies bundled as one file-->
-  <!--
-      Don't import project files first...
-      Import vendors such as jQuery, Axios etc.. then import the project files
-      because the javascript imports are done by line order.
-
-      And use defer for files that have to be loaded before the HTML document is loaded.
-      "-->
-
-  <script defer src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
-    integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
-    </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  {% compress js %}
-  <script defer src="{% static 'js/vendors.min.js' %}"></script>
-  <script defer src="{% static 'js/project.min.js' %}"></script>
-  {% endcompress %}
-  <script src="https://unpkg.com/flowbite@1.3.2/dist/flowbite.js"></script>
-  {% endblock javascript %}
-
-</head>
-
-<body>
-    {% include "_alert.html" %}
-    {% block content %}
-    <p>Use this document as a way to quick start any new project.</p>
-    {% endblock content %}
-    
-    {% block modal %}{% endblock modal %}
-    
-    {% block inline_javascript %}
-    {# Script tags with only code, no src (defer by default) #}
-    {% endblock inline_javascript %}
-</body>
-</html>
+{% endblock data %}
