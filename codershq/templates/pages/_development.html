@@ -1,0 +1,125 @@
+<div class="prose border border-gray-200 rounded-md p-4 min-w-full">
+
+
+<p><a href="https://discord.gg/CPQHAZrg8b"><img src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Discord"></a></p>
+<p><a href="https://github.com/pydanny/cookiecutter-django/"><img src="https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter" alt="Built with Cookiecutter Django"></a></p>
+<p><a href="https://github.com/ambv/black"><img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Black code style"></a></p>
+<h2 id="the-docs">The Docs</h2>
+<p>Have a look at the <a href="https://coders-hq.github.io/CodersHQ">docs</a>, we
+document everything over there. We plan to migrate from the docs to
+something more established, like readthedocs, once we have enough
+material to work with.</p>
+<p>We also document the tasks in the
+<a href="https://github.com/Coders-HQ/CodersHQ/issues">issues</a> section, use that to find out what we need help with right now.</p>
+<h2 id="quick-setup">Quick Setup</h2>
+<p>Make sure you have Docker version 2+ and then do the following to build
+the stack and update the databse :</p>
+<pre><code>$ docker-compose -f local<span class="hljs-selector-class">.yml</span> build
+$ docker-compose -f local<span class="hljs-selector-class">.yml</span> run --rm django python manage<span class="hljs-selector-class">.py</span> makemigrations
+$ docker-compose -f local<span class="hljs-selector-class">.yml</span> run --rm django python manage<span class="hljs-selector-class">.py</span> migrate
+$ docker-compose -f local<span class="hljs-selector-class">.yml</span> run --rm django python manage<span class="hljs-selector-class">.py</span> createsuperuser
+</code></pre><p>Follow the rest of the README for more information and use <code>/admin</code> to
+edit and create challenges.</p>
+<h2 id="getting-up-and-running-locally-with-docker">Getting Up and Running Locally With Docker</h2>
+<p>The steps below will get you up and running with a local development
+environment. All of these commands assume you are in the root of your
+generated project.</p>
+
+<p>If you're new to Docker, please be aware that some resources are cached
+system-wide and might reappear if you generate a project multiple times
+with the same name.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Docker; if you don't have it yet, follow the <a href="https://docs.docker.com/install/#supported-platforms">installation
+instructions</a>;</li>
+<li>Docker Compose; refer to the official documentation for the
+<a href="https://docs.docker.com/compose/install/">installation guide</a>.</li>
+<li>(Windows) This repository can run on windows and was tested on
+<a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">WSL2</a>.
+Once you have WSL2, and a linux kernel, installed and running you
+need to install docker and you should be good to go. (Tested on
+Docker version 20.10.7, build f0df350 and Windows OS Build:
+19042.1052)</li>
+</ul>
+<h2 id="build-the-stack">Build the Stack</h2>
+<p>This can take a while, especially the first time you run this particular
+command on your development system:</p>
+<pre><code>$ docker-compose -f local<span class="hljs-selector-class">.yml</span> build
+</code></pre><p>Generally, if you want to emulate production environment use
+<code>production.yml</code> instead. And this is true for any other actions you
+might need to perform: whenever a switch is required, just do it!</p>
+<h2 id="run-the-stack">Run the Stack</h2>
+<p>This brings up both Django and PostgreSQL. The first time it is run it
+might take a while to get started, but subsequent runs will occur
+quickly.</p>
+<p>Open a terminal at the project root and run the following for local
+development:</p>
+<pre><code>$ docker-compose -f local<span class="hljs-selector-class">.yml</span> up
+</code></pre><p>You can also set the environment variable <code>COMPOSE_FILE</code> pointing to
+<code>local.yml</code> like this:</p>
+<pre><code>$ <span class="hljs-keyword">export</span> COMPOSE_FILE=<span class="hljs-keyword">local</span>.yml
+</code></pre><p>And then run:</p>
+<pre><code><span class="hljs-variable">$ </span>docker-compose up
+</code></pre><p>To run in a detached (background) mode, just:</p>
+<pre><code>$ docker-compose up <span class="hljs-_">-d</span>
+</code></pre><h2 id="execute-management-commands">Execute Management Commands</h2>
+<p>As with any shell command that we wish to run in our container, this is
+done using the <code>docker-compose -f local.yml run --rm</code> command:</p>
+<pre><code>$ docker-compose -f local<span class="hljs-selector-class">.yml</span> run --rm django python manage<span class="hljs-selector-class">.py</span> migrate
+$ docker-compose -f local<span class="hljs-selector-class">.yml</span> run --rm django python manage<span class="hljs-selector-class">.py</span> createsuperuser
+</code></pre><p>Here, <code>django</code> is the target service we are executing the commands
+against.</p>
+<h2 id="-optionally-designate-your-docker-development-server-ip">(Optionally) Designate your Docker Development Server IP</h2>
+<p>When <code>DEBUG</code> is set to <code>True</code>, the host is validated against
+<code>[`localhost`, `127.0.0.1`, `[::1]`]</code>. This is adequate when running a
+<code>virtualenv</code>. For Docker, in the <code>config.settings.local</code>, add your host
+development server IP to <code>INTERNAL_IPS</code> or <code>ALLOWED_HOSTS</code> if the
+variable exists.</p>
+<h2 id="basic-commands">Basic Commands</h2>
+<h3 id="setting-up-your-users">Setting Up Your Users</h3>
+<ul>
+<li><p>To create a <strong>normal user account</strong>, just go to Sign Up and fill out
+the form. Once you submit it, you'll see a "Verify Your E-mail
+Address" page. Go to your console to see a simulated email
+verification message. Copy the link into your browser. Now the
+user's email should be verified and ready to go.</p>
+</li>
+<li><p>To create an <strong>superuser account</strong>, use this command:</p>
+<pre><code>$ python manage<span class="hljs-selector-class">.py</span> createsuperuser
+</code></pre></li>
+</ul>
+<p>For convenience, you can keep your normal user logged in on Chrome and
+your superuser logged in on Firefox (or similar), so that you can see
+how the site behaves for both kinds of users.</p>
+<h3 id="type-checks">Type checks</h3>
+<p>Running type checks with mypy:</p>
+<pre><code><span class="hljs-variable">$ </span>mypy codershq
+</code></pre><h3 id="test-coverage">Test coverage</h3>
+<p>To run the tests, check your test coverage, and generate an HTML
+coverage report:</p>
+<pre><code>$ coverage <span class="hljs-keyword">run</span><span class="bash"> -m pytest
+</span>$ coverage html
+$ open htmlcov/index.html
+</code></pre><h4 id="running-tests-with-py-test">Running tests with py.test</h4>
+<pre><code><span class="hljs-variable">$ </span>pytest
+</code></pre><h3 id="celery">Celery</h3>
+<p>This app comes with Celery.</p>
+<p>To run a celery worker:</p>
+<pre><code class="lang-{.bash}"><span class="hljs-built_in">cd</span> codershq
+celery -A config.celery_app worker <span class="hljs-_">-l</span> info
+</code></pre>
+<p>Please note: For Celery's import magic to work, it is important <em>where</em>
+the celery commands are run. If you are in the same folder with
+<em>manage.py</em>, you should be right.</p>
+<h3 id="email-server">Email Server</h3>
+<p>In development, it is often nice to be able to see emails that are being
+sent from your application. For that reason local SMTP server
+<a href="https://github.com/mailhog/MailHog">MailHog</a> with a web interface is
+available as docker container.</p>
+<p>Container mailhog will start automatically when you will run all docker
+containers. Please check <a href="">cookiecutter-django Docker documentation</a>
+for more details how to start all containers.</p>
+<p>With MailHog running, to view messages that are sent by your
+application, open your browser and go to <code>http://127.0.0.1:8025</code></p>
+
+</div>
