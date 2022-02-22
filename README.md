@@ -196,7 +196,7 @@ We would like to thank and appreciate our extraordinary contributors :clap:
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/ralsuwaidi"><img src="https://avatars.githubusercontent.com/u/22400032?v=4" width="1000px;" alt=""/><br /><sub><b>Rashed Suwaidi</b></sub></a><br /><a title="Code">💻</a> <a title="Designer">🎨</a> <a title="Artist">🪄</a> </td>
+    <td align="center"><a href="https://github.com/ralsuwaidi"><img src="https://avatars.githubusercontent.com/u/22400032?v=4" width="1000px;" alt=""/><br /><sub><b>Rashed Suwaidi</b></sub></a><br /><a title="Code">💻</a> <a title="Designer">🎨</a> <a title="Artist">🪄</a> <a title="Maintenance">🚧</a><a title="research">🔬</a><a title="Fixing bugs">🔧</a></td>
     <td align="center"><a href="https://github.com/gitanimous"><img src="https://avatars.githubusercontent.com/u/34681035?v=4" width="1000px;" alt=""/><br /><sub><b>Abdulrahman Alblooshi</b></sub></a><br /><a title="Code">💻</a> <a title="Designer">🎨</a></td>
     <td align="center"><a href="https://github.com/Musab0"><img src="https://avatars.githubusercontent.com/u/6482739?v=4" width="1000px;" alt=""/><br /><sub><b>Musab</b></sub></a><br /><a title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/DerpySmurf"><img src="https://avatars.githubusercontent.com/u/59332297?v=4" width="1000px;" alt=""/><br /><sub><b>DerpySmurf</b></sub></a><br /><a title="Code">💻</a></td>
@@ -206,7 +206,7 @@ We would like to thank and appreciate our extraordinary contributors :clap:
   </tr>
 </table>
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
