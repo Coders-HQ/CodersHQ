@@ -181,22 +181,6 @@ Please check `cookiecutter-django Docker documentation` for more details how to 
 
 With MailHog running, to view messages that are sent by your application, open your browser and go to ``http://127.0.0.1:8025``
 
-
-
-
-
-### :rocket: Deployment
-
-
-The following details how to deploy this application.
-
-
-### :whale: Docker
-
-
-See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
-
-
 ## Stargazers ⭐
 
 ### Thanks to all of our   `Stargazers` ⭐ 🔭 who is supporting CodersHQ project 
