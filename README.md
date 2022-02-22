@@ -14,8 +14,8 @@
 
 
  ## :wave: Introduction
-Coders Headquarters (CodersHQ) is a social platform for developers to grow, network, challenge themselves and gain points by contributing and helping others in this community .This platform is built by community for the community and 
-the essence of it is to inspire everyone to learn coding, share knowledge and learn togther .
+ 
+Coders Headquarters (CodersHQ) is a social platform for developers to grow, network, challenge themselves, and gain points by contributing and helping others in this community. This platform was built by the community and for the community. The essence of CodersHq is to inspire everyone to learn to code, share knowledge and learn together.
 
 Currently the platform is at the alpha stage with a lot of the
 foundations being set. It is built using django and deployed using
@@ -28,7 +28,7 @@ Have a look at the [docs](https://coders-hq.github.io/CodersHQ), we document eve
 We plan to migrate from the docs to something more established, like readthedocs, once we have enough material
 to work with.
 
-We also document the tasks in the [project](https://github.com/Coders-HQ/CodersHQ/projects) section and have a look at the [issues](https://github.com/Coders-HQ/CodersHQ/issues) section to find out what we are working on.
+We also document the tasks in [notion](https://suwaidi.notion.site/Coders-HQ-ae1356125bdc4b36b2b5b1973d09d609) and you can have a look at the [issues](https://github.com/Coders-HQ/CodersHQ/issues) section to find out what we are working on.
 
 
 ## ⚙️ Quick Setup
@@ -177,7 +177,7 @@ Please note: For Celery's import magic to work, it is important *where* the cele
 In development, it is often nice to be able to see emails that are being sent from your application. For that reason local SMTP server [MailHog](https://github.com/mailhog/MailHog) with a web interface is available as docker container.
 
 Container mailhog will start automatically when you will run all docker containers.
-Please check `cookiecutter-django Docker documentation`_ for more details how to start all containers.
+Please check `cookiecutter-django Docker documentation` for more details how to start all containers.
 
 With MailHog running, to view messages that are sent by your application, open your browser and go to ``http://127.0.0.1:8025``
 
@@ -191,34 +191,11 @@ With MailHog running, to view messages that are sent by your application, open y
 The following details how to deploy this application.
 
 
-### Heroku 
-
-See detailed [cookiecutter-django Heroku documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-on-heroku.html)
-
-
-
-
 ### :whale: Docker
 
 
 See detailed [cookiecutter-django Docker documentation](http://cookiecutter-django.readthedocs.io/en/latest/deployment-with-docker.html).
 
-
-### Custom Bootstrap Compilation
-
-
-The generated CSS is set up with automatic Bootstrap recompilation with variables of your choice.
-Bootstrap v4 is installed using npm and customised by tweaking your variables in ``static/sass/custom_bootstrap_vars``.
-
-You can find a list of available variables [in the bootstrap source](https://github.com/twbs/bootstrap/blob/v4-dev/scss/_variables.scss), or get explanations on them in the [Bootstrap docs](https://getbootstrap.com/docs/4.1/getting-started/theming/).
-
-
-
-<p><a href="https://codershq-challenge.slack.com"><h2>Slack</h2><img width="80" src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
-</a></p> 
-
-
-This project has an associated slack page that is used when a new challenge is created and discussions which relates to challenges in general. The slack page is located at  [codershq-challenge.slack.com](https://codershq-challenge.slack.com).
 
 ## Stargazers ⭐
 
@@ -252,4 +229,4 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-Liked it? Please give a ⭐️ to <b>TryShape</b> to build its triceps 💪 stronger.
+
