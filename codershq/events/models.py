@@ -8,7 +8,9 @@ from codershq.users.models import User
 
 def event_image_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
-    return "event/image/{0}".format(filename)
+    event_title = instance.title.replace(' ','_')
+    new_filename = event_title + '.' + filename.split('.')[1]
+    return "event/image/{0}".format(new_filename)
 
 
 class Event(models.Model):
@@ -24,7 +26,7 @@ class Event(models.Model):
     short_description = models.CharField(_("Short event description"), max_length=150, default=None)
     # event description
     description = RichTextField()
-    # event requiremens 
+    # event requirements
     requirements = RichTextField(_("Event requirements (like PCR, Vaccine, etc)"), blank=True, default="")
     # event link
     event_link = models.URLField(_("Event zoom link (only if online)"), blank=True, null=True)
