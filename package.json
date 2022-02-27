@@ -21,7 +21,7 @@
     "jquery": "3.3.1",
     "pixrem": "^5.0.0",
     "postcss": "^8.3.11",
-    "sass": "^1.43.4",
+    "sass": "^1.49.9",
     "tailwindcss": "^3.0.23"
   },
   "engines": {
