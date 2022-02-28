@@ -1,13 +1,9 @@
-from statistics import mode
-
 from ckeditor.fields import RichTextField
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.db.models.fields import DateTimeField
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from pyexpat import model
 
 from codershq.users.models import User
 

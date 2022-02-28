@@ -1,4 +1,5 @@
 import concurrent.futures
+import logging
 from statistics import mode
 
 from github import Github
@@ -23,7 +24,8 @@ class CHQScore:
         try:
             _ = self.g.get_user(user_name)
             return True
-        except:
+        except Exception as e:
+            logging.exception("User Doesn't Exist", e)
             return False
 
     def get_scores(self, user_list):
@@ -63,19 +65,19 @@ class CHQScore:
 
         # user modifiers
         m_u_public_repos = 2
-        m_u_created_at = 3
+        # m_u_created_at = 3
         m_u_public_gists = 3
         m_u_followers = 1
 
         # repo modifiers
-        m_r_created_at = 1
+        # m_r_created_at = 1
         m_r_stargazers_count = 2
         m_r_watchers_count = 2
         m_r_forks_count = 3
         m_r_subscribers_count = 2
         m_r_open_issues_count = 1
-        m_r_has_projects = 1
-        m_r_has_wiki = 1
+        # m_r_has_projects = 1
+        # m_r_has_wiki = 1
 
         # commit modifiers
         m_c_commits = 1
@@ -91,14 +93,14 @@ class CHQScore:
         user_score += user.followers * m_u_followers
 
         # per repo
-        current_user_id = user.id
+        # current_user_id = user.id
 
         languages = []
         for repo in user.get_repos():
             try:
                 languages.append(repo.language)
-            except:
-                pass
+            except Exception as e:
+                logging.exception("Can't append repository language", e)
 
             if not repo.fork:
                 current_repo_score = 0
