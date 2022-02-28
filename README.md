@@ -1,7 +1,7 @@
 <p align="center">
  <img width="500" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
  <h1 align="center">Coders Headquarters</h1>
- 
+
 </p><p align="center"><a href="https://github.com/pydanny/cookiecutter-django/">
 <img width="200" src="https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter">
 </a><a href="https://github.com/ambv/black">
@@ -14,7 +14,7 @@
 
 
  ## :wave: Introduction
- 
+
 Coders Headquarters (CodersHQ) is a social platform for developers to grow, network, challenge themselves, and gain points by contributing and helping others in this community. This platform was built by the community and for the community. The essence of CodersHq is to inspire everyone to learn to code, share knowledge and learn together.
 
 Currently the platform is at the alpha stage with a lot of the
@@ -52,8 +52,8 @@ The steps below will get you up and running with a local development environment
 All of these commands assume you are in the root of your generated project.
 
 
-#### Note 
-  
+#### Note
+
 If you're new to Docker, please be aware that some resources are cached system-wide
 and might reappear if you generate a project multiple times with the same name.
 
@@ -183,13 +183,13 @@ With MailHog running, to view messages that are sent by your application, open y
 
 ## Stargazers ⭐
 
-### Thanks to all of our   `Stargazers` ⭐ 🔭 who is supporting CodersHQ project 
+### Thanks to all of our   `Stargazers` ⭐ 🔭 who is supporting CodersHQ project
 
 [![Stargazers repo roster for @Coders-HQ/CodersHQ](https://reporoster.com/stars/Coders-HQ/CodersHQ)](https://github.com/Coders-HQ/CodersHQ/stargazers)
 
 # Contributors ✨
 
-We would like to thank and appreciate our extraordinary contributors :clap: 
+We would like to thank and appreciate our extraordinary contributors :clap:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -202,7 +202,7 @@ We would like to thank and appreciate our extraordinary contributors :clap:
     <td align="center"><a href="https://github.com/DerpySmurf"><img src="https://avatars.githubusercontent.com/u/59332297?v=4" width="1000px;" alt=""/><br /><sub><b>DerpySmurf</b></sub></a><br /><a title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/arsxl"><img src="https://avatars.githubusercontent.com/u/69077626?v=4" width="1000px;" alt=""/><br /><sub><b>arsxl</b></sub></a><br /><a title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/haralali"><img src="https://avatars.githubusercontent.com/u/74138203?v=4" width="1000px;" alt=""/><br /><sub><b>haralali</b></sub></a><br /><a title="Code">💻</a> </td>
-    
+
   </tr>
 </table>
 
@@ -212,5 +212,3 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-

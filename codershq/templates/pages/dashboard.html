@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-<!-- 
+<!--
   landing page content
 
   introduction
@@ -14,21 +14,21 @@
 
   <ul class="flex rounded-sm  dark:divide-gray-700" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
     <li class="w-full" role="presentation">
-      <button  class="inline-block bg-gray-50 relative py-1 px-2 md:px-4 w-full text-sm text-center text-gray-400 active:bg-gray-50 rounded-l-lg focus:z-20 active dark:bg-gray-700 dark:text-white" 
+      <button  class="inline-block bg-gray-50 relative py-1 px-2 md:px-4 w-full text-sm text-center text-gray-400 active:bg-gray-50 rounded-l-lg focus:z-20 active dark:bg-gray-700 dark:text-white"
       id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">Overview</button>
     </li>
     <li class="w-full" role="presentation">
       <button class="inline-block relative py-1 px-2 md:px-4 w-full text-sm text-center bg-gray-50 text-gray-400 hover:text-gray-700 hover:bg-gray-50 focus:z-20 dark:text-gray-400 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white"
         id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Development</button>
-        
+
     </li>
 
   </ul>
-    
+
     <div id="myTabContent">
       <div class="py-4 bg-white rounded-lg my-4 md:my-6" id="profile" role="tabpanel"aria-labelledby="profile-tab">
           {% include "pages/_overview.html" %}
-          
+
       </div>
       <div class="hidden py-4 bg-white rounded-lg my-4 md:my-6" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
           {% include "pages/_development.html" %}
