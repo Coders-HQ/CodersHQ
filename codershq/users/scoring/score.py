@@ -21,7 +21,7 @@ class CHQScore:
         call succeeds, else, false
         """
         try:
-            user = self.g.get_user(user_name)
+            _ = self.g.get_user(user_name)
             return True
         except:
             return False

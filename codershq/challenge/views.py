@@ -15,7 +15,7 @@ class ChallengeList(ListView):
     model = Challenge
     context_object_name = "challenges"
     paginate_by = 9
-    ordering = ['end_date']
+    ordering = ["end_date"]
 
 
 class ChallengeDetail(DetailView):
@@ -23,7 +23,7 @@ class ChallengeDetail(DetailView):
 
 
 class ChallengeCreate(AdminStaffRequiredMixin, CreateView):
-    template_name = 'challenge/challenge_form.html'
+    template_name = "challenge/challenge_form.html"
     form_class = ChallengeForm
 
     def form_valid(self, form):
@@ -33,14 +33,14 @@ class ChallengeCreate(AdminStaffRequiredMixin, CreateView):
 
 
 class ChallengeUpdate(AdminStaffRequiredMixin, UpdateView):
-    template_name = 'challenge/challenge_form.html'
+    template_name = "challenge/challenge_form.html"
     form_class = ChallengeForm
     model = Challenge
 
     # only users who are admin or owners can update
     def get(self, request, *args, **kwargs):
         if request.user != self.get_object().owner and not request.user.is_superuser:
-                raise PermissionDenied
+            raise PermissionDenied
         return super().get(request, *args, **kwargs)
 
 
@@ -55,6 +55,7 @@ def join(request, pk):
         messages.success(request, "Successfully joined " + challenge.name)
 
     return redirect(challenge.get_absolute_url())
+
 
 @login_required
 def leave(request, pk):
