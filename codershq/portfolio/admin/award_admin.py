@@ -9,5 +9,5 @@ class AwardAdmin(admin.ModelAdmin):
     list_display = ["user_profile", "name", "date_awarded"]
 
     class Meta:
-        verbose_name = _('codershq_model_award')
+        verbose_name = _("codershq_model_award")
         verbose_name_plural = verbose_name

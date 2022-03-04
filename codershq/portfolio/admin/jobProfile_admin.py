@@ -9,5 +9,5 @@ class JobProfileAdmin(admin.ModelAdmin):
     list_display = ["user_profile", "job_status", "hourly_rate"]
 
     class Meta:
-        verbose_name = _('codershq_model_jobprofile')
+        verbose_name = _("codershq_model_jobprofile")
         verbose_name_plural = verbose_name

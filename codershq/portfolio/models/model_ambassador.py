@@ -10,6 +10,8 @@ class Ambassador(models.Model):
     student_email = models.EmailField(_("ambassador_field_studentEmail"))
     student_phone = models.IntegerField(_("ambassador_field_studentPhone"))
     university_name = models.CharField(_("ambassador_field_university"), max_length=60)
-    responsibilities = models.CharField(_("ambassador_field_responsibilities"), max_length=60)
+    responsibilities = models.CharField(
+        _("ambassador_field_responsibilities"), max_length=60
+    )
     start_date = models.DateField(_("ambassador_field_startDate"), default=timezone.now)
     end_date = models.DateField(_("ambassador_field_endDate"), default=timezone.now)

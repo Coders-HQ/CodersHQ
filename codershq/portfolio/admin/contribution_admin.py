@@ -9,5 +9,5 @@ class ContributionAdmin(admin.ModelAdmin):
     list_display = ["user_profile", "contributor_role", "task"]
 
     class Meta:
-        verbose_name = _('codershq_model_task')
+        verbose_name = _("codershq_model_task")
         verbose_name_plural = verbose_name

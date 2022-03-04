@@ -9,5 +9,5 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = ["job_profile", "name"]
 
     class Meta:
-        verbose_name = _('codershq_model_service')
+        verbose_name = _("codershq_model_service")
         verbose_name_plural = verbose_name

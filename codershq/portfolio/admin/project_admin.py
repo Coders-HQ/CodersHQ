@@ -9,5 +9,5 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ["job_profile", "name", "description", "image", "link"]
 
     class Meta:
-        verbose_name = _('codershq_model_project')
+        verbose_name = _("codershq_model_project")
         verbose_name_plural = verbose_name
