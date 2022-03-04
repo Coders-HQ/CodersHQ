@@ -1,0 +1,137 @@
+msgid "portfolio_field_description"
+msgstr "Description"
+
+msgid "portfolio_field_githubUrl"
+msgstr "Github URL"
+
+msgid "portfolio_field_linkedinUrl"
+msgstr "LinkedIn URL"
+
+msgid "portfolio_field_websiteUrl"
+msgstr "Website"
+
+msgid "portfolio_field_twitterHandle"
+msgstr "Twitter"
+
+msgid "portfolio_field_isContributor"
+msgstr "Are you a contributor?"
+
+msgid "portfolio_field_contributorLevel"
+msgstr "Contribution Level"
+
+msgid "portfolio_field_isAdmin"
+msgstr "Are you an administrator?"
+
+msgid "award_field_awardName"
+msgstr "Award Name"
+
+msgid "award_field_awardDate"
+msgstr "Date Awarded"
+
+msgid "codershq_model_portfolio"
+msgstr "Portfolio"
+
+msgid "codershq_model_award"
+msgstr "Award"
+
+msgid "codershq_model_language"
+msgstr "Language"
+
+msgid "codershq_model_education"
+msgstr "Education"
+
+msgid "task_field_name"
+msgstr "Title"
+
+msgid "task_field_description"
+msgstr "Description"
+
+msgid "task_field_difficulty"
+msgstr "Difficulty Level"
+
+msgid "task_field_endDate"
+msgstr "End Date"
+
+msgid "user_profile"
+msgstr "User Portfolio"
+
+msgid "codershq_model_task"
+msgstr "Task"
+
+msgid "jobprofile_field_jobStatus"
+msgstr "Job Status"
+
+msgid "jobprofile_field_hourlyRate"
+msgstr "Hourly Rate"
+
+msgid "contribution_field_role"
+msgstr "Contributor Role"
+
+msgid "contribution_field_tasks"
+msgstr "Task"
+
+msgid "ambassador_field_studentEmail"
+msgstr "Email Address"
+
+msgid "ambassador_field_studentPhone"
+msgstr "Telephone"
+
+msgid "ambassador_field_university"
+msgstr "University"
+
+msgid "ambassador_field_responsibilities"
+msgstr "Responsibilities"
+
+msgid "ambassador_field_startDate"
+msgstr "Start Date"
+
+msgid "ambassador_field_endDate"
+msgstr "End Date"
+
+msgid "project_field_jobProfile"
+msgstr "Job Profile"
+
+msgid "service_field_jobProfile"
+msgstr "Job Profile"
+
+msgid "service_field_name"
+msgstr "Service"
+
+msgid "codershq_model_ambassador"
+msgstr "Ambassador"
+
+msgid "codershq_model_project"
+msgstr "Project"
+
+msgid "codershq_model_service"
+msgstr "Service"
+
+msgid "codershq_model_jobprofile"
+msgstr "Job Profile"
+
+msgid "education_field_name"
+msgstr "Degree"
+
+msgid "education_field_educationLevel"
+msgstr "Education Level"
+
+msgid "education_field_endDate"
+msgstr "End Date"
+
+msgid "language_field_name"
+msgstr "Language"
+
+msgid "language_field_proficiency"
+msgstr "Proficiency"
+
+msgid "project_field_name"
+msgstr "Project Name"
+
+msgid "project_field_description"
+msgstr "Description"
+
+msgid "project_field_image"
+msgstr "Image"
+
+msgid "project_field_url"
+msgstr "Link"
