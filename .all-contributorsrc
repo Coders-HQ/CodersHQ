@@ -74,6 +74,16 @@
       "contributions": [
         "projectManagement"
       ]
+    },
+    {
+      "login": "kajaldoshi",
+      "name": "Kajal Doshi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/14121077?v=4",
+      "profile": "https://github.com/kajaldoshi",
+      "contributions": [
+        "code",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
