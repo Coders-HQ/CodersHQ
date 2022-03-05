@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "Abdulkarim-Suleiman",
+      "name": "Abdulkarim Suleiman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77554371?v=4",
+      "profile": "https://abdulkarim-suleiman.github.io/data-ninja.github.io",
+      "contributions": [
+        "content"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "CodersHQ",
+  "projectOwner": "Coders-HQ",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
