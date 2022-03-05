@@ -65,6 +65,15 @@
         "code",
         "design"
       ]
+    },
+    {
+      "login": "haralali",
+      "name": "haralali",
+      "avatar_url": "https://avatars.githubusercontent.com/u/74138203?v=4",
+      "profile": "https://github.com/haralali",
+      "contributions": [
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 7,
