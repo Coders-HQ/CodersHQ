@@ -1,6 +1,6 @@
 <p align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
  <img width="500" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
  <h1 align="center">Coders Headquarters</h1>
@@ -200,6 +200,7 @@ We would like to thank and appreciate our extraordinary contributors :clap:
 <table>
   <tr>
     <td align="center"><a href="https://abdulkarim-suleiman.github.io/data-ninja.github.io"><img src="https://avatars.githubusercontent.com/u/77554371?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdulkarim Suleiman</b></sub></a><br /><a href="#content-Abdulkarim-Suleiman" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/ralsuwaidi"><img src="https://avatars.githubusercontent.com/u/22400032?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rashed Suwaidi</b></sub></a><br /><a href="https://github.com/Coders-HQ/CodersHQ/commits?author=ralsuwaidi" title="Code">💻</a> <a href="#design-ralsuwaidi" title="Design">🎨</a> <a href="#projectManagement-ralsuwaidi" title="Project Management">📆</a> <a href="#infra-ralsuwaidi" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-ralsuwaidi" title="Maintenance">🚧</a></td>
   </tr>
 </table>
 
