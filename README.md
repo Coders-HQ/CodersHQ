@@ -106,6 +106,7 @@ As with any shell command that we wish to run in our container, this is done usi
 
     $ docker-compose -f local.yml run --rm django python manage.py migrate
     $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+    $ docker-compose -f local.yml run --rm django python manage.py compilemessages
 
 Here, ``django`` is the target service we are executing the commands against.
 
@@ -212,5 +213,3 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
-
-
