@@ -24,7 +24,7 @@ class Event(models.Model):
     duration = models.IntegerField(_("Event duration (hrs)"), null=True, blank=True)
     # short event description
     short_description = models.CharField(
-        _("Short event description"), max_length=150, default=None
+        _("Short event description"), max_length=140, default=None
     )
     # event description
     description = RichTextField()
