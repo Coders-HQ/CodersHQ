@@ -199,8 +199,8 @@ We would like to thank and appreciate our extraordinary contributors :clap:
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://abdulkarim-suleiman.github.io/data-ninja.github.io"><img src="https://avatars.githubusercontent.com/u/77554371?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdulkarim Suleiman</b></sub></a><br /><a href="#content-Abdulkarim-Suleiman" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/ralsuwaidi"><img src="https://avatars.githubusercontent.com/u/22400032?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rashed Suwaidi</b></sub></a><br /><a href="https://github.com/Coders-HQ/CodersHQ/commits?author=ralsuwaidi" title="Code">💻</a> <a href="#design-ralsuwaidi" title="Design">🎨</a> <a href="#projectManagement-ralsuwaidi" title="Project Management">📆</a> <a href="#infra-ralsuwaidi" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-ralsuwaidi" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://abdulkarim-suleiman.github.io/data-ninja.github.io"><img src="https://avatars.githubusercontent.com/u/77554371?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdulkarim Suleiman</b></sub></a><br /><a href="#content-Abdulkarim-Suleiman" title="Content">🖋</a></td>
   </tr>
 </table>
 
