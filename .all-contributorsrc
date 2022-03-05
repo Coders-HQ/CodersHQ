@@ -84,6 +84,15 @@
         "code",
         "infra"
       ]
+    },
+    {
+      "login": "khushboo-gehi",
+      "name": "Khushboo Gehi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/69520097?v=4",
+      "profile": "https://github.com/khushboo-gehi",
+      "contributions": [
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 7,
