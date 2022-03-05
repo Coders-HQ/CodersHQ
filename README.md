@@ -1,4 +1,7 @@
 <p align="center">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
  <img width="500" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
  <h1 align="center">Coders Headquarters</h1>
 
@@ -196,19 +199,24 @@ We would like to thank and appreciate our extraordinary contributors :clap:
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/ralsuwaidi"><img src="https://avatars.githubusercontent.com/u/22400032?v=4" width="1000px;" alt=""/><br /><sub><b>Rashed Suwaidi</b></sub></a><br /><a title="Code">💻</a> <a title="Designer">🎨</a> <a title="Artist">🪄</a> <a title="Maintenance">🚧</a><a title="research">🔬</a><a title="Fixing bugs">🔧</a></td>
-    <td align="center"><a href="https://github.com/gitanimous"><img src="https://avatars.githubusercontent.com/u/34681035?v=4" width="1000px;" alt=""/><br /><sub><b>Abdulrahman Alblooshi</b></sub></a><br /><a title="Code">💻</a> <a title="Designer">🎨</a></td>
-    <td align="center"><a href="https://github.com/Musab0"><img src="https://avatars.githubusercontent.com/u/6482739?v=4" width="1000px;" alt=""/><br /><sub><b>Musab</b></sub></a><br /><a title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/DerpySmurf"><img src="https://avatars.githubusercontent.com/u/59332297?v=4" width="1000px;" alt=""/><br /><sub><b>DerpySmurf</b></sub></a><br /><a title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/arsxl"><img src="https://avatars.githubusercontent.com/u/69077626?v=4" width="1000px;" alt=""/><br /><sub><b>arsxl</b></sub></a><br /><a title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/haralali"><img src="https://avatars.githubusercontent.com/u/74138203?v=4" width="1000px;" alt=""/><br /><sub><b>haralali</b></sub></a><br /><a title="Code">💻</a> </td>
-
+    <td align="center"><a href="https://abdulkarim-suleiman.github.io/data-ninja.github.io"><img src="https://avatars.githubusercontent.com/u/77554371?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdulkarim Suleiman</b></sub></a><br /><a href="#content-Abdulkarim-Suleiman" title="Content">🖋</a></td>
   </tr>
 </table>
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
