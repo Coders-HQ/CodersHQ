@@ -6,15 +6,6 @@
   "commit": false,
   "contributors": [
     {
-      "login": "Abdulkarim-Suleiman",
-      "name": "Abdulkarim Suleiman",
-      "avatar_url": "https://avatars.githubusercontent.com/u/77554371?v=4",
-      "profile": "https://abdulkarim-suleiman.github.io/data-ninja.github.io",
-      "contributions": [
-        "content"
-      ]
-    },
-    {
       "login": "ralsuwaidi",
       "name": "Rashed Suwaidi",
       "avatar_url": "https://avatars.githubusercontent.com/u/22400032?v=4",
@@ -35,6 +26,15 @@
       "contributions": [
         "code",
         "design"
+      ]
+    },
+    {
+      "login": "Abdulkarim-Suleiman",
+      "name": "Abdulkarim Suleiman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/77554371?v=4",
+      "profile": "https://abdulkarim-suleiman.github.io/data-ninja.github.io",
+      "contributions": [
+        "content"
       ]
     }
   ],
