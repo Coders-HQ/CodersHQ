@@ -17,7 +17,7 @@
  ## :wave: Introduction
  
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Coders Headquarters (CodersHQ) is a social platform for developers to grow, network, challenge themselves, and gain points by contributing and helping others in this community. This platform was built by the community and for the community. The essence of CodersHq is to inspire everyone to learn to code, share knowledge and learn together.
@@ -211,6 +211,7 @@ We would like to thank and appreciate our extraordinary contributors :clap:
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/kajaldoshi"><img src="https://avatars.githubusercontent.com/u/14121077?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Kajal Doshi</b></sub></a><br /><a href="https://github.com/Coders-HQ/CodersHQ/commits?author=kajaldoshi" title="Code">💻</a> <a href="#infra-kajaldoshi" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="https://github.com/khushboo-gehi"><img src="https://avatars.githubusercontent.com/u/69520097?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Khushboo Gehi</b></sub></a><br /><a href="#projectManagement-khushboo-gehi" title="Project Management">📆</a></td>
   </tr>
 </table>
 
