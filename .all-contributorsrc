@@ -55,6 +55,16 @@
         "code",
         "plugin"
       ]
+    },
+    {
+      "login": "DerpySmurf",
+      "name": "DerpySmurf",
+      "avatar_url": "https://avatars.githubusercontent.com/u/59332297?v=4",
+      "profile": "https://github.com/DerpySmurf",
+      "contributions": [
+        "code",
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
