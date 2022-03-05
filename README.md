@@ -17,7 +17,7 @@
  ## :wave: Introduction
  
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Coders Headquarters (CodersHQ) is a social platform for developers to grow, network, challenge themselves, and gain points by contributing and helping others in this community. This platform was built by the community and for the community. The essence of CodersHq is to inspire everyone to learn to code, share knowledge and learn together.
@@ -201,9 +201,10 @@ We would like to thank and appreciate our extraordinary contributors :clap:
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://abdulkarim-suleiman.github.io/data-ninja.github.io"><img src="https://avatars.githubusercontent.com/u/77554371?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdulkarim Suleiman</b></sub></a><br /><a href="#content-Abdulkarim-Suleiman" title="Content">🖋</a></td>
     <td align="center"><a href="https://github.com/ralsuwaidi"><img src="https://avatars.githubusercontent.com/u/22400032?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Rashed Suwaidi</b></sub></a><br /><a href="https://github.com/Coders-HQ/CodersHQ/commits?author=ralsuwaidi" title="Code">💻</a> <a href="#design-ralsuwaidi" title="Design">🎨</a> <a href="#projectManagement-ralsuwaidi" title="Project Management">📆</a> <a href="#infra-ralsuwaidi" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-ralsuwaidi" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://abdulrahmanalblooshi.com"><img src="https://avatars.githubusercontent.com/u/34681035?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdulrahman Alblooshi</b></sub></a><br /><a href="https://github.com/Coders-HQ/CodersHQ/commits?author=gitanimous" title="Code">💻</a> <a href="#design-gitanimous" title="Design">🎨</a></td>
+    <td align="center"><a href="https://abdulkarim-suleiman.github.io/data-ninja.github.io"><img src="https://avatars.githubusercontent.com/u/77554371?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Abdulkarim Suleiman</b></sub></a><br /><a href="#content-Abdulkarim-Suleiman" title="Content">🖋</a></td>
+    <td align="center"><a href="https://github.com/Musab0"><img src="https://avatars.githubusercontent.com/u/6482739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Musab</b></sub></a><br /><a href="https://github.com/Coders-HQ/CodersHQ/commits?author=Musab0" title="Code">💻</a></td>
   </tr>
 </table>
 
