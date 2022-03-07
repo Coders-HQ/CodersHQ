@@ -1,10 +1,12 @@
-from .ambassador_admin import AmbassadorAdmin
-from .award_admin import AwardAdmin
-from .contribution_admin import ContributionAdmin
-from .education_admin import EducationAdmin
-from .jobProfile_admin import JobProfileAdmin
-from .language_admin import LanguageAdmin
-from .portfolio_admin import PortfolioAdmin
+from .portfolio_admin import (
+    AmbassadorAdmin,
+    AwardAdmin,
+    ContributionAdmin,
+    EducationAdmin,
+    JobProfileAdmin,
+    LanguageAdmin,
+    PortfolioAdmin,
+    TaskAdmin,
+)
 from .project_admin import ProjectAdmin
 from .service_admin import ServiceAdmin
-from .task_admin import TaskAdmin

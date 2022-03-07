@@ -1,10 +1,12 @@
-from .model_ambassador import Ambassador
-from .model_award import Award
-from .model_contribution import Contribution
-from .model_education import Education
-from .model_jobProfile import JobProfile
-from .model_language import Language
-from .model_portfolio import Portfolio
+from .model_portfolio import (
+    Ambassador,
+    Award,
+    Contribution,
+    Education,
+    JobProfile,
+    Language,
+    Portfolio,
+    Task,
+)
 from .model_project import Project
 from .model_service import Service
-from .model_task import Task
