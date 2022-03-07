@@ -20,7 +20,7 @@
     "gulp-uglify-es": "^3.0.0",
     "jquery": "3.6.0",
     "pixrem": "^5.0.0",
-    "postcss": "^8.4.7",
+    "postcss": "^8.4.8",
     "sass": "^1.49.9",
     "tailwindcss": "^3.0.23"
   },
