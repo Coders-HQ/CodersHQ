@@ -5,8 +5,6 @@ from dataclasses import dataclass, field
 import sys
 # import pytz
 
-from codershq.events.models import Event
-
 
 @dataclass()
 class Eventbrite:
@@ -17,7 +15,7 @@ class Eventbrite:
 
     """ required event fields to create an event """
     title: str = ""
-    start_datetime: datetime = field(default_factory=datetime.now(tz=timezone.utc))
+    start_datetime = datetime.now(tz=timezone.utc)
     duration: int = 0
     currency: str = "USD"  # currently AED currency is not supported, as per testing
 
@@ -53,7 +51,7 @@ class Eventbrite:
     ticket_ids: list[str] = field(default_factory=list)
 
     @classmethod
-    def create_event(cls, chq_event: Event):
+    def create_event(cls, chq_event):
         """
         TODO: Missing ticket information in Event Model: number of ticket types, name of ticket type,
               ticket quantity of each type, is the ticket free?, if ticket is not free what is the cost and currency
