@@ -43,6 +43,7 @@ urlpatterns = [
     path("companies/", include("codershq.companies.urls", namespace="companies")),
     path("events/", include("codershq.events.urls", namespace="events")),
     path("api/", include("codershq.api.urls", namespace="api")),
+    path("portfolio/", include("codershq.portfolio.urls", namespace="api")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
