@@ -2,8 +2,6 @@ from ckeditor.fields import RichTextField
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from .utils.eventbrite import Eventbrite
 
 from codershq.users.models import User
@@ -56,6 +54,12 @@ class Event(models.Model):
         User, related_name="participated_events", blank=True
     )
 
+    # overwrites save method 
+    def save(self, *args, **kwargs):
+        super(Event, self).save(*args, **kwargs)
+        print('should create an event')
+        Eventbrite(self)
+
     def __str__(self):
         return self.title
 
@@ -84,7 +88,3 @@ class Event(models.Model):
                 return str(weeks_left) + " weeks"
 
             return str(months_left) + " months"
-
-@receiver(post_save, sender=Event, dispatch_uid="create_eventbrite_event")
-def create_eventbrite_event(sender, instance, **kwargs):
-    Eventbrite(instance)
