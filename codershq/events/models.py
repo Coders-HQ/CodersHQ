@@ -8,8 +8,8 @@ from codershq.users.models import User
 
 def event_image_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
-    event_title = instance.title.replace(' ','_')
-    new_filename = event_title + '.' + filename.split('.')[1]
+    event_title = instance.title.replace(" ", "_")
+    new_filename = event_title + "." + filename.split(".")[1]
     return "event/image/{0}".format(new_filename)
 
 
@@ -23,23 +23,35 @@ class Event(models.Model):
     # how long the event will last
     duration = models.IntegerField(_("Event duration (hrs)"), null=True, blank=True)
     # short event description
-    short_description = models.CharField(_("Short event description"), max_length=150, default=None)
+    short_description = models.CharField(
+        _("Short event description"), max_length=150, default=None
+    )
     # event description
     description = RichTextField()
     # event requirements
-    requirements = RichTextField(_("Event requirements (like PCR, Vaccine, etc)"), blank=True, default="")
+    requirements = RichTextField(
+        _("Event requirements (like PCR, Vaccine, etc)"), blank=True, default=""
+    )
     # event link
-    event_link = models.URLField(_("Event zoom link (only if online)"), blank=True, null=True)
+    event_link = models.URLField(
+        _("Event zoom link (only if online)"), blank=True, null=True
+    )
     event_location = models.CharField(
         _("Event location (use 'Online' if its online)"),
-        max_length=150, blank=True, null=True,
+        max_length=150,
+        blank=True,
+        null=True,
     )
-    seats = models.IntegerField(_("Number of seats available (if not online"), blank=True, null=True)
+    seats = models.IntegerField(
+        _("Number of seats available (if not online"), blank=True, null=True
+    )
 
     # people who are intrested in the event
     attendees = models.ManyToManyField(User, related_name="attended_events", blank=True)
     # people who actually joined the event
-    participants = models.ManyToManyField(User, related_name="participated_events", blank=True)
+    participants = models.ManyToManyField(
+        User, related_name="participated_events", blank=True
+    )
 
     def __str__(self):
         return self.title
@@ -48,9 +60,9 @@ class Event(models.Model):
         return self.date_time < timezone.now()
 
     def location(self):
-        if self.event_location is not None and self.event_location.lower() != 'online':
-            return 'CHQ'
-        return 'Online'
+        if self.event_location is not None and self.event_location.lower() != "online":
+            return "CHQ"
+        return "Online"
 
     def get_time_left(self):
         if not self.is_over():
