@@ -83,7 +83,7 @@ class Eventbrite:
         # TODO: change below default ticket info. Could add a loop to create more than one ticket based on number
         #       of ticket types argument
         ticket_id = EventbriteTicket.create_ticket(event_id=event_id, ticket_type="FREE",
-                                                   ticket_quantity=event_instance.seats, ticket_is_free=True, ticket_currency=event_instance.currency)
+                                                   ticket_quantity=500, ticket_is_free=True, ticket_currency=event_instance.currency)
 
         # add the ticket id to the event
         event_instance.ticket_ids.append(ticket_id)
@@ -104,6 +104,7 @@ class Eventbrite:
         }
 
         end_datetime = self.start_date_time + timedelta(hours=self.duration)
+        print(end_datetime.strftime('%Y-%m-%dT%H:%M:%SZ'))
         body = {
             "event": {
                 "name": {
@@ -113,11 +114,11 @@ class Eventbrite:
                     "html": self.description
                 },
                 "start": {
-                    "timezone": self.start_date_time.tzname(),
+                    "timezone": 'UTC',
                     "utc": self.start_date_time.strftime('%Y-%m-%dT%H:%M:%SZ')
                 },
                 "end": {
-                    "timezone": end_datetime.tzname(),
+                    "timezone": 'UTC',
                     "utc": end_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')
                 },
                 "currency": self.currency,
@@ -132,7 +133,6 @@ class Eventbrite:
         }
 
         response = requests.post(url=url, headers=headers, json=body)
-
         print("INFO: Successfully sent a post request to Eventbrite with event basic info")
 
         return response.json()
@@ -270,13 +270,14 @@ class EventbriteTicket:
             "ticket_class": {
                 "name": self.type,
                 "quantity_total": self.quantity,
-                "free": self.free,
+                "free": self.is_free,
                 "cost": f'{self.currency},{self.cost}'
             }
         }
 
         response = requests.post(url=url, headers=headers, json=body)
 
+        print(response.json())
         print("INFO: Successfully sent a post request to Eventbrite with ticket info")
 
         return response.json()
