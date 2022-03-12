@@ -15,7 +15,7 @@ class Eventbrite:
 
     """ required event fields to create an event """
     title: str = ""
-    start_datetime = datetime.now(tz=timezone.utc)
+    start_date_time: datetime = field(default_factory=datetime.now(tz=timezone.utc))
     duration: int = 0
     currency: str = "USD"  # currently AED currency is not supported, as per testing
 
@@ -48,7 +48,7 @@ class Eventbrite:
     password: str = ""
 
     # store all ticket ids linked to the event
-    ticket_ids: list[str] = field(default_factory=list)
+    ticket_ids = []
 
     @classmethod
     def create_event(cls, chq_event):
@@ -70,8 +70,8 @@ class Eventbrite:
                     To make it visible to the public, set ${is_listed} to True
         """
 
-        event_instance = cls(title=chq_event.title, start_date_time=chq_event.date_time,
-                             duration=chq_event.duration, summary=chq_event.short_description,
+        event_instance = cls(title=chq_event.title, duration=chq_event.duration, start_date_time=chq_event.date_time,
+                              summary=chq_event.short_description,
                              description=chq_event.description, requirements=chq_event.requirements,
                              link=chq_event.event_link, location=chq_event.event_location, seats=chq_event.seats)
 
@@ -83,7 +83,7 @@ class Eventbrite:
         # TODO: change below default ticket info. Could add a loop to create more than one ticket based on number
         #       of ticket types argument
         ticket_id = EventbriteTicket.create_ticket(event_id=event_id, ticket_type="FREE",
-                                                   ticket_quantity=event_instance.seats, ticket_is_free=True)
+                                                   ticket_quantity=event_instance.seats, ticket_is_free=True, ticket_currency=event_instance.currency)
 
         # add the ticket id to the event
         event_instance.ticket_ids.append(ticket_id)
@@ -103,7 +103,7 @@ class Eventbrite:
             'Accept': 'application/json',
         }
 
-        end_datetime = self.start_datetime + timedelta(hours=self.duration)
+        end_datetime = self.start_date_time + timedelta(hours=self.duration)
         body = {
             "event": {
                 "name": {
@@ -113,12 +113,12 @@ class Eventbrite:
                     "html": self.description
                 },
                 "start": {
-                    "timezone": self.start_datetime.tzname(),
-                    "utc": self.start_datetime
+                    "timezone": self.start_date_time.tzname(),
+                    "utc": self.start_date_time.strftime('%Y-%m-%dT%H:%M:%SZ')
                 },
                 "end": {
                     "timezone": end_datetime.tzname(),
-                    "utc": end_datetime
+                    "utc": end_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')
                 },
                 "currency": self.currency,
                 "online_event": self.is_online_event,
@@ -201,7 +201,7 @@ class Eventbrite:
         return response.json()
 
 
-@dataclass()
+@ dataclass()
 class EventbriteTicket:
     """ required ticket fields to create an event ticket """
     # used to differentiate types of tickets such as Basic, VIP, etc
@@ -214,7 +214,7 @@ class EventbriteTicket:
     cost: int = 0
     currency: str = ""
 
-    @classmethod
+    @ classmethod
     def create_ticket(cls, event_id: str, ticket_type: str, ticket_quantity: int, ticket_is_free: bool,
                       ticket_cost: int = 0, ticket_currency: str = "") -> str:
         """
@@ -234,7 +234,7 @@ class EventbriteTicket:
                                       cost=ticket_cost, currency=ticket_currency)
             # else create a free ticket instance if ticket is free
             else:
-                ticket_instance = cls(type=ticket_type, quantity=ticket_quantity, is_free=ticket_is_free)
+                ticket_instance = cls(type=ticket_type, quantity=ticket_quantity, is_free=ticket_is_free, currency=ticket_currency)
 
         except ValueError as error:
             if not error:
