@@ -93,6 +93,7 @@ class Eventbrite:
         publish_event_response = event_instance.publish_event(event_id=event_id)
 
         print("INFO: Successfully created and published the event to Eventbrite")
+        
         return event_id
 
     def post_basic_info(self) -> dict:
@@ -133,7 +134,7 @@ class Eventbrite:
 
         response = requests.post(url=url, headers=headers, json=body)
 
-        print(response.json())
+        print("INFO: Successfully created an event.")
 
         return response.json()
 
@@ -278,7 +279,6 @@ class EventbriteTicket:
 
         response = requests.post(url=url, headers=headers, json=body)
 
-        print("")
-        print(response.json())
+        print("INFO: Successfully posted the event ticket")
 
         return response.json()
