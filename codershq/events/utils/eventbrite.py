@@ -154,7 +154,7 @@ class Eventbrite:
 
         return response.json()
 
-    def delete_event(self, event_id: str) -> dict:
+    def delete_event(event_id: str) -> dict:
         """
             Not yet implemented.
             Can be used to delete the event specified by ${event_id}

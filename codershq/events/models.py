@@ -1,11 +1,16 @@
 from email.policy import default
+from urllib import response
+
 from ckeditor.fields import RichTextField
 from django.db import models
+from django.db.models.signals import pre_save, pre_delete
+from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from .utils.eventbrite import Eventbrite
 
 from codershq.users.models import User
+
+from .utils.eventbrite import Eventbrite
 
 
 def event_image_path(instance, filename):
@@ -17,10 +22,12 @@ def event_image_path(instance, filename):
 
 class Event(models.Model):
 
-    # 
+    #
     # Eventbrite main fields
     #
 
+    # eventbrite id
+    eventbrite_id = models.CharField(_("eventbrite id"), blank=True, default="", max_length=12)
     # event name
     name = models.CharField(_("Event title"), max_length=100)
     # when the event starts
@@ -44,10 +51,9 @@ class Event(models.Model):
     # if true, displays the total number of remaining event tickets
     show_remaining = models.BooleanField(_("Show the total number of remaining event tickets"), default=False)
 
-    # 
+    #
     # additional fields fields
-    # 
-
+    #
 
     # event image to be displayed in card
     image = models.ImageField(_("Event image"), upload_to=event_image_path)
@@ -64,12 +70,6 @@ class Event(models.Model):
     participants = models.ManyToManyField(
         User, related_name="participated_events", blank=True
     )
-
-    # overwrites save method 
-    def save(self, *args, **kwargs):
-        super(Event, self).save(*args, **kwargs)
-        print('should create an event')
-        event = Eventbrite.create_event(self)
 
     def __str__(self):
         return self.name
@@ -99,3 +99,20 @@ class Event(models.Model):
                 return str(weeks_left) + " weeks"
 
             return str(months_left) + " months"
+
+
+#
+# Signals
+#
+
+
+@receiver(pre_save, sender=Event)
+def save_event(sender, instance, *args, **kwargs):
+    event_id = Eventbrite.create_event(instance)
+    instance.eventbrite_id = event_id
+
+
+@receiver(pre_delete, sender=Event)
+def delete_event(sender, instance, *args, **kwargs):
+    response = Eventbrite.delete_event(instance.eventbrite_id)
+    print(response)
