@@ -93,7 +93,7 @@ class Eventbrite:
         publish_event_response = event_instance.publish_event(event_id=event_id)
 
         print("INFO: Successfully created and published the event to Eventbrite")
-        
+
         return event_id
 
     def post_basic_info(self) -> dict:
@@ -155,7 +155,7 @@ class Eventbrite:
 
         return response.json()
 
-    def delete_event(event_id: str) -> dict:
+    def delete_event(self, event_id: str) -> dict:
         """
             Not yet implemented.
             Can be used to delete the event specified by ${event_id}
@@ -202,7 +202,7 @@ class Eventbrite:
         return response.json()
 
 
-@ dataclass()
+@dataclass()
 class EventbriteTicket:
     """ required ticket fields to create an event ticket """
     # used to differentiate types of tickets such as Basic, VIP, etc

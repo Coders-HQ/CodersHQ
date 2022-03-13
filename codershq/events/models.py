@@ -114,5 +114,5 @@ def save_event(sender, instance, *args, **kwargs):
 
 @receiver(pre_delete, sender=Event)
 def delete_event(sender, instance, *args, **kwargs):
-    response = Eventbrite.delete_event(instance.eventbrite_id)
+    response = Eventbrite.delete_event(instance, instance.eventbrite_id)
     print(response)
