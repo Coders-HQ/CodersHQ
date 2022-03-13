@@ -14,9 +14,9 @@ class Eventbrite:
     BASE_URL = "https://www.eventbriteapi.com/v3"
 
     """ required event fields to create an event """
-    title: str = ""
+    name: str = ""
     start_date_time: datetime = field(default_factory=datetime.now(tz=timezone.utc))
-    duration: int = 0
+    end_date_time: datetime = field(default_factory=datetime.now(tz=timezone.utc))
     currency: str = "USD"  # currently AED currency is not supported, as per testing
 
     """ optional, implemented event fields used to describe the event """
@@ -25,8 +25,6 @@ class Eventbrite:
     summary: str = ""
     # event requirements can include PCR, vaccine, etc
     requirements: str = ""
-    # event link for online events
-    link: str = ""
     # event location for face-to-face events
     location: str = ""
     # number of available seats/tickets
@@ -70,10 +68,13 @@ class Eventbrite:
                     To make it visible to the public, set ${is_listed} to True
         """
 
-        event_instance = cls(title=chq_event.title, duration=chq_event.duration, start_date_time=chq_event.date_time,
-                              summary=chq_event.short_description,
-                             description=chq_event.description, requirements=chq_event.requirements,
-                             link=chq_event.event_link, location=chq_event.event_location, seats=chq_event.seats)
+        event_instance = cls(name=chq_event.name, 
+                             start_date_time=chq_event.start,
+                             end_date_time=chq_event.start, 
+                             summary=chq_event.summary,
+                             description=chq_event.description,
+                             location=chq_event.event_location, 
+                             seats=chq_event.capacity)
 
         post_event_response = event_instance.post_basic_info()
 
@@ -103,12 +104,10 @@ class Eventbrite:
             'Accept': 'application/json',
         }
 
-        end_datetime = self.start_date_time + timedelta(hours=self.duration)
-        print(end_datetime.strftime('%Y-%m-%dT%H:%M:%SZ'))
         body = {
             "event": {
                 "name": {
-                    "html": self.title
+                    "html": self.name
                 },
                 "description": {
                     "html": self.description
@@ -119,7 +118,7 @@ class Eventbrite:
                 },
                 "end": {
                     "timezone": 'UTC',
-                    "utc": end_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')
+                    "utc": self.end_date_time.strftime('%Y-%m-%dT%H:%M:%SZ')
                 },
                 "currency": self.currency,
                 "online_event": self.is_online_event,
@@ -133,7 +132,8 @@ class Eventbrite:
         }
 
         response = requests.post(url=url, headers=headers, json=body)
-        print("INFO: Successfully sent a post request to Eventbrite with event basic info")
+
+        print(response.json())
 
         return response.json()
 
@@ -234,7 +234,8 @@ class EventbriteTicket:
                                       cost=ticket_cost, currency=ticket_currency)
             # else create a free ticket instance if ticket is free
             else:
-                ticket_instance = cls(type=ticket_type, quantity=ticket_quantity, is_free=ticket_is_free, currency=ticket_currency)
+                ticket_instance = cls(type=ticket_type, quantity=ticket_quantity,
+                                      is_free=ticket_is_free, currency=ticket_currency)
 
         except ValueError as error:
             if not error:
@@ -277,11 +278,7 @@ class EventbriteTicket:
 
         response = requests.post(url=url, headers=headers, json=body)
 
+        print("")
         print(response.json())
-        print("INFO: Successfully sent a post request to Eventbrite with ticket info")
 
         return response.json()
-
-
-
-

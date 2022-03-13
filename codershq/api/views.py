@@ -10,13 +10,11 @@ def events(request):
         "json",
         events,
         fields=[
-            "title",
+            "name",
             "short_description",
-            "date_time",
-            "location",
+            "start",
             "image",
-            "duration",
-            "event_link",
+            "link",
         ],
     )
 
