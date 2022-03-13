@@ -58,7 +58,7 @@ class Event(models.Model):
     def save(self, *args, **kwargs):
         super(Event, self).save(*args, **kwargs)
         print('should create an event')
-        Eventbrite(self)
+        event = Eventbrite.create_event(self)
 
     def __str__(self):
         return self.title
