@@ -3,14 +3,11 @@ from urllib import response
 
 from ckeditor.fields import RichTextField
 from django.db import models
-from django.db.models.signals import pre_save, pre_delete
-from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from codershq.users.models import User
 
-from .utils.eventbrite import Eventbrite
 
 
 def event_image_path(instance, filename):
@@ -101,18 +98,3 @@ class Event(models.Model):
             return str(months_left) + " months"
 
 
-#
-# Signals
-#
-
-
-@receiver(pre_save, sender=Event)
-def save_event(sender, instance, *args, **kwargs):
-    event_id = Eventbrite.create_event(instance)
-    instance.eventbrite_id = event_id
-
-
-@receiver(pre_delete, sender=Event)
-def delete_event(sender, instance, *args, **kwargs):
-    response = Eventbrite.delete_event(instance, instance.eventbrite_id)
-    print(response)
