@@ -6,7 +6,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
-    "autoprefixer": "^10.4.0",
+    "autoprefixer": "^10.4.3",
     "browser-sync": "^2.27.7",
     "cssnano": "^5.0.11",
     "gulp": "^4.0.2",
