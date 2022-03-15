@@ -7,7 +7,7 @@
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.0",
-    "browser-sync": "^2.27.7",
+    "browser-sync": "^2.27.9",
     "cssnano": "^5.0.11",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
