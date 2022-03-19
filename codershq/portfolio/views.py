@@ -1,24 +1,53 @@
 from django.shortcuts import render
-from .forms import PortfolioForm
+from .forms import PortfolioForm, EducationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+from .models import Portfolio
 
 
-def public(request):
+@login_required
+def portfolio_edit(request):
+
+    # create portfolio if user doesnt have it
+    user = request.user
+    try:
+        portfolio = Portfolio.objects.get(user=user)
+        print("user had portfolio")
+    except Portfolio.DoesNotExist:
+        portfolio = Portfolio()
+        portfolio.user = user
+        portfolio.save()
+        print("save user portfolio")
+
     # if this is a POST request we need to process the form data
-    if request.method == 'POST' and 'github_url' in request.POST:
-        # create a form instance and populate it with data from the request:
-        form = PortfolioForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            print("success")
-        else:
-            print(form.errors)
+    if request.method == 'POST':
 
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        return render(request, 'portfolio/portfolio_form.html')
+        # choose the right form
+        if 'github_url' in request.POST:
+            # create a form instance and populate it with data from the request:
+            form = PortfolioForm(request.POST)
+            # check whether it's valid:
+            if form.is_valid():
+                data = form.cleaned_data
+                portfolio.twitter_handle = data['twitter_handle']
+                portfolio.github_url = data['github_url']
+                portfolio.website_url = data['website_url']
+                portfolio.linkedin_url = data['linkedin_url']
+                portfolio.description = data['description']
+                portfolio.save()
+                print("Portfolio save success")
+            else:
+                print(form.errors)
+
+        if 'education_level' in request.POST:
+            # create a form instance and populate it with data from the request:
+            form = EducationForm(request.POST)
+            # check whether it's valid:
+            if form.is_valid():
+                print("education success")
+            else:
+                print(form.errors)
 
     print(request.POST)
-    return render(request, 'portfolio/portfolio_form.html')
+    context = {"portfolio": portfolio}
+    return render(request, 'portfolio/portfolio_form.html', context)

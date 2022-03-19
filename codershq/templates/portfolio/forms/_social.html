@@ -1,5 +1,5 @@
 <div id="social" class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-2">
-    <form action="/portfolio/" method="POST">
+    <form action="/portfolio/me" method="POST">
       <div class="shadow overflow-hidden sm:rounded-md">
         <div class="px-4 py-5 bg-white sm:p-8">
           <h3 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mb-6">
@@ -14,17 +14,20 @@
               <div class="mt-1">
                   <textarea id="description" name="description" rows="3"
                       class="shadow-sm focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                      placeholder="Brief description about yourself. URLs are hyperlinked"></textarea>
+                      placeholder="Brief description about yourself. URLs are hyperlinked"
+                  >{% if portfolio.description is not None  %}{{portfolio.description}}{% endif %}</textarea>
               </div>
               </p>
             </div>
+
 
 
             <div class="col-span-6 sm:col-span-3">
               <label for="linkedin_url" class="block text-sm font-medium text-gray-700"> LinkedIn Profile </label>
               <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> http:// </span>
-                <input type="text" name="linkedin_url" id="linkedin_url" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="linkedin_url" id="linkedin_url" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="linkedin.com/in/username"
+                value="{% if portfolio.linkedin_url is not None  %}{{portfolio.linkedin_url_clean}}{% endif %}">
               </div>
             </div>
 
@@ -32,7 +35,8 @@
               <label for="website_url" class="block text-sm font-medium text-gray-700"> Website </label>
               <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> http:// </span>
-                <input type="text" name="website_url" id="website_url" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="website_url" id="website_url" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com"
+                value="{% if portfolio.website_url is not None  %}{{portfolio.website_url_clean}}{% endif %}">
               </div>
             </div>
 
@@ -40,7 +44,8 @@
               <label for="twitter_handle" class="block text-sm font-medium text-gray-700"> Twitter Profile </label>
               <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> http:// </span>
-                <input type="text" name="twitter_handle" id="twitter_handle" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="twitter_handle" id="twitter_handle" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="twitter.com/username"
+                value="{% if portfolio.twitter_handle is not None  %}{{portfolio.twitter_handle_clean}}{% endif %}">
               </div>
             </div>
 
@@ -48,7 +53,8 @@
               <label for="github_url" class="block text-sm font-medium text-gray-700"> Github URL </label>
               <div class="mt-1 flex rounded-md shadow-sm">
                 <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> http:// </span>
-                <input type="text" name="github_url" id="github_url" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="www.example.com">
+                <input type="text" name="github_url" id="github_url" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="github.com/username"
+                value="{% if portfolio.github_url is not None  %}{{portfolio.github_url_clean}}{% endif %}">
               </div>
             </div>
 

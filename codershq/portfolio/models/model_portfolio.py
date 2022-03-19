@@ -43,6 +43,22 @@ class Portfolio(models.Model):
         )
 
 
+    # remove https://
+    @property
+    def github_url_clean(self):
+        return self.github_url.replace('http://','')
+
+    @property
+    def twitter_handle_clean(self):
+        return self.twitter_handle.replace('http://','')
+    @property
+    def website_url_clean(self):
+        return self.website_url.replace('http://','')
+    @property
+    def linkedin_url_clean(self):
+        return self.linkedin_url.replace('http://','')
+
+
 class Ambassador(models.Model):
     user_profile = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
     student_email = models.EmailField(_("ambassador_field_studentEmail"))
@@ -83,10 +99,10 @@ class Contribution(models.Model):
 
 class Education(models.Model):
     user_profile = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
-    name = models.CharField(
+    school = models.CharField(
         _("education_field_name"), max_length=50, null=False, blank=False
     )
-    education_level = models.CharField(
+    degree = models.CharField(
         _("education_field_educationLevel"), max_length=50, null=True, blank=True
     )
     end_date = models.DateField(_("education_field_endDate"))
