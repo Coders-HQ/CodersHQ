@@ -5,41 +5,41 @@
             My Profile
         </h3>
         <div class="flex flex-col items-center">
+            {% if user.profile_picture %}
             <img class="mb-3 w-32 h-32 rounded-full shadow-lg" src="https://i.imgur.com/Q9XEHGOb.jpg" alt="">
+            {% else %}
+            <img class="mb-3 w-32 h-32 object-cover rounded-full shadow-lg" src="{{MEDIA_URL}}{{user.profile_image}}" alt="">
+            {% endif %}
             <h5 class="mb-1 text-xl font-normal text-gray-900 dark:text-white">Jane Sparrow</h5>
             <span class="text-sm text-gray-500 dark:text-gray-400">Blockchain Developer</span>
-            <a href="#"
-                class="inline-flex items-center lg:mt-6 py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Change
-                Picture</a>
+            <input type="button"
+                class="inline-flex items-center lg:mt-6 py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
+                value="Change Picture"></input>
+                
         </div>
     </div>
 
     <div
         class="flex-auto bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-2">
-        <form action="#" method="POST">
+        <form enctype="multipart/form-data" action="/portfolio/me" method="POST">
+
+          {% csrf_token %}
             <div class="shadow sm:rounded-md sm:overflow-hidden">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                    <div class="grid grid-cols-3 gap-6">
-                        <div class="col-span-3 sm:col-span-2">
-                            <label for="company-website" class="block text-sm font-medium text-gray-700"> Website
-                            </label>
-                            <div class="mt-1 flex rounded-md shadow-sm">
-                                <span
-                                    class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
-                                    http:// </span>
-                                <input type="text" name="company-website" id="company-website"
-                                    class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                    placeholder="www.example.com">
-                            </div>
-                        </div>
+
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input type="text" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        value="{{ user.name }}">
                     </div>
 
                     <div>
                         <label for="about" class="block text-sm font-medium text-gray-700"> About </label>
                         <div class="mt-1">
-                            <textarea id="about" name="about" rows="3"
+                            <textarea id="about" name="about" rowks="3"
                                 class="shadow-sm focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                placeholder="you@example.com"></textarea>
+                                placeholder="A little about you"
+                                >{% if user.bio is not None  %}{{user.bio}}{% endif %}</textarea>
                         </div>
                         <p class="mt-2 text-sm text-gray-500">Brief description for your profile. URLs are hyperlinked.
                         </p>
@@ -56,12 +56,12 @@
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                                 <div class="flex text-sm text-gray-600">
-                                    <label for="file-upload"
+                                    <label for="profile_image"
                                         class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
-                                        <span>Upload a file</span>
-                                        <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                        <span>Upload a file </span>
+                                        <input id="profile_image" name="profile_image" type="file" class="sr-only" accept="image/*">
                                     </label>
-                                    <p class="pl-1">or drag and drop</p>
+                                    <p class="pl-1"> or drag and drop</p>
                                 </div>
                                 <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
                             </div>

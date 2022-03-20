@@ -5,6 +5,7 @@
           <h3 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mb-6">
               Basic Portfolio
           </h3>
+          
 
           {% csrf_token %}
           <div class="grid grid-cols-6 gap-6">
@@ -16,11 +17,8 @@
                       class="shadow-sm focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                       placeholder="Brief description about yourself. URLs are hyperlinked"
                   >{% if portfolio.description is not None  %}{{portfolio.description}}{% endif %}</textarea>
-              </div>
-              </p>
+              </div>  
             </div>
-
-
 
             <div class="col-span-6 sm:col-span-3">
               <label for="linkedin_url" class="block text-sm font-medium text-gray-700"> LinkedIn Profile </label>
