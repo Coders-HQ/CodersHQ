@@ -1,6 +1,5 @@
 import requests
-from django.shortcuts import render
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 news_url = "https://www.reddit.com/r/programming/.json"
 

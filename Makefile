@@ -41,8 +41,8 @@ gulp:
 setup:
 	git pull && make build && make migrations && make migrate && make up
 
-# 
-# this is for the production environment 
+#
+# this is for the production environment
 #
 
 pro-migrations:

@@ -107,7 +107,7 @@ AUTHENTICATION_BACKENDS = [
 AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
 
-## this is a temporary redirect
+# this is a temporary redirect
 # LOGIN_REDIRECT_URL = "users:redirect"
 LOGIN_REDIRECT_URL = "dashboard:home"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
@@ -243,7 +243,10 @@ EMAIL_TIMEOUT = 5
 # Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-# ADMINS = [("""Rashed Al Suwaidi""", "x.suwaidi@gmail.com"), ("""Musab Obaid""", "musab.obaid@gmail.com")] #removed Rashed for the time being because of the spam emails.
+# ADMINS = [
+#   ("""Rashed Al Suwaidi""", "x.suwaidi@gmail.com"),
+#   ("""Musab Obaid""", "musab.obaid@gmail.com")
+# ] #removed Rashed for the time being because of the spam emails.
 ADMINS = [("""Musab Obaid""", "musab.obaid@gmail.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
