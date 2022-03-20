@@ -7,8 +7,6 @@ from codershq.companies.views import (
     CompanyUpdateView,
 )
 
-from . import views
-
 app_name = "companies"
 urlpatterns = [
     path("", CompanyListView.as_view(), name="company-list"),
