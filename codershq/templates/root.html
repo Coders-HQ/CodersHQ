@@ -42,14 +42,14 @@
       And use defer for files that have to be loaded before the HTML document is loaded.
       "-->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@3.1.0/dist/jdenticon.min.js" async
     integrity="sha384-VngWWnG9GS4jDgsGEUNaoRQtfBGiIKZTiXwm9KpgAeaRn6Y/1tAFiyXqSzqC8Ga/" crossorigin="anonymous">
     </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   {% compress js %}
   <script defer src="{% static 'js/vendors.min.js' %}"></script>
-  <script defer src="{% static 'js/project.min.js' %}"></script>
+  <script defer src="{% static 'js/project.js' %}"></script>
   {% endcompress %}
   <script src="https://unpkg.com/flowbite@1.3.2/dist/flowbite.js"></script>
   {% endblock javascript %}

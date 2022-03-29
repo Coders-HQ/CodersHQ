@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+  <div class="align-center items-center bg-transparent shadow-md sm:p-1 dark:bg-idigo-200 dark:border-transparent">
+      <br>
+    {% if object_list %}
+    <table class="GeneratedTable">
+      <thead>
+        <tr>
+          <th>  # </th>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Social Accounts</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for contributor in object_list %}
+        <tr >
+          <td><img src='{{contributor.image}}'/></td>
+          <td>{{contributor.name}}</td>
+          {% if roles_list %}
+          {% for myrole in roles_list %}
+          <td>  
+           <p class="title"><i>{{myrole}}</i></p><br>
+         </td>
+         {% endfor %}
+         {% else %}
+         <td>  
+         <p class=""></p>
+         </td>
+         {% endif %}
+         <td>
+          {% if contributor.discord %}
+          <a href="{{contributor.discord}}" class="fa fa-discord"></a>&nbsp &nbsp &nbsp &nbsp
+          {% endif %}
+            {% if contributor.twitter %}
+          <a href="{{contributor.twitter}}" class="fa fa-twitter"></a>&nbsp &nbsp &nbsp &nbsp
+          {% endif %}
+           {% if contributor.gitlab %}
+          <a href="{{contributor.gitlab}}" class="fa fa-gitlab"></a>&nbsp &nbsp &nbsp &nbsp
+          {% endif %}
+          {% if contributor.linkedin %}
+          <a href="{{contributor.linkedin}}" class="fa fa-linkedin"></a>&nbsp &nbsp &nbsp &nbsp
+          {% endif %}
+          {% if contributor.github %}
+          <a href="{{contributor.github}}" class="fa fa-git"></a>&nbsp &nbsp &nbsp &nbsp
+          {% endif %}
+          {% if contributor.website %}
+          <a href="{{contributor.website}}" class="fa fa-globe"></a>&nbsp &nbsp &nbsp &nbsp
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+      {% endif %}
+
+{% endblock %}

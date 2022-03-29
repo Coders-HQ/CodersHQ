@@ -3,7 +3,9 @@
 
 
 {% block navigation %}
+
 {% include "pages/nav.html" %}
+
 {% endblock navigation %}
 
 {% block content %}
@@ -24,26 +26,26 @@
           <ul class="ud-hero-buttons">
             <li>
               <a href="{% url 'account_signup' %}" rel="nofollow noopener" target="_blank"
-                class="ud-main-btn ud-white-btn">
-                Sign Up
-              </a>
-            </li>
-            <li>
-              <a href="https://coders-hq.github.io/CodersHQ/" rel="nofollow noopener" target="_blank"
-                class="ud-main-btn ud-link-btn">
-                Learn More <i class="lni lni-arrow-right"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
-          <img src="{% static 'images/hero/chq-github.png' %}" alt="hero-image" />
-          <img src="{% static 'images/hero/dotted-shape.svg' %}" alt="shape" class="shape shape-1" />
-          <img src="{% static 'images/hero/dotted-shape.svg' %}" alt="shape" class="shape shape-2" />
-        </div>
-      </div>
+              class="ud-main-btn ud-white-btn">
+              Sign Up
+            </a>
+          </li>
+          <li>
+            <a href="https://coders-hq.github.io/CodersHQ/" rel="nofollow noopener" target="_blank"
+            class="ud-main-btn ud-link-btn">
+            Learn More <i class="lni lni-arrow-right"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="ud-hero-image wow fadeInUp" data-wow-delay=".25s">
+      <img src="{% static 'images/hero/chq-github.png' %}" alt="hero-image" />
+      <img src="{% static 'images/hero/dotted-shape.svg' %}" alt="shape" class="shape shape-1" />
+      <img src="{% static 'images/hero/dotted-shape.svg' %}" alt="shape" class="shape shape-2" />
     </div>
   </div>
+</div>
+</div>
 </section>
 <!-- ====== Hero End ====== -->
 
@@ -106,7 +108,7 @@
           <div class="card-body">
             <h5 class="card-title"><i class="lni lni-offer"></i> (hq) hackathons</h5>
             <p class="card-text">Compete against the best and solve a problem in 36-48 hours in exchange for passion and
-              prizes </p>
+            prizes </p>
           </div>
         </div>
       </div>
@@ -188,405 +190,261 @@
           <img src="{% static 'images/collaboration/qrcode_github.com.png' %}" class="mt-5">
           <br>
           <a href="https://github.com/Coders-HQ/CodersHQ" type="button" class="btn btn-outline-dark mt-5 p-2"><i
-              class="lni lni-github-original"></i> GitHub</a>
-        </div>
-        <div class="col-sm-4 ud-collab-logo">
-          <img src="{% static 'images/collaboration/qrcode_discord.com.png' %}" class="mt-5">
-          <br>
-          <a href="https://discord.com/invite/CPQHAZrg8b" type="button" class="btn btn-dark mt-5 p-2"><i
+            class="lni lni-github-original"></i> GitHub</a>
+          </div>
+          <div class="col-sm-4 ud-collab-logo">
+            <img src="{% static 'images/collaboration/qrcode_discord.com.png' %}" class="mt-5">
+            <br>
+            <a href="https://discord.com/invite/CPQHAZrg8b" type="button" class="btn btn-dark mt-5 p-2"><i
               class="lni lni-discord"></i> Discord</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ====== Team Start ====== -->
-<section id="team" class="ud-about">
-  <div class="container">
-    <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
-      <div class="ud-about-content-wrapper">
-        <div class="ud-about-content">
-          <span class="tag">About Us</span>
-
-          <h1>
-            <font class="gradient2" style="font-weight: 800;">Enabling </font> coders, coding communities, and anyone
-            who wants to code
-          </h1>
-          <p class="mb-4">
-            Coders HQ was built based on enabling coders, coding communities, and anyone who wants to code. This
-            initiative was formulated based on supporting coders, who work as strategic enablers to the UAE digital
-            economy.
-          </p>
-          <p class="mb-4">
-            The coders HQ platform was built with passion, it was built by the community and for the community. The
-            coders HQ platform development involved in its core the local coding community to provide for them the means
-            to be part of something bigger to contribute on what is the for the local coding community and coding
-            communities all around the world.
-          </p>
-
-        </div>
-      </div>
-      <div class="ud-about-image">
-        <img src="{% static 'images/about/about-image.svg' %}" alt="about-image" />
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ====== Team End ====== -->
-
-<!-- ====== Partners Start ====== -->
-<section id="partners" class="ud-pricing">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="ud-section-title mx-auto text-center">
-          <span>Partners</span>
-          <h2>Our Partners</h2>
-          <p>
-            We collaborate with an amazing team of partners locally and from across the globe
-          </p>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="logo-wall">
-      <div><img src="{% static 'images/logo/partners/logo1.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo2.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo3.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo4.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo5.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo6.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo7.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo8.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo9.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo10.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo11.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo12.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo13.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo14.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo15.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo16.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo17.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo18.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo19.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo20.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo21.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo22.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo23.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo24.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo25.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo26.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo27.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo28.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo29.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo30.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo31.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo32.png' %}" alt=""></div>
-      <div><img src="{% static 'images/logo/partners/logo33.png' %}" alt=""></div>
-
-    </div>
-  </div>
-
-
-
-  </div>
-</section>
-<!-- ====== Partners End ====== -->
-
-<!-- ====Contributors Start==== -->
-    <div class="align-center items-center bg-transparent shadow-md sm:p-1 dark:bg-idigo-200 dark:border-transparent">
-            <div class="container">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="ud-section-title mx-auto text-center">
-                      <span>Contributors</span>
-                      <h2>Meet Our Great Team!!</h2>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <style>
-body {
-   Overflow-y:scroll; //add vertical bar option in html
-}
-table.GeneratedTable {
-  width: 100%;
-  background-color: #ffffff;
-  border-collapse: collapse;
-  border-width: 2px;
-  border-color: #ffcc00;
-  border-style: solid;
-  color: #000000;
-}
-
-table.GeneratedTable td, table.GeneratedTable th {
-  border-width: 2px;
-  border-color: #4B0082;
-  border-style: solid;
-  padding: 3px;
-
-}
-
-table.GeneratedTable thead {
-  background-color: #FFFFFF;
-}
-
-
-</style>
-
-<!-- HTML Code: Place this code in the document's body (between the 'body' tags) where the table should appear -->
-<table class="GeneratedTable">
-
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Role</th>
-      <th>Social Accounts</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Rashed Alsuwaidi</td>
-      <td>
-        UI/UX Design <br>
-        Project Management<br>
-        Infrastructure <br>
-        Maintenance<br>
-        Packaging and Research</td>
-      <td>
-         <a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    <tr>
-      <td>Alshouq Alhammadi</td>
-      <td>UI/UX Design <br>
-        Intern<br>
-      </td>
-      <td>
-   <a href="www.linkedin.com/in/alshouq-alhammadi-8b2988224" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    </tr>
-    <tr>
-      <td>C1</td>
-      <td>Bug Reports <br>
-      Packaging</td>
-      <td><a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    <tr>
-      <td>C2</td>
-      <td>Bug Reports <br>
-      Packaging</td>
-      <td><a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    <tr>
-      <td>C3</td>
-      <td>Bug Reports <br>
-      Packaging</td>
-      <td><a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    <tr>
-      <td>C4</td>
-      <td>Bug Reports <br>
-      Packaging</td>
-      <td><a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    <tr>
-      <td>C5</td>
-      <td>Bug Reports <br>
-      Packaging</td>
-      <td><a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    <tr>
-      <td>C6</td>
-      <td>Bug Reports <br>
-      Packaging</td>
-      <td><a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    <tr>
-      <td>C7</td>
-      <td>Bug Reports <br>
-      Packaging</td>
-      <td><a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-    <tr>
-      <td>C8</td>
-      <td>Bug Reports <br>
-      Packaging</td>
-      <td><a href="#" class="fa fa-linkedin"></a>&nbsp &nbsp
-        <a href="#" class="fa fa-git"></a>
-      &nbsp &nbsp  <a href="#" class="fa fa-gitlab"></a></td>
-    </tr>
-
-  </tbody>
-</table>
-                
-<!-- ======= Contributors End  ====== -->
-
-<!-- ====== Testimonials Start ====== -->
-<section id="testimonials" class="ud-testimonials">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="ud-section-title mx-auto text-center">
-          <span>Testimonials</span>
-          <h2>What our Partners Say</h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-4 col-md-6">
-        <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".1s">
-          <div class="ud-testimonial-content">
-            <p>
-              "Majid Al Futtaim remains committed to playing a leading role in making the United Arab Emirates a
-              world-class hub for data technology and future pioneers. As a country built around the pillars of
-              innovation and progress, the launch of the Ministry of Artificial Intelligence’s Coders HQ strengthens the
-              UAE’s commitment to becoming a leader in digital transformation and further bolsters our reputation as a
-              destination which attracts global talent while nurturing our own national talent through comprehensive
-              training programs"
-            </p>
-          </div>
-          <div class="ud-testimonial-info">
-            <div class="ud-testimonial-image">
-              <img src="{% static 'images/testimonials/Alain-Bejjani.jpeg' %}" alt="author" />
-            </div>
-            <div class="ud-testimonial-meta">
-              <h4>Alain Bejjani<h4>
-                  <p>Chief Executive Officer, Majid Al Futtaim Holding</p>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".15s">
-          <div class="ud-testimonial-content">
-            <p>
-              "We are excited to support the National Program for Coders by providing cloud computing training
-              through the AWS Training and Certification programs to help develop a cloud-ready workforce in the
-              UAE. As we get ready to launch the AWS data centers in the UAE in the first half of 2022"
-            </p>
-          </div>
-          <div class="ud-testimonial-info">
-            <div class="ud-testimonial-image">
-              <img src="{% static 'images/testimonials/vinod-krishnan.jpg' %}" alt="author" />
-            </div>
-            <div class="ud-testimonial-meta">
-              <h4>Vinod Krishnan</h4>
-              <p>Head of Middle East and North Africa, AWS</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6">
-        <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".2s">
-          <div class="ud-testimonial-ratings">
-          </div>
-          <div class="ud-testimonial-content">
-            <p>
-              “Through our partnership
-              with the National Programme for Coders, we aim to design and develop products and
-              solutions related to the digital system on a larger scale"
-            </p>
-          </div>
-          <div class="ud-testimonial-info">
-            <div class="ud-testimonial-image">
-              <img src="{% static 'images/testimonials/Dr-Arif-Al-Hammadi.png' %}" alt="author" />
-            </div>
-            <div class="ud-testimonial-meta">
-              <h4>Dr. Arif Sultan Al Hammadi</h4>
-              <p>Executive Vice President at the Khalifa University
-                of Science Technology</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- ====== Testimonials End ====== -->
 
-<!-- ====== Location Start ====== -->
-<section id="team" class="ud-about">
-  <div class="container">
-    <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
+      </div>
+    </section>
+    <!-- ====== Collaboration End ====== -->
+
+
+    <!-- ====== Team Start ====== -->
+    <section id="team" class="ud-about">
+      <div class="container">
+        <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
+          <div class="ud-about-content-wrapper">
+            <div class="ud-about-content">
+              <span class="tag">About Us</span>
+
+              <h1>
+                <font class="gradient2" style="font-weight: 800;">Enabling </font> coders, coding communities, and anyone
+                who wants to code
+              </h1>
+              <p class="mb-4">
+                Coders HQ was built based on enabling coders, coding communities, and anyone who wants to code. This
+                initiative was formulated based on supporting coders, who work as strategic enablers to the UAE digital
+                economy.
+              </p>
+              <p class="mb-4">
+                The coders HQ platform was built with passion, it was built by the community and for the community. The
+                coders HQ platform development involved in its core the local coding community to provide for them the means
+                to be part of something bigger to contribute on what is the for the local coding community and coding
+                communities all around the world.
+              </p>
+
+            </div>
+          </div>
+          <div class="ud-about-image">
+            <img src="{% static 'images/about/about-image.svg' %}" alt="about-image" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Team End ====== -->
+
+    <!-- ====== Partners Start ====== -->
+    <section id="partners" class="ud-pricing">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="ud-section-title mx-auto text-center">
+              <span>Partners</span>
+              <h2>Our Partners</h2>
+              <p>
+                We collaborate with an amazing team of partners locally and from across the globe
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="logo-wall">
+          <div><img src="{% static 'images/logo/partners/logo1.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo2.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo3.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo4.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo5.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo6.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo7.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo8.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo9.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo10.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo11.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo12.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo13.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo14.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo15.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo16.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo17.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo18.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo19.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo20.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo21.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo22.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo23.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo24.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo25.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo26.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo27.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo28.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo29.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo30.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo31.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo32.png' %}" alt=""></div>
+          <div><img src="{% static 'images/logo/partners/logo33.png' %}" alt=""></div>
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+  <!-- ====== Partners End ====== -->
+  
+
+  <!-- ====== Testimonials Start ====== -->
+  <section id="testimonials" class="ud-testimonials">
+    <div class="container">
       <div class="row">
-        <div class="col-12 col-lg-6">
-          <div class="ud-about-content p-5" style="max-width: none !important;">
-            <span class="tag">About Us</span>
-
-            <h1>How to Get to <font class="gradient2" style="font-weight: 800;">Coders HQ</font>
-            </h1>
-            <h3>By Metro</h3>
-
-            <p>
-              Coders (hq) is located at the Emirates Towers Boulevard and is a 550m walk from the metro station in a
-              beautiful air-conditioned glass bridge overlooking the museum of the future.
-            </p>
-            <p>
-              A ticket costs from 4-17 AED, one way depending on your zone. Check the RTA site to find out the nearest
-              Metro station to you.
-            </p>
-            <p>
-              We recommend this option as Coders need to stay
-            </p>
-
-            <h3 class="my-3">By Driving</h3>
-            <p>
-              It takes about 10 minutes to drive from downtown to Emirates Towers.
-            </p>
-            <p>
-              There are multiple options on where you can park :
-            </p>
-            <ul class="mb-4">
-              <li>- Valet parking (chargeable)</li>
-              <li>- Underground parking (free for the first 2 hours)</li>
-            </ul>
-
-            <a href="https://goo.gl/maps/PpSWrwDEiSz7E5KG6" class="ud-main-btn">Show Map</a>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6">
-          <div class="ud-about-image h-100">
-            <img src="{% static 'images/landing/map/et-map.png' %}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%);" alt="about-image" />
+        <div class="col-lg-12">
+          <div class="ud-section-title mx-auto text-center">
+            <span>Testimonials</span>
+            <h2>What our Partners Say</h2>
           </div>
         </div>
       </div>
-    </div>
 
-  </div>
-</section>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".1s">
+            <div class="ud-testimonial-content">
+              <p>
+                "Majid Al Futtaim remains committed to playing a leading role in making the United Arab Emirates a
+                world-class hub for data technology and future pioneers. As a country built around the pillars of
+                innovation and progress, the launch of the Ministry of Artificial Intelligence’s Coders HQ strengthens the
+                UAE’s commitment to becoming a leader in digital transformation and further bolsters our reputation as a
+                destination which attracts global talent while nurturing our own national talent through comprehensive
+                training programs"
+              </p>
+            </div>
+            <div class="ud-testimonial-info">
+              <div class="ud-testimonial-image">
+                <img src="{% static 'images/testimonials/Alain-Bejjani.jpeg' %}" alt="author" />
+              </div>
+              <div class="ud-testimonial-meta">
+                <h4>Alain Bejjani<h4>
+                  <p>Chief Executive Officer, Majid Al Futtaim Holding</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".15s">
+              <div class="ud-testimonial-content">
+                <p>
+                  "We are excited to support the National Program for Coders by providing cloud computing training
+                  through the AWS Training and Certification programs to help develop a cloud-ready workforce in the
+                  UAE. As we get ready to launch the AWS data centers in the UAE in the first half of 2022"
+                </p>
+              </div>
+              <div class="ud-testimonial-info">
+                <div class="ud-testimonial-image">
+                  <img src="{% static 'images/testimonials/vinod-krishnan.jpg' %}" alt="author" />
+                </div>
+                <div class="ud-testimonial-meta">
+                  <h4>Vinod Krishnan</h4>
+                  <p>Head of Middle East and North Africa, AWS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="ud-single-testimonial wow fadeInUp" data-wow-delay=".2s">
+              <div class="ud-testimonial-ratings">
+              </div>
+              <div class="ud-testimonial-content">
+                <p>
+                  “Through our partnership
+                  with the National Programme for Coders, we aim to design and develop products and
+                  solutions related to the digital system on a larger scale"
+                </p>
+              </div>
+              <div class="ud-testimonial-info">
+                <div class="ud-testimonial-image">
+                  <img src="{% static 'images/testimonials/Dr-Arif-Al-Hammadi.png' %}" alt="author" />
+                </div>
+                <div class="ud-testimonial-meta">
+                  <h4>Dr. Arif Sultan Al Hammadi</h4>
+                  <p>Executive Vice President at the Khalifa University
+                  of Science Technology</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ====== Testimonials End ====== -->
 
-<!-- ====== Back To Top Start ====== -->
-<a href="javascript:void(0)" class="back-to-top">
-  <i class="lni lni-chevron-up"> </i>
-</a>
-<!-- ====== Back To Top End ====== -->
+    <!-- ====== Location Start ====== -->
+    <section id="team" class="ud-about">
+      <div class="container">
+        <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="ud-about-content p-5" style="max-width: none !important;">
+                <span class="tag">About Us</span>
 
-<!-- ====== All Javascript Files ====== -->
-<script>
+                <h1>How to Get to <font class="gradient2" style="font-weight: 800;">Coders HQ</font>
+                </h1>
+                <h3>By Metro</h3>
+
+                <p>
+                  Coders (hq) is located at the Emirates Towers Boulevard and is a 550m walk from the metro station in a
+                  beautiful air-conditioned glass bridge overlooking the museum of the future.
+                </p>
+                <p>
+                  A ticket costs from 4-17 AED, one way depending on your zone. Check the RTA site to find out the nearest
+                  Metro station to you.
+                </p>
+                <p>
+                  We recommend this option as Coders need to stay
+                </p>
+
+                <h3 class="my-3">By Driving</h3>
+                <p>
+                  It takes about 10 minutes to drive from downtown to Emirates Towers.
+                </p>
+                <p>
+                  There are multiple options on where you can park :
+                </p>
+                <ul class="mb-4">
+                  <li>- Valet parking (chargeable)</li>
+                  <li>- Underground parking (free for the first 2 hours)</li>
+                </ul>
+
+                <a href="https://goo.gl/maps/PpSWrwDEiSz7E5KG6" class="ud-main-btn">Show Map</a>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="ud-about-image h-100">
+                <img src="{% static 'images/landing/map/et-map.png' %}" style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%);" alt="about-image" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== Back To Top Start ====== -->
+    <a href="javascript:void(0)" class="back-to-top">
+      <i class="lni lni-chevron-up"> </i>
+    </a>
+    <!-- ====== Back To Top End ====== -->
+
+    <!-- ====== All Javascript Files ====== -->
+    <script>
   // ==== for menu scroll
   const pageLink = document.querySelectorAll(".ud-menu-scroll");
 
@@ -604,9 +462,9 @@ table.GeneratedTable thead {
   function onScroll(event) {
     const sections = document.querySelectorAll(".ud-menu-scroll");
     const scrollPos =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop;
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
 
     for (let i = 0; i < sections.length; i++) {
       const currLink = sections[i];
@@ -616,17 +474,17 @@ table.GeneratedTable thead {
       if (
         refElement.offsetTop <= scrollTopMinus &&
         refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
-      ) {
+        ) {
         document
-          .querySelector(".ud-menu-scroll")
-          .classList.remove("active");
-        currLink.classList.add("active");
-      } else {
-        currLink.classList.remove("active");
-      }
+      .querySelector(".ud-menu-scroll")
+      .classList.remove("active");
+      currLink.classList.add("active");
+    } else {
+      currLink.classList.remove("active");
     }
   }
+}
 
-  window.document.addEventListener("scroll", onScroll);
+window.document.addEventListener("scroll", onScroll);
 </script>
 {% endblock content %}
