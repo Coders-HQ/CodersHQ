@@ -10,7 +10,7 @@ from codershq.contributor.views import (
 app_name = "contributor"
 urlpatterns = [
     path("", ContributorListView.as_view(), name="contributor-list"),
-    path("<int:pk>/", ChallengeUpdateView.as_view(), name="contributor-detail"),
+    path("<int:pk>/", ContributorUpdateView.as_view(), name="contributor-detail"),
     path("add/", ContributorCreateView.as_view(), name="contributor-add"),
     path("<int:pk>/delete/", ContributorDeleteView.as_view(), name="contributor-delete"),
 ]

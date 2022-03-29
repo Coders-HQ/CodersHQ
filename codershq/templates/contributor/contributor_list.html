@@ -5,6 +5,8 @@
 {% block content %}
   <div class="align-center items-center bg-transparent shadow-md sm:p-1 dark:bg-idigo-200 dark:border-transparent">
       <br>
+    We would like to thank and appreciate our extraordinary contributors 👏
+
     {% if object_list %}
     <table class="GeneratedTable">
       <thead>
@@ -18,19 +20,13 @@
       <tbody>
         {% for contributor in object_list %}
         <tr >
-          <td><img src='{{contributor.image}}'/></td>
+          <td><img src="{{contributor.image.url}}" alt="Image" />/></td>
           <td>{{contributor.name}}</td>
-          {% if roles_list %}
-          {% for myrole in roles_list %}
+          {% for role in roles_list %}
           <td>  
-           <p class="title"><i>{{myrole}}</i></p><br>
+           <p class="title"><i>{{role}}</i></p><br>
          </td>
          {% endfor %}
-         {% else %}
-         <td>  
-         <p class=""></p>
-         </td>
-         {% endif %}
          <td>
           {% if contributor.discord %}
           <a href="{{contributor.discord}}" class="fa fa-discord"></a>&nbsp &nbsp &nbsp &nbsp

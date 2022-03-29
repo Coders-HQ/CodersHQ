@@ -6,6 +6,7 @@ news_url = "https://www.reddit.com/r/programming/.json"
 def index(request):
 	if not request.user.is_authenticated:
 		return render(request, "pages/dashboard.html")
+	return render(request, "pages/underConstruction.html")
 
 def landing(request):	
 	return render(request, "pages/welcome.html")

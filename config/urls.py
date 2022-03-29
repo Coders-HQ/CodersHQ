@@ -40,6 +40,7 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     path("", include("codershq.dashboard.urls", namespace="dashboard")),
     path("challenge/", include("codershq.challenge.urls", namespace="challenge")),
+    path("contributor/", include("codershq.contributor.urls", namespace="contributor")),
     path("companies/", include("codershq.companies.urls", namespace="companies")),
     path("events/", include("codershq.events.urls", namespace="events")),
     path("api/", include("codershq.api.urls", namespace="api")),

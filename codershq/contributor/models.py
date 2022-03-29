@@ -4,6 +4,7 @@ from codershq.users.models import User
 from django.urls import reverse
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.postgres.fields import ArrayField
 
 class Contributor(models.Model):
     """Contributor model"""
@@ -11,7 +12,8 @@ class Contributor(models.Model):
     # Contributor
     name = models.CharField(_("Contributor Name"), max_length=200)
     # Role
-    role = models.CharField(_("Roles (Seperateed by coma)"), max_length=200)
+    role = ArrayField(models.CharField(_("Roles")),size = 100)
+
 
     # contributor image
     image = models.ImageField(
