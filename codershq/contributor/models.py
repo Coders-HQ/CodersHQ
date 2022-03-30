@@ -12,7 +12,7 @@ class Contributor(models.Model):
     # Contributor
     name = models.CharField(_("Contributor Name"), max_length=200)
     # Role
-    role = ArrayField(models.CharField(_("Roles")),size = 100)
+    role = ArrayField(models.CharField(_("Roles"),max_length=200),size = 100)
 
 
     # contributor image
