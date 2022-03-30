@@ -12,7 +12,7 @@ class Contributor(models.Model):
     # Contributor
     name = models.CharField(_("Contributor Name"), max_length=200)
     # Role
-    role = ArrayField(models.CharField(_("Roles"),max_length=200),size = 100)
+    role = models.CharField(("Roles"))
 
 
     # contributor image
@@ -47,9 +47,7 @@ def get_absolute_url(self):
         return reverse("contributor:contributor-list")
 
 def roles_list(self):
-    response = self.role.to_array().split(',')
-    print(response)
-    return response
+    return [label for value, label in self.fields['role'].choices if value in self['role'].value()]
 
 def save(self, *args, **kwargs):
         """Validate form"""
