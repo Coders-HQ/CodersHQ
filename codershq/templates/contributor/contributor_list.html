@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block navigation %}
+{% include "pages/nav.html" %}
+{% endblock navigation %}
+
 {% load static %}
 
 {% block content %}
@@ -12,16 +16,16 @@
       <thead>
         <tr>
           <th>  # </th>
-          <th>Name</th>
-          <th>Role</th>
+          <th>Name</th>&nbsp &nbsp &nbsp &nbsp
+          <th>Role</th>&nbsp &nbsp &nbsp &nbsp
           <th>Social Accounts</th>
         </tr>
       </thead>
       <tbody>
         {% for contributor in object_list %}
         <tr >
-          <td><img src="{{contributor.image.url}}" alt="Image" />/></td>
-          <td>{{contributor.name}}</td>
+          <td><img class="p-1 bg-white w-20 h-20 border rounded max-w-sm" src="{{contributor.image.url}}" alt="Image" /></td>
+          <td>{{contributor.name}}</td>&nbsp &nbsp &nbsp &nbsp
           {% for role in roles_list %}
           <td>  
            <p class="title"><i>{{role}}</i></p><br>
@@ -54,3 +58,4 @@
       {% endif %}
 
 {% endblock %}
+  

@@ -47,7 +47,8 @@ def get_absolute_url(self):
         return reverse("contributor:contributor-list")
 
 def roles_list(self):
-    response = self.role.split(',')
+    response = self.role.to_array().split(',')
+    print(response)
     return response
 
 def save(self, *args, **kwargs):
