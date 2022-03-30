@@ -1,6 +1,6 @@
 from django.db.models.signals import pre_save, pre_delete
 from django.dispatch import receiver
-from .utils.eventbrite import Eventbrite
+from .utils.eventbrite.eventbrite import Eventbrite
 from .models import Event
 
 
