@@ -1,6 +1,8 @@
 from django import forms
+from django.forms import MultipleChoiceField
 from django.contrib.postgres.forms import SimpleArrayField
 from django.contrib.postgres.fields import ArrayField
+
 class ChoiceArrayField(ArrayField):
     """
     A field that allows us to store an array of choices.
@@ -15,7 +17,7 @@ class ChoiceArrayField(ArrayField):
 
     def formfield(self, **kwargs):
         defaults = {
-            'form_class': forms.MultipleChoiceField,
+            'form_class': MultipleChoiceField,
             'choices': self.base_field.choices,
         }
         defaults.update(kwargs)
@@ -36,7 +38,7 @@ Options = [
 class ContributorForm(forms.Form):
     name = forms.CharField(label="Contributor Name", max_length=200)
     role = ChoiceArrayField(("Roles"),
-    	max_length=5000, 
+    	max_length=5000,widget=forms.SelectMultiple,
         choices=Options,default=['ui_ux_design'])
     image = forms.ImageField(label="Contributor Image")
  	github = forms.URLField(label="Github URL")

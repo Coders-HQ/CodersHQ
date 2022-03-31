@@ -6,17 +6,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.postgres.fields import ArrayField
 
-Options = [
-    ('project_management', 'Project Management'),
-    ('coding', 'Coding'),
-    ('ui_ux_design', 'UI/UX Design'),
-    ('infrastructure', 'Infrastructure'),
-    ('maintenance', 'maintenance'),
-    ('content_writter', 'Content Writter'),
-    ('plugin', 'Plugin'),
-
-]
-
 class ChoiceArrayField(ArrayField):
     """
     A field that allows us to store an array of choices.
@@ -31,11 +20,22 @@ class ChoiceArrayField(ArrayField):
 
     def formfield(self, **kwargs):
         defaults = {
-            'form_class': forms.MultipleChoiceField,
+            'form_class': MultipleChoiceField,
             'choices': self.base_field.choices,
         }
         defaults.update(kwargs)
         return super(ArrayField, self).formfield(**defaults)
+
+Options = [
+    ('project_management', 'Project Management'),
+    ('coding', 'Coding'),
+    ('ui_ux_design', 'UI/UX Design'),
+    ('infrastructure', 'Infrastructure'),
+    ('maintenance', 'maintenance'),
+    ('content_writter', 'Content Writter'),
+    ('plugin', 'Plugin'),
+
+]
 
 class Contributor(models.Model):
     """Contributor model"""
@@ -43,10 +43,9 @@ class Contributor(models.Model):
     # Contributor
     name = models.CharField(_("Contributor Name"), max_length=200)
     
-
     # Role
-    role = ChoiceArrayField(models.CharField(("Roles"),max_length=5000,choices=Options,default=['ui_ux_design']))
-
+    role = ArrayField(models.CharField(("Roles"),
+        max_length=5000,choices=Options,default=['ui_ux_design']))
 
     # contributor image
     image = models.ImageField(
