@@ -31,12 +31,12 @@ Options = [
     ('coding', 'Coding'),
     ('ui_ux_design', 'UI/UX Design'),
     ('infrastructure', 'Infrastructure'),
-    ('maintenance', 'maintenance'),
+    ('maintenance', 'Maintenance'),
     ('content_writter', 'Content Writter'),
     ('plugin', 'Plugin'),
 
 ]
-
+    
 class Contributor(models.Model):
     """Contributor model"""
 
@@ -77,10 +77,6 @@ def __init__(self, verbose_name=None, name=None):
 
 def get_absolute_url(self):
         return reverse("contributor:contributor-list")
-
-def roles_list(self):
-        response = self.split(',')
-        return response
 
 def save(self, *args, **kwargs):
         """Validate form"""

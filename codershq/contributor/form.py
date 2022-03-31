@@ -1,8 +1,6 @@
 from django import forms
 from django.forms import MultipleChoiceField
-from django.contrib.postgres.forms import SimpleArrayField
 from django.contrib.postgres.fields import ArrayField
-
 class ChoiceArrayField(ArrayField):
     """
     A field that allows us to store an array of choices.
