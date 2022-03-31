@@ -35,8 +35,8 @@ Options = [
 
 class ContributorForm(forms.Form):
     name = forms.CharField(label="Contributor Name", max_length=200)
-    role = forms.ChoiceArrayField(("Roles"),
-    	max_length=7, 
+    role = ChoiceArrayField(("Roles"),
+    	max_length=5000, 
         choices=Options,default=['ui_ux_design'])
     image = forms.ImageField(label="Contributor Image")
  	github = forms.URLField(label="Github URL")

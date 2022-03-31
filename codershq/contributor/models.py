@@ -45,7 +45,7 @@ class Contributor(models.Model):
     
 
     # Role
-    role = models.ChoiceArrayField(models.CharField(("Roles"),max_length=7,choices=Options,default=['ui_ux_design']))
+    role = ChoiceArrayField(models.CharField(("Roles"),max_length=5000,choices=Options,default=['ui_ux_design']))
 
 
     # contributor image
@@ -74,14 +74,14 @@ class Contributor(models.Model):
     discord = models.URLField(_("Discord URL"), null=True, blank=True)
 
 def __init__(self, verbose_name=None, name=None):
-    return self.name
+        return self.name
 
 def get_absolute_url(self):
         return reverse("contributor:contributor-list")
 
 def roles_list(self):
-    response = self.split(',')
-    return response.json()
+        response = self.split(',')
+        return response
 
 def save(self, *args, **kwargs):
         """Validate form"""
