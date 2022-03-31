@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block navigation %}
+{% include "pages/nav.html" %}
+{% endblock navigation %}
+
+{% load static %}
+{% load remove_sym %}
+
+
+{% block content %}
+  <div class="align-center items-center bg-transparent shadow-md sm:p-1 dark:bg-idigo-200 dark:border-transparent">
+      <br>
+    <p class="title text-xl text-center"><i>Contributors</i></p>
+      <br>
+      <br>
+    <p class="title text-m text-center"><i>We would like to thank and appreciate our extraordinary contributors 👏</i></p>
+      <br>
+      <br>
+    {% if object_list %}
+    <table class="w-full text-sm text-left text-indigo-500 dark:text-indigo-400">
+      <thead class="text-xs text-indigo-700 uppercase bg-indigo-50 dark:bg-indigo-700 dark:text-indigo-400">
+        <tr>
+          <th class="px-6 py-3">  # </th>
+          <th>Name</th>&nbsp &nbsp &nbsp &nbsp
+          <th>Role</th>&nbsp &nbsp &nbsp &nbsp
+          <th>Social Accounts</th>
+        </tr>
+      </thead>
+      <tbody class="text-xs text-indigo-700 uppercase bg-indigo-50 dark:bg-indigo-700 dark:text-indigo-400">
+        {% for contributor in object_list %}
+        <tr class="bg-indigo-100 dark:bg-indigo-800 hover:bg-indigo-50" >
+          <td class="px-6 py-3"><img class="bg-white w-20 h-20 border rounded max-w-sm" src="{{contributor.image.url}}" alt="Image" />
+          </td>
+          <td class="px-6 py-3">{{contributor.name}}</td>&nbsp &nbsp &nbsp &nbsp
+          <td class="px-6 py-3"> 
+          <ul> 
+           <li><p class="text-xs"><i>{{contributor.role|remove_sym|cut:"{"|cut:"}"}}</i></p></li><br>
+          </ul>
+          </td>
+         <td class="px-6 py-3">
+            {% if contributor.discord %}
+            <a href="{{contributor.discord}}" class="fa fa-discord " viewBox="0 0 24 24"></a>&nbsp &nbsp &nbsp &nbsp
+            {% endif %}
+            {% if contributor.twitter %}
+            <a href="{{contributor.twitter}}" class="fa fa-twitter" viewBox="0 0 24 24"></a>&nbsp &nbsp &nbsp &nbsp
+            {% endif %}
+            {% if contributor.gitlab %}
+            <a href="{{contributor.gitlab}}" class="fa fa-gitlab" viewBox="0 0 24 24"></a>&nbsp &nbsp &nbsp &nbsp
+            {% endif %}
+            {% if contributor.linkedin %}
+            <a href="{{contributor.linkedin}}" class="fa fa-linkedin" viewBox="0 0 24 24"></a>&nbsp &nbsp &nbsp &nbsp
+            {% endif %}
+            {% if contributor.github %}
+            <a href="{{contributor.github}}" class="fa fa-git" viewBox="0 0 24 24"></a>&nbsp &nbsp &nbsp &nbsp
+            {% endif %}
+            {% if contributor.website %}
+            <a href="{{contributor.website}}" class="fa fa-globe" viewBox="0 0 24 24"></a>&nbsp &nbsp &nbsp &nbsp
+            {% endif %}
+        </td>
+      </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+      {% endif %}
+
+{% endblock %}
+  
