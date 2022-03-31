@@ -6,13 +6,46 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.postgres.fields import ArrayField
 
+Options = [
+    ('project_management', 'Project Management'),
+    ('coding', 'Coding'),
+    ('ui_ux_design', 'UI/UX Design'),
+    ('infrastructure', 'Infrastructure'),
+    ('maintenance', 'maintenance'),
+    ('content_writter', 'Content Writter'),
+    ('plugin', 'Plugin'),
+
+]
+
+class ChoiceArrayField(ArrayField):
+    """
+    A field that allows us to store an array of choices.
+
+    Uses Django 1.9's postgres ArrayField
+    and a MultipleChoiceField for its formfield.
+
+    Usage:
+
+        choices = ChoiceArrayField(models.CharField(max_length=..., choices=(...,)), default=[...])
+    """
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': forms.MultipleChoiceField,
+            'choices': self.base_field.choices,
+        }
+        defaults.update(kwargs)
+        return super(ArrayField, self).formfield(**defaults)
+
 class Contributor(models.Model):
     """Contributor model"""
 
     # Contributor
     name = models.CharField(_("Contributor Name"), max_length=200)
+    
+
     # Role
-    role = models.CharField(("Roles"))
+    role = models.ChoiceArrayField(models.CharField(("Roles"),max_length=7,choices=Options,default=['ui_ux_design']))
 
 
     # contributor image
@@ -47,7 +80,8 @@ def get_absolute_url(self):
         return reverse("contributor:contributor-list")
 
 def roles_list(self):
-    return [label for value, label in self.fields['role'].choices if value in self['role'].value()]
+    response = self.split(',')
+    return response.json()
 
 def save(self, *args, **kwargs):
         """Validate form"""
@@ -55,6 +89,6 @@ def save(self, *args, **kwargs):
         super(Contributor, self).save(*args, **kwargs)
 
 def validate_contributor(contributor: Contributor):
-  
+
     if name is None:
         raise ValidationError("Contributor Name needs to be specified")
