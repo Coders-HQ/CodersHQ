@@ -47,7 +47,6 @@ class Portfolio(models.Model):
     @property
     def github_url_clean(self):
         return self.github_url.replace('http://','')
-
     @property
     def twitter_handle_clean(self):
         return self.twitter_handle.replace('http://','')

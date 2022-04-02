@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import PortfolioForm, EducationForm
+from .forms import PortfolioForm, EducationForm, UserForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
 from .models import Portfolio
@@ -47,6 +47,23 @@ def portfolio_edit(request):
                 print("education success")
             else:
                 print(form.errors)
+
+        if 'name' in request.POST:
+
+            form = UserForm(request.POST, request.FILES)
+
+            if form.is_valid():
+                print("user form success")
+                data = form.cleaned_data
+                user.name = data['name']
+                user.bio = data['about']
+                user.profile_image = data['profile_image']
+                user.save()
+
+            else:
+                print("user form not success")
+                print(form.errors)
+
 
     print(request.POST)
     context = {"portfolio": portfolio}
