@@ -24,9 +24,11 @@ class Eventbrite:
 
         if event_id:
             EventbriteEvent.update_event(chq_event=chq_event, event_id=event_id)
+            print("INFO: Successfully sent a post request to eventbrite api with a json body")
 
         else:
             event_id = EventbriteEvent.create_event(chq_event=chq_event, chq_tickets=chq_tickets)
+            print("INFO: Successfully sent a post request to eventbrite api without a json body")
             return event_id
 
 
