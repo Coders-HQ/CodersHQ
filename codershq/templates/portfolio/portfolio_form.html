@@ -1,67 +1,104 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="max-w-7xl mx-auto py-6 md:px-6 lg:px-8">
 
     <!-- ========= tabs ========= -->
     <div class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-2 px-2">
-        <ul class="flex flex-wrap -mb-px">
-            <li class="mr-2">
-                <a href="#profile" class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
+        <ul class="flex overflow-x-auto" data-tabs-toggle="#formTabContent" role="tablist">
+            <li class="mr-2 flex-shrink-0" role="presentation">
+                <button id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"
+                  class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
                   <svg class="mr-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                   </svg>    
                   Profile
-                </a>
+                </button>
             </li>
-            <li class="mr-2">
-              <a href="#social" class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
+            <li class="mr-2 flex-shrink-0" role="presentation">
+              <button id="social-tab" data-tabs-target="#social" type="button" role="tab" aria-controls="social" aria-selected="false"
+                class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
                 <svg class="mr-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                   <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="5" r="2" />  <circle cx="5" cy="19" r="2" />  <circle cx="19" cy="19" r="2" />  <circle cx="12" cy="14" r="3" />  <line x1="12" y1="7" x2="12" y2="11" />  <path d="M6.7 17.8l2.8 -2" />  <path d="M17.3 17.8l-2.8 -2" />
                 </svg>  
                 Social
-              </a>
+              </button>
             </li>
-            <li class="mr-2">
-                <a href="#general" class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
+            <li class="mr-2 flex-shrink-0" role="presentation">
+                <button id="general-tab" data-tabs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="false"
+                  class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
                   <svg class="mr-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                     <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="8" x2="12.01" y2="8" />  <rect x="4" y="4" width="16" height="16" rx="2" />  <polyline points="11 12 12 12 12 16 13 16" />
                   </svg>  
-                  General
-                </a>
+                  General Info
+                </button>
             </li>
-            <li class="mr-2">
-                <a href="#notifications" class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
+            <li class="mr-2 flex-shrink-0" role="presentation">
+              <button id="education-tab" data-tabs-target="#education" type="button" role="tab" aria-controls="education" aria-selected="false"
+                class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
+                <svg class="mr-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>  
+                Education/Job
+              </button>
+          </li>
+            <li class="mr-2 flex-shrink-0" role="presentation">
+                <button id="notifications-tab" data-tabs-target="#notifications" type="button" role="tab" aria-controls="notifications" aria-selected="false"
+                  class="inline-flex py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 group">
                     <svg class="mr-2 w-5 h-5 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
                       <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />  <circle cx="16" cy="8" r="3" />
                     </svg>
                     Notifications
-                </a>
-            </li>
-            <li>
-                <a class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-400 rounded-t-lg cursor-not-allowed dark:text-gray-500">Disabled</a>
+                </button>
             </li>
         </ul>
     </div>
 
-    <!-- ========= Profile ========= -->
-    {% include "./forms/_profile.html" %}
-    
-    <!-- ========= Social ========= -->
-    {% include "./forms/_social.html" %}
-    
-    <!-- ========= General ========= -->
-    {% include "./forms/_general.html" %}
+    <div id="formTabContent">
+      <div class="hidden" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
-    <!-- ========= Education ========= -->
-    {% include "./forms/_education.html" %}
+        <!-- ========= Profile ========= -->
+        {% include "./forms/_profile.html" %}
 
-    <!-- ========= Languages ========= -->
-    {% include "./forms/_languages.html" %}
-    
-    <!-- ========= Notifications ========= -->
-    {% include "./forms/_notifications.html" %}
+        <!-- ========= Languages ========= -->
+        {% include "./forms/_languages.html" %}
+        
+      </div>
+      <div class="hidden" id="social" role="tabpanel" aria-labelledby="social-tab">
 
+        <!-- ========= Social ========= -->
+        {% include "./forms/_social.html" %}
+        
+      </div>
+      <div class="hidden" id="general" role="tabpanel" aria-labelledby="general-tab">
+
+        <!-- ========= General ========= -->
+        {% include "./forms/_general.html" %}
+
+      </div>
+
+      <!-- CREATE TAB FOR THIS THIS RIGHT NOW -->
+      <div class="hidden" id="education" role="tabpanel" aria-labelledby="education-tab">
+
+        <!-- ========= Education ========= -->
+        {% include "./forms/_education.html" %}
+
+        <!-- ========= job ========= -->
+        {% include "./forms/_job.html" %}
+
+      </div>
+
+      <div class="hidden" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+
+        <!-- ========= Notifications ========= -->
+        {% include "./forms/_notifications.html" %}
+
+      </div>
+
+  </div>
+
+  <script src="https://unpkg.com/flowbite@1.4.1/dist/flowbite.js"></script>
 
 </div>
 {% endblock content %}
