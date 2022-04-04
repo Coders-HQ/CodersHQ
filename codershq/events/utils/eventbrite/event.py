@@ -78,7 +78,7 @@ class EventbriteEvent:
         event_instance = cls(
             name=chq_event.name, 
             start_date_time=chq_event.start,
-            end_date_time=chq_event.start, 
+            end_date_time=chq_event.end, 
             summary=chq_event.summary, # not being used in defining event body, consider removing it
             description=chq_event.description,
             location=chq_event.event_location, 
@@ -138,7 +138,7 @@ class EventbriteEvent:
         event_instance = cls(
             name=chq_event.name, 
             start_date_time=chq_event.start,
-            end_date_time=chq_event.start, 
+            end_date_time=chq_event.end, 
             summary=chq_event.summary, # not being used in defining event body, consider removing it
             description=chq_event.description,
             location=chq_event.event_location, 
