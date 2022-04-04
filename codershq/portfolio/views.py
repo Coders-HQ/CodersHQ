@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .forms import PortfolioForm, EducationForm, UserForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import get_user_model
 from .models import Portfolio
+from django.shortcuts import get_object_or_404
+from codershq.users.models import User
 
 
 @login_required
@@ -68,3 +69,8 @@ def portfolio_edit(request):
     print(request.POST)
     context = {"portfolio": portfolio}
     return render(request, 'portfolio/portfolio_form.html', context)
+
+def portfolio_show(request, username):
+    user = get_object_or_404(User, username=username)
+    context = {'user': user}
+    return render(request, 'portfolio/portfolio.html', context)

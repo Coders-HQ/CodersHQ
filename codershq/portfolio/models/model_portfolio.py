@@ -104,6 +104,7 @@ class Education(models.Model):
     degree = models.CharField(
         _("education_field_educationLevel"), max_length=50, null=True, blank=True
     )
+    start_date = models.DateField(_("education_field_endDate"))
     end_date = models.DateField(_("education_field_endDate"))
 
 
