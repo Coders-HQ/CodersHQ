@@ -6,9 +6,13 @@ transform -translate-x-full md:relative md:translate-x-0 transition duration-200
 
     <!-- logo -->
     <a href class="flex flex-col items-center mt-6"> 
+      {% if request.user.is_authenticated %}
+        <img src="{{ MEDIA_URL }}{{ request.user.profile_image }}" alt class="h-16 w-16 bg-gray-200 border object-cover rounded-full"/>
+        {% else %}
         <img src="https://www.hihdhawaii.net/wp-content/uploads/2019/09/kimson-doan-HD8KlyWRYYM-unsplash.jpg" alt class="h-16 w-16 bg-gray-200 border object-cover rounded-full"/>
+        {% endif %}
         
-        <span class="w-32 text-gray-500 text-sm text-center mt-1">saraal</span>
+        <span class="w-32 text-gray-500 text-sm text-center mt-1">{{request.user.username}}</span>
     
      </a>
     <nav class="space-y-3">
