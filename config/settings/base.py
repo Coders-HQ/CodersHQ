@@ -55,7 +55,6 @@ WSGI_APPLICATION = "config.wsgi.application"
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
-    "CsvImport",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
