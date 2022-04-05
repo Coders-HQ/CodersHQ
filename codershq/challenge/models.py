@@ -7,7 +7,6 @@ from django.utils.translation import gettext_lazy as _
 
 from codershq.users.models import User
 
-
 class Challenge(models.Model):
     """Main challenge model"""
 
