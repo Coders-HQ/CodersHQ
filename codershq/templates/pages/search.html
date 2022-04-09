@@ -37,7 +37,7 @@
         <div class="flex justify-between" style="width:200px;">
           <div class="dropdown">
             <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
-            <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-2 py-2">
+            <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3">
               <div class="pb-2">
                 <div class="flex justify-between pb-2">
                   <span class="text-sm" style="color: #696969"><b>Skills</b></span>
@@ -73,9 +73,9 @@
           </div>
           <div class="dropdown2">
             <button type="button" onclick="myFunction2()" id="dropbtn2" class="dropbtn2 rounded-lg px-2 py-2">University <i class="arrow down"></i></button>
-            <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg">
-              <div class="px-2 py-1">
-                <div class="flex justify-between py-2">
+            <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3">
+              <div class="pb-2">
+                <div class="flex justify-between pb-2">
                   <span class="text-sm" style="color: #696969"><b>University</b></span>
                   <button type="button" class="text-sm" style="color: #696969">Clear</button>
                 </div>
@@ -86,7 +86,7 @@
               <div id="not-selected-uni" class="border-t px-2 py-2">
                 <div id="testing">
                   <input type="checkbox" id="uni1" name="uni1" value="Bike" class="px-1" onchange="moveUni('uni1')">
-                  <label for="uni1" class="px-1"> University of Wollongong</label><br>
+                  <label for="uni1" class="px-1"> UOWD</label><br>
                 </div>
                 <div id="testing">
                   <input type="checkbox" id="uni2" name="uni2" value="Bike" class="px-1" onchange="moveUni('uni2')">
@@ -102,7 +102,7 @@
                 </div>
                 <div id="testing">
                   <input type="checkbox" id="uni5" name="uni5" value="Bike" class="px-1" onchange="moveUni('uni5')">
-                  <label for="uni5" class="px-1"> Python</label><br>
+                  <label for="uni5" class="px-1"> Amity University</label><br>
                 </div>
               </div>
             </div>
@@ -119,26 +119,28 @@
           <div class="contributors pb-7">
             <h1 style="color: #696969"><b>Contributors</b></h1>
             <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 px-4 py-6">
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+              <a href="#">
+                <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
+                  <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+                  <div class="px-8">
+                    <h4><b>John Doe</b></h4>
+                    <span class="text-sm">Django Developer</span>
+                    <div class="flex flex-row items-center my-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                              fill="#000000">
+                              <path d="M0 0h24v24H0z" fill="none" />
+                              <path
+                                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                          </svg>
+                      <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+                  </div>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
+                  </div>
                 </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
-              </div>
+              </a>
               <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
                 <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
                 <div class="px-8">
@@ -571,7 +573,7 @@ function moveUni(targ) {
 
 function moveBackUni(targ) {
   var element = document.getElementById(targ);
-  document.getElementById("not-selected-uni").innerHTML =  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="move('`+targ+`')">` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`+document.getElementById("not-selected-uni").innerHTML;
+  document.getElementById("not-selected-uni").innerHTML =  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="moveUni('`+targ+`')">` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`+document.getElementById("not-selected-uni").innerHTML;
   element.parentNode.remove(element);
 }
 

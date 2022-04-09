@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- content -->
+<div class="ml-64 flex-1 bg-gray-50">
+  <header class="header px-4 my-4">
+    <form method="post" action="{% url 'search:search' %}" class="grid grid-cols-2-search w-full md:px-4 py-2">
+      <select class="mySelect w-full bg-gray-100 rounded-l-lg border-gray-200" name="search_select">
+        <option value="All">All</option>
+        <option value="Contributors">Contributors</option>
+        <option value="Events">Events</option>
+      </select>
+        {% csrf_token %}
+        <input name="search" class="myInput w-full bg-gray-50 text-gray-500 rounded-r-lg border-gray-200" type="search" placeholder="Search">
+    </form>
+  </header>
+</div>
+
+
+{% endblock %}
