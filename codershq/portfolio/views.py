@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from .forms import PortfolioForm, EducationForm, UserForm
+
+from codershq.portfolio.models.model_project import Project
+
+from .forms import PortfolioForm, EducationForm, UserForm, ExperienceForm, ProjectForm
 from django.contrib.auth.decorators import login_required
-from .models import Portfolio
+from .models import Portfolio, Experience, JobProfile
 from django.shortcuts import get_object_or_404
 from codershq.users.models import User
 
@@ -64,6 +67,45 @@ def portfolio_edit(request):
             else:
                 print("user form not success")
                 print(form.errors)
+
+        if 'job_title' in request.POST:
+
+            form = ExperienceForm(request.POST)
+
+            if form.is_valid():
+                experience = Experience()
+                data = form.cleaned_data
+                experience.user_profile = portfolio
+                experience.job_title = data['job_title']
+                experience.start_date = data['start_date']
+                experience.end_date = data['end_date']
+                experience.is_current = data['is_current']
+                experience.save()
+                print("experiance form success")
+
+            else:
+                print("experience form not success")
+                print(form.errors)
+
+        # if 'project_name' in request.POST:
+
+        #     form = ProjectForm(request.POST)
+
+        #     if form.is_valid():
+        #         project = Project()
+        #         data = form.cleaned_data
+        #         project.job_profile = portfolio
+        #         project.job_title = data['job_title']
+        #         project.start_date = data['start_date']
+        #         project.end_date = data['end_date']
+        #         project.is_current = data['is_current']
+        #         project.save()
+        #         print("experiance form success")
+
+        #     else:
+        #         print("experience form not success")
+        #         print(form.errors)
+
 
 
     print(request.POST)

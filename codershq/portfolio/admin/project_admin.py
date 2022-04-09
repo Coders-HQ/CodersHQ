@@ -6,7 +6,7 @@ from codershq.portfolio.models import Project
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ["job_profile", "name", "description", "image", "link"]
+    list_display = ["user_profile", "name", "description", "image", "link"]
 
     class Meta:
         verbose_name = _("codershq_model_project")
