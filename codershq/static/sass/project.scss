@@ -4,6 +4,135 @@
 @import "_dashboard";
  // project specific CSS goes here
 
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+.myInput:focus {
+  outline: none !important;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity)) !important;
+  --tw-ring-color: #000 !important;
+
+}
+
+.grid-cols-2-search {
+  grid-template-columns: 12% 88%;
+}
+
+// .grid-cols-6-contributors {
+//   grid-template-columns: 376px 376px 376px 376px 376px 376px;
+// }
+
+.grid-row-2 {
+  grid-template-rows: repeat(2, 185px);
+}
+
+.grid-auto-flow-column {
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.myInput {
+  outline: none;
+}
+
+.lg\:gap-7 {
+  gap: 1.75rem;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #B0B0B0;
+  box-sizing: border-box;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover {
+  background: #e8fffd;
+  border: 1px solid rgba(44, 185, 187, 0.8);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px rgba(92, 205, 206, 0.62);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  right: 0;
+  margin-top: 4px;
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Dropdown Button */
+.dropbtn2 {
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #B0B0B0;
+  box-sizing: border-box;
+}
+
+/* Dropdown button on hover */
+.dropbtn2:hover {
+  background: #e8fffd;
+  border: 1px solid rgba(44, 185, 187, 0.8);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px rgba(92, 205, 206, 0.62);
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown2 {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content2 {
+  left: 0;
+  margin-top: 4px;
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-bottom: 2px;
+  margin-left: 2px;
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
  ////////////////////////////////
  		//Variables//
  ////////////////////////////////
