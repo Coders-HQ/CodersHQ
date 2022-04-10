@@ -8,9 +8,10 @@ class PortfolioForm(forms.Form):
     twitter_handle = forms.URLField(required=False)
 
 class EducationForm(forms.Form):
-    name = forms.CharField(max_length=50)
-    education_level = forms.CharField(max_length=50)
-    end_date = forms.DateField()
+    education_school = forms.CharField(max_length=50)
+    education_degree = forms.CharField(max_length=50)
+    education_start_date = forms.DateField()
+    education_end_date = forms.DateField()
 
 class UserForm(forms.Form):
     name = forms.CharField(max_length=50, required=False)
@@ -24,7 +25,15 @@ class ExperienceForm(forms.Form):
     is_current = forms.BooleanField(required=False)
 
 class ProjectForm(forms.Form):
-    name = forms.CharField(max_length=50, required=False)
-    description = forms.CharField(max_length=255, required=False)
-    image = forms.ImageField(required=False)
-    link = forms.URLField(required=False)
+    project_name = forms.CharField(max_length=50, required=False)
+    project_description = forms.CharField(max_length=255, required=False)
+    project_image = forms.ImageField(required=False)
+    project_url = forms.URLField(required=False)
+
+class AwardForm(forms.Form):
+    award_name = forms.CharField(max_length=50, required=False)
+    award_date_awarded = forms.DateField()
+
+class LanguageForm(forms.Form):
+    language_name = forms.CharField(max_length=50, required=False)
+    language_proficiency = forms.IntegerField(required=False)

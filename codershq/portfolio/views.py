@@ -1,13 +1,19 @@
 from django.shortcuts import render
+from codershq.portfolio.models.model_portfolio import Education
 
 from codershq.portfolio.models.model_project import Project
 
-from .forms import PortfolioForm, EducationForm, UserForm, ExperienceForm, ProjectForm
+from .forms import (PortfolioForm, 
+                    EducationForm, 
+                    UserForm, 
+                    ExperienceForm, 
+                    ProjectForm,
+                    LanguageForm,
+                    AwardForm)
 from django.contrib.auth.decorators import login_required
-from .models import Portfolio, Experience, JobProfile
+from .models import Portfolio, Experience, JobProfile, Award, Language
 from django.shortcuts import get_object_or_404
 from codershq.users.models import User
-
 
 @login_required
 def portfolio_edit(request):
@@ -38,26 +44,28 @@ def portfolio_edit(request):
                 portfolio.website_url = data['website_url']
                 portfolio.linkedin_url = data['linkedin_url']
                 portfolio.description = data['description']
+                # save to database
                 portfolio.save()
-                print("Portfolio save success")
             else:
                 print(form.errors)
 
-        if 'education_level' in request.POST:
-            # create a form instance and populate it with data from the request:
+        if 'education_school' in request.POST:
             form = EducationForm(request.POST)
-            # check whether it's valid:
             if form.is_valid():
-                print("education success")
+                education = Education()
+                data = form.cleaned_data
+                education.user_profile = portfolio
+                education.school = data['education_school']
+                education.degree = data['education_degree']
+                education.start_date = data['education_start_date']
+                education.end_date = data['education_end_date']
+                education.save()
             else:
                 print(form.errors)
 
         if 'name' in request.POST:
-
             form = UserForm(request.POST, request.FILES)
-
             if form.is_valid():
-                print("user form success")
                 data = form.cleaned_data
                 user.name = data['name']
                 user.bio = data['about']
@@ -65,13 +73,10 @@ def portfolio_edit(request):
                 user.save()
 
             else:
-                print("user form not success")
                 print(form.errors)
 
         if 'job_title' in request.POST:
-
             form = ExperienceForm(request.POST)
-
             if form.is_valid():
                 experience = Experience()
                 data = form.cleaned_data
@@ -81,38 +86,64 @@ def portfolio_edit(request):
                 experience.end_date = data['end_date']
                 experience.is_current = data['is_current']
                 experience.save()
-                print("experiance form success")
 
             else:
-                print("experience form not success")
                 print(form.errors)
 
-        # if 'project_name' in request.POST:
+        if 'project_name' in request.POST:
+            form = ProjectForm(request.POST)
+            if form.is_valid():
+                project = Project()
+                data = form.cleaned_data
+                project.user_profile = portfolio
+                project.name = data['project_name']
+                project.description = data['project_description']
+                project.link = data['project_url']
+                project.save()
 
-        #     form = ProjectForm(request.POST)
+            else:
+                print("project form not success")
+                print(form.errors)
 
-        #     if form.is_valid():
-        #         project = Project()
-        #         data = form.cleaned_data
-        #         project.job_profile = portfolio
-        #         project.job_title = data['job_title']
-        #         project.start_date = data['start_date']
-        #         project.end_date = data['end_date']
-        #         project.is_current = data['is_current']
-        #         project.save()
-        #         print("experiance form success")
+        if 'award_name' in request.POST:
+            form = AwardForm(request.POST)
+            if form.is_valid():
+                award = Award()
+                data = form.cleaned_data
+                award.user_profile = portfolio
+                award.name = data['award_name']
+                award.date_awarded = data['award_date_awarded']
+                award.save()
 
-        #     else:
-        #         print("experience form not success")
-        #         print(form.errors)
+            else:
+                print(form.errors)
 
+        if 'language_name' in request.POST:
+            form = LanguageForm(request.POST)
+            if form.is_valid():
+                language = Language()
+                data = form.cleaned_data
+                language.user_profile = portfolio
+                language.name = data['language_name']
+                language.proficiency = data['language_proficiency']
+                language.save()
 
+            else:
+                print(form.errors)
 
     print(request.POST)
     context = {"portfolio": portfolio}
     return render(request, 'portfolio/portfolio_form.html', context)
 
+
 def portfolio_show(request, username):
     user = get_object_or_404(User, username=username)
     context = {'user': user}
+    portfolio = Portfolio.objects.get(user=user)
+    context['portfolio'] = portfolio
+    educations = Education.objects.all().filter(user_profile=portfolio)
+    experiences = Experience.objects.all().filter(user_profile=portfolio)
+    projects = Project.objects.all().filter(user_profile=portfolio)
+    award = Award.objects.all().filter(user_profile=portfolio)
+    context['educations'] = educations
     return render(request, 'portfolio/portfolio.html', context)
