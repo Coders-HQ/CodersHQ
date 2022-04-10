@@ -12,15 +12,16 @@
           </button>
       </div>
 
-       <a href class="flex flex-col items-center mt-6">
-        {% if request.user.is_authenticated %}
-            <img src="{{ MEDIA_URL }}{{ request.user.profile_image }}" alt class="h-16 w-16 bg-gray-200 border object-cover rounded-full"/> 
-            {% else %}
-            <img src="https://radeau.github.io/chq-portfolio-page/img/kimson-doan-HD8KlyWRYYM-unsplash.jpg" alt class="h-16 w-16 bg-gray-200 border rounded-full"/>     
-            {% endif %}
-            <span class="w-32 text-gray-500 text-sm text-center mt-1">{{request.user.username}}</span>
-     </a>
-
+      <a href class="flex flex-col items-center mt-6">
+        {% if user.profile_image %}
+        <img src="{{ MEDIA_URL }}{{ user.profile_image }}" alt
+            class="h-16 w-16 border-gray-200 border-2 rounded-full" />
+        {% else %}
+        <img src="https://radeau.github.io/portfolio/img/charlesdeluvio-pOUA8Xay514-unsplash.jpg"
+            alt class="h-16 w-16 border-gray-200 border-2 rounded-full" />
+        {% endif %}
+    </a>
+    
       <!-- Mobile navbar -->
       <nav class="space-y-3 mt-8">
           <a href="#" class="flex flex-row items-center h-10 px-3 mx-4 rounded-lg text-gray-900 hover:bg-gray-300 hover:text-gray-700 transition duration-200">
@@ -125,13 +126,14 @@
 <div class="fixed hidden md:block min-h-screen flex items-center justify-center bg-gray-100 ">
   <div class="flex flex-col min-h-screen px-2 bg-gray-100">
       <a href class="flex flex-col items-center mt-6">
-          {% if request.user.is_authenticated %}
-              <img src="{{ MEDIA_URL }}{{ request.user.profile_image }}" alt class="h-16 w-16 bg-gray-200 border object-cover rounded-full"/> 
-              {% else %}
-              <img src="https://radeau.github.io/chq-portfolio-page/img/kimson-doan-HD8KlyWRYYM-unsplash.jpg" alt class="h-16 w-16 bg-gray-200 border rounded-full"/>     
-              {% endif %}
-              <span class="w-32 text-gray-500 text-sm text-center mt-1">{{request.user.username}}</span>
-       </a>
+        {% if user.profile_image %}
+        <img src="{{ MEDIA_URL }}{{ user.profile_image }}" alt
+            class="h-16 w-16 border-gray-200 border-2 rounded-full" />
+        {% else %}
+        <img src="https://radeau.github.io/portfolio/img/charlesdeluvio-pOUA8Xay514-unsplash.jpg"
+            alt class="h-16 w-16 border-gray-200 border-2 rounded-full" />
+        {% endif %}
+      </a>
       <nav class="space-y-3 w-60 mt-10">
           <a href="#" class="flex flex-row items-center h-10 px-3 mx-4 rounded-lg text-gray-900 hover:bg-gray-300 hover:text-gray-700 transition duration-200">
               <span class="flex items-center justify-center text-lg text-teal-300">
