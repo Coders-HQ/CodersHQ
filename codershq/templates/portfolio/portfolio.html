@@ -24,7 +24,13 @@
             <div class="flex-none w-32"></div>
             <div class="flex-1">
                 <span class="flex flex-col items-center md:items-start mt-14 md:mt-0">
-                    <span class="w-50 font-semibold text-2xl text-gray-800">Sarah Al Nahdi</span>
+                    <span class="w-50 font-semibold text-2xl text-gray-800">
+                        {% if user.name %}
+                        {{user.name}}
+                        {% else %}
+                        {{user.username}}
+                        {% endif %}
+                    </span>
                     <span class="w-50 text-gray-500 text-md tracking-[0.25em]">Designer | Coder</span>
                     <span class="flex space-x-4 mt-2">
                         <div class="">
@@ -76,7 +82,7 @@
                     {% if user.bio %}
                     <p class="">{{user.bio|linebreaks}}</p>
                     {% else %}
-                    <p class="text-gray-400">No user bio</p>
+                    <p class="text-gray-400">Member has no biography</p>
                     {% endif %}
 
 
@@ -130,25 +136,36 @@
                 </dd>
             </div>
 
+            <!-- start education  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Education</dt>
                 <dd class="flex-1 md:w-64 mt-1 text-sm text-gray-900 sm:mt-0">
-                    <div class="flex">
+                    
+                    <!-- loop through education  -->
+                    {% for education in portfolio.education_set.all %}
+                    <div class="flex mb-4">
                         <img class="rounded-full h-10 w-10"
                             src="https://tethys.pnnl.gov/sites/default/files/styles/captioned_400xauto/public/taxonomy-images/Khalifa_university_logo.png?itok=91JBke00">
                         <div class="px-4">
-                            <h1 class="text-sm font-bold text-gray-700">Bachelor of Science in Computer Science</h1>
+                            <h1 class="text-sm font-bold text-gray-700">{{education.school}}</h1>
                             <button class="bg-green-400 text-white text-xs rounded px-4 py-0">Current</button>
-                            <p class="text-sm">Khalifa University</p>
+                            <p class="text-sm">{{education.degree}}</p>
                             <p class="text-sm">Abu Dhabi, United Arab Emirates</p>
                         </div>
                     </div>
+                    {% endfor %}
+
                 </dd>
             </div>
+            <!-- end education  -->
 
+
+            <!-- start experience  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Experience</dt>
                 <dd class="flex-1 md:w-64 mt-1 text-sm text-gray-900 sm:mt-0">
+
+                    {% for experience in portfolio.experience_set.all %}
                     <div class="p-2 flex">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 262"
                             preserveAspectRatio="xMidYMid">
@@ -166,133 +183,88 @@
                                 fill="#EB4335" />
                         </svg>
                         <div class="px-4">
-                            <h1 class="text-sm font-bold text-gray-700">Software Engineer</h1>
+                            <h1 class="text-sm font-bold text-gray-700">{{experience.job_title}}</h1>
+                            {% if experience.is_current %}
                             <button class="bg-green-400 text-white text-xs rounded px-4 py-0">Current</button>
+                            {% endif %}
                             <p class="text-sm">Google - Full Time</p>
-                            <p class="text-sm">Dubai, United Arab Emirates</p>
+                            <p class="text-sm">{{experience.start_date}} - {{experience.end_date}}</p>
                         </div>
                     </div>
-                    <div class="p-2 flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="126.445 2.281 589 589">
-                            <circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a" />
-                            <path
-                                d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"
-                                fill="#fff" />
-                        </svg>
-                        <div class="px-4">
-                            <h1 class="text-sm font-bold text-gray-700">Backend Engineer</h1>
-                            <p class="text-sm">Facebook</p>
-                            <p class="text-sm">Dubai, United Arab Emirates</p>
-                        </div>
-                    </div>
-                    <div class="p-2 flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3364.7 3364.7" class="w-6 h-6">
-                            <defs>
-                                <radialGradient id="0" cx="217.76" cy="3290.99" r="4271.92"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset=".09" stop-color="#fa8f21" />
-                                    <stop offset=".78" stop-color="#d82d7e" />
-                                </radialGradient>
-                                <radialGradient id="1" cx="2330.61" cy="3182.95" r="3759.33"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset=".64" stop-color="#8c3aaa" stop-opacity="0" />
-                                    <stop offset="1" stop-color="#8c3aaa" />
-                                </radialGradient>
-                            </defs>
-                            <path
-                                d="M853.2,3352.8c-200.1-9.1-308.8-42.4-381.1-70.6-95.8-37.3-164.1-81.7-236-153.5S119.7,2988.6,82.6,2892.8c-28.2-72.3-61.5-181-70.6-381.1C2,2295.4,0,2230.5,0,1682.5s2.2-612.8,11.9-829.3C21,653.1,54.5,544.6,82.5,472.1,119.8,376.3,164.3,308,236,236c71.8-71.8,140.1-116.4,236-153.5C544.3,54.3,653,21,853.1,11.9,1069.5,2,1134.5,0,1682.3,0c548,0,612.8,2.2,829.3,11.9,200.1,9.1,308.6,42.6,381.1,70.6,95.8,37.1,164.1,81.7,236,153.5s116.2,140.2,153.5,236c28.2,72.3,61.5,181,70.6,381.1,9.9,216.5,11.9,281.3,11.9,829.3,0,547.8-2,612.8-11.9,829.3-9.1,200.1-42.6,308.8-70.6,381.1-37.3,95.8-81.7,164.1-153.5,235.9s-140.2,116.2-236,153.5c-72.3,28.2-181,61.5-381.1,70.6-216.3,9.9-281.3,11.9-829.3,11.9-547.8,0-612.8-1.9-829.1-11.9"
-                                fill="url(#0)" />
-                            <path
-                                d="M853.2,3352.8c-200.1-9.1-308.8-42.4-381.1-70.6-95.8-37.3-164.1-81.7-236-153.5S119.7,2988.6,82.6,2892.8c-28.2-72.3-61.5-181-70.6-381.1C2,2295.4,0,2230.5,0,1682.5s2.2-612.8,11.9-829.3C21,653.1,54.5,544.6,82.5,472.1,119.8,376.3,164.3,308,236,236c71.8-71.8,140.1-116.4,236-153.5C544.3,54.3,653,21,853.1,11.9,1069.5,2,1134.5,0,1682.3,0c548,0,612.8,2.2,829.3,11.9,200.1,9.1,308.6,42.6,381.1,70.6,95.8,37.1,164.1,81.7,236,153.5s116.2,140.2,153.5,236c28.2,72.3,61.5,181,70.6,381.1,9.9,216.5,11.9,281.3,11.9,829.3,0,547.8-2,612.8-11.9,829.3-9.1,200.1-42.6,308.8-70.6,381.1-37.3,95.8-81.7,164.1-153.5,235.9s-140.2,116.2-236,153.5c-72.3,28.2-181,61.5-381.1,70.6-216.3,9.9-281.3,11.9-829.3,11.9-547.8,0-612.8-1.9-829.1-11.9"
-                                fill="url(#1)" />
-                            <path
-                                d="M1269.25,1689.52c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7-416.6-186.59-416.6-416.7m-225.26,0c0,354.5,287.36,641.86,641.86,641.86s641.86-287.36,641.86-641.86-287.36-641.86-641.86-641.86S1044,1335,1044,1689.52m1159.13-667.31a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M1180.85,2707c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27S2059.13,666,2191,672c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M1170.5,447.09c-133.07,6.06-224,27.16-303.41,58.06-82.19,31.91-151.86,74.72-221.43,144.18S533.39,788.47,501.48,870.76c-30.9,79.46-52,170.34-58.06,303.41-6.16,133.28-7.57,175.89-7.57,515.35s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43s139.14,112.18,221.43,144.18c79.56,30.9,170.34,52,303.41,58.06,133.35,6.06,175.89,7.57,515.35,7.57s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2586.8,537.06,2504.71,505.15c-79.56-30.9-170.44-52.1-303.41-58.06C2068,441,2025.41,439.52,1686,439.52s-382.1,1.41-515.45,7.57"
-                                fill="#fff" />
-                        </svg>
-                        <div class="px-4">
-                            <h1 class="text-sm font-bold text-gray-700">Frontend Engineer</h1>
-                            <p class="text-sm">Instagram</p>
-                            <p class="text-sm">Dubai, United Arab Emirates</p>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </dd>
             </div>
+            <!-- end experiance  -->
 
+            <!-- start projects  -->
             <div class="px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Projects</dt>
                 <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
+
+                    {% for project in portfolio.project_set.all %}
                     <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2020 - May 2020</p>
+                        <h1 class="text-sm font-bold text-gray-700">{{project.name}}</h1>
+                        <p class="text-sm">{{project.description}}</p>
                     </div>
-                    <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2019 - May 2019</p>
-                    </div>
+                    {% endfor %}
+
                 </dd>
             </div>
+            <!-- end projects  -->
 
+            {% if portfolio.contribution_set.all %}
+            <!-- start contributions  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Contributions</dt>
                 <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
+
+                    {% for contribution in portfolio.contribution_set.all %}
                     <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
+                        <h1 class="text-sm font-bold text-gray-700">{{contribution.contributor_role}}</h1>
                         <p class="text-sm">Lorem, ipsum dolor.</p>
                         <p class="text-sm">Jan 2020 - May 2020</p>
                     </div>
-                    <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2019 - May 2019</p>
-                    </div>
-                    <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2019 - May 2019</p>
-                    </div>
+                    {% endfor %}
+
                 </dd>
             </div>
+            <!-- end contributions  -->
+            {% endif %}
 
+            {% if portfolio.award_set.all %}
+            <!-- start awards  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Awards</dt>
+                
                 <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
+                    {% for award in portfolio.award_set.all %}
                     <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2020 - May 2020</p>
-                    </div>
+                            <h1 class="text-sm font-bold text-gray-700">{{award.name}}</h1>
+                            <p class="text-sm">{{award.date_awarded}}</p>
+                        </div>
+                    {% endfor %}
                 </dd>
             </div>
+            <!-- end awards  -->
+            {% endif %}
 
+
+            {% if portfolio.language_set.all %}
+            <!-- start languages  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
-                <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Languages</dt>
-                <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Arabic</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">English</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Spanish</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Hindi</button>
-                </dd>
-            </div>
-
-            <div class=" px-4 py-5 md:flex mt-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Skills</dt>
                 <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
-                    <button class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Web
-                        Development</button>
+
+                    {% for language in portfolio.language_set.all %}
                     <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">C/C++</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Python</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Javascript</button>
+                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">{{language.name}}</button>
+                    {% endfor %}
+                    
                 </dd>
             </div>
+            <!-- end languages  -->
+            {% endif %}
         </dl>
     </div>
 
