@@ -30,117 +30,98 @@
       <span class="text-sm px-1"><i>Showing results for ''.</i></span>
       {% endif %}
     </form>
-    {% if search_select == "Contributors" %}
     <div class="grid grid-cols-2-search w-full px-4 pb-2 sm:text-sm">
       <div style="height:50px;"></div>
-      <div class="flex justify-start pt-2">
-        <div class="flex justify-between" style="width:200px;">
-          <div class="dropdown">
-            <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
-            <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3">
-              <div class="pb-2">
-                <div class="flex justify-between pb-2">
-                  <span class="text-sm" style="color: #696969"><b>Skills</b></span>
-                  <button type="button" class="text-sm" style="color: #696969">Clear</button>
+      {% if search_select == "Contributors" %}
+        <div class="flex justify-start pt-2">
+          <div class="flex justify-between" style="width:200px;">
+            <div class="dropdown">
+              <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
+              <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+                <div class="pb-2">
+                  <div class="flex justify-between pb-2">
+                    <span class="text-sm" ><b>Skills</b></span>
+                    <button type="button" class="text-sm" onclick="document.getElementById('skills').value = ''">Clear</button>
+                  </div>
+                  <input name="skills" id="skills" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
                 </div>
-                <input name="skills" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
-              </div>
-              <div id="input-selected" class="px-2 pb-2">
-              </div>
-              <div id="not-selected" class="border-t px-2 py-2">
-                <div id="testing">
-                  <input type="checkbox" id="skill1" name="skill1" value="Bike" class="px-1" onchange="move('skill1')">
-                  <label for="skill1" class="px-1"> Figma</label><br>
+                <div id="input-selected" class="px-2 pb-2">
                 </div>
-                <div id="testing">
-                  <input type="checkbox" id="skill2" name="skill2" value="Bike" class="px-1" onchange="move('skill2')">
-                  <label for="skill2" class="px-1"> HTML</label><br>
-                </div>
-                <div id="testing">
-                  <input type="checkbox" id="skill3" name="skill3" value="Bike" class="px-1" onchange="move('skill3')">
-                  <label for="skill3" class="px-1"> Django</label><br>
-                </div>
-                <div id="testing">
-                  <input type="checkbox" id="skill4" name="skill4" value="Bike" class="px-1" onchange="move('skill4')">
-                  <label for="skill4" class="px-1"> Laravel</label><br>
-                </div>
-                <div id="testing">
-                  <input type="checkbox" id="skill5" name="skill5" value="Bike" class="px-1" onchange="move('skill5')">
-                  <label for="skill5" class="px-1"> Python</label><br>
+                <div id="not-selected" class="border-t px-2 py-2">
+                  <div id="testing">
+                    <input type="checkbox" id="skill1" name="skill1" value="Bike" class="px-1" onchange="move('skill1')">
+                    <!-- <span class="checkmark"></span> -->
+                    <label for="skill1" class="px-1"> Figma</label><br>
+                  </div>
+                  <div id="testing">
+                    <input type="checkbox" id="skill2" name="skill2" value="Bike" class="px-1" onchange="move('skill2')">
+                    <label for="skill2" class="px-1"> HTML</label><br>
+                  </div>
+                  <div id="testing">
+                    <input type="checkbox" id="skill3" name="skill3" value="Bike" class="px-1" onchange="move('skill3')">
+                    <label for="skill3" class="px-1"> Django</label><br>
+                  </div>
+                  <div id="testing">
+                    <input type="checkbox" id="skill4" name="skill4" value="Bike" class="px-1" onchange="move('skill4')">
+                    <label for="skill4" class="px-1"> Laravel</label><br>
+                  </div>
+                  <div id="testing">
+                    <input type="checkbox" id="skill5" name="skill5" value="Bike" class="px-1" onchange="move('skill5')">
+                    <label for="skill5" class="px-1"> Python</label><br>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="dropdown2">
-            <button type="button" onclick="myFunction2()" id="dropbtn2" class="dropbtn2 rounded-lg px-2 py-2">University <i class="arrow down"></i></button>
-            <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3">
-              <div class="pb-2">
-                <div class="flex justify-between pb-2">
-                  <span class="text-sm" style="color: #696969"><b>University</b></span>
-                  <button type="button" class="text-sm" style="color: #696969">Clear</button>
+            <div class="dropdown2">
+              <button type="button" onclick="myFunction2()" id="dropbtn2" class="dropbtn2 rounded-lg px-2 py-2">University <i class="arrow down"></i></button>
+              <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+                <div class="pb-2">
+                  <div class="flex justify-between pb-2">
+                    <span class="text-sm" style="color: #696969"><b>University</b></span>
+                    <button type="button" class="text-sm" style="color: #696969" onclick="document.getElementById('uni').value = ''">Clear</button>
+                  </div>
+                  <input name="uni" id="uni" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
                 </div>
-                <input name="uni" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
-              </div>
-              <div id="input-selected-uni" class="px-2 pb-2">
-              </div>
-              <div id="not-selected-uni" class="border-t px-2 py-2">
-                <div id="testing">
-                  <input type="checkbox" id="uni1" name="uni1" value="Bike" class="px-1" onchange="moveUni('uni1')">
-                  <label for="uni1" class="px-1"> UOWD</label><br>
+                <div id="input-selected-uni" class="px-2 pb-2">
                 </div>
-                <div id="testing">
-                  <input type="checkbox" id="uni2" name="uni2" value="Bike" class="px-1" onchange="moveUni('uni2')">
-                  <label for="uni2" class="px-1"> Heriot-Watt University</label><br>
-                </div>
-                <div id="testing">
-                  <input type="checkbox" id="uni3" name="uni3" value="Bike" class="px-1" onchange="moveUni('uni3')">
-                  <label for="uni3" class="px-1"> Middlesex University</label><br>
-                </div>
-                <div id="testing">
-                  <input type="checkbox" id="uni4" name="uni4" value="Bike" class="px-1" onchange="moveUni('uni4')">
-                  <label for="uni4" class="px-1"> AUD</label><br>
-                </div>
-                <div id="testing">
-                  <input type="checkbox" id="uni5" name="uni5" value="Bike" class="px-1" onchange="moveUni('uni5')">
-                  <label for="uni5" class="px-1"> Amity University</label><br>
+                <div id="not-selected-uni" class="border-t px-2 py-2">
+                  <div id="testing">
+                    <input type="checkbox" id="uni1" name="uni1" value="Bike" class="px-1" onchange="moveUni('uni1')">
+                    <label for="uni1" class="px-1"> UOWD</label><br>
+                  </div>
+                  <div id="testing">
+                    <input type="checkbox" id="uni2" name="uni2" value="Bike" class="px-1" onchange="moveUni('uni2')">
+                    <label for="uni2" class="px-1"> Heriot-Watt University</label><br>
+                  </div>
+                  <div id="testing">
+                    <input type="checkbox" id="uni3" name="uni3" value="Bike" class="px-1" onchange="moveUni('uni3')">
+                    <label for="uni3" class="px-1"> Middlesex University</label><br>
+                  </div>
+                  <div id="testing">
+                    <input type="checkbox" id="uni4" name="uni4" value="Bike" class="px-1" onchange="moveUni('uni4')">
+                    <label for="uni4" class="px-1"> AUD</label><br>
+                  </div>
+                  <div id="testing">
+                    <input type="checkbox" id="uni5" name="uni5" value="Bike" class="px-1" onchange="moveUni('uni5')">
+                    <label for="uni5" class="px-1"> Amity University</label><br>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      {% else %}
+        <div></div>
+      {% endif %}
     </div>
-    {% endif %}
   </header>
-  <div class="">
+  <div class="px-4 py-6">
     {% if search %}
-      <div class="px-4 py-6">
-        {% if search_select == 'Contributors' %}
-          <div class="contributors pb-7">
-            <h1 style="color: #696969"><b>Contributors</b></h1>
-            <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 px-4 py-6">
-              <a href="#">
-                <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
-                  <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                  <div class="px-8">
-                    <h4><b>John Doe</b></h4>
-                    <span class="text-sm">Django Developer</span>
-                    <div class="flex flex-row items-center my-3">
-                          <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                              fill="#000000">
-                              <path d="M0 0h24v24H0z" fill="none" />
-                              <path
-                                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                          </svg>
-                      <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                  </div>
-                </div>
-              </a>
+      {% if search_select == 'Contributors' %}
+        <div class="contributors pb-7">
+          <h1 style="color: #696969"><b>Contributors</b></h1>
+          <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 px-4 py-6">
+            <a href="#">
               <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
                 <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
                 <div class="px-8">
@@ -161,353 +142,373 @@
                   <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
                 </div>
               </div>
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+            </a>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
               </div>
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
+              </div>
+            </div>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+              </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
+              </div>
+            </div>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+              </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
               </div>
             </div>
           </div>
-        {% elif search_select == 'Events' %}
-          <div class="events">
-            <h1 style="color: #696969"><b>Events</b></h1>
-            <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-7 px-4 py-6">
-              <div class="card bg-gray-100 rounded-lg overflow-hidden">
-                <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
-                <div class="event-container px-4 py-2">
-                  <h4><b>SA Cryptocurrency Defi Summit</b></h4>
-                  <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
-                  <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
-                  <div class="flex flex-row items-center my-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                  <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
+        </div>
+      {% elif search_select == 'Events' %}
+        <div class="events">
+          <h1 style="color: #696969"><b>Events</b></h1>
+          <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-7 px-4 py-6">
+            <div class="card bg-gray-100 rounded-lg overflow-hidden">
+              <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
+              <div class="event-container px-4 py-2">
+                <h4><b>SA Cryptocurrency Defi Summit</b></h4>
+                <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
+                <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
+                <div class="flex flex-row items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                      fill="#000000">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
                 </div>
+                <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
               </div>
-              <div class="card bg-gray-100 rounded-lg overflow-hidden">
-                <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
-                <div class="event-container px-4 py-2">
-                  <h4><b>SA Cryptocurrency Defi Summit</b></h4>
-                  <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
-                  <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
-                  <div class="flex flex-row items-center my-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                  <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Starts at AED 250</b></button>
+            </div>
+            <div class="card bg-gray-100 rounded-lg overflow-hidden">
+              <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
+              <div class="event-container px-4 py-2">
+                <h4><b>SA Cryptocurrency Defi Summit</b></h4>
+                <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
+                <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
+                <div class="flex flex-row items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                      fill="#000000">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
                 </div>
+                <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Starts at AED 250</b></button>
               </div>
-              <div class="card bg-gray-100 rounded-lg overflow-hidden">
-                <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
-                <div class="event-container px-4 py-2">
-                  <h4><b>SA Cryptocurrency Defi Summit</b></h4>
-                  <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
-                  <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
-                  <div class="flex flex-row items-center my-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                  <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
+            </div>
+            <div class="card bg-gray-100 rounded-lg overflow-hidden">
+              <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
+              <div class="event-container px-4 py-2">
+                <h4><b>SA Cryptocurrency Defi Summit</b></h4>
+                <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
+                <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
+                <div class="flex flex-row items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                      fill="#000000">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
                 </div>
+                <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
               </div>
-              <div class="card bg-gray-100 rounded-lg overflow-hidden">
-                <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
-                <div class="event-container px-4 py-2">
-                  <h4><b>SA Cryptocurrency Defi Summit</b></h4>
-                  <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
-                  <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
-                  <div class="flex flex-row items-center my-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                  <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
+            </div>
+            <div class="card bg-gray-100 rounded-lg overflow-hidden">
+              <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
+              <div class="event-container px-4 py-2">
+                <h4><b>SA Cryptocurrency Defi Summit</b></h4>
+                <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
+                <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
+                <div class="flex flex-row items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                      fill="#000000">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
                 </div>
+                <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
               </div>
             </div>
           </div>
-        {% else %}
-          <div class="contributors pb-7 ">
-            <h1 style="color: #696969"><b>Contributors</b></h1>
-            <div class="grid grid-row-2 grid-auto-flow-column gap-7 px-4 py-6 overflow-x-scroll">
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+        </div>
+      {% else %}
+        <div class="contributors pb-7 ">
+          <h1 style="color: #696969"><b>Contributors</b></h1>
+          <div class="grid grid-row-2 grid-auto-flow-column gap-7 px-4 py-6 overflow-x-scroll">
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
               </div>
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
               </div>
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+            </div>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
               </div>
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
               </div>
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+            </div>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
               </div>
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
               </div>
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
-                <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
-                  <h4><b>John Doe</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
+            </div>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+              </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
+              </div>
+            </div>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+              </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
+              </div>
+            </div>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+              </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
+              </div>
+            </div>
+            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2" style="min-width: 376px;">
+              <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
+              <div class="px-8">
+                <h4><b>John Doe</b></h4>
+                <span class="text-sm">Django Developer</span>
+                <div class="flex flex-row items-center my-3">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                          fill="#000000">
+                          <path d="M0 0h24v24H0z" fill="none" />
+                          <path
+                              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                      </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+              </div>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
               </div>
             </div>
           </div>
-          <div class="events pb-7">
-            <h1 style="color: #696969"><b>Events</b></h1>
-            <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-7 px-4 py-6">
-              <div class="rounded-lg card bg-gray-100 overflow-hidden">
-                <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
-                <div class="event-container px-4 py-2">
-                  <h4><b>SA Cryptocurrency Defi Summit</b></h4>
-                  <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
-                  <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
-                  <div class="flex flex-row items-center my-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                  <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
+        </div>
+        <div class="events pb-7">
+          <h1 style="color: #696969"><b>Events</b></h1>
+          <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-7 px-4 py-6">
+            <div class="rounded-lg card bg-gray-100 overflow-hidden">
+              <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
+              <div class="event-container px-4 py-2">
+                <h4><b>SA Cryptocurrency Defi Summit</b></h4>
+                <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
+                <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
+                <div class="flex flex-row items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                      fill="#000000">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
                 </div>
+                <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
               </div>
-              <div class=" object-cover rounded-lg card bg-gray-100 overflow-hidden">
-                <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
-                <div class="event-container px-4 py-2">
-                  <h4><b>SA Cryptocurrency Defi Summit</b></h4>
-                  <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
-                  <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
-                  <div class="flex flex-row items-center my-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                  <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Starts at AED 250</b></button>
+            </div>
+            <div class=" object-cover rounded-lg card bg-gray-100 overflow-hidden">
+              <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
+              <div class="event-container px-4 py-2">
+                <h4><b>SA Cryptocurrency Defi Summit</b></h4>
+                <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
+                <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
+                <div class="flex flex-row items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                      fill="#000000">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
                 </div>
+                <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Starts at AED 250</b></button>
               </div>
-              <div class=" object-cover rounded-lg card bg-gray-100 overflow-hidden">
-                <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
-                <div class="event-container px-4 py-2">
-                  <h4><b>SA Cryptocurrency Defi Summit</b></h4>
-                  <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
-                  <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
-                  <div class="flex flex-row items-center my-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                  <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
+            </div>
+            <div class=" object-cover rounded-lg card bg-gray-100 overflow-hidden">
+              <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
+              <div class="event-container px-4 py-2">
+                <h4><b>SA Cryptocurrency Defi Summit</b></h4>
+                <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
+                <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
+                <div class="flex flex-row items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                      fill="#000000">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
                 </div>
+                <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
               </div>
-              <div class=" object-cover rounded-lg card bg-gray-100 overflow-hidden">
-                <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
-                <div class="event-container px-4 py-2">
-                  <h4><b>SA Cryptocurrency Defi Summit</b></h4>
-                  <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
-                  <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
-                  <div class="flex flex-row items-center my-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                        fill="#000000">
-                        <path d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                    </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                  </div>
-                  <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
+            </div>
+            <div class=" object-cover rounded-lg card bg-gray-100 overflow-hidden">
+              <img src="../../static/images/svgs/events1.svg" alt="Event" style="width:100%">
+              <div class="event-container px-4 py-2">
+                <h4><b>SA Cryptocurrency Defi Summit</b></h4>
+                <p class="text-sm">Thursday, April 5th | 6:30PM - 9:30PM</p>
+                <span class="text-sm" style="color: #696969"><i>By</i><b> Solana Hacker House</b></span>
+                <div class="flex flex-row items-center my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                      fill="#000000">
+                      <path d="M0 0h24v24H0z" fill="none" />
+                      <path
+                          d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                  <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
                 </div>
+                <button class="border-2 rounded-xl px-4 mb-1 text-sm" style="color: #00AFB1"><b>Free</b></button>
               </div>
             </div>
           </div>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     {% else %}
-      <h1>No results found.</h1>
+    <h1>No results found.</h1>
     {% endif %}
   </div>
 </div>
@@ -523,6 +524,7 @@ function myFunction() {
     document.getElementById("dropbtn").style.border = "1px solid rgba(44, 185, 187, 0.8)";
     document.getElementById("dropbtn").style.boxSizing = "border-box";
     document.getElementById("dropbtn").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
+    document.getElementById("dropbtn").innerHTML = `Skills `+document.getElementById("input-selected").children.length+` <i class="arrow down"></i>`;
     count = 1;
   }
   else {
@@ -530,6 +532,7 @@ function myFunction() {
     document.getElementById("dropbtn").style.border = "1px solid #B0B0B0";
     document.getElementById("dropbtn").style.boxSizing = "border-box";
     document.getElementById("dropbtn").style.boxShadow = "none";
+    document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
     count = 0;
   }
 
@@ -542,6 +545,7 @@ function myFunction2() {
     document.getElementById("dropbtn2").style.border = "1px solid rgba(44, 185, 187, 0.8)";
     document.getElementById("dropbtn2").style.boxSizing = "border-box";
     document.getElementById("dropbtn2").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
+    document.getElementById("dropbtn2").innerHTML = `University `+document.getElementById("input-selected-uni").children.length+` <i class="arrow down"></i>`;
     count2 = 1;
   }
   else {
@@ -549,6 +553,7 @@ function myFunction2() {
     document.getElementById("dropbtn2").style.border = "1px solid #B0B0B0";
     document.getElementById("dropbtn2").style.boxSizing = "border-box";
     document.getElementById("dropbtn2").style.boxShadow = "none";
+    document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
     count2 = 0;
   }
 }
@@ -557,24 +562,28 @@ function move(targ) {
   var element = document.getElementById(targ);
   document.getElementById("input-selected").innerHTML +=  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected px-1" onchange="moveBack('`+targ+`')" checked>` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`;
   element.parentNode.remove(element);
+  document.getElementById("dropbtn").innerHTML = `Skills `+document.getElementById("input-selected").children.length+` <i class="arrow down"></i>`;
 }
 
 function moveBack(targ) {
   var element = document.getElementById(targ);
   document.getElementById("not-selected").innerHTML =  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="move('`+targ+`')">` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`+document.getElementById("not-selected").innerHTML;
   element.parentNode.remove(element);
+  document.getElementById("dropbtn").innerHTML = `Skills `+document.getElementById("input-selected").children.length+` <i class="arrow down"></i>`;
 }
 
 function moveUni(targ) {
   var element = document.getElementById(targ);
   document.getElementById("input-selected-uni").innerHTML +=  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected-uni px-1" onchange="moveBackUni('`+targ+`')" checked>` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`;
   element.parentNode.remove(element);
+  document.getElementById("dropbtn2").innerHTML = `University `+document.getElementById("input-selected-uni").children.length+` <i class="arrow down"></i>`;
 }
 
 function moveBackUni(targ) {
   var element = document.getElementById(targ);
   document.getElementById("not-selected-uni").innerHTML =  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="moveUni('`+targ+`')">` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`+document.getElementById("not-selected-uni").innerHTML;
   element.parentNode.remove(element);
+  document.getElementById("dropbtn2").innerHTML = `University `+document.getElementById("input-selected-uni").children.length+` <i class="arrow down"></i>`;
 }
 
 function getCount(targ) {
