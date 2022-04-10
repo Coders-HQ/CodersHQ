@@ -34,7 +34,7 @@
       <div style="height:50px;"></div>
       {% if search_select == "Contributors" %}
         <div class="flex justify-start pt-2">
-          <div class="flex justify-between" style="width:200px;">
+          <div class="flex justify-between" style="width:250px;">
             <div class="dropdown">
               <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
               <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
@@ -524,7 +524,7 @@ function myFunction() {
     document.getElementById("dropbtn").style.border = "1px solid rgba(44, 185, 187, 0.8)";
     document.getElementById("dropbtn").style.boxSizing = "border-box";
     document.getElementById("dropbtn").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
-    document.getElementById("dropbtn").innerHTML = `Skills `+document.getElementById("input-selected").children.length+` <i class="arrow down"></i>`;
+    document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
     count = 1;
   }
   else {
@@ -545,7 +545,7 @@ function myFunction2() {
     document.getElementById("dropbtn2").style.border = "1px solid rgba(44, 185, 187, 0.8)";
     document.getElementById("dropbtn2").style.boxSizing = "border-box";
     document.getElementById("dropbtn2").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
-    document.getElementById("dropbtn2").innerHTML = `University `+document.getElementById("input-selected-uni").children.length+` <i class="arrow down"></i>`;
+    document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
     count2 = 1;
   }
   else {
@@ -562,39 +562,30 @@ function move(targ) {
   var element = document.getElementById(targ);
   document.getElementById("input-selected").innerHTML +=  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected px-1" onchange="moveBack('`+targ+`')" checked>` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`;
   element.parentNode.remove(element);
-  document.getElementById("dropbtn").innerHTML = `Skills `+document.getElementById("input-selected").children.length+` <i class="arrow down"></i>`;
+  document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
 }
 
 function moveBack(targ) {
   var element = document.getElementById(targ);
   document.getElementById("not-selected").innerHTML =  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="move('`+targ+`')">` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`+document.getElementById("not-selected").innerHTML;
   element.parentNode.remove(element);
-  document.getElementById("dropbtn").innerHTML = `Skills `+document.getElementById("input-selected").children.length+` <i class="arrow down"></i>`;
+  document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
 }
 
 function moveUni(targ) {
   var element = document.getElementById(targ);
   document.getElementById("input-selected-uni").innerHTML +=  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected-uni px-1" onchange="moveBackUni('`+targ+`')" checked>` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`;
   element.parentNode.remove(element);
-  document.getElementById("dropbtn2").innerHTML = `University `+document.getElementById("input-selected-uni").children.length+` <i class="arrow down"></i>`;
+  document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
 }
 
 function moveBackUni(targ) {
   var element = document.getElementById(targ);
   document.getElementById("not-selected-uni").innerHTML =  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="moveUni('`+targ+`')">` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`+document.getElementById("not-selected-uni").innerHTML;
   element.parentNode.remove(element);
-  document.getElementById("dropbtn2").innerHTML = `University `+document.getElementById("input-selected-uni").children.length+` <i class="arrow down"></i>`;
+  document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
 }
 
-function getCount(targ) {
-  var a = document.getElementsByClassName(targ);
-  return a.length;
-}
-
-// function getCountUni(targ) {
-//   var a = document.getElementsByClassName("selected-uni");
-//   return a.length;
-// }
 // Close the dropdown if the user clicks outside of it
 // window.onclick = function(event) {
 //   if (!event.target.matches('.dropbtn')) {
