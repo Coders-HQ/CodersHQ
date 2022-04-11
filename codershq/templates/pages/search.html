@@ -38,7 +38,7 @@
             <div class="dropdown">
               <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
               <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
-                <div class="pb-2">
+                <div>
                   <div class="flex justify-between pb-2">
                     <span class="text-sm" ><b>Skills</b></span>
                     <button type="button" class="text-sm" onclick="document.getElementById('skills').value = ''">Clear</button>
@@ -47,64 +47,63 @@
                 </div>
                 <div id="input-selected" class="px-2 pb-2">
                 </div>
-                <div id="not-selected" class="border-t px-2 py-2">
-                  <div id="testing">
+                <div id="not-selected" class="border-t px-2 pb-2">
+                  <label class="checkbox-container">Figma
                     <input type="checkbox" id="skill1" name="skill1" value="Bike" class="px-1" onchange="move('skill1')">
-                    <!-- <span class="checkmark"></span> -->
-                    <label for="skill1" class="px-1"> Figma</label><br>
-                  </div>
-                  <div id="testing">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">HTML
                     <input type="checkbox" id="skill2" name="skill2" value="Bike" class="px-1" onchange="move('skill2')">
-                    <label for="skill2" class="px-1"> HTML</label><br>
-                  </div>
-                  <div id="testing">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Django
                     <input type="checkbox" id="skill3" name="skill3" value="Bike" class="px-1" onchange="move('skill3')">
-                    <label for="skill3" class="px-1"> Django</label><br>
-                  </div>
-                  <div id="testing">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Laravel
                     <input type="checkbox" id="skill4" name="skill4" value="Bike" class="px-1" onchange="move('skill4')">
-                    <label for="skill4" class="px-1"> Laravel</label><br>
-                  </div>
-                  <div id="testing">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Python
                     <input type="checkbox" id="skill5" name="skill5" value="Bike" class="px-1" onchange="move('skill5')">
-                    <label for="skill5" class="px-1"> Python</label><br>
-                  </div>
+                    <span class="checkmark"></span>
+                  </label>
                 </div>
               </div>
             </div>
             <div class="dropdown2">
               <button type="button" onclick="myFunction2()" id="dropbtn2" class="dropbtn2 rounded-lg px-2 py-2">University <i class="arrow down"></i></button>
               <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
-                <div class="pb-2">
+                <div>
                   <div class="flex justify-between pb-2">
-                    <span class="text-sm" style="color: #696969"><b>University</b></span>
-                    <button type="button" class="text-sm" style="color: #696969" onclick="document.getElementById('uni').value = ''">Clear</button>
+                    <span class="text-sm" ><b>University</b></span>
+                    <button type="button" class="text-sm" onclick="document.getElementById('uni').value = ''">Clear</button>
                   </div>
                   <input name="uni" id="uni" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
                 </div>
                 <div id="input-selected-uni" class="px-2 pb-2">
                 </div>
-                <div id="not-selected-uni" class="border-t px-2 py-2">
-                  <div id="testing">
+                <div id="not-selected-uni" class="border-t px-2 pb-2">
+                  <label class="checkbox-container">UOWD
                     <input type="checkbox" id="uni1" name="uni1" value="Bike" class="px-1" onchange="moveUni('uni1')">
-                    <label for="uni1" class="px-1"> UOWD</label><br>
-                  </div>
-                  <div id="testing">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Heriot-Watt University
                     <input type="checkbox" id="uni2" name="uni2" value="Bike" class="px-1" onchange="moveUni('uni2')">
-                    <label for="uni2" class="px-1"> Heriot-Watt University</label><br>
-                  </div>
-                  <div id="testing">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Middlesex University
                     <input type="checkbox" id="uni3" name="uni3" value="Bike" class="px-1" onchange="moveUni('uni3')">
-                    <label for="uni3" class="px-1"> Middlesex University</label><br>
-                  </div>
-                  <div id="testing">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">AUD
                     <input type="checkbox" id="uni4" name="uni4" value="Bike" class="px-1" onchange="moveUni('uni4')">
-                    <label for="uni4" class="px-1"> AUD</label><br>
-                  </div>
-                  <div id="testing">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Amity University
                     <input type="checkbox" id="uni5" name="uni5" value="Bike" class="px-1" onchange="moveUni('uni5')">
-                    <label for="uni5" class="px-1"> Amity University</label><br>
-                  </div>
+                    <span class="checkmark"></span>
+                  </label>
                 </div>
               </div>
             </div>
@@ -120,11 +119,11 @@
       {% if search_select == 'Contributors' %}
         <div class="contributors pb-7">
           <h1 style="color: #696969"><b>Contributors</b></h1>
-          <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 px-4 py-6">
+          <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-7 px-4 py-6">
             <a href="#">
-              <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
+              <div class="card bg-gray-100 rounded-lg lg:flex lg:justify-center lg:items-center px-2 py-2">
                 <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-                <div class="px-8">
+                <div class="lg:px-8">
                   <h4><b>John Doe</b></h4>
                   <span class="text-sm">Django Developer</span>
                   <div class="flex flex-row items-center my-3">
@@ -143,9 +142,9 @@
                 </div>
               </div>
             </a>
-            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
+            <div class="card bg-gray-100 rounded-lg lg:flex lg:justify-center lg:items-center px-2 py-2">
               <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-              <div class="px-8">
+              <div class="lg:px-8">
                 <h4><b>John Doe</b></h4>
                 <span class="text-sm">Django Developer</span>
                 <div class="flex flex-row items-center my-3">
@@ -163,9 +162,9 @@
                 <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
               </div>
             </div>
-            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
+            <div class="card bg-gray-100 rounded-lg lg:flex lg:justify-center lg:items-center px-2 py-2">
               <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-              <div class="px-8">
+              <div class="lg:px-8">
                 <h4><b>John Doe</b></h4>
                 <span class="text-sm">Django Developer</span>
                 <div class="flex flex-row items-center my-3">
@@ -183,9 +182,9 @@
                 <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
               </div>
             </div>
-            <div class="card bg-gray-100 rounded-lg flex justify-center items-center px-2 py-2">
+            <div class="card bg-gray-100 rounded-lg lg:flex lg:justify-center lg:items-center px-2 py-2">
               <img src="../../static/images/avatar.jpg" alt="Avatar" style="border-radius:50%; width:100px; height: 100px;">
-              <div class="px-8">
+              <div class="lg:px-8">
                 <h4><b>John Doe</b></h4>
                 <span class="text-sm">Django Developer</span>
                 <div class="flex flex-row items-center my-3">
@@ -524,7 +523,7 @@ function myFunction() {
     document.getElementById("dropbtn").style.border = "1px solid rgba(44, 185, 187, 0.8)";
     document.getElementById("dropbtn").style.boxSizing = "border-box";
     document.getElementById("dropbtn").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
-    document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
+    document.getElementById("dropbtn").innerHTML = `<span>Skills</span> <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
     count = 1;
   }
   else {
@@ -560,28 +559,28 @@ function myFunction2() {
 
 function move(targ) {
   var element = document.getElementById(targ);
-  document.getElementById("input-selected").innerHTML +=  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected px-1" onchange="moveBack('`+targ+`')" checked>` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`;
+  document.getElementById("input-selected").innerHTML +=  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected px-1" onchange="moveBack('`+targ+`')" checked>`+ element.parentNode.textContent +`<span class="checkmark"></span></label>`;
   element.parentNode.remove(element);
   document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
 }
 
 function moveBack(targ) {
   var element = document.getElementById(targ);
-  document.getElementById("not-selected").innerHTML =  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="move('`+targ+`')">` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`+document.getElementById("not-selected").innerHTML;
+  document.getElementById("not-selected").innerHTML =  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="move('`+targ+`')">` + element.parentNode.textContent +`<span class="checkmark"></span></label>`+document.getElementById("not-selected").innerHTML;
   element.parentNode.remove(element);
   document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
 }
 
 function moveUni(targ) {
   var element = document.getElementById(targ);
-  document.getElementById("input-selected-uni").innerHTML +=  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected-uni px-1" onchange="moveBackUni('`+targ+`')" checked>` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`;
+  document.getElementById("input-selected-uni").innerHTML +=  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected-uni px-1" onchange="moveBackUni('`+targ+`')" checked>` +element.parentNode.textContent +`<span class="checkmark"></span></label>`;
   element.parentNode.remove(element);
   document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
 }
 
 function moveBackUni(targ) {
   var element = document.getElementById(targ);
-  document.getElementById("not-selected-uni").innerHTML =  `<div><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="moveUni('`+targ+`')">` + `<label for="`+targ+`" class="px-1">`+element.parentNode.textContent +`</label><br></div>`+document.getElementById("not-selected-uni").innerHTML;
+  document.getElementById("not-selected-uni").innerHTML =  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="moveUni('`+targ+`')">` +element.parentNode.textContent +`<span class="checkmark"></span></label>`+document.getElementById("not-selected-uni").innerHTML;
   element.parentNode.remove(element);
   document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
 }
