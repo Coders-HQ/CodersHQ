@@ -5,8 +5,8 @@
 <!-- content -->
 <div class="ml-64 flex-1 bg-gray-50 md:px-4 py-4">
   <header class="header">
-    <form method="post" action="{% url 'search:search' %}" class="grid grid-cols-2-search w-full px-4 pt-2 sm:text-sm">
-      <select class="mySelect bg-gray-100 rounded-l-lg border-gray-200" name="search_select">
+    <form class="grid grid-cols-2-search w-full px-4 pt-2 sm:text-sm">
+      <select id="mySelect" class="mySelect bg-gray-100 rounded-l-lg border-gray-200" name="search_select" onchange="showFilters()">
         {% if search_select == "Contributors" %}
         <option value="All" class="py-2">All</option>
         <option value="Contributors" selected>Contributors</option>
@@ -21,7 +21,6 @@
         <option value="Events">Events</option>
         {% endif %}
       </select>
-      {% csrf_token %}
       <input name="search" class="myInput bg-gray-50 text-gray-500 rounded-r-lg border-gray-200" type="search" placeholder="Search" value={{search}}>
       <div></div>
       {% if search %}
@@ -583,6 +582,9 @@ function moveBackUni(targ) {
   document.getElementById("not-selected-uni").innerHTML =  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="moveUni('`+targ+`')">` +element.parentNode.textContent +`<span class="checkmark"></span></label>`+document.getElementById("not-selected-uni").innerHTML;
   element.parentNode.remove(element);
   document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+}
+
+function showFilters(){
 }
 
 // Close the dropdown if the user clicks outside of it
