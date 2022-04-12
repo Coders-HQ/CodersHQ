@@ -525,15 +525,21 @@ function myFunction() {
     document.getElementById("dropbtn").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
     document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
     count = 1;
+    if (document.getElementById("input-selected").children.length > 0)
+      document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
+    else
+      document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
   }
-  // else {
-  //   document.getElementById("dropbtn").style.backgroundColor = "#ffffff";
-  //   document.getElementById("dropbtn").style.border = "1px solid #B0B0B0";
-  //   document.getElementById("dropbtn").style.boxSizing = "border-box";
-  //   document.getElementById("dropbtn").style.boxShadow = "none";
-  //   document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
-  //   count = 0;
-  // }
+  else {
+    if (document.getElementById("input-selected").children.length == 0) {
+      document.getElementById("dropbtn").style.backgroundColor = "#ffffff";
+      document.getElementById("dropbtn").style.border = "1px solid #B0B0B0";
+      document.getElementById("dropbtn").style.boxSizing = "border-box";
+      document.getElementById("dropbtn").style.boxShadow = "none";
+      document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
+      count = 0;
+    }
+  }
 
 }
 
@@ -545,17 +551,22 @@ function myFunction2() {
     document.getElementById("dropbtn2").style.border = "1px solid rgba(44, 185, 187, 0.8)";
     document.getElementById("dropbtn2").style.boxSizing = "border-box";
     document.getElementById("dropbtn2").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
-    document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
     count2 = 1;
+    if (document.getElementById("input-selected-uni").children.length > 0)
+      document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+    else
+      document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
   }
-  // else {
-  //   document.getElementById("dropbtn2").style.backgroundColor = "#ffffff";
-  //   document.getElementById("dropbtn2").style.border = "1px solid #B0B0B0";
-  //   document.getElementById("dropbtn2").style.boxSizing = "border-box";
-  //   document.getElementById("dropbtn2").style.boxShadow = "none";
-  //   document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
-  //   count2 = 0;
-  // }
+  else {
+    if (document.getElementById("input-selected-uni").children.length == 0) {
+      document.getElementById("dropbtn2").style.backgroundColor = "#ffffff";
+      document.getElementById("dropbtn2").style.border = "1px solid #B0B0B0";
+      document.getElementById("dropbtn2").style.boxSizing = "border-box";
+      document.getElementById("dropbtn2").style.boxShadow = "none";
+      document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
+      count2 = 0;
+    }
+  }
 }
 
 function move(targ) {
@@ -569,21 +580,30 @@ function moveBack(targ) {
   var element = document.getElementById(targ);
   document.getElementById("not-selected").innerHTML =  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="move('`+targ+`')">` + element.parentNode.textContent +`<span class="checkmark"></span></label>`+document.getElementById("not-selected").innerHTML;
   element.parentNode.remove(element);
-  document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
+  if (document.getElementById("input-selected").children.length > 0)
+    document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
+  else
+    document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
 }
 
 function moveUni(targ) {
   var element = document.getElementById(targ);
   document.getElementById("input-selected-uni").innerHTML +=  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="selected-uni px-1" onchange="moveBackUni('`+targ+`')" checked>` +element.parentNode.textContent +`<span class="checkmark"></span></label>`;
   element.parentNode.remove(element);
-  document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+  if (document.getElementById("input-selected-uni").children.length > 0)
+    document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+  else
+    document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
 }
 
 function moveBackUni(targ) {
   var element = document.getElementById(targ);
   document.getElementById("not-selected-uni").innerHTML =  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="`+targ+`" value="Bike" class="px-1" onchange="moveUni('`+targ+`')">` +element.parentNode.textContent +`<span class="checkmark"></span></label>`+document.getElementById("not-selected-uni").innerHTML;
   element.parentNode.remove(element);
-  document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+  if (document.getElementById("input-selected-uni").children.length > 0)
+    document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+  else
+    document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
 }
 
 function showFilters(){
