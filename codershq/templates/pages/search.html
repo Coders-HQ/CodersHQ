@@ -518,6 +518,14 @@ var count2 = 0;
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
   document.getElementById("myDropdown2").classList.remove("show");
+  if (document.getElementById("input-selected-uni").children.length == 0){
+    document.getElementById("dropbtn2").style.backgroundColor = "#ffffff";
+    document.getElementById("dropbtn2").style.border = "1px solid #B0B0B0";
+    document.getElementById("dropbtn2").style.boxSizing = "border-box";
+    document.getElementById("dropbtn2").style.boxShadow = "none";
+    document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
+    count2 = 0;
+  }
   if (count == 0) {
     document.getElementById("dropbtn").style.backgroundColor = "#e8fffd";
     document.getElementById("dropbtn").style.border = "1px solid rgba(44, 185, 187, 0.8)";
@@ -546,6 +554,15 @@ function myFunction() {
 function myFunction2() {
   document.getElementById("myDropdown2").classList.toggle("show");
   document.getElementById("myDropdown").classList.remove("show");
+
+  if (document.getElementById("input-selected").children.length == 0){
+      document.getElementById("dropbtn").style.backgroundColor = "#ffffff";
+      document.getElementById("dropbtn").style.border = "1px solid #B0B0B0";
+      document.getElementById("dropbtn").style.boxSizing = "border-box";
+      document.getElementById("dropbtn").style.boxShadow = "none";
+      document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
+      count = 0;
+    }
   if (count2 == 0) {
     document.getElementById("dropbtn2").style.backgroundColor = "#e8fffd";
     document.getElementById("dropbtn2").style.border = "1px solid rgba(44, 185, 187, 0.8)";
