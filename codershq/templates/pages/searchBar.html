@@ -223,7 +223,9 @@
 
   function showFilters(){
     var x = document.getElementById("mySelect").value;
-    if(x == "Contributors")
+    if(x == "Contributors"){
+      count=0;
+      count2=0;
       document.getElementById("showFilters").innerHTML = `
         <div class="flex justify-start pt-2">
           <div class="flex justify-between">
@@ -301,6 +303,8 @@
             </div>
           </div>
         </div>`
+    }
+
     else
     document.getElementById("showFilters").innerHTML = `
       <div></div>`
@@ -344,7 +348,7 @@
       document.getElementById(targ).innerHTML =
       `
         <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
-        <div id="myDropdown" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+        <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
           <div>
             <div class="flex justify-between pb-2">
               <span class="text-sm" ><b>Skills</b></span>
@@ -385,7 +389,7 @@
       document.getElementById(targ).innerHTML =
       `
         <button type="button" onclick="myFunction2()" id="dropbtn2" class="dropbtn2 rounded-lg px-2 py-2">University <i class="arrow down"></i></button>
-          <div id="myDropdown2" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+          <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
             <div>
               <div class="flex justify-between pb-2">
                 <span class="text-sm" ><b>University</b></span>
