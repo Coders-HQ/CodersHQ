@@ -621,7 +621,6 @@
     var x = document.getElementById("mySelect").value;
     if(x == "Contributors")
       document.getElementById("showFilters").innerHTML = `
-      {% if search_select != 'Contributors' %}
         <div class="flex justify-start pt-2">
           <div class="flex justify-between">
             <div id="dropdown" class="dropdown px-2">
@@ -697,8 +696,7 @@
               </div>
             </div>
           </div>
-        </div>
-      {% endif %}`
+        </div>`
     else
     document.getElementById("showFilters").innerHTML = `
       <div></div>`
