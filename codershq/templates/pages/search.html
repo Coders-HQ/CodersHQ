@@ -5,7 +5,7 @@
 <!-- content -->
 <div class="ml-64 flex-1 bg-gray-50 md:px-4 py-4">
   <header class="header">
-    <form class="grid grid-cols-2-search w-full px-4 pt-2 sm:text-sm" method="GET" action="{% url 'search:search' %}">
+    <form autocomplete="off" class="grid grid-cols-2-search w-full px-4 pt-2 sm:text-sm" method="GET" action="{% url 'search:search' %}">
       <select id="mySelect" class="mySelect bg-gray-100 rounded-l-lg border-gray-200" name="search_select" value="{{search_select}}" onchange="showFilters()">
         {% if search_select == "Contributors" %}
         <option value="All" class="py-2">All</option>
