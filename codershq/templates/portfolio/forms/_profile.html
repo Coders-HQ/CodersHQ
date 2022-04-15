@@ -1,21 +1,23 @@
 <div class="flex flex-wrap justify-center" id="profile">
     <div
         class="w-80 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 p-8 m-2">
-        <h3 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mb-10">
+        <h3 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mb-12">
             My Profile
         </h3>
         <div class="flex flex-col items-center">
             {% if user.profile_picture %}
-            <img class="mb-3 w-32 h-32 rounded-full shadow-lg" src="https://i.imgur.com/Q9XEHGOb.jpg" alt="">
+            <img src="{{ MEDIA_URL }}{{ user.profile_image }}" 
+            alt class="w-32 h-32 rounded-full shadow-lg" />
             {% else %}
-            <img class="mb-3 w-32 h-32 object-cover rounded-full shadow-lg" src="{{MEDIA_URL}}{{user.profile_image}}" alt="">
+            <img src="https://radeau.github.io/portfolio/img/charlesdeluvio-pOUA8Xay514-unsplash.jpg"
+                alt class="w-32 h-32 object-cover rounded-full shadow-lg" />
             {% endif %}
-            <h5 class="mb-1 text-xl font-normal text-gray-900 dark:text-white">Jane Sparrow</h5>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Blockchain Developer</span>
-            <input type="button"
-                class="inline-flex items-center lg:mt-6 py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
-                value="Change Picture"></input>
-                
+            <h5 class="mt-2 text-xl font-normal text-gray-900 dark:text-white">Jane Doe</h5>
+            <span class="text-sm text-gray-500 dark:text-gray-400 tracking-[0.10em]">Blockchain Developer</span> 
+            <input name="profile_image" type="file" accept="image" class="hidden sr-only" accept="image/*"/>
+            <button type="button" class="inline-flex items-center lg:mt-6 py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Change Picture
+            </button>
         </div>
     </div>
 
@@ -36,9 +38,8 @@
                     <div>
                         <label for="about" class="block text-sm font-medium text-gray-700"> About </label>
                         <div class="mt-1">
-                            <textarea id="about" name="about" rowks="4"
+                            <textarea id="about" name="about" rows="4"
                                 class="shadow-sm focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                placeholder="A little about you"
                                 >{% if user.bio is not None  %}{{user.bio}}{% endif %}</textarea>
                         </div>
                         <p class="mt-2 text-sm text-gray-500">Brief description for your profile. URLs are hyperlinked.
@@ -75,4 +76,4 @@
             </div>
         </form>
     </div>
-</div>
+</div> 
