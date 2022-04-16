@@ -1,0 +1,65 @@
+<div id="languages"
+  class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-2">
+  <form action="#" method="POST">
+    {% csrf_token %}
+    <div class="shadow overflow-hidden sm:rounded-md">
+      <div class="px-4 py-5 bg-white sm:p-8">
+        <h3 class="text-2xl leading-7 text-gray-900 sm:text-3xl sm:truncate mb-3">
+          Skills
+        </h3>
+
+        <!--languages container-->
+        <div>
+
+          <div class="grid grid-cols-6 gap-6 py-4 my-6 rounded-lg">
+
+            <div class="col-span-6 sm:col-span-3">
+              <label for="language_name" class="block text-sm font-medium text-gray-700">Skill</label>
+              <input type="text" name="language_name" id="language_name" autocomplete="family-name" placeholder="Python"
+                class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+            </div>
+
+            <div class="col-span-6 sm:col-span-3">
+              <label for="language_proficiency" class="block text-sm font-medium text-gray-700">Proficiency</label>
+              <select id="language_proficiency" name="language_proficiency" autocomplete="Proficiency-name"
+                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                <option value="1">Beginner</option>
+                <option value="2">Intermediate</option>
+                <option value="3">Advanced</option>
+              </select>
+            </div>
+
+          </div>
+
+
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200">
+
+              {% for language in portfolio.language_set.all %}
+              <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                <div class="w-0 flex-1 flex items-center">
+
+                  <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                  </svg>
+
+                  <span class="ml-2 flex-1 w-0 truncate"> {{language.name}} - {{language.get_proficiency_display}}</span>
+                </div>
+                <div class="ml-4 flex-shrink-0">
+                  <a href="/portfolio/me/language/delete/{{language.pk}}" class="font-medium text-red-600 hover:text-red-500"> Delete </a>
+                </div>
+              </li>
+              {% endfor %}
+
+            </ul>
+          </dd>
+        </div>
+
+      </div>
+      <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+        <button type="submit"
+          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
