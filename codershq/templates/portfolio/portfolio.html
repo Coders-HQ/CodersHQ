@@ -11,10 +11,10 @@
                 <a href class="flex flex-col items-center">
                     {% if user.profile_image %}
                     <img src="{{ MEDIA_URL }}{{ user.profile_image }}" alt
-                        class="h-32 w-32 border-white border-4 rounded-full" />
+                        class="h-32 w-32 border-white border-4 rounded-full object-cover" />
                     {% else %}
                     <img src="https://radeau.github.io/portfolio/img/charlesdeluvio-pOUA8Xay514-unsplash.jpg"
-                        alt class="h-32 w-32 border-white border-4 rounded-full" />
+                        alt class="h-32 w-32 border-white border-4 rounded-full object-cover" />
                     {% endif %}
                 </a>
 
