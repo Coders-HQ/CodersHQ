@@ -1,3 +1,4 @@
+from os import path
 from django.contrib import admin
 from django.contrib.auth import admin as auth_admin
 from django.contrib.auth import get_user_model
@@ -12,7 +13,7 @@ User = get_user_model()
 @admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
 
-
+    actions = ['export', ]
     form = UserChangeForm
     add_form = UserCreationForm
     fieldsets = (
@@ -36,8 +37,11 @@ class UserAdmin(auth_admin.UserAdmin):
     list_display = ["username", "name", "is_superuser"]
     search_fields = ["name"]
     
-    # change_list_template = '/templates/users/admin/change_list.html'
-    actions = ['export', ]
+    # def get_urls(self):
+    #     urls = super(UserAdmin, self).get_urls()
+    #     # new_urls =[path('exportcsv/',self.export),]
+    #     # return new_urls + urls
+
 
     def export(self,request,queryset):
         meta = self.model._meta
@@ -59,5 +63,4 @@ class UserAdmin(auth_admin.UserAdmin):
             row = writer.writerow([getattr(obj, field) for field in fieldnames])
 
         return response
-
     export.short_description ="Export to csv"
