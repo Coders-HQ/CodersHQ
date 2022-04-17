@@ -8,14 +8,46 @@
             {% if user.profile_picture %}
             <img class="mb-3 w-32 h-32 rounded-full shadow-lg" src="https://i.imgur.com/Q9XEHGOb.jpg" alt="">
             {% else %}
-            <img class="mb-3 w-32 h-32 object-cover rounded-full shadow-lg" src="{{MEDIA_URL}}{{user.profile_image}}" alt="">
+            <img class="mb-3 w-32 h-32 object-cover rounded-full shadow-lg" src="{{MEDIA_URL}}{{user.profile_image}}"
+                alt="">
             {% endif %}
             <h5 class="mb-1 text-xl font-normal text-gray-900 dark:text-white">Jane Sparrow</h5>
             <span class="text-sm text-gray-500 dark:text-gray-400">Blockchain Developer</span>
-            <input type="button"
-                class="inline-flex items-center lg:mt-6 py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" 
-                value="Change Picture"></input>
-                
+            <form id="profile-pic-form" enctype="multipart/form-data" action="/portfolio/me" method="POST">
+                {% csrf_token %}
+                <input name="profile_image" type="file" accept="image" class="hidden sr-only" accept="image/*"
+                    id="profile-pic-hidden-input"/>
+                <button type="button" onclick="document.getElementById('profile-pic-hidden-input').click();"
+                    class="inline-flex items-center lg:mt-6 py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Change Picture
+                </button>
+                <div>
+                    <div id="image-box-popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 md:inset-0 h-modal md:h-full">
+                        <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                <div class="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
+                                    <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
+                                        Crop Image
+                                    </h3>
+                                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="image-box-popup-modal">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                                    </button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="p-6 space-y-6">
+                                    <div id="image-box"></div> 
+                                    <button class="inline-flex items-center lg:mt-6 py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    id="crop-btn" type="button">Crop</button>
+                                </div>
+                                
+                                <!--
+                                <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                                id="confirm-btn" type="submit">Post</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -23,14 +55,15 @@
         class="flex-auto bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-2">
         <form enctype="multipart/form-data" action="/portfolio/me" method="POST">
 
-          {% csrf_token %}
+            {% csrf_token %}
             <div class="shadow sm:rounded-md sm:overflow-hidden">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
 
                     <div>
                         <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-                        <input type="text" name="name" id="name" autocomplete="given-name" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                        value="{{ user.name }}">
+                        <input type="text" name="name" id="name" autocomplete="given-name"
+                            class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            value="{{ user.name }}">
                     </div>
 
                     <div>
@@ -38,8 +71,7 @@
                         <div class="mt-1">
                             <textarea id="about" name="about" rowks="4"
                                 class="shadow-sm focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                placeholder="A little about you"
-                                >{% if user.bio is not None  %}{{user.bio}}{% endif %}</textarea>
+                                placeholder="A little about you">{% if user.bio is not None  %}{{user.bio}}{% endif %}</textarea>
                         </div>
                         <p class="mt-2 text-sm text-gray-500">Brief description for your profile. URLs are hyperlinked.
                         </p>
@@ -59,7 +91,8 @@
                                     <label for="profile_image"
                                         class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
                                         <span>Upload a file </span>
-                                        <input id="profile_image" name="profile_image" type="file" class="sr-only" accept="image/*">
+                                        <input id="profile_image" name="profile_image" type="file" class="sr-only"
+                                            accept="image/*">
                                     </label>
                                     <p class="pl-1"> or drag and drop</p>
                                 </div>
@@ -75,4 +108,73 @@
             </div>
         </form>
     </div>
+
+
+    <!-- Cropping profile image on upload -->
+    <script>
+        // image-box is the id of the div element that will store our cropping image preview
+        const imagebox = document.getElementById('image-box')
+            // crop-btn is the id of button that will trigger the event of change original file with cropped file.
+        const crop_btn = document.getElementById('crop-btn')
+        // profile-pic-hidden-input is the id of the input tag where we will upload the image
+        const input = document.getElementById('profile-pic-hidden-input')
+    
+        // When user uploads the image this event will get triggered
+        input.addEventListener('change', ()=>{
+          // Getting image file object from the input variable
+          const img_data = input.files[0]
+          // createObjectURL() static method creates a DOMString containing a URL representing the object given in the parameter.
+          // The new object URL represents the specified File object or Blob object.
+          const url = URL.createObjectURL(img_data)
+          
+          // Creating a image tag inside imagebox which will hold the cropping view image(uploaded file) to it using the url created before.
+          imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+    
+          // Storing that cropping view image in a variable
+          const image = document.getElementById('image')
+    
+          // Displaying the image box
+          const imageBox = new Modal(document.getElementById('image-box-popup-modal'));
+          imageBox.show();
+
+          // Creating a croper object with the cropping view image
+          // The new Cropper() method will do all the magic and diplay the cropping view and adding cropping functionality on the website
+          // For more settings, check out their official documentation at https://github.com/fengyuanchen/cropperjs
+          const cropper = new Cropper(image, {
+          autoCropArea: 1,
+          viewMode: 1,
+          zoomable: false,
+          movable: false,
+          scalable: false,
+          minCropBoxWidth: 10,
+          minCropBoxHeight: 10,
+          aspectRatio: 1 
+          })
+    
+          // When crop button is clicked this event will get triggered
+          crop_btn.addEventListener('click', ()=>{
+            // This method coverts the selected cropped image on the cropper canvas into a blob object
+            cropper.getCroppedCanvas().toBlob((blob)=>{
+              
+              // Gets the original image data
+              let fileInputElement = document.getElementById('profile-pic-hidden-input');
+              // Make a new cropped image file using that blob object, image_data.name will make the new file name same as original image
+              let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+              // Create a new container
+              let container = new DataTransfer();
+              // Add the cropped image file to the container
+              container.items.add(file);
+              // Replace the original image file with the new cropped image file
+              fileInputElement.files = container.files;
+              
+              document.getElementById('profile-pic-form').submit();
+    
+              // Hide the cropper box
+              //document.getElementById('image-box-popup-modal').hide();
+
+              });
+            });
+        });	
+    </script>
+
 </div>
