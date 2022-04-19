@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from codershq.portfolio.models.model_portfolio import Education
+from django.urls import reverse
 
 from codershq.portfolio.models.model_project import Project
 
@@ -11,7 +12,7 @@ from .forms import (PortfolioForm,
                     LanguageForm,
                     AwardForm)
 from django.contrib.auth.decorators import login_required
-from .models import Portfolio, Experience, JobProfile, Award, Language
+from .models import Portfolio, Experience, Award, Language
 from django.shortcuts import get_object_or_404
 from codershq.users.models import User
 
@@ -147,3 +148,13 @@ def portfolio_show(request, username):
     award = Award.objects.all().filter(user_profile=portfolio)
     context['educations'] = educations
     return render(request, 'portfolio/portfolio.html', context)
+
+def portfolio_language_delete(request, pk):
+    language = get_object_or_404(Language, pk=pk)
+    Language.delete(language)
+    return redirect(reverse('portfolio:edit_portfolio'))
+
+def portfolio_award_delete(request, pk):
+    award = get_object_or_404(Award, pk=pk)
+    Award.delete(award)
+    return redirect(reverse('portfolio:edit_portfolio'))

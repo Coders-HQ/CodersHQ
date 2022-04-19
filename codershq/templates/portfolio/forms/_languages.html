@@ -4,75 +4,55 @@
     {% csrf_token %}
     <div class="shadow overflow-hidden sm:rounded-md">
       <div class="px-4 py-5 bg-white sm:p-8">
-        <h3 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mb-3">
-          Languages
+        <h3 class="text-2xl leading-7 text-gray-900 sm:text-3xl sm:truncate mb-3">
+          Skills
         </h3>
 
         <!--languages container-->
         <div>
 
-          <div class="grid grid-cols-6 gap-6 p-4 my-6 bg-gray-50 rounded-lg">
+          <div class="grid grid-cols-6 gap-6 py-4 my-6 rounded-lg">
 
             <div class="col-span-6 sm:col-span-3">
-              <label for="language_name" class="block text-sm font-medium text-gray-700">Language</label>
-              <input type="text" name="language_name" id="language_name" autocomplete="family-name"
+              <label for="language_name" class="block text-sm font-medium text-gray-700">Skill</label>
+              <input type="text" name="language_name" id="language_name" autocomplete="family-name" placeholder="Python"
                 class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
             </div>
 
             <div class="col-span-6 sm:col-span-3">
               <label for="language_proficiency" class="block text-sm font-medium text-gray-700">Proficiency</label>
-              <select id="language_proficiency" name="language_proficiency" autocomplete="Proficiency-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+              <select id="language_proficiency" name="language_proficiency" autocomplete="Proficiency-name"
+                class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                <option value="1">Beginner</option>
+                <option value="2">Intermediate</option>
                 <option value="3">Advanced</option>
-                <option  value="2">Intermediate</option>
-                <option  value="1">Beginner</option>
               </select>
             </div>
 
           </div>
 
-          <div class="grid grid-cols-6 gap-6 p-4 my-6 bg-gray-50 rounded-lg">
 
-            <div class="col-span-6 sm:col-span-3">
-              <label for="language" class="block text-sm font-medium text-gray-700">Language</label>
-              <input type="text" name="language" id="language" autocomplete="family-name"
-                class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
+          <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+            <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200 ">
 
-            <div class="col-span-6 sm:col-span-3">
-              <label for="Proficiency" class="block text-sm font-medium text-gray-700">Proficiency</label>
-              <select id="Proficiency" name="Proficiency" autocomplete="Proficiency-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
-                <option>Native or Bilingual</option>
-                <option>Professional</option>
-                <option>Intermediate</option>
-                <option>Beginner</option>
-              </select>
-            </div>
+              {% for language in portfolio.language_set.all %}
+              <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm hover:bg-gray-50">
+                <div class="w-0 flex-1 flex items-center">
 
-            <div class="col-span-6 sm:col-span-3 flex justify-center">
-              <div class="mt-2 inline-flex justify-center items-center">
-                <button class="text-red-600 hover:text-red-500">
-                  <svg class="h-4 w-4 inline mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
                   </svg>
-                  Delete
-                </button>
-              </div>
-          </div>
 
-          </div>
+                  <span class="ml-2 flex-1 w-0 truncate"> {{language.name}} - {{language.get_proficiency_display}}</span>
+                </div>
+                <div class="ml-4 flex-shrink-0">
+                  <a href="/portfolio/me/language/delete/{{language.pk}}" class="font-medium text-red-600 hover:text-red-500"> Delete </a>
+                </div>
+              </li>
+              {% endfor %}
 
-        </div>
-
-        <div class="mt-6 w-100 flex justify-center p-6">
-          <div class="space-y-1 text-center relative cursor-pointer bg-white rounded-md text-blue-600 hover:text-blue-500">
-            <svg class="mx-auto h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"
-              aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
-            <span>
-              Add Language
-            </span>
-          </div>
+            </ul>
+          </dd>
         </div>
 
       </div>
