@@ -148,7 +148,7 @@
                             src="https://tethys.pnnl.gov/sites/default/files/styles/captioned_400xauto/public/taxonomy-images/Khalifa_university_logo.png?itok=91JBke00">
                         <div class="px-4">
                             <h1 class="text-sm font-bold text-gray-700">{{education.school}}</h1>
-                            <button class="bg-green-400 text-white text-xs rounded px-4 py-0">Current</button>
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Current</span>
                             <p class="text-sm">{{education.degree}}</p>
                             <p class="text-sm">Abu Dhabi, United Arab Emirates</p>
                         </div>
@@ -185,7 +185,7 @@
                         <div class="px-4">
                             <h1 class="text-sm font-bold text-gray-700">{{experience.job_title}}</h1>
                             {% if experience.is_current %}
-                            <button class="bg-green-400 text-white text-xs rounded px-4 py-0">Current</button>
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">Current</span>
                             {% endif %}
                             <p class="text-sm">Google - Full Time</p>
                             <p class="text-sm">{{experience.start_date}} - {{experience.end_date}}</p>
