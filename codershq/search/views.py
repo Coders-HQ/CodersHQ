@@ -13,6 +13,8 @@ def search(request: HttpRequest) -> HttpResponse:
 
         # define the context that will be rendered
         context = {
+            'search': search,
+            'search_select': search_category,
             'contributors_queryset': '',
             'events_queryset': '',
             'skills': [],
@@ -28,7 +30,7 @@ def search(request: HttpRequest) -> HttpResponse:
 
             # get skills query
             skills = request.GET.getlist('skill')
-            print("HIIIIIIIIIIII", skills)
+            print("INFO: skills query list received: ", skills)
 
             # add skills to context
             context['skills'] = skills
