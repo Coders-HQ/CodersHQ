@@ -109,6 +109,28 @@
               </div>
             </div>
 
+            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              <ul role="list" class="border border-gray-200 rounded-md divide-y divide-gray-200 ">
+  
+                {% for award in portfolio.award_set.all %}
+                <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm hover:bg-gray-50">
+                  <div class="w-0 flex-1 flex items-center">
+  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="flex-shrink-0 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 20 20" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                    </svg>
+  
+                    <span class="ml-2 flex-1 w-0 truncate"> {{award.name}} - {{award.date_awarded}}</span>
+                  </div>
+                  <div class="ml-4 flex-shrink-0">
+                    <a href="/portfolio/me/award/delete/{{award.pk}}" class="font-medium text-red-600 hover:text-red-500"> Delete </a>
+                  </div>
+                </li>
+                {% endfor %}
+  
+              </ul>
+            </dd>
+
           </div>
           <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
             <button type="submit"
