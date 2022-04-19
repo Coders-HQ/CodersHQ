@@ -42,14 +42,14 @@ def search(request: HttpRequest) -> HttpResponse:
             
 
         #### Events Category ####
-        elif search_category == "Events":
-            print("INFO: EVENTS CATEGORY CHOSEN")
+        # elif search_category == "Events":
+        #     print("INFO: EVENTS CATEGORY CHOSEN")
 
-            events_qs = filter_events(search_query=search)
-            print("INFO: events queryset received: ", events_qs)
+        #     events_qs = filter_events(search_query=search)
+        #     print("INFO: events queryset received: ", events_qs)
 
-            # add users queryset to context
-            context['events_queryset'] = events_qs
+        #     # add users queryset to context
+        #     context['events_queryset'] = events_qs
 
         #### All Category ####
         else:
@@ -60,15 +60,15 @@ def search(request: HttpRequest) -> HttpResponse:
            
            # get filtered querysets based on search query
             contributors_qs = filter_contributors(search_query=search)
-            events_qs = filter_events(search_query=search)
+            # events_qs = filter_events(search_query=search)
 
             # add all querysets to context
             context['contributors_queryset'] = contributors_qs
-            context['events_queryset'] = events_qs
+            # context['events_queryset'] = events_qs
            
 
         print("INFO: Context sent: ", context)
-        return render(request, 'pages/search.html', {'search': search, 'search_select': search_category})
+        return render(request, 'pages/search.html', context)
     else:
         return render(request, 'pages/search.html', {})
 
