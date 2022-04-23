@@ -12,7 +12,7 @@ from .utils.certificate import get_event_participants, serve_images
 
 
 def index(request):
-    events = Event.objects.all().order_by("date_time")
+    events = Event.objects.all().order_by("start")
     user = request.user
     for event in events:
         if user.is_authenticated:
@@ -38,7 +38,7 @@ def join(request, event_id):
     if user.is_authenticated:
         event.attendees.add(user)
         event.save()
-        messages.success(request, "Successfully joined " + event.title)
+        messages.success(request, "Successfully joined " + event.name)
 
         return redirect("events:all")
     return redirect("events:all")
@@ -52,7 +52,7 @@ def leave(request, event_id):
     if user.is_authenticated:
         event.attendees.remove(user)
         event.save()
-        messages.success(request, "You have been removed from " + event.title)
+        messages.success(request, "You have been removed from " + event.name)
         return redirect("events:all")
     return redirect("events:all")
 
