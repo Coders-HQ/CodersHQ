@@ -36,6 +36,7 @@ class Portfolio(models.Model):
         _("portfolio_field_contributorLevel"), choices=CONTRIBUTOR_LEVELS, default=0
     )
     is_admin = models.BooleanField(_("portfolio_field_isAdmin"), default=False)
+    location = models.CharField(_("Where are you based in?"),max_length=50, null=True, blank=True)
 
     def __str__(self):
         return "{username} {name}".format(
@@ -43,7 +44,7 @@ class Portfolio(models.Model):
         )
 
 
-    # remove https://
+    # remove https:// when viewing
     @property
     def github_url_clean(self):
         return self.github_url.replace('http://','')
@@ -107,6 +108,12 @@ class Education(models.Model):
     start_date = models.DateField(_("education_field_endDate"))
     end_date = models.DateField(_("education_field_endDate"))
 
+class Experience(models.Model):
+    user_profile = models.ForeignKey(Portfolio, on_delete=models.CASCADE)
+    job_title = models.CharField(_("Job title"), max_length=60)
+    start_date = models.DateField(_("Job start date"))
+    end_date = models.DateField(_("Job end date"), null=True, blank=True)
+    is_current = models.BooleanField(_("Currently working on this?"), default=False)
 
 class JobProfile(models.Model):
     user_profile = models.ForeignKey(Portfolio, on_delete=models.CASCADE)

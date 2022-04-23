@@ -8,63 +8,59 @@
       <div class="header-content h-32 bg-gradient-to-r from-indigo-600 to-pink-400 shadow py-4 rounded-3xl">
           <div class="flex flex-col md:flex-row mt-10">
 
-              <a href class="flex flex-col items-center">
-                  {% if user.profile_image %}
-                  <img src="{{ MEDIA_URL }}{{ user.profile_image }}" alt
-                      class="h-32 w-32 border-white border-4 rounded-full object-cover" />
-                  {% else %}
-                  <img src="https://www.hihdhawaii.net/wp-content/uploads/2019/09/kimson-doan-HD8KlyWRYYM-unsplash.jpg"
-                      alt class="h-32 w-32 border-white border-4 rounded-full object-cover" />
-                  {% endif %}
-              </a>
-
-          </div>
-      </div>
-      <div class="flex flex-col md:flex-row justify-evenly">
-          <div class="flex-none w-32"></div>
-          <div class="flex-1">
-              <span class="flex flex-col items-center md:items-start mt-14 md:mt-0">
-                  <span class="w-50 font-semibold text-2xl text-gray-800">Sarah Al Nahdi</span>
-                  <span class="w-50 text-gray-500 text-md tracking-[0.25em]">Designer | Coder</span>
-                  <span class="flex space-x-4 mt-2">
-                      <div class="">
-                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em"
-                              height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 15 15">
-                              <path fill="currentColor" d="M7.5 5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5Z" />
-                              <path fill="currentColor" fill-rule="evenodd"
-                                  d="M4.5 0A4.5 4.5 0 0 0 0 4.5v6A4.5 4.5 0 0 0 4.5 15h6a4.5 4.5 0 0 0 4.5-4.5v-6A4.5 4.5 0 0 0 10.5 0h-6ZM4 7.5a3.5 3.5 0 1 1 7 0a3.5 3.5 0 0 1-7 0ZM11 4h1V3h-1v1Z"
-                                  clip-rule="evenodd" />
-                          </svg>
-                      </div>
-                      <div class="">
-                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em"
-                              height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                              <path fill="currentColor"
-                                  d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" />
-                          </svg>
-                      </div>
-                      <div class="">
-                          <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em"
-                              height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 1000">
-                              <path fill="currentColor"
-                                  d="M196.064.25C88.347.25.187 88.408.187 196.127v607.841c0 107.717 88.158 195.845 195.877 195.845h607.841c107.718 0 195.845-88.127 195.845-195.845V196.127C999.75 88.41 911.623.25 803.905.25H196.064zm49.266 164.948c51.648 0 83.461 33.906 84.443 78.475c0 43.585-32.797 78.444-85.442 78.444h-.969c-50.665 0-83.412-34.857-83.412-78.444c0-44.568 33.738-78.475 85.379-78.475zm445.08 208.31c99.329 0 173.79 64.922 173.79 204.436v260.449H713.247V595.406c0-61.06-21.847-102.718-76.476-102.718c-41.704 0-66.562 28.078-77.476 55.202c-3.987 9.704-4.967 23.257-4.967 36.832v253.671H403.375s1.981-411.613 0-454.233h150.984v64.324c20.06-30.95 55.942-74.977 136.051-74.977zm-521.556 10.685h150.953v454.202H168.854V384.193z" />
-                          </svg>
-                      </div>
-                      <div class="">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-                              <path
-                                  d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm2.218 18.616c-.354.069-.468-.149-.468-.336v-1.921c0-.653-.229-1.079-.481-1.296 1.56-.173 3.198-.765 3.198-3.454 0-.765-.273-1.389-.721-1.879.072-.177.312-.889-.069-1.853 0 0-.587-.188-1.923.717-.561-.154-1.159-.231-1.754-.234-.595.003-1.193.08-1.753.235-1.337-.905-1.925-.717-1.925-.717-.379.964-.14 1.676-.067 1.852-.448.49-.722 1.114-.722 1.879 0 2.682 1.634 3.282 3.189 3.459-.2.175-.381.483-.444.936-.4.179-1.413.488-2.037-.582 0 0-.37-.672-1.073-.722 0 0-.683-.009-.048.426 0 0 .46.215.777 1.024 0 0 .405 1.25 2.353.826v1.303c0 .185-.113.402-.462.337-2.782-.925-4.788-3.549-4.788-6.641 0-3.867 3.135-7 7-7s7 3.133 7 7c0 3.091-2.003 5.715-4.782 6.641z" />
-                          </svg>
-                      </div>
-                  </span>
-              </span>
-          </div>
-          <div class="flex justify-center md:justify-end md:mr-7 my-4">
-              <button
-                  class="rounded-full px-10 py-1 text-sm font-semibold border-0 bg-indigo-500 text-white hover:bg-gray-500 hover:text-white duration-300">Hire
-                  me</button>
-          </div>
-      </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row justify-evenly">
+            <div class="flex-none w-32"></div>
+            <div class="flex-1">
+                <span class="flex flex-col items-center md:items-start mt-14 md:mt-0">
+                    <span class="w-50 font-semibold text-2xl text-gray-800">
+                        {% if user.name %}
+                        {{user.name}}
+                        {% else %}
+                        {{user.username}}
+                        {% endif %}
+                    </span>
+                    <span class="w-50 text-gray-500 text-md tracking-[0.25em]">Designer | Coder</span>
+                    <span class="flex space-x-4 mt-2">
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em"
+                                height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 15 15">
+                                <path fill="currentColor" d="M7.5 5a2.5 2.5 0 1 0 0 5a2.5 2.5 0 0 0 0-5Z" />
+                                <path fill="currentColor" fill-rule="evenodd"
+                                    d="M4.5 0A4.5 4.5 0 0 0 0 4.5v6A4.5 4.5 0 0 0 4.5 15h6a4.5 4.5 0 0 0 4.5-4.5v-6A4.5 4.5 0 0 0 10.5 0h-6ZM4 7.5a3.5 3.5 0 1 1 7 0a3.5 3.5 0 0 1-7 0ZM11 4h1V3h-1v1Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em"
+                                height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23Z" />
+                            </svg>
+                        </div>
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="1em"
+                                height="1em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 1000">
+                                <path fill="currentColor"
+                                    d="M196.064.25C88.347.25.187 88.408.187 196.127v607.841c0 107.717 88.158 195.845 195.877 195.845h607.841c107.718 0 195.845-88.127 195.845-195.845V196.127C999.75 88.41 911.623.25 803.905.25H196.064zm49.266 164.948c51.648 0 83.461 33.906 84.443 78.475c0 43.585-32.797 78.444-85.442 78.444h-.969c-50.665 0-83.412-34.857-83.412-78.444c0-44.568 33.738-78.475 85.379-78.475zm445.08 208.31c99.329 0 173.79 64.922 173.79 204.436v260.449H713.247V595.406c0-61.06-21.847-102.718-76.476-102.718c-41.704 0-66.562 28.078-77.476 55.202c-3.987 9.704-4.967 23.257-4.967 36.832v253.671H403.375s1.981-411.613 0-454.233h150.984v64.324c20.06-30.95 55.942-74.977 136.051-74.977zm-521.556 10.685h150.953v454.202H168.854V384.193z" />
+                            </svg>
+                        </div>
+                        <div class="">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm2.218 18.616c-.354.069-.468-.149-.468-.336v-1.921c0-.653-.229-1.079-.481-1.296 1.56-.173 3.198-.765 3.198-3.454 0-.765-.273-1.389-.721-1.879.072-.177.312-.889-.069-1.853 0 0-.587-.188-1.923.717-.561-.154-1.159-.231-1.754-.234-.595.003-1.193.08-1.753.235-1.337-.905-1.925-.717-1.925-.717-.379.964-.14 1.676-.067 1.852-.448.49-.722 1.114-.722 1.879 0 2.682 1.634 3.282 3.189 3.459-.2.175-.381.483-.444.936-.4.179-1.413.488-2.037-.582 0 0-.37-.672-1.073-.722 0 0-.683-.009-.048.426 0 0 .46.215.777 1.024 0 0 .405 1.25 2.353.826v1.303c0 .185-.113.402-.462.337-2.782-.925-4.788-3.549-4.788-6.641 0-3.867 3.135-7 7-7s7 3.133 7 7c0 3.091-2.003 5.715-4.782 6.641z" />
+                            </svg>
+                        </div>
+                    </span>
+                </span>
+            </div>
+            <div class="flex justify-center md:justify-end md:mr-7 my-4">
+                <button
+                    class="rounded-full px-10 py-1 text-sm font-semibold border-0 bg-indigo-500 text-white hover:bg-gray-500 hover:text-white duration-300">Hire
+                    me</button>
+            </div>
+        </div>
 
   </header>
 
@@ -76,7 +72,7 @@
                     {% if user.bio %}
                     <p class="">{{user.bio|linebreaks}}</p>
                     {% else %}
-                    <p class="text-gray-400">No user bio</p>
+                    <p class="text-gray-400">Member has no biography</p>
                     {% endif %}
 
 
@@ -130,25 +126,36 @@
                 </dd>
             </div>
 
+            <!-- start education  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Education</dt>
                 <dd class="flex-1 md:w-64 mt-1 text-sm text-gray-900 sm:mt-0">
-                    <div class="flex">
+                    
+                    <!-- loop through education  -->
+                    {% for education in portfolio.education_set.all %}
+                    <div class="flex mb-4">
                         <img class="rounded-full h-10 w-10"
                             src="https://tethys.pnnl.gov/sites/default/files/styles/captioned_400xauto/public/taxonomy-images/Khalifa_university_logo.png?itok=91JBke00">
                         <div class="px-4">
-                            <h1 class="text-sm font-bold text-gray-700">Bachelor of Science in Computer Science</h1>
+                            <h1 class="text-sm font-bold text-gray-700">{{education.school}}</h1>
                             <button class="bg-green-400 text-white text-xs rounded px-4 py-0">Current</button>
-                            <p class="text-sm">Khalifa University</p>
+                            <p class="text-sm">{{education.degree}}</p>
                             <p class="text-sm">Abu Dhabi, United Arab Emirates</p>
                         </div>
                     </div>
+                    {% endfor %}
+
                 </dd>
             </div>
+            <!-- end education  -->
 
+
+            <!-- start experience  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Experience</dt>
                 <dd class="flex-1 md:w-64 mt-1 text-sm text-gray-900 sm:mt-0">
+
+                    {% for experience in portfolio.experience_set.all %}
                     <div class="p-2 flex">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 256 262"
                             preserveAspectRatio="xMidYMid">
@@ -166,133 +173,88 @@
                                 fill="#EB4335" />
                         </svg>
                         <div class="px-4">
-                            <h1 class="text-sm font-bold text-gray-700">Software Engineer</h1>
+                            <h1 class="text-sm font-bold text-gray-700">{{experience.job_title}}</h1>
+                            {% if experience.is_current %}
                             <button class="bg-green-400 text-white text-xs rounded px-4 py-0">Current</button>
+                            {% endif %}
                             <p class="text-sm">Google - Full Time</p>
-                            <p class="text-sm">Dubai, United Arab Emirates</p>
+                            <p class="text-sm">{{experience.start_date}} - {{experience.end_date}}</p>
                         </div>
                     </div>
-                    <div class="p-2 flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="126.445 2.281 589 589">
-                            <circle cx="420.945" cy="296.781" r="294.5" fill="#3c5a9a" />
-                            <path
-                                d="M516.704 92.677h-65.239c-38.715 0-81.777 16.283-81.777 72.402.189 19.554 0 38.281 0 59.357H324.9v71.271h46.174v205.177h84.847V294.353h56.002l5.067-70.117h-62.531s.14-31.191 0-40.249c0-22.177 23.076-20.907 24.464-20.907 10.981 0 32.332.032 37.813 0V92.677h-.032z"
-                                fill="#fff" />
-                        </svg>
-                        <div class="px-4">
-                            <h1 class="text-sm font-bold text-gray-700">Backend Engineer</h1>
-                            <p class="text-sm">Facebook</p>
-                            <p class="text-sm">Dubai, United Arab Emirates</p>
-                        </div>
-                    </div>
-                    <div class="p-2 flex">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3364.7 3364.7" class="w-6 h-6">
-                            <defs>
-                                <radialGradient id="0" cx="217.76" cy="3290.99" r="4271.92"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset=".09" stop-color="#fa8f21" />
-                                    <stop offset=".78" stop-color="#d82d7e" />
-                                </radialGradient>
-                                <radialGradient id="1" cx="2330.61" cy="3182.95" r="3759.33"
-                                    gradientUnits="userSpaceOnUse">
-                                    <stop offset=".64" stop-color="#8c3aaa" stop-opacity="0" />
-                                    <stop offset="1" stop-color="#8c3aaa" />
-                                </radialGradient>
-                            </defs>
-                            <path
-                                d="M853.2,3352.8c-200.1-9.1-308.8-42.4-381.1-70.6-95.8-37.3-164.1-81.7-236-153.5S119.7,2988.6,82.6,2892.8c-28.2-72.3-61.5-181-70.6-381.1C2,2295.4,0,2230.5,0,1682.5s2.2-612.8,11.9-829.3C21,653.1,54.5,544.6,82.5,472.1,119.8,376.3,164.3,308,236,236c71.8-71.8,140.1-116.4,236-153.5C544.3,54.3,653,21,853.1,11.9,1069.5,2,1134.5,0,1682.3,0c548,0,612.8,2.2,829.3,11.9,200.1,9.1,308.6,42.6,381.1,70.6,95.8,37.1,164.1,81.7,236,153.5s116.2,140.2,153.5,236c28.2,72.3,61.5,181,70.6,381.1,9.9,216.5,11.9,281.3,11.9,829.3,0,547.8-2,612.8-11.9,829.3-9.1,200.1-42.6,308.8-70.6,381.1-37.3,95.8-81.7,164.1-153.5,235.9s-140.2,116.2-236,153.5c-72.3,28.2-181,61.5-381.1,70.6-216.3,9.9-281.3,11.9-829.3,11.9-547.8,0-612.8-1.9-829.1-11.9"
-                                fill="url(#0)" />
-                            <path
-                                d="M853.2,3352.8c-200.1-9.1-308.8-42.4-381.1-70.6-95.8-37.3-164.1-81.7-236-153.5S119.7,2988.6,82.6,2892.8c-28.2-72.3-61.5-181-70.6-381.1C2,2295.4,0,2230.5,0,1682.5s2.2-612.8,11.9-829.3C21,653.1,54.5,544.6,82.5,472.1,119.8,376.3,164.3,308,236,236c71.8-71.8,140.1-116.4,236-153.5C544.3,54.3,653,21,853.1,11.9,1069.5,2,1134.5,0,1682.3,0c548,0,612.8,2.2,829.3,11.9,200.1,9.1,308.6,42.6,381.1,70.6,95.8,37.1,164.1,81.7,236,153.5s116.2,140.2,153.5,236c28.2,72.3,61.5,181,70.6,381.1,9.9,216.5,11.9,281.3,11.9,829.3,0,547.8-2,612.8-11.9,829.3-9.1,200.1-42.6,308.8-70.6,381.1-37.3,95.8-81.7,164.1-153.5,235.9s-140.2,116.2-236,153.5c-72.3,28.2-181,61.5-381.1,70.6-216.3,9.9-281.3,11.9-829.3,11.9-547.8,0-612.8-1.9-829.1-11.9"
-                                fill="url(#1)" />
-                            <path
-                                d="M1269.25,1689.52c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7-416.6-186.59-416.6-416.7m-225.26,0c0,354.5,287.36,641.86,641.86,641.86s641.86-287.36,641.86-641.86-287.36-641.86-641.86-641.86S1044,1335,1044,1689.52m1159.13-667.31a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M1180.85,2707c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27S2059.13,666,2191,672c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M1170.5,447.09c-133.07,6.06-224,27.16-303.41,58.06-82.19,31.91-151.86,74.72-221.43,144.18S533.39,788.47,501.48,870.76c-30.9,79.46-52,170.34-58.06,303.41-6.16,133.28-7.57,175.89-7.57,515.35s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43s139.14,112.18,221.43,144.18c79.56,30.9,170.34,52,303.41,58.06,133.35,6.06,175.89,7.57,515.35,7.57s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2586.8,537.06,2504.71,505.15c-79.56-30.9-170.44-52.1-303.41-58.06C2068,441,2025.41,439.52,1686,439.52s-382.1,1.41-515.45,7.57"
-                                fill="#fff" />
-                        </svg>
-                        <div class="px-4">
-                            <h1 class="text-sm font-bold text-gray-700">Frontend Engineer</h1>
-                            <p class="text-sm">Instagram</p>
-                            <p class="text-sm">Dubai, United Arab Emirates</p>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </dd>
             </div>
+            <!-- end experiance  -->
 
+            <!-- start projects  -->
             <div class="px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Projects</dt>
                 <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
+
+                    {% for project in portfolio.project_set.all %}
                     <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2020 - May 2020</p>
+                        <h1 class="text-sm font-bold text-gray-700">{{project.name}}</h1>
+                        <p class="text-sm">{{project.description}}</p>
                     </div>
-                    <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2019 - May 2019</p>
-                    </div>
+                    {% endfor %}
+
                 </dd>
             </div>
+            <!-- end projects  -->
 
+            {% if portfolio.contribution_set.all %}
+            <!-- start contributions  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Contributions</dt>
                 <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
+
+                    {% for contribution in portfolio.contribution_set.all %}
                     <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
+                        <h1 class="text-sm font-bold text-gray-700">{{contribution.contributor_role}}</h1>
                         <p class="text-sm">Lorem, ipsum dolor.</p>
                         <p class="text-sm">Jan 2020 - May 2020</p>
                     </div>
-                    <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2019 - May 2019</p>
-                    </div>
-                    <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2019 - May 2019</p>
-                    </div>
+                    {% endfor %}
+
                 </dd>
             </div>
+            <!-- end contributions  -->
+            {% endif %}
 
+            {% if portfolio.award_set.all %}
+            <!-- start awards  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Awards</dt>
+                
                 <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
+                    {% for award in portfolio.award_set.all %}
                     <div class="px-3 py-2">
-                        <h1 class="text-sm font-bold text-gray-700">Lorem ipsum dolor sit amet.</h1>
-                        <p class="text-sm">Lorem, ipsum dolor.</p>
-                        <p class="text-sm">Jan 2020 - May 2020</p>
-                    </div>
+                            <h1 class="text-sm font-bold text-gray-700">{{award.name}}</h1>
+                            <p class="text-sm">{{award.date_awarded}}</p>
+                        </div>
+                    {% endfor %}
                 </dd>
             </div>
+            <!-- end awards  -->
+            {% endif %}
 
+
+            {% if portfolio.language_set.all %}
+            <!-- start languages  -->
             <div class=" px-4 py-5 md:flex my-5 border-t border-gray-200">
-                <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Languages</dt>
-                <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Arabic</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">English</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Spanish</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Hindi</button>
-                </dd>
-            </div>
-
-            <div class=" px-4 py-5 md:flex mt-5 border-t border-gray-200">
                 <dt class="flex-initial md:w-64 text-xl font-semibold text-gray-700">Skills</dt>
                 <dd class="flex-1 w-64 mt-1 text-sm text-gray-900 sm:mt-0">
-                    <button class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Web
-                        Development</button>
+
+                    {% for language in portfolio.language_set.all %}
                     <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">C/C++</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Python</button>
-                    <button
-                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">Javascript</button>
+                        class="rounded-full my-2 px-4 py-2 text-sm font-semibold bg-gray-100 text-gray-900">{{language.name}}</button>
+                    {% endfor %}
+                    
                 </dd>
             </div>
+            <!-- end languages  -->
+            {% endif %}
         </dl>
     </div>
 

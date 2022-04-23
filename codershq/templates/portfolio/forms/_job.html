@@ -9,24 +9,158 @@
         </h3>
 
         <!--job container-->
-          <div class="grid grid-cols-6 gap-6 p-4">
-            <div class="col-span-6 sm:col-span-3">
-              <label for="job" class="block text-sm font-medium text-gray-700">Job Status</label>
-              <input type="text" name="job" id="job" autocomplete="given-name"
-                class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
+        <div class="grid grid-cols-6 gap-6 p-4">
+          <div class="col-span-6 sm:col-span-3">
+            <label for="job" class="block text-sm font-medium text-gray-700">Job Status</label>
+            <input type="text" name="job" id="job" autocomplete="given-name"
+              class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          </div>
 
-            <div class="col-span-6 sm:col-span-3">
-              <label for="rate" class="block text-sm font-medium text-gray-700">Hourly Rate</label>
-              <div class="mt-1 flex rounded-md shadow-sm">
-                <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> AED </span>
-                <input type="text" name="rate" id="rate" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
-              </div>
+          <div class="col-span-6 sm:col-span-3">
+            <label for="rate" class="block text-sm font-medium text-gray-700">Hourly Rate</label>
+            <div class="mt-1 flex rounded-md shadow-sm">
+              <span
+                class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
+                AED </span>
+              <input type="text" name="rate" id="rate"
+                class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
             </div>
-
           </div>
 
         </div>
+
+      </div>
+      <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+        <button type="submit"
+          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- start projects -->
+<div id="education"
+  class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-2">
+  <form action="#" method="POST">
+    {% csrf_token %}
+    <div class="shadow overflow-hidden sm:rounded-md">
+      <div class="px-4 py-5 bg-white sm:p-8">
+        <h3 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mb-3">
+          Projects
+        </h3>
+
+        <!--project name-->
+        <div class=" p-4">
+          <div class="mb-6">
+            <label for="project_name" class="block text-sm font-medium text-gray-700">Project Title</label>
+            <input type="text" name="project_name" id="project_name" autocomplete="given-name"
+              class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          </div>
+
+          <!-- project description  -->
+          <div class="mb-6">
+            <label for="project_description" class="block text-sm font-medium text-gray-700"> Project Description </label>
+            <div class="mt-1">
+              <textarea id="project_description" name="project_description" rowks="4"
+                class="shadow-sm focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                placeholder="Tell us about the amazing project...">{% if user.bio is not None  %}{{user.bio}}{% endif %}</textarea>
+            </div>
+            <p class="mt-2 text-sm text-gray-500">Brief description of the project.
+            </p>
+          </div>
+
+          <!-- project url -->
+          <div class="mb-6">
+            <label for="project_url" class="block text-sm font-medium text-gray-700"> Github URL </label>
+            <div class="mt-1 flex rounded-md shadow-sm">
+              <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> http:// </span>
+              <input type="text" name="project_url" id="project_url" class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" placeholder="github.com/username"
+              value="{% if portfolio.github_url is not None  %}{{portfolio.github_url_clean}}{% endif %}">
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+      <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+        <button type="submit"
+          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- end projects -->
+
+<div id="education"
+  class="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-2">
+  <form action="#" method="POST">
+    {% csrf_token %}
+
+    <div class="shadow overflow-hidden sm:rounded-md">
+
+
+      <div class="px-4 py-5 bg-white sm:p-8">
+        <h3 class="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate mb-3">
+          Experience
+        </h3>
+        <div class="col-span-6 sm:col-span-3">
+          <label for="start-date" class="block text-sm font-medium text-gray-700">Start Date</label>
+          <div class="relative">
+            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <input datepicker type="text"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Select date" name="start_date" id="start_date">
+          </div>
+        </div>
+
+        <div class="col-span-6 sm:col-span-3">
+          <label for="end-date" class="block text-sm font-medium text-gray-700">End Date</label>
+          <div class="relative">
+            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+              <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <input datepicker type="text"
+              class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Select date" name="end_date" id="end_date">
+          </div>
+        </div>
+        <!--job container-->
+        <div class="grid grid-cols-6 gap-6 p-4">
+          <div class="col-span-6 sm:col-span-3">
+            <label for="job_title" class="block text-sm font-medium text-gray-700">Job Title</label>
+            <input type="text" name="job_title" id="job_title" autocomplete="given-name"
+              class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+          </div>
+
+          <div class="col-span-6 sm:col-span-3">
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input id="is_current" name="is_current" type="checkbox"
+                  class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
+              </div>
+              <div class="ml-3 text-sm">
+                <label for="is_current" class="font-medium text-gray-700">Current Work?</label>
+                <p class="text-gray-500">Is this your current job?</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
       <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
         <button type="submit"
           class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Save</button>
