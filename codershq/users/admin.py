@@ -9,7 +9,6 @@ import csv
 
 User = get_user_model()
 
-
 @admin.register(User)
 class UserAdmin(auth_admin.UserAdmin):
 
@@ -37,12 +36,7 @@ class UserAdmin(auth_admin.UserAdmin):
     list_display = ["username", "name", "is_superuser"]
     search_fields = ["name"]
     
-    # def get_urls(self):
-    #     urls = super(UserAdmin, self).get_urls()
-    #     # new_urls =[path('exportcsv/',self.export),]
-    #     # return new_urls + urls
-
-
+    
     def export(self,request,queryset):
         meta = self.model._meta
 
@@ -53,14 +47,18 @@ class UserAdmin(auth_admin.UserAdmin):
 
         response = HttpResponse(content_type='text/csv')
 
+        # name of the file 
         response['Content-Disposition'] = 'attachment; filename="UsersData.csv"'
 
+        # initialize the writer to write the responses in csv
         writer = csv.writer(response)
 
         writer.writerow(fieldnames) #heading in csv files
-
+        
+        # write each data in the csv file 
         for obj in queryset:
             row = writer.writerow([getattr(obj, field) for field in fieldnames])
 
         return response
+    # short description of the of action name
     export.short_description ="Export to csv"
