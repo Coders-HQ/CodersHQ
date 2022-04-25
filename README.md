@@ -188,7 +188,7 @@ With MailHog running, to view messages that are sent by your application, open y
 
 ## Stargazers ⭐
 
-### Thanks to all of our   `Stargazers` ⭐ 🔭 who is supporting CodersHQ project
+### Thanks to all of our   `Stargazers` ⭐ 🔭 who are supporting CodersHQ project
 
 [![Stargazers repo roster for @Coders-HQ/CodersHQ](https://reporoster.com/stars/Coders-HQ/CodersHQ)](https://github.com/Coders-HQ/CodersHQ/stargazers)
 
