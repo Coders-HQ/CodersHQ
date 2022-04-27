@@ -23,7 +23,7 @@ class Challenge(models.Model):
         help_text="Short description of the challenge",
     )
     # full challenge description
-    description = RichTextField(help_text="Detailed descripton of the challenge")
+    description = RichTextField(help_text="Detailed description of the challenge")
     # how the challenge will be evaluated
     evaluation = RichTextField(help_text="Detailed evaluation criteria")
     # the reward structure
