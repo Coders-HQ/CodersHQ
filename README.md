@@ -1,16 +1,21 @@
 <p align="center">
- <img width="500" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
+    <img width="500" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
+    <h1 align="center">Coders Headquarters</h1>
+</p>
 
-<h1 align="center">Coders Headquarters</h1>
-
-</p><p align="center"><a href="https://github.com/pydanny/cookiecutter-django/">
-<img width="200" src="https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter">
-</a><a href="https://github.com/ambv/black">
-<img width="100" src="https://img.shields.io/badge/code%20style-black-000000.svg">
-</a><a href="https://opensource.org/licenses/MIT">
-<img width="80" src="https://img.shields.io/badge/License-MIT-red.svg"></a><a href="https://discord.gg/CPQHAZrg8b0">
-<img width="80" src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"> 
-</a>
+<p align="center">
+    <a href="https://github.com/pydanny/cookiecutter-django/">
+        <img width="200" src="https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter">
+    </a>
+    <a href="https://github.com/ambv/black">
+        <img width="100" src="https://img.shields.io/badge/code%20style-black-000000.svg">
+    </a>
+    <a href="https://opensource.org/licenses/MIT">
+        <img width="80" src="https://img.shields.io/badge/License-MIT-red.svg">
+    </a>
+    <a href="https://discord.gg/CPQHAZrg8b0">
+        <img width="80" src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"> 
+    </a>
 </p>
 
 # Index
@@ -52,7 +57,7 @@ Have a look at the [docs](https://coders-hq.github.io/CodersHQ), we document eve
 We plan to migrate from the docs to something more established, like readthedocs, once we have enough material
 to work with.
 
-We also document the tasks in [notion](https://suwaidi.notion.site/Coders-HQ-ae1356125bdc4b36b2b5b1973d09d609) and you can have a look at the [issues](https://github.com/Coders-HQ/CodersHQ/issues) section to find out what we are working on.
+We also document the tasks in [Notion](https://suwaidi.notion.site/Coders-HQ-ae1356125bdc4b36b2b5b1973d09d609) and you can have a look at the [issues](https://github.com/Coders-HQ/CodersHQ/issues) section to find out what we are working on.
 
 
 ## ⚙️ Quick Setup
