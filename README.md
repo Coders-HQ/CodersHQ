@@ -13,6 +13,25 @@
 </a>
 </p>
 
+# Index
+
+- [Introduction](#wave-introduction)
+- [The Docs](#📄-the-docs)
+- [Quick Setup](#⚙️-quick-setup)
+- [Getting up and running locally with Docker](#🧑‍💻-getting-up-and-running-locally-with-docker)
+- [Prerequisites](#prerequisites)
+- [Build the Stack](#🏗️-build-the-stack)
+- [Run the Stack](#run-the-stack)
+- [Execute Management Commands](#execute-management-commands)
+- [(Optionally) Designate your Docker Development Server IP](#optionally-designate-your-docker-development-server-ip)
+- [Basic Commands](#basic-commands)
+  - [Setting up your users](#setting-up-your-users)
+  - [Type Checks](#type-checks)
+  - [Test Coverage](#test-coverage)
+  - [Celery](#celery)
+  - [Email Server](#email-server)
+- [Stargazers](#stargazers-⭐)
+- [Contributors](#contributors-✨)
 
  ## :wave: Introduction
  
