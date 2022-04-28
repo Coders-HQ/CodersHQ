@@ -98,7 +98,7 @@ This can take a while, especially the first time you run this particular command
 
     $ docker-compose -f local.yml build
 
-Generally, if you want to emulate production environment use ``production.yml`` instead. And this is true for any other actions you might need to perform: whenever a switch is required, just do it!
+Generally, if you want to emulate production environment use [`production.yml`](production.yml) instead. And this is true for any other actions you might need to perform: whenever a switch is required, just do it!
 
 
 ## Run the Stack
@@ -110,7 +110,7 @@ Open a terminal at the project root and run the following for local development:
 
     $ docker-compose -f local.yml up
 
-You can also set the environment variable ``COMPOSE_FILE`` pointing to ``local.yml`` like this::
+You can also set the environment variable ``COMPOSE_FILE`` pointing to [`local.yml`](local.yml) like this::
 
     $ export COMPOSE_FILE=local.yml
 
@@ -192,7 +192,7 @@ To run a celery worker:
     celery -A config.celery_app worker -l info
 ```
 
-Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
+Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with [*manage.py*](manage.py), you should be right.
 
 
 ### Email Server
