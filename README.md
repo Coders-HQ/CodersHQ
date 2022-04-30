@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://ai.gov.ae/codershq/">
-        <img width="500" alt="Coders(hq) logo" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
+        <img width="500" title="coders(hq) - مقر المبرمجين" alt="Coders(hq) logo" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
     </a>
     <h1 align="center">Coders Headquarters</h1>
 </p>
