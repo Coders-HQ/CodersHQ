@@ -111,30 +111,34 @@
       {% if search_select == 'Contributors' %}
         <div class="contributors pb-7">
           <h1 style="color: #696969"><b>Contributors</b></h1>
-          <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-7 px-4 py-6">
-            {% for contributor in contributors_queryset %}
-              <a href="/portfolio/{{contributor.username}}" class="card bg-gray-100 rounded-lg lg:flex lg:justify-center lg:items-center px-4 py-4 gap-6">
-                <img src="{{ MEDIA_URL }}{{ contributor.profile_image }}" alt="Avatar" style="border-radius:50%; width:100px; height: 100px; flex:0 0 100px;">
-                <div class="">
-                  <h4><b>{{contributor.name}}</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
-              </a>
-            {% endfor %}
-          </div>
+          {% if contributors_queryset %}
+            <div class="grid gap-7 justify-center md:justify-start md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-7 px-4 py-6">
+              {% for contributor in contributors_queryset %}
+                <a href="/portfolio/{{contributor.username}}" class="card bg-gray-100 rounded-lg lg:flex lg:justify-center lg:items-center px-4 py-4 gap-6">
+                  <img src="{{ MEDIA_URL }}{{ contributor.profile_image }}" alt="Avatar" style="border-radius:50%; width:100px; height: 100px; flex:0 0 100px;">
+                  <div class="">
+                    <h4><b>{{contributor.name}}</b></h4>
+                    <span class="text-sm">Django Developer</span>
+                    <div class="flex flex-row items-center my-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                              fill="#000000">
+                              <path d="M0 0h24v24H0z" fill="none" />
+                              <path
+                                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                          </svg>
+                      <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+                  </div>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+          {% else %}
+            <h1 class="px-4 py-6">No results found.</h1>
+          {% endif %}
         </div>
       {% elif search_select == 'Events' %}
         <div class="events">
@@ -217,30 +221,34 @@
       {% else %}
         <div class="contributors pb-7 ">
           <h1 style="color: #696969"><b>Contributors</b></h1>
-          <div class="grid grid-row-2 grid-auto-flow-column gap-7 px-4 py-6 overflow-x-scroll">
-            {% for contributor in contributors_queryset %}
-              <a href="/portfolio/{{contributor.username}}" class="card bg-gray-100 rounded-lg flex justify-center items-center px-4 py-4 gap-6" style="width: 376px;">
-                <img src="{{ MEDIA_URL }}{{ contributor.profile_image }}" alt="Avatar" style="border-radius:50%; width:100px; height: 100px; flex:0 0 100px;">
-                <div class="">
-                  <h4><b>{{contributor.name}}</b></h4>
-                  <span class="text-sm">Django Developer</span>
-                  <div class="flex flex-row items-center my-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
-                            fill="#000000">
-                            <path d="M0 0h24v24H0z" fill="none" />
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                        </svg>
-                    <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
-                </div>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
-                  <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
-                </div>
-              </a>
-            {% endfor %}
-          </div>
+          {% if contributors_queryset %}
+            <div class="grid grid-row-2 grid-auto-flow-column gap-7 px-4 py-6 overflow-x-scroll">
+              {% for contributor in contributors_queryset %}
+                <a href="/portfolio/{{contributor.username}}" class="card bg-gray-100 rounded-lg flex justify-center items-center px-4 py-4 gap-6" style="width: 376px;">
+                  <img src="{{ MEDIA_URL }}{{ contributor.profile_image }}" alt="Avatar" style="border-radius:50%; width:100px; height: 100px; flex:0 0 100px;">
+                  <div class="">
+                    <h4><b>{{contributor.name}}</b></h4>
+                    <span class="text-sm">Django Developer</span>
+                    <div class="flex flex-row items-center my-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px"
+                              fill="#000000">
+                              <path d="M0 0h24v24H0z" fill="none" />
+                              <path
+                                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                          </svg>
+                      <span class="ml-2 text-sm">Dubai, United Arab Emirates</span>
+                  </div>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #B52CF2">Manager</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #00AFB1">Contributor</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="color: #5300B4">Admin</button>
+                    <button class="border-2 rounded-xl px-2 mb-1 text-sm" style="background-color: #7B61FF; color: white; border-color: #7B61FF">+3</button>
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+          {% else %}
+            <h1 class="px-4 py-6">No results found.</h1>
+          {% endif %}
         </div>
         <div class="events pb-7">
           <h1 style="color: #696969"><b>Events</b></h1>
