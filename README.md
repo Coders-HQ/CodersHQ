@@ -1,9 +1,15 @@
-<p align="center">
-    <a href="https://ai.gov.ae/codershq/">
-        <img width="500" title="coders(hq) - مقر المبرمجين" alt="Coders(hq) logo" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
-    </a>
-    <h1 align="center">Coders Headquarters</h1>
-</p>
+
+<div align="center">
+
+<a href="https://ai.gov.ae/codershq/">
+    <img width="500" title="coders(hq) - مقر المبرمجين" alt="Coders(hq) logo" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
+</a>
+
+# Coders Headquarters
+
+</div>
+
+
 
 <p align="center">
     <a href="https://github.com/pydanny/cookiecutter-django/">
@@ -61,6 +67,12 @@ to work with.
 
 We also document the tasks in [Notion](https://suwaidi.notion.site/Coders-HQ-ae1356125bdc4b36b2b5b1973d09d609) and you can have a look at the [issues](https://github.com/Coders-HQ/CodersHQ/issues) section to find out what we are working on.
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
+
 
 ## ⚙️ Quick Setup
 
@@ -73,6 +85,12 @@ Make sure you have Docker version 2+ and then do the following to build the stac
     $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 
 Follow the rest of the README for more information and use ``/admin`` to edit and create challenges.
+
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 
 ## 🧑‍💻 Getting Up and Running Locally With Docker
@@ -88,6 +106,11 @@ All of these commands assume you are in the root of your generated project.
 If you're new to Docker, please be aware that some resources are cached system-wide
 and might reappear if you generate a project multiple times with the same name.
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## Prerequisites
 
@@ -96,7 +119,11 @@ and might reappear if you generate a project multiple times with the same name.
 * Docker Compose; refer to the official documentation for the [installation guide](https://docs.docker.com/compose/install/).
 * (Windows) This repository can run on windows and was tested on [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Once you have WSL2, and a linux kernel, installed and running you need to install docker and you should be good to go. (Tested on Docker version 20.10.7, build f0df350 and Windows OS Build: 19042.1052)
 
+<div align="right">
 
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## 🏗️ Build the Stack
 
@@ -107,6 +134,11 @@ This can take a while, especially the first time you run this particular command
 
 Generally, if you want to emulate production environment use [`production.yml`](production.yml) instead. And this is true for any other actions you might need to perform: whenever a switch is required, just do it!
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## Run the Stack
 
@@ -129,6 +161,11 @@ To run in a detached (background) mode, just::
 
     $ docker-compose up -d
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## Execute Management Commands
 
@@ -140,12 +177,22 @@ As with any shell command that we wish to run in our container, this is done usi
 
 Here, ``django`` is the target service we are executing the commands against.
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## (Optionally) Designate your Docker Development Server IP
 
 
 When ``DEBUG`` is set to ``True``, the host is validated against ``['localhost', '127.0.0.1', '[::1]']``. This is adequate when running a ``virtualenv``. For Docker, in the ``config.settings.local``, add your host development server IP to ``INTERNAL_IPS`` or ``ALLOWED_HOSTS`` if the variable exists.
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 
 ## Basic Commands
@@ -217,6 +264,12 @@ With MailHog running, to view messages that are sent by your application, open y
 ### Thanks to all of our   `Stargazers` ⭐ 🔭 who are supporting CodersHQ project
 
 [![Stargazers repo roster for @Coders-HQ/CodersHQ](https://reporoster.com/stars/Coders-HQ/CodersHQ)](https://github.com/Coders-HQ/CodersHQ/stargazers)
+
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 # Contributors ✨
 
