@@ -32,6 +32,11 @@ urlpatterns = [
         TemplateView.as_view(template_name="pages/comingSoon.html"),
         name="comingSoon",
     ),
+    path(
+        "comingSoon2/",
+        TemplateView.as_view(template_name="pages/comingSoon2.html"),
+        name="comingSoon2",
+    ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
@@ -42,6 +47,7 @@ urlpatterns = [
     path("challenge/", include("codershq.challenge.urls", namespace="challenge")),
     path("companies/", include("codershq.companies.urls", namespace="companies")),
     path("events/", include("codershq.events.urls", namespace="events")),
+
     path("api/", include("codershq.api.urls", namespace="api")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
