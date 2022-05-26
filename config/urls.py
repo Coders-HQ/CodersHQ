@@ -42,11 +42,15 @@ urlpatterns = [
     # User management
     path("users/", include("codershq.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    #SSO
+    path("idp/", include("djangosaml2idp.urls")),
     # Your stuff: custom urls includes go here
     path("", include("codershq.dashboard.urls", namespace="dashboard")),
     path("challenge/", include("codershq.challenge.urls", namespace="challenge")),
     path("companies/", include("codershq.companies.urls", namespace="companies")),
     path("events/", include("codershq.events.urls", namespace="events")),
+    path("assessment/", include("codershq.assessment.urls", namespace="assessment")),
+
 
     path("api/", include("codershq.api.urls", namespace="api")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

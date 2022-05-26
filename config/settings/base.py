@@ -64,6 +64,7 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
+    'djangosaml2idp',
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -87,6 +88,7 @@ LOCAL_APPS = [
     "codershq.events.apps.EventsConfig",
     "codershq.portfolio.apps.PortfolioConfig",
     "codershq.api.apps.APIConfig",
+    "codershq.assessment.apps.AssessmentConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -272,6 +274,12 @@ LOGGING = {
             "formatter": "verbose",
         }
     },
+    'loggers': {
+        'djangosaml2idp': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 
@@ -320,7 +328,6 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # Your stuff...
 # ------------------------------------------------------------------------------
 # Provider specific settings
-
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 # bool to check if github exists
 GITHUB_CLIENT_ID = env.str("GITHUB_CLIENT_ID", "")
@@ -335,6 +342,7 @@ if GITHUB_CLIENT_ID != "":
             },
         }
     }
-
+# ------------------------------------------------------------------------------
 # slack
 SLACK_TOKEN = env.str("SLACK_TOKEN", "")
+# ------------------------------------------------------------------------------
