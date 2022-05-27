@@ -217,7 +217,7 @@ BASE_URL = 'http://codershq.ae/idp'
 SAML_IDP_CONFIG = {
     'debug' : DEBUG,
     'xmlsec_binary': get_xmlsec_binary(['/opt/local/bin', '/usr/bin/xmlsec1']),
-    'entityid': '%s/metadata' % BASE_URL,
+    'entityid': '%s/metadata/' % BASE_URL,
     'name':'CodersHQ IdP',
     'description': 'IdP to provide SSO through CodersHQ',
 
