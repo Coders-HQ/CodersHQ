@@ -234,7 +234,7 @@ SAML_IDP_CONFIG = {
                     ("http://codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
                 ],
             },
-            'name_id_format': [NAMEID_FORMAT_EMAILADDRESS],
+            'name_id_format': [NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED],
             'sign_response': True,
             'sign_assertion': True,
             'want_authn_requests_signed': True,
