@@ -64,7 +64,7 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
-    'djangosaml2idp',
+
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -76,6 +76,7 @@ THIRD_PARTY_APPS = [
     "django_celery_beat",
     "allauth.socialaccount.providers.github",
     "ckeditor",
+    'djangosaml2idp',
 ]
 
 LOCAL_APPS = [
@@ -164,6 +165,7 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+INLINECSS_CSS_LOADER = "django_inlinecss.css_loaders.StaticfilesFinderCSSLoader"
 
 # MEDIA
 # ------------------------------------------------------------------------------
