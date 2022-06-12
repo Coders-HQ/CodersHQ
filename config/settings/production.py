@@ -212,7 +212,7 @@ LOGOUT_URL = '/accounts/logout/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
-BASE_URL = 'http://codershq.ae/idp'
+BASE_URL = 'https://codershq.ae/idp'
 
 SAML_IDP_CONFIG = {
     'debug' : DEBUG,
@@ -226,12 +226,12 @@ SAML_IDP_CONFIG = {
             'name': 'Django localhost IdP',
             'endpoints': {
                 'single_sign_on_service': [
-                    ('http://codershq.ae/idp/sso/post/', saml2.BINDING_HTTP_POST),
-                    ('http://codershq.ae/idp/sso/redirect/', saml2.BINDING_HTTP_REDIRECT),
+                    ('https://codershq.ae/idp/sso/post/', saml2.BINDING_HTTP_POST),
+                    ('https://codershq.ae/idp/sso/redirect/', saml2.BINDING_HTTP_REDIRECT),
                 ],
                 'single_logout_service': [
-                    ("http://codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
-                    ("http://codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
+                    ("https://codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
+                    ("https://codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
                 ],
             },
             'name_id_format': [NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED],
