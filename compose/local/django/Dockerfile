@@ -12,6 +12,7 @@ ARG BUILD_ENVIRONMENT=local
 RUN apt-get update && apt-get install --no-install-recommends -y \
   # dependencies for building Python packages
   build-essential \
+  git \
   # psycopg2 dependencies
   libpq-dev
 
