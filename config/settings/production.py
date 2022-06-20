@@ -229,10 +229,10 @@ SAML_IDP_CONFIG = {
                     ('https://codershq.ae/idp/sso/post/', saml2.BINDING_HTTP_POST),
                     ('https://codershq.ae/idp/sso/redirect/', saml2.BINDING_HTTP_REDIRECT),
                 ],
-                'single_logout_service': [
-                    ("https://codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
-                    ("https://codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
-                ],
+                # 'single_logout_service': [
+                #     ("https://codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
+                #     ("https://codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
+                # ],
             },
             'name_id_format': [NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED],
             'sign_response': True,
