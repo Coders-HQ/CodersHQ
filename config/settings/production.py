@@ -217,7 +217,7 @@ BASE_URL = 'https://codershq.ae/idp'
 SAML_IDP_CONFIG = {
     'debug' : DEBUG,
     'xmlsec_binary': get_xmlsec_binary(['/opt/local/bin', '/usr/bin/xmlsec1']),
-    'entityid': '%s/metadata/' % BASE_URL,
+    'entityid': '%s/metadata' % BASE_URL,
     'name':'CodersHQ IdP',
     'description': 'IdP to provide SSO through CodersHQ',
 
@@ -226,8 +226,8 @@ SAML_IDP_CONFIG = {
             'name': 'Django localhost IdP',
             'endpoints': {
                 'single_sign_on_service': [
-                    ('https://codershq.ae/idp/sso/post/', saml2.BINDING_HTTP_POST),
-                    ('https://codershq.ae/idp/sso/redirect/', saml2.BINDING_HTTP_REDIRECT),
+                    ('https://codershq.ae/idp/sso/post', saml2.BINDING_HTTP_POST),
+                    ('https://codershq.ae/idp/sso/redirect', saml2.BINDING_HTTP_REDIRECT),
                 ],
                 # 'single_logout_service': [
                 #     ("https://codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
