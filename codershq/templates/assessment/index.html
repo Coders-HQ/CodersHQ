@@ -14,7 +14,7 @@
         {% if request.user.is_authenticated %}
             <p>LOGGED IN - <a href={{ logout_url }}>LOGOUT</a></p>
             {% for sp_id in known_sp_ids %}
-                <p><a href="{% url 'djangosaml2idp:saml_idp_init' %}?sp={{sp_id.entity_id|urlencode:""}}&RelayState=%2F">Perform IdP-initiated login to {{sp_id}}</a>></p>
+                <p><a href="{% url 'djangosaml2idp:saml_idp_init' %}?sp={{sp_id.entity_id|urlencode:""}}">Perform IdP-initiated login to {{sp_id}}</a>></p>
             {% endfor %}
         {% else %}
             <p>LOGGED OUT - <a href={{ login_url }}>LOGIN</a></p>
