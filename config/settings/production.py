@@ -209,8 +209,8 @@ from saml2.sigver import get_xmlsec_binary
 APPEND_SLASH = False
 LOGIN_URL = '/accounts/login/'
 LOGOUT_URL = '/accounts/logout/'
-LOGIN_REDIRECT_URL = ''
-LOGOUT_REDIRECT_URL = ''
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 BASE_URL = 'https://codershq.ae/idp'
 
