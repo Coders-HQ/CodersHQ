@@ -10,6 +10,6 @@ class GroupProcessor(BaseProcessor):
     """
     group = "ExampleGroup"
 
-    def has_access(self, request):
-        user = request.user
-        return user.is_superuser or user.is_staff or user.groups.filter(name=self.group).exists()
+#     def has_access(self, request):
+#         user = request.user
+#         return user.is_superuser or user.is_staff or user.groups.filter(name=self.group).exists()
