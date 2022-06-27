@@ -253,7 +253,7 @@ SAML_IDP_CONFIG = {
 }
 
 SAML_IDP_DJANGO_USERNAME_FIELD = 'email'
-SAML_IDP_SP_FIELD_DEFAULT_ATTRIBUTE_MAPPING = {"email": "Email", "first_name": "first_name", "last_name": "last_name", "is_staff": "is_staff"}
+SAML_IDP_SP_FIELD_DEFAULT_ATTRIBUTE_MAPPING = {"email": "Email", "first_name": "firstName", "last_name": "lastName", "is_staff": "is_staff"}
 SAML_AUTHN_SIGN_ALG = saml2.xmldsig.SIG_RSA_SHA256
 SAML_AUTHN_DIGEST_ALG = saml2.xmldsig.DIGEST_SHA256
 # ------------------------------------------------------------------------------
