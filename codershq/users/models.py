@@ -38,8 +38,10 @@ class User(AbstractUser):
     teams = models.ForeignKey("Team", on_delete=models.PROTECT, null=True, blank=True)
 
     #: First and last name do not cover name patterns around the globe
-    first_name = None  # type: ignore
-    last_name = None  # type: ignore
+    # first_name = None  # type: ignore
+    # last_name = None  # type: ignore
+    first_name =models.CharField(_("First Name"), blank=True, max_length=255)
+    last_name =models.CharField(_("Last Name"), blank=True, max_length=255)
 
     def get_absolute_url(self):
         """Get url for user's detail view.
