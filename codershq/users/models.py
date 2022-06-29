@@ -92,3 +92,4 @@ class UserTrophyType(models.Model):
 class UserTrophyRecord(models.Model):
     trophy_type = models.ForeignKey(UserTrophyType, on_delete=models.PROTECT)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+

@@ -4,6 +4,8 @@ Base settings to build other settings files upon.
 from pathlib import Path
 
 import environ
+import os
+
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 # codershq/
@@ -178,7 +180,7 @@ TEMPLATES = [
         # https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-TEMPLATES-BACKEND
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         # https://docs.djangoproject.com/en/dev/ref/settings/#dirs
-        "DIRS": [str(APPS_DIR / "templates")],
+        "DIRS": [str(APPS_DIR / "templates"),], #os.path.join(APPS_DIR, "users/templates"),],
         # https://docs.djangoproject.com/en/dev/ref/settings/#app-dirs
         "APP_DIRS": False,
         "OPTIONS": {
