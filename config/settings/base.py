@@ -333,6 +333,7 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # ------------------------------------------------------------------------------
 #django-iprestrict
 IPRESTRICT_GEOIP_ENABLED=False
+IPRESTRICT_TRUST_ALL_PROXIES=True
 
 # ------------------------------------------------------------------------------
 # Provider specific settings
