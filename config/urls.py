@@ -50,6 +50,7 @@ urlpatterns = [
     path("companies/", include("codershq.companies.urls", namespace="companies")),
     path("events/", include("codershq.events.urls", namespace="events")),
     path("assessment/", include("codershq.assessment.urls", namespace="assessment")),
+    path("iprestrict/", include('iprestrict.urls', namespace='iprestrict')),
 
 
     path("api/", include("codershq.api.urls", namespace="api")),

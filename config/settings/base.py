@@ -76,7 +76,8 @@ THIRD_PARTY_APPS = [
     "django_celery_beat",
     "allauth.socialaccount.providers.github",
     "ckeditor",
-    'djangosaml2idp',
+    "djangosaml2idp",
+    "iprestrict",
 ]
 
 LOCAL_APPS = [
@@ -328,6 +329,10 @@ INSTALLED_APPS += ["compressor"]
 STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 
 # Your stuff...
+# ------------------------------------------------------------------------------
+#django-iprestrict
+IPRESTRICT_GEOIP_ENABLED=False
+
 # ------------------------------------------------------------------------------
 # Provider specific settings
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
