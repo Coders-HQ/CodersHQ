@@ -4,6 +4,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 
 User = get_user_model()
 
@@ -46,7 +48,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        return reverse("users:detail", kwargs={"username": self.request.user.username})
+        return reverse("users:plural", kwargs={"username": self.request.user.username})
 
 
 user_redirect_view = UserRedirectView.as_view()
@@ -61,3 +63,10 @@ class UserScoringListView(ListView):
 
 
 user_scoring_list_view = UserScoringListView.as_view()
+
+
+@login_required
+def plural(request, username):
+    user = request.user
+    context = {"user": user}
+    return render(request, "account/plural.html", context)
