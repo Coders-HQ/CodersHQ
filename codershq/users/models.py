@@ -19,6 +19,9 @@ class User(AbstractUser):
 
     # personal details
     pluralSightEmail=models.CharField(_("PluralSight Email"), blank=True, max_length=255)
+    pluralSightFirstName=models.CharField(_("PluralSight First Name"), blank=True, max_length=255)
+    pluralSightLastName=models.CharField(_("PluralSight Last Name"), blank=True, max_length=255)
+
     name = models.CharField(_("Enter your name"), blank=True, max_length=255)
     bio = models.TextField(_("Bio"), blank=True, max_length=500)
     academic_qualification = models.CharField(
@@ -105,3 +108,5 @@ from django.dispatch import receiver
 def create_pluralSightEmail(sender, instance, created, **kwargs):
     if created:
         User.objects.filter(pk=instance.id).update(pluralSightEmail=str(instance.id)+"@codershq.ae")
+        User.objects.filter(pk=instance.id).update(pluralSightEmail=str(instance.id))
+        User.objects.filter(pk=instance.id).update(pluralSightEmail="CodersHQ")
