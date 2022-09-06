@@ -16,7 +16,7 @@ class UserAdmin(auth_admin.UserAdmin):
     readonly_fields =('id',)
 
     fieldsets = (
-        (None, {"fields": ("username", "password",'id')}),
+        (None, {"fields": ("username", "password",'id',"pluralSightEmail")}),
         (_("Profile Image"), {"fields": ("profile_image",)}),
         (_("Personal info"), {"fields": ("name","first_name","last_name", "email")}),
         (

@@ -2,7 +2,7 @@
 Base settings to build other settings files upon.
 """
 from pathlib import Path
-
+from datetime import timedelta
 import environ
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
@@ -65,6 +65,7 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "django.forms",
 
+
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -78,6 +79,9 @@ THIRD_PARTY_APPS = [
     "ckeditor",
     "djangosaml2idp",
     "iprestrict",
+    'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    "corsheaders",
 ]
 
 LOCAL_APPS = [
@@ -152,6 +156,8 @@ MIDDLEWARE = [
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "iprestrict.middleware.IPRestrictMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 # STATIC
@@ -334,6 +340,60 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 #django-iprestrict
 IPRESTRICT_GEOIP_ENABLED=False
 IPRESTRICT_TRUST_ALL_PROXIES=True
+
+# ------------------------------------------------------------------------------
+#django REST Framework Simple JWT
+#https://django-rest-framework-simplejwt.readthedocs.io/en/latest/index.html
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+
+    'ALGORITHM': 'HS256',
+    #'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+    'JWK_URL': None,
+    'LEEWAY': 0,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+# AUTH_USER_MODEL = "user.User"
+
+#https://github.com/adamchainz/django-cors-headers
+# CORS_ALLOWED_ORIGINS = [
+#     "https://example.com",
+#     "https://sub.example.com",
+#     "http://localhost:8080",
+#     "http://127.0.0.1:9000",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS=True
 
 # ------------------------------------------------------------------------------
 # Provider specific settings

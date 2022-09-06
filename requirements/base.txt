@@ -25,6 +25,9 @@ crispy-tailwind==0.5.0 # https://www.accordbox.com/blog/render-django-form-with-
 # djangosaml2idp==0.7.2 # https://djangosaml2idp.readthedocs.io/en/latest/index.html
 djangosaml2idp@git+https://github.com/Musab0/djangosaml2idp.git@db208dc
 django-iprestrict-redux==1.9.0 #https://django-iprestrict-redux.readthedocs.io/en/latest/
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
 
 # Project
 # ------------------------------------------------------------------------------

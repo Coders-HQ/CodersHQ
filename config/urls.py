@@ -6,6 +6,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path(
@@ -52,6 +53,7 @@ urlpatterns = [
     path("assessment/", include("codershq.assessment.urls", namespace="assessment")),
     path("iprestrict/", include('iprestrict.urls', namespace='iprestrict')),
 
+    path('api-token-auth', views.obtain_auth_token),
 
     path("api/", include("codershq.api.urls", namespace="api")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
