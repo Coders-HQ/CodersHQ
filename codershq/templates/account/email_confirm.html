@@ -11,17 +11,20 @@
 
 <div class="card">
     <div class="card-body">
-        <h1>{% trans "Confirm E-mail Address" %}</h1>
 
         {% if confirmation %}
 
         {% user_display confirmation.email_address.user as user_display %}
 
-        <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an e-mail address for user {{ user_display }}.{% endblocktrans %}</p>
+
+            <p>{% blocktrans with confirmation.email_address.email as email %}Please confirm your email <a href="mailto:{{ email }}">{{ email }}</a>.{% endblocktrans %}</p>
 
         <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
         {% csrf_token %}
-            <button class="btn btn-primary" type="submit">{% trans 'Confirm' %}</button>
+        
+        <button type="submit" class="text-gray-900 mt-4 w-full bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-md text-sm px-5 py-2 mr-2 -mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+            Confirm Email   
+          </button>
         </form>
 
         {% else %}
