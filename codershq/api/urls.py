@@ -4,7 +4,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from . import views
-from api.views import RegisterView, SSOView
+from .views import RegisterView, SSOView
 
 
 app_name = "api"
