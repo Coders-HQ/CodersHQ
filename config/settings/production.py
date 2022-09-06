@@ -253,7 +253,7 @@ SAML_IDP_CONFIG = {
 }
 
 SAML_IDP_DJANGO_USERNAME_FIELD = 'email'
-SAML_IDP_SP_FIELD_DEFAULT_ATTRIBUTE_MAPPING = {"email": "pluralSightEmail", "first_name": "pluralSightFirstName", "last_name": "pluralSightLastName"} #first field is from the user model, second field is the SAML attribute name
+SAML_IDP_SP_FIELD_DEFAULT_ATTRIBUTE_MAPPING = {"email": "pluralSightEmail", "first_name": "firstName", "last_name": "lastName"} #first field is from the user model, second field is the SAML attribute name
 SAML_AUTHN_SIGN_ALG = saml2.xmldsig.SIG_RSA_SHA256
 SAML_AUTHN_DIGEST_ALG = saml2.xmldsig.DIGEST_SHA256
 # ------------------------------------------------------------------------------
