@@ -7,8 +7,8 @@ news_url = "https://www.reddit.com/r/programming/.json"
 def index(request):
     if not request.user.is_authenticated:
         return redirect("/accounts/login/")
-
-    return render(request, "pages/dashboard.html")
+    return redirect("/accounts/login/")
+    # return render(request, "pages/dashboard.html")
 
 
 def landing(request):
