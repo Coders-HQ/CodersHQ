@@ -6,6 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from djangosaml2idp.models import ServiceProvider
 
 User = get_user_model()
 
