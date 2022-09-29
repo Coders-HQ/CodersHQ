@@ -1,16 +1,51 @@
-<p align="center">
- <img width="500" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
-<h1 align="center">Coders Headquarters</h1>
-</p>
+
+
+<div align="center">
+
+<a href="https://ai.gov.ae/codershq/">
+    <img width="500" title="coders(hq) - مقر المبرمجين" alt="Coders(hq) logo" src="https://cdn-az.allevents.in/events5/banners/2ef3aa159dfbd7f5fe3707f4d7ef64ae30b70e298136f8ce3123990f0bd18720-rimg-w1000-h349-gmir.png?v=1644048442">
+</a>
+
+# Coders Headquarters
+
+</div>
+
+
 
 <p align="center">
-<a href="https://github.com/pydanny/cookiecutter-django/"><img width="200" src="https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter"></a>
-<a href="https://github.com/ambv/black"><img width="100" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
-<a href="https://opensource.org/licenses/MIT"><img width="80" src="https://img.shields.io/badge/License-MIT-red.svg"></a>
-<a href="https://discord.gg/CPQHAZrg8b0"><img width="80" src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"></a>
-<a href="https://stackshare.io/codershq/codershq"><img width="80" src="http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat"></a>
+    <a href="https://github.com/pydanny/cookiecutter-django/">
+        <img width="200" alt="Cookiecutter Django Badge" src="https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg?logo=cookiecutter">
+    </a>
+    <a href="https://github.com/ambv/black">
+        <img width="100" src="https://img.shields.io/badge/code%20style-black-000000.svg">
+    </a>
+    <a href="https://opensource.org/licenses/MIT">
+        <img width="80" alt="MIT License Badge" src="https://img.shields.io/badge/License-MIT-red.svg">
+    </a>
+    <a href="https://discord.gg/CPQHAZrg8b0">
+        <img width="80" alt="Discord Server Badge" src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"> 
+    </a>
 </p>
 
+# Index
+
+- [Introduction](#wave-introduction)
+- [The Docs](#📄-the-docs)
+- [Quick Setup](#⚙️-quick-setup)
+- [Getting up and running locally with Docker](#🧑‍💻-getting-up-and-running-locally-with-docker)
+- [Prerequisites](#prerequisites)
+- [Build the Stack](#🏗️-build-the-stack)
+- [Run the Stack](#run-the-stack)
+- [Execute Management Commands](#execute-management-commands)
+- [(Optionally) Designate your Docker Development Server IP](#optionally-designate-your-docker-development-server-ip)
+- [Basic Commands](#basic-commands)
+  - [Setting up your users](#setting-up-your-users)
+  - [Type Checks](#type-checks)
+  - [Test Coverage](#test-coverage)
+  - [Celery](#celery)
+  - [Email Server](#email-server)
+- [Stargazers](#stargazers-⭐)
+- [Contributors](#contributors-✨)
 
 
 
@@ -33,7 +68,13 @@ Have a look at the [docs](https://coders-hq.github.io/CodersHQ), we document eve
 We plan to migrate from the docs to something more established, like readthedocs, once we have enough material
 to work with.
 
-We also document the tasks in [notion](https://suwaidi.notion.site/Coders-HQ-ae1356125bdc4b36b2b5b1973d09d609) and you can have a look at the [issues](https://github.com/Coders-HQ/CodersHQ/issues) section to find out what we are working on.
+We also document the tasks in [Notion](https://suwaidi.notion.site/Coders-HQ-ae1356125bdc4b36b2b5b1973d09d609) and you can have a look at the [issues](https://github.com/Coders-HQ/CodersHQ/issues) section to find out what we are working on.
+
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 
 ## ⚙️ Quick Setup
@@ -47,6 +88,12 @@ Make sure you have Docker version 2+ and then do the following to build the stac
     $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 
 Follow the rest of the README for more information and use ``/admin`` to edit and create challenges.
+
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 
 ## 🧑‍💻 Getting Up and Running Locally With Docker
@@ -62,6 +109,11 @@ All of these commands assume you are in the root of your generated project.
 If you're new to Docker, please be aware that some resources are cached system-wide
 and might reappear if you generate a project multiple times with the same name.
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## Prerequisites
 
@@ -70,7 +122,11 @@ and might reappear if you generate a project multiple times with the same name.
 * Docker Compose; refer to the official documentation for the [installation guide](https://docs.docker.com/compose/install/).
 * (Windows) This repository can run on windows and was tested on [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10). Once you have WSL2, and a linux kernel, installed and running you need to install docker and you should be good to go. (Tested on Docker version 20.10.7, build f0df350 and Windows OS Build: 19042.1052)
 
+<div align="right">
 
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## 🏗️ Build the Stack
 
@@ -79,8 +135,13 @@ This can take a while, especially the first time you run this particular command
 
     $ docker-compose -f local.yml build
 
-Generally, if you want to emulate production environment use ``production.yml`` instead. And this is true for any other actions you might need to perform: whenever a switch is required, just do it!
+Generally, if you want to emulate production environment use [`production.yml`](production.yml) instead. And this is true for any other actions you might need to perform: whenever a switch is required, just do it!
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## Run the Stack
 
@@ -91,7 +152,7 @@ Open a terminal at the project root and run the following for local development:
 
     $ docker-compose -f local.yml up
 
-You can also set the environment variable ``COMPOSE_FILE`` pointing to ``local.yml`` like this::
+You can also set the environment variable ``COMPOSE_FILE`` pointing to [`local.yml`](local.yml) like this::
 
     $ export COMPOSE_FILE=local.yml
 
@@ -103,6 +164,11 @@ To run in a detached (background) mode, just::
 
     $ docker-compose up -d
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## Execute Management Commands
 
@@ -114,12 +180,22 @@ As with any shell command that we wish to run in our container, this is done usi
 
 Here, ``django`` is the target service we are executing the commands against.
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 ## (Optionally) Designate your Docker Development Server IP
 
 
 When ``DEBUG`` is set to ``True``, the host is validated against ``['localhost', '127.0.0.1', '[::1]']``. This is adequate when running a ``virtualenv``. For Docker, in the ``config.settings.local``, add your host development server IP to ``INTERNAL_IPS`` or ``ALLOWED_HOSTS`` if the variable exists.
 
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 
 ## Basic Commands
@@ -173,7 +249,7 @@ To run a celery worker:
     celery -A config.celery_app worker -l info
 ```
 
-Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with *manage.py*, you should be right.
+Please note: For Celery's import magic to work, it is important *where* the celery commands are run. If you are in the same folder with [*manage.py*](manage.py), you should be right.
 
 
 ### Email Server
@@ -191,6 +267,12 @@ With MailHog running, to view messages that are sent by your application, open y
 ### Thanks to all of our   `Stargazers` ⭐ 🔭 who are supporting CodersHQ project
 
 [![Stargazers repo roster for @Coders-HQ/CodersHQ](https://reporoster.com/stars/Coders-HQ/CodersHQ)](https://github.com/Coders-HQ/CodersHQ/stargazers)
+
+<div align="right">
+
+[Back To Top ↥](#coders-headquarters)
+
+</div>
 
 # Contributors ✨
 
