@@ -288,3 +288,6 @@ vendors.js
 
 # Prettier Ignore
 .prettierignore
+
+#certificates 
+certificates/production/*

@@ -6,6 +6,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path(
@@ -42,11 +43,17 @@ urlpatterns = [
     # User management
     path("users/", include("codershq.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
+    #SSO
+    path("idp/", include("djangosaml2idp.urls")),
     # Your stuff: custom urls includes go here
     path("", include("codershq.dashboard.urls", namespace="dashboard")),
     path("challenge/", include("codershq.challenge.urls", namespace="challenge")),
     path("companies/", include("codershq.companies.urls", namespace="companies")),
     path("events/", include("codershq.events.urls", namespace="events")),
+    path("assessment/", include("codershq.assessment.urls", namespace="assessment")),
+    path("iprestrict/", include('iprestrict.urls', namespace='iprestrict')),
+
+    path('api-token-auth', views.obtain_auth_token),
 
     path("api/", include("codershq.api.urls", namespace="api")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

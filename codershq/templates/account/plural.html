@@ -1,0 +1,25 @@
+{% extends "account/base.html" %}
+
+{% load i18n static %}
+
+{% block head_title %}{% trans "Assessment" %}{% endblock %}
+
+{% block inner %}
+<div class="card">
+    <div class="card-body">
+        <img src="{% static 'images/svgs/SuccessSVG.svg' %}" class="w-16 h-16 mx-auto" />
+        <h2 class="mt-6 mb-4 text-3xl tracking-tight font-bold text-center text-gray-900">
+            Successfully Logged In
+          </h2>
+          <div class="mt-10">
+        <p class="text-gray-500">Thank you for logging into CodersHQ. If you would like to logout please <a href="/accounts/logout/" class="text-blue-500"> click here</a></p>
+        <p class="text-gray-500 pt-5">You will now be routed to our partner's website and asked complete a series of assessments. Please click on the icon below to start </p>
+    </div>
+    <!-- TODO: make the below section more dynamic -->
+        <a class=" h-full " href="{% url 'djangosaml2idp:saml_idp_init' %}?sp=www.pluralsight.com&RelayState=https://sso.pluralsight.com/roleiq/roles/6b8e3a69-ac13-4f99-91ed-224a001af7fa">
+            <img src="{% static 'images/pluralsight/PS_logo.png' %}" class="mt-10 w-48 mx-auto "/>
+        </a>
+    </div>
+</div>
+{% endblock %}
+

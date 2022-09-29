@@ -2,7 +2,7 @@
 Base settings to build other settings files upon.
 """
 from pathlib import Path
-
+from datetime import timedelta
 import environ
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
@@ -64,6 +64,8 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
+
+
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -75,6 +77,11 @@ THIRD_PARTY_APPS = [
     "django_celery_beat",
     "allauth.socialaccount.providers.github",
     "ckeditor",
+    "djangosaml2idp",
+    "iprestrict",
+    'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    "corsheaders",
 ]
 
 LOCAL_APPS = [
@@ -87,6 +94,7 @@ LOCAL_APPS = [
     "codershq.events.apps.EventsConfig",
     "codershq.portfolio.apps.PortfolioConfig",
     "codershq.api.apps.APIConfig",
+    "codershq.assessment.apps.AssessmentConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -108,11 +116,11 @@ AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
 
 # this is a temporary redirect
-# LOGIN_REDIRECT_URL = "users:redirect"
-LOGIN_REDIRECT_URL = "dashboard:home"
+LOGIN_REDIRECT_URL = "users:redirect"
+# LOGIN_REDIRECT_URL = "dashboard:home"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
-
+LOGOUT_URL= "account_logout"
 # PASSWORDS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers
@@ -147,6 +155,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "iprestrict.middleware.IPRestrictMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
 ]
 
 # STATIC
@@ -162,6 +173,7 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
+INLINECSS_CSS_LOADER = "django_inlinecss.css_loaders.StaticfilesFinderCSSLoader"
 
 # MEDIA
 # ------------------------------------------------------------------------------
@@ -272,6 +284,12 @@ LOGGING = {
             "formatter": "verbose",
         }
     },
+    'loggers': {
+        'djangosaml2idp': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
 
@@ -319,8 +337,66 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-# Provider specific settings
+#django-iprestrict
+IPRESTRICT_GEOIP_ENABLED=False
+IPRESTRICT_TRUST_ALL_PROXIES=True
 
+# ------------------------------------------------------------------------------
+#django REST Framework Simple JWT
+#https://django-rest-framework-simplejwt.readthedocs.io/en/latest/index.html
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+
+    'ALGORITHM': 'HS256',
+    #'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+    'JWK_URL': None,
+    'LEEWAY': 0,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+    'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
+# AUTH_USER_MODEL = "user.User"
+
+#https://github.com/adamchainz/django-cors-headers
+# CORS_ALLOWED_ORIGINS = [
+#     "https://example.com",
+#     "https://sub.example.com",
+#     "http://localhost:8080",
+#     "http://127.0.0.1:9000",
+# ]
+
+CORS_ALLOW_ALL_ORIGINS=True
+
+# ------------------------------------------------------------------------------
+# Provider specific settings
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 # bool to check if github exists
 GITHUB_CLIENT_ID = env.str("GITHUB_CLIENT_ID", "")
@@ -335,6 +411,7 @@ if GITHUB_CLIENT_ID != "":
             },
         }
     }
-
+# ------------------------------------------------------------------------------
 # slack
 SLACK_TOKEN = env.str("SLACK_TOKEN", "")
+# ------------------------------------------------------------------------------

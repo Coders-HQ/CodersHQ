@@ -100,14 +100,14 @@ TEMPLATES[-1]["OPTIONS"]["loaders"] = [  # type: ignore[index] # noqa F405
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
 DEFAULT_FROM_EMAIL = env(
     "DJANGO_DEFAULT_FROM_EMAIL",
-    default="Coders Headquarters <noreply@codershq.ae>",
+    default="CodersHQ <admin@codershq.ae>",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#server-email
 SERVER_EMAIL = env("DJANGO_SERVER_EMAIL", default=DEFAULT_FROM_EMAIL)
 # https://docs.djangoproject.com/en/dev/ref/settings/#email-subject-prefix
 EMAIL_SUBJECT_PREFIX = env(
     "DJANGO_EMAIL_SUBJECT_PREFIX",
-    default="[Coders Headquarters]",
+    default="",
 )
 
 # ADMIN
@@ -195,4 +195,62 @@ LOGGING = {
 }
 
 # Your stuff...
+# ------------------------------------------------------------------------------
+# pySAML2 IDP
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 60 * 60 *2 # 2 hours
+
+
+# SAML IDP
+import saml2
+from saml2.saml import NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED
+from saml2.sigver import get_xmlsec_binary
+
+APPEND_SLASH = False
+
+
+BASE_URL = 'https://codershq.ae/idp'
+
+SAML_IDP_CONFIG = {
+    'debug' : DEBUG,
+    'xmlsec_binary': get_xmlsec_binary(['/opt/local/bin', '/usr/bin/xmlsec1']),
+    'entityid': '%s/metadata' % BASE_URL,
+    'name':'CodersHQ IdP',
+    'description': 'IdP to provide SSO through CodersHQ',
+
+    'service': {
+        'idp': {
+            'name': 'Django localhost IdP',
+            'endpoints': {
+                'single_sign_on_service': [
+                    ('https://codershq.ae/idp/sso/post', saml2.BINDING_HTTP_POST),
+                    ('https://codershq.ae/idp/sso/redirect', saml2.BINDING_HTTP_REDIRECT),
+                ],
+                # 'single_logout_service': [
+                #     ("https://codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
+                #     ("https://codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
+                # ],
+            },
+            'name_id_format': [NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED],
+            'sign_response': True,
+            'sign_assertion': True,
+            'want_authn_requests_signed': True,
+        },
+    },
+
+    # Signing
+    'key_file': str(ROOT_DIR /'certificates/production/private.key'),
+    'cert_file': str(ROOT_DIR /'certificates/production/public.cert'),
+    # Encryption
+    'encryption_keypairs': [{
+        'key_file': str(ROOT_DIR /'certificates/production/private.key'),
+        'cert_file': str(ROOT_DIR / 'certificates/production/public.cert'),
+    }],
+    'valid_for': 365 * 24,
+}
+
+SAML_IDP_DJANGO_USERNAME_FIELD = 'email'
+SAML_IDP_SP_FIELD_DEFAULT_ATTRIBUTE_MAPPING = {"pluralSightEmail": "email", "pluralSightFirstName": "firstName", "pluralSightLastName": "lastName"} #first field is from the user model, second field is the SAML attribute name
+SAML_AUTHN_SIGN_ALG = saml2.xmldsig.SIG_RSA_SHA256
+SAML_AUTHN_DIGEST_ALG = saml2.xmldsig.DIGEST_SHA256
 # ------------------------------------------------------------------------------

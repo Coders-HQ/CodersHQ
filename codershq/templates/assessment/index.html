@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<header class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between">
+        <div class="flex-1 min-w-0">
+            <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">Assessment</h2>
+        </div>
+    </div>
+  </header>
+<main>
+    <div class="max-w-7xl mx-auto py-6 md:px-6 lg:px-8">
+        <p>-- @ Identity Provider --</p>
+        {% if request.user.is_authenticated %}
+            <p>LOGGED IN - <a href={{ logout_url }}>LOGOUT</a></p>
+            {% for sp_id in known_sp_ids %}
+                <p><a href="{% url 'djangosaml2idp:saml_idp_init' %}?sp={{sp_id.entity_id|urlencode:""}}">Perform IdP-initiated login to {{sp_id}}</a>></p>
+            {% endfor %}
+        {% else %}
+            <p>LOGGED OUT - <a href={{ login_url }}>LOGIN</a></p>
+        {% endif %}
+    </div>
+</main>
+
+
+{% endblock content %}

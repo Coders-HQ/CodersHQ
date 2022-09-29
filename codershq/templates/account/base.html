@@ -4,22 +4,37 @@
 {% block title %}{% block head_title %}{% endblock head_title %}{% endblock title %}
 
 {% block content %}
-<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md w-full space-y-8">
-      <div>
-        <img class="mx-auto h-12 w-auto" src="{% static 'images/logo/CHQ-Invert.png' %}" alt="Workflow">
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            {% block large_text %}
-            {% endblock large_text %}
-        </h2>
+  
+
+<div class="flex">
+  <div class="lg:w-1/3 w-screen h-screen overflow-auto">
+   
+
+    <div class="mx-auto object-center h-full">
+      <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="lg:max-w-xs max-w-md w-full space-y-8 md:px-0 px-2">
+
+          {% block header %}
+
+          {% endblock header %}
+
+
+   
+       
+          
+          {% block inner %}{% endblock %}
+
+
+
+        </div>
       </div>
-
-      {% block inner %}{% endblock %}
-
     </div>
+
+  </div>
+  <div class="lg:w-2/3 min-h-screen hidden lg:block">
+    <img class="object-cover w-full h-screen " src="https://ai.gov.ae/wp-content/uploads/2022/06/AI-CAMP4-Cover2.jpg" />
+  </div>
 </div>
-
-
 
 
 {% endblock %}

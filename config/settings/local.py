@@ -73,3 +73,61 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 CELERY_TASK_EAGER_PROPAGATES = True
 # Your stuff...
 # ------------------------------------------------------------------------------
+# pySAML2 IDP
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 60 * 60 *2 # 2 hours
+
+
+# SAML IDP
+import saml2
+from saml2.saml import NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED
+from saml2.sigver import get_xmlsec_binary
+
+APPEND_SLASH = False
+
+BASE_URL = 'http://localhost:8000/idp'
+
+SAML_IDP_CONFIG = {
+    'debug' : DEBUG,
+    'xmlsec_binary': get_xmlsec_binary(['/opt/local/bin', '/usr/bin/xmlsec1']),
+    'entityid': '%s/metadata' % BASE_URL,
+    'name':'CodersHQ IdP',
+    'description': 'IdP to provide SSO through CodersHQ',
+
+    'service': {
+        'idp': {
+            'name': 'Django localhost IdP',
+            'endpoints': {
+                'single_sign_on_service': [
+                    ('http://localhost:8000/idp/sso/post/', saml2.BINDING_HTTP_POST),
+                    ('http://localhost:8000/idp/sso/redirect/', saml2.BINDING_HTTP_REDIRECT),
+                ],
+                'single_logout_service': [
+                    ("http://localhost:8000/idp/slo/post/", saml2.BINDING_HTTP_POST),
+                    ("http://localhost:8000/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
+                ],
+            },
+            'name_id_format': [NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED],
+            'sign_response': True,
+            'sign_assertion': True,
+            'want_authn_requests_signed': True,
+        },
+    },
+
+    # Signing
+    'key_file': str(ROOT_DIR /'certificates/local/private.key'),
+    'cert_file': str(ROOT_DIR /'certificates/local/public.cert'),
+    # Encryption
+    'encryption_keypairs': [{
+        'key_file': str(ROOT_DIR /'certificates/local/private.key'),
+        'cert_file': str(ROOT_DIR / 'certificates/local/public.cert'),
+    }],
+    'valid_for': 365 * 24,
+}
+
+SAML_IDP_DJANGO_USERNAME_FIELD = 'email'
+SAML_IDP_SP_FIELD_DEFAULT_ATTRIBUTE_MAPPING = {"email": "email", "first_name": "first_name", "last_name": "last_name", "is_staff": "is_staff"}
+SAML_AUTHN_SIGN_ALG = saml2.xmldsig.SIG_RSA_SHA256
+SAML_AUTHN_DIGEST_ALG = saml2.xmldsig.DIGEST_SHA256
+
+# ------------------------------------------------------------------------------
