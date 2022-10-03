@@ -17,3 +17,4 @@ class IndexView(TemplateView):
                 "known_sp_ids": [sp for sp in ServiceProvider.objects.filter(active=True)],
             })
         return context
+

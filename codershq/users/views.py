@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from djangosaml2idp.models import ServiceProvider
+from .forms import PluralPasswordForm
 
 User = get_user_model()
 
@@ -68,6 +68,73 @@ user_scoring_list_view = UserScoringListView.as_view()
 
 @login_required
 def plural(request, username):
-    user = request.user
-    context = {"user": user}
-    return render(request, "account/plural.html", context)
+
+    # if form is submitted
+    if request.method == 'POST':
+        password_form = PluralPasswordForm(request.POST)
+        home_context = {
+            "form": password_form
+        }
+        if 'password' in request.session:
+            if password_form.is_valid():
+                password = password_form.cleaned_data['password']
+                actual_pw = "test_password"
+                if (actual_pw == password):
+                    request.session['password'] = 'valid'
+                    user = request.user
+                    context = {"user": user}
+                    return render(request, "assessment/plural.html", context)
+            if request.session['password'] != 'valid':
+                return render(request, "assessment/plural_password.html", home_context)
+            else:
+                # session has invalid password
+                return render(request, "assessment/plural_password.html", home_context)
+        else:
+            # set session password as invalid
+            request.session['password'] = 'invalid'
+            return render(request, "assessment/plural_password.html", home_context)
+
+    if request.method == 'GET':
+        if 'password' in request.session:
+            if request.session['password'] == 'valid':
+                user = request.user
+                context = {"user": user}
+                return render(request, "assessment/plural.html", context)
+
+    password_form = PluralPasswordForm()
+    home_context = {
+        "form": password_form
+    }
+    return render(request, "assessment/plural_password.html", home_context)
+
+
+@login_required
+def plural_password(request):
+    # print("here 1")
+
+    # password_form = PluralPasswordForm(request.POST)
+
+    # request.session['password'] = 'invalid'
+
+    # # if (request.method == 'POST'):
+    # #     if password_form.is_valid():
+    # #         password = password_form.cleaned_data['password']
+
+    # #         try:
+    # #             # get the actual password info from the database
+    # #             actual_pw = "test_password"
+    # #             if (actual_pw == password):
+    # #                 request.session['password'] = 'valid'
+    # #                 return redirect('users:plural')
+    # #             else:
+    # #                 return redirect('users:plural_password')
+    # #         except:
+    # #             # handle exceptions here
+    # #             print("error here")
+
+    # home_context = {
+    # "form": password_form
+    # }
+    # print("here 2")
+
+    return render(request, "assessment/plural_password.html")

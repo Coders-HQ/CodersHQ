@@ -78,7 +78,6 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount.providers.github",
     "ckeditor",
     "djangosaml2idp",
-    "iprestrict",
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
@@ -155,7 +154,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.common.BrokenLinkEmailsMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "iprestrict.middleware.IPRestrictMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
 ]
@@ -337,9 +335,6 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 
 # Your stuff...
 # ------------------------------------------------------------------------------
-#django-iprestrict
-IPRESTRICT_GEOIP_ENABLED=False
-IPRESTRICT_TRUST_ALL_PROXIES=True
 
 # ------------------------------------------------------------------------------
 #django REST Framework Simple JWT
