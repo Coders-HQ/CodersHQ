@@ -5,7 +5,7 @@ from codershq.users.views import (
     user_redirect_view,
     user_scoring_list_view,
     user_update_view,
-    plural,
+    plural
 )
 
 app_name = "users"
