@@ -22,3 +22,7 @@ GITHUB_CLIENT_SECRET=9d30019c987c86e8edd4f33293eaf927ec228231
 # SLACK
 # ------------------------------------------------------------------------------
 SLACK_TOKEN=xoxb-1835271736544-1830161031810-VovHkwU9mK3x8quSPkeG01iO
+
+# ASSESSMENT
+# ------------------------------------------------------------------------------
+ASSESSMENT_PASSWORD=test_password

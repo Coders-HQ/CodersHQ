@@ -5,8 +5,9 @@ from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .forms import PluralPasswordForm
+import os
 
 User = get_user_model()
 
@@ -78,7 +79,7 @@ def plural(request, username):
         if 'password' in request.session:
             if password_form.is_valid():
                 password = password_form.cleaned_data['password']
-                actual_pw = "test_password"
+                actual_pw = os.getenv("ASSESSMENT_PASSWORD", default=None)
                 if (actual_pw == password):
                     request.session['password'] = 'valid'
                     user = request.user
@@ -106,35 +107,3 @@ def plural(request, username):
         "form": password_form
     }
     return render(request, "assessment/plural_password.html", home_context)
-
-
-@login_required
-def plural_password(request):
-    # print("here 1")
-
-    # password_form = PluralPasswordForm(request.POST)
-
-    # request.session['password'] = 'invalid'
-
-    # # if (request.method == 'POST'):
-    # #     if password_form.is_valid():
-    # #         password = password_form.cleaned_data['password']
-
-    # #         try:
-    # #             # get the actual password info from the database
-    # #             actual_pw = "test_password"
-    # #             if (actual_pw == password):
-    # #                 request.session['password'] = 'valid'
-    # #                 return redirect('users:plural')
-    # #             else:
-    # #                 return redirect('users:plural_password')
-    # #         except:
-    # #             # handle exceptions here
-    # #             print("error here")
-
-    # home_context = {
-    # "form": password_form
-    # }
-    # print("here 2")
-
-    return render(request, "assessment/plural_password.html")
