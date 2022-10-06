@@ -14,24 +14,9 @@ urlpatterns = [
         RedirectView.as_view(url=staticfiles_storage.url("favicon.ico")),
     ),
     path(
-        "dashboard/",
-        TemplateView.as_view(template_name="pages/dashboard.html"),
-        name="about",
-    ),
-    path(
         "construction/",
         TemplateView.as_view(template_name="pages/underConstruction.html"),
         name="construction",
-    ),
-    path(
-        "comingSoon/",
-        TemplateView.as_view(template_name="pages/comingSoon.html"),
-        name="comingSoon",
-    ),
-    path(
-        "comingSoon2/",
-        TemplateView.as_view(template_name="pages/comingSoon2.html"),
-        name="comingSoon2",
     ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
