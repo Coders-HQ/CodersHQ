@@ -37,27 +37,6 @@ services:
     env_file:
       - ./.envs/.local/.postgres
 
-  docs:
-      container_name: docs
-      image: peaceiris/mdbook:v0.4.12            # Minimum image
-      stdin_open: true
-      tty: true
-      env_file:
-        - ./.envs/.local/.django
-      ports:
-        - 7001:3000
-        - 7002:3001
-      volumes:
-        # - ${PWD}:/book
-        - ./docs:/book:z
-        - ./config:/app/config:z
-        - ./codershq:/app/codershq:z
-      command:
-        - serve
-        - --hostname
-        - '0.0.0.0'
-
-
   mailhog:
     image: mailhog/mailhog:v1.0.0
     container_name: mailhog
@@ -101,22 +80,3 @@ services:
     ports:
       - "5555:5555"
     command: /start-flower
-
-  node:
-    build:
-      context: .
-      dockerfile: ./compose/local/node/Dockerfile
-    image: codershq_local_node
-    container_name: node
-    platform: linux/amd64
-    depends_on:
-      - django
-    volumes:
-      - .:/app:z
-      # http://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html
-      - /app/node_modules
-    command: npm run dev
-    ports:
-      - "3000:3000"
-      # Expose browsersync UI: https://www.browsersync.io/docs/options/#option-ui
-      - "3001:3001"

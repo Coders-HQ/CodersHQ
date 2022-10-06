@@ -87,12 +87,7 @@ LOCAL_APPS = [
     # "codershq.users",
     # Your stuff: custom apps go here
     "codershq.users.apps.UsersConfig",
-    "codershq.challenge.apps.ChallengeConfig",
-    "codershq.companies.apps.CompaniesConfig",
-    "codershq.dashboard.apps.DashboardConfig",
-    "codershq.events.apps.EventsConfig",
     "codershq.portfolio.apps.PortfolioConfig",
-    "codershq.api.apps.APIConfig",
     "codershq.assessment.apps.AssessmentConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
