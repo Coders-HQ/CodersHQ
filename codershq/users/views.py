@@ -50,7 +50,7 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        return reverse("users:plural", kwargs={"username": self.request.user.username})
+        return reverse("portfolio:form")
 
 
 user_redirect_view = UserRedirectView.as_view()

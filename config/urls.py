@@ -51,6 +51,7 @@ urlpatterns = [
     path("companies/", include("codershq.companies.urls", namespace="companies")),
     path("events/", include("codershq.events.urls", namespace="events")),
     path("assessment/", include("codershq.assessment.urls", namespace="assessment")),
+    path("portfolio/", include("codershq.portfolio.urls", namespace="portfolio")),
 
     path('api-token-auth', views.obtain_auth_token),
 
