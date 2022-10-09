@@ -1,0 +1,433 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- content -->
+<div class="ml-64 flex-1 bg-gray-50">
+  <header class="header px-4 my-4">
+    <form autocomplete="off" class="grid grid-cols-2-search w-full px-4 pt-2 sm:text-sm" method="GET" action="{% url 'search:search' %}">
+      <select id="mySelect" class="mySelect bg-gray-100 rounded-l-lg border-gray-200" name="search_select" value="{{search_select}}" onchange="showFilters()">
+        {% if search_select == "Contributors" %}
+        <option value="All" class="py-2">All</option>
+        <option value="Contributors" selected>Contributors</option>
+        <option value="Events">Events</option>
+        {% elif search_select == "Events" %}
+        <option value="All">All</option>
+        <option value="Contributors">Contributors</option>
+        <option value="Events" selected>Events</option>
+        {% else %}
+        <option value="All">All</option>
+        <option value="Contributors">Contributors</option>
+        <option value="Events">Events</option>
+        {% endif %}
+      </select>
+      <input name="search" class="myInput bg-gray-50 text-gray-500 rounded-r-lg border-gray-200" type="search" placeholder="Search" value={{search}}>
+      <div style="height:50px;"></div>
+      <div id="showFilters">
+        {% if search_select == 'Contributors' %}
+          <div class="flex justify-start pt-2">
+            <div class="flex justify-between">
+              <div id="dropdown" class="dropdown px-2">
+                <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
+                <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+                  <div>
+                    <div class="flex justify-between pb-2">
+                      <span class="text-sm" ><b>Skills</b></span>
+                      <button type="button" class="text-sm" onclick="clearr('dropdown')">Clear</button>
+                    </div>
+                    <input id="skills" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
+                  </div>
+                  <div id="input-selected" class="px-2 pb-2">
+                  </div>
+                  <div id="not-selected" class="not-selected border-t px-2 pb-2">
+                    <label class="checkbox-container">Figma
+                      <input type="checkbox" id="skill1" name="skill" value="Figma" class="px-1" onchange="move('skill1')">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">HTML
+                      <input type="checkbox" id="skill2" name="skill" value="HTML" class="px-1" onchange="move('skill2')">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Django
+                      <input type="checkbox" id="skill3" name="skill" value="Django" class="px-1" onchange="move('skill3')">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Laravel
+                      <input type="checkbox" id="skill4" name="skill" value="Laravel" class="px-1" onchange="move('skill4')">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Python
+                      <input type="checkbox" id="skill5" name="skill" value="Python" class="px-1" onchange="move('skill5')">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div id="dropdown2" class="dropdown2 px-2">
+                <button type="button" onclick="myFunction2()" id="dropbtn2" class="dropbtn2 rounded-lg px-2 py-2">University <i class="arrow down"></i></button>
+                <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+                  <div>
+                    <div class="flex justify-between pb-2">
+                      <span class="text-sm" ><b>University</b></span>
+                      <button type="button" class="text-sm" onclick="clearr('dropdown2')">Clear</button>
+                    </div>
+                    <input id="unis" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
+                  </div>
+                  <div id="input-selected-uni" class="px-2 pb-2">
+                  </div>
+                  <div id="not-selected-uni" class="not-selected-uni border-t px-2 pb-2">
+                    <label class="checkbox-container">UOWD
+                      <input type="checkbox" id="uni1" name="uni" value="UOWD" class="px-1" onchange="moveUni('uni1')">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Heriot-Watt University
+                      <input type="checkbox" id="uni2" name="uni" value="Heriot-Watt University" class="px-1" onchange="moveUni('uni2')">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Middlesex University
+                      <input type="checkbox" id="uni3" name="uni" value="Middlesex University" class="px-1" onchange="moveUni('uni3')">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">AUD
+                      <input type="checkbox" id="uni4" name="uni" value="AUD" class="px-1" onchange="moveUni('uni4')">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">Amity University
+                      <input type="checkbox" id="uni5" name="uni" value="Amity University" class="px-1" onchange="moveUni('uni5')">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      <input type="submit" class="hidden" value="submit" />
+    </form>
+  </header>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  var count = 0;
+  var count2 = 0;
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("myDropdown2").classList.remove("show");
+    if (document.getElementById("input-selected-uni").children.length == 0){
+      document.getElementById("dropbtn2").style.backgroundColor = "#ffffff";
+      document.getElementById("dropbtn2").style.border = "1px solid #B0B0B0";
+      document.getElementById("dropbtn2").style.boxSizing = "border-box";
+      document.getElementById("dropbtn2").style.boxShadow = "none";
+      document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
+      count2 = 0;
+    }
+    if (count == 0) {
+      document.getElementById("dropbtn").style.backgroundColor = "#e8fffd";
+      document.getElementById("dropbtn").style.border = "1px solid rgba(44, 185, 187, 0.8)";
+      document.getElementById("dropbtn").style.boxSizing = "border-box";
+      document.getElementById("dropbtn").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
+      document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
+      count = 1;
+      if (document.getElementById("input-selected").children.length > 0)
+        document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
+      else
+        document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
+    }
+    else {
+      if (document.getElementById("input-selected").children.length == 0) {
+        document.getElementById("dropbtn").style.backgroundColor = "#ffffff";
+        document.getElementById("dropbtn").style.border = "1px solid #B0B0B0";
+        document.getElementById("dropbtn").style.boxSizing = "border-box";
+        document.getElementById("dropbtn").style.boxShadow = "none";
+        document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
+        count = 0;
+      }
+    }
+
+  }
+
+  function myFunction2() {
+    document.getElementById("myDropdown2").classList.toggle("show");
+    document.getElementById("myDropdown").classList.remove("show");
+
+    if (document.getElementById("input-selected").children.length == 0){
+        document.getElementById("dropbtn").style.backgroundColor = "#ffffff";
+        document.getElementById("dropbtn").style.border = "1px solid #B0B0B0";
+        document.getElementById("dropbtn").style.boxSizing = "border-box";
+        document.getElementById("dropbtn").style.boxShadow = "none";
+        document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
+        count = 0;
+      }
+    if (count2 == 0) {
+      document.getElementById("dropbtn2").style.backgroundColor = "#e8fffd";
+      document.getElementById("dropbtn2").style.border = "1px solid rgba(44, 185, 187, 0.8)";
+      document.getElementById("dropbtn2").style.boxSizing = "border-box";
+      document.getElementById("dropbtn2").style.boxShadow = "0px 0px 4px rgba(92, 205, 206, 0.62)";
+      count2 = 1;
+      if (document.getElementById("input-selected-uni").children.length > 0)
+        document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+      else
+        document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
+    }
+    else {
+      if (document.getElementById("input-selected-uni").children.length == 0) {
+        document.getElementById("dropbtn2").style.backgroundColor = "#ffffff";
+        document.getElementById("dropbtn2").style.border = "1px solid #B0B0B0";
+        document.getElementById("dropbtn2").style.boxSizing = "border-box";
+        document.getElementById("dropbtn2").style.boxShadow = "none";
+        document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
+        count2 = 0;
+      }
+    }
+  }
+
+  function move(targ) {
+    var element = document.getElementById(targ);
+    document.getElementById("input-selected").innerHTML +=  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="skill" value="`+document.getElementById(targ).value+`" class="selected px-1" onchange="moveBack('`+targ+`')" checked>`+ element.parentNode.textContent +`<span class="checkmark"></span></label>`;
+    element.parentNode.remove(element);
+    document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
+  }
+
+  function moveBack(targ) {
+    var element = document.getElementById(targ);
+    document.getElementById("not-selected").innerHTML =  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="skill" value="`+document.getElementById(targ).value+`" class="selected px-1" class="px-1" onchange="move('`+targ+`')">` + element.parentNode.textContent +`<span class="checkmark"></span></label>`+document.getElementById("not-selected").innerHTML;
+    element.parentNode.remove(element);
+    if (document.getElementById("input-selected").children.length > 0)
+      document.getElementById("dropbtn").innerHTML = `Skills <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected").children.length+`</span> <i class="arrow down"></i>`;
+    else
+      document.getElementById("dropbtn").innerHTML = `Skills <i class="arrow down"></i>`;
+  }
+
+  function moveUni(targ) {
+    var element = document.getElementById(targ);
+    document.getElementById("input-selected-uni").innerHTML +=  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="uni" value="`+document.getElementById(targ).value+`" class="selected px-1" onchange="moveBackUni('`+targ+`')" checked>` +element.parentNode.textContent +`<span class="checkmark"></span></label>`;
+    element.parentNode.remove(element);
+    if (document.getElementById("input-selected-uni").children.length > 0)
+      document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+    else
+      document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
+  }
+
+  function moveBackUni(targ) {
+    var element = document.getElementById(targ);
+    document.getElementById("not-selected-uni").innerHTML =  `<label class="checkbox-container"><input type="checkbox" id="`+targ+`" name="uni" value="`+document.getElementById(targ).value+`" class="selected px-1" class="px-1" onchange="moveUni('`+targ+`')">` +element.parentNode.textContent +`<span class="checkmark"></span></label>`+document.getElementById("not-selected-uni").innerHTML;
+    element.parentNode.remove(element);
+    if (document.getElementById("input-selected-uni").children.length > 0)
+      document.getElementById("dropbtn2").innerHTML = `University <span class="rounded-full border bg-white px-2" style="border-color: rgba(44, 185, 187, 0.38);">`+document.getElementById("input-selected-uni").children.length+`</span> <i class="arrow down"></i>`;
+    else
+      document.getElementById("dropbtn2").innerHTML = `University <i class="arrow down"></i>`;
+  }
+
+  function showFilters(){
+    var x = document.getElementById("mySelect").value;
+    if(x == "Contributors"){
+      count=0;
+      count2=0;
+      document.getElementById("showFilters").innerHTML = `
+        <div class="flex justify-start pt-2">
+          <div class="flex justify-between">
+            <div id="dropdown" class="dropdown px-2">
+              <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
+              <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+                <div>
+                  <div class="flex justify-between pb-2">
+                    <span class="text-sm" ><b>Skills</b></span>
+                    <button type="button" class="text-sm" onclick="clearr('dropdown')">Clear</button>
+                  </div>
+                  <input id="skills" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
+                </div>
+                <div id="input-selected" class="px-2 pb-2">
+                </div>
+                <div id="not-selected" class="not-selected border-t px-2 pb-2">
+                  <label class="checkbox-container">Figma
+                    <input type="checkbox" id="skill1" name="skill" value="Figma" class="px-1" onchange="move('skill1')">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">HTML
+                    <input type="checkbox" id="skill2" name="skill" value="HTML" class="px-1" onchange="move('skill2')">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Django
+                    <input type="checkbox" id="skill3" name="skill" value="Django" class="px-1" onchange="move('skill3')">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Laravel
+                    <input type="checkbox" id="skill4" name="skill" value="Laravel" class="px-1" onchange="move('skill4')">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Python
+                    <input type="checkbox" id="skill5" name="skill" value="Python" class="px-1" onchange="move('skill5')">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div id="dropdown2" class="dropdown2 px-2">
+              <button type="button" onclick="myFunction2()" id="dropbtn2" class="dropbtn2 rounded-lg px-2 py-2">University <i class="arrow down"></i></button>
+              <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+                <div>
+                  <div class="flex justify-between pb-2">
+                    <span class="text-sm" ><b>University</b></span>
+                    <button type="button" class="text-sm" onclick="clearr('dropdown2')">Clear</button>
+                  </div>
+                  <input id="unis" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
+                </div>
+                <div id="input-selected-uni" class="px-2 pb-2">
+                </div>
+                <div id="not-selected-uni" class="not-selected-uni border-t px-2 pb-2">
+                  <label class="checkbox-container">UOWD
+                    <input type="checkbox" id="uni1" name="uni" value="UOWD" class="px-1" onchange="moveUni('uni1')">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Heriot-Watt University
+                    <input type="checkbox" id="uni2" name="uni" value="Heriot-Watt University" class="px-1" onchange="moveUni('uni2')">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Middlesex University
+                    <input type="checkbox" id="uni3" name="uni" value="Middlesex University" class="px-1" onchange="moveUni('uni3')">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">AUD
+                    <input type="checkbox" id="uni4" name="uni" value="AUD" class="px-1" onchange="moveUni('uni4')">
+                    <span class="checkmark"></span>
+                  </label>
+                  <label class="checkbox-container">Amity University
+                    <input type="checkbox" id="uni5" name="uni" value="Amity University" class="px-1" onchange="moveUni('uni5')">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`
+    }
+
+    else
+    document.getElementById("showFilters").innerHTML = `
+      <div></div>`
+  }
+
+  $(document).on("input", "#skills", function(){
+    var searchTxt = $(this).val();
+    searchTxt = searchTxt.replace(/[.()+]/g,"\\$&");
+
+    var patt = new RegExp("^" + searchTxt,"i");
+
+    $(".not-selected :checkbox").each(function(){
+      if(patt.test($(this).val()))
+        $(this).closest("label").show(500);
+
+      else
+        $(this).closest("label").hide(500);
+
+    })
+  })
+
+  $(document).on("input", "#unis", function(){
+    var searchTxt = $(this).val();
+    searchTxt = searchTxt.replace(/[.()+]/g,"\\$&");
+
+    var patt = new RegExp("^" + searchTxt,"i");
+
+    $(".not-selected-uni :checkbox").each(function(){
+      if(patt.test($(this).val()))
+        $(this).closest("label").show(500);
+
+      else
+        $(this).closest("label").hide(500);
+
+    })
+  })
+
+  function clearr(targ) {
+    if(targ == 'dropdown'){
+      count = 0;
+      document.getElementById(targ).innerHTML =
+      `
+        <button type="button" onclick="myFunction()" id="dropbtn" class="dropbtn rounded-lg px-2 py-2">Skills <i class="arrow down"></i></button>
+        <div id="myDropdown" class="dropdown-content border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+          <div>
+            <div class="flex justify-between pb-2">
+              <span class="text-sm" ><b>Skills</b></span>
+              <button type="button" class="clear text-sm" onclick="clearr('dropdown')">Clear</button>
+            </div>
+            <input id="skills" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
+          </div>
+          <div id="input-selected" class="px-2 pb-2">
+          </div>
+          <div id="not-selected" class="not-selected border-t px-2 pb-2">
+            <label class="checkbox-container">Figma
+              <input type="checkbox" id="skill1" name="skill" value="Figma" class="px-1" onchange="move('skill1')">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">HTML
+              <input type="checkbox" id="skill2" name="skill" value="HTML" class="px-1" onchange="move('skill2')">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">Django
+              <input type="checkbox" id="skill3" name="skill" value="Django" class="px-1" onchange="move('skill3')">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">Laravel
+              <input type="checkbox" id="skill4" name="skill" value="Laravel" class="px-1" onchange="move('skill4')">
+              <span class="checkmark"></span>
+            </label>
+            <label class="checkbox-container">Python
+              <input type="checkbox" id="skill5" name="skill" value="Python" class="px-1" onchange="move('skill5')">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      `;
+    }
+
+    else{
+      count2 = 0;
+      document.getElementById(targ).innerHTML =
+      `
+        <button type="button" onclick="myFunction2()" id="dropbtn2" class="dropbtn2 rounded-lg px-2 py-2">University <i class="arrow down"></i></button>
+          <div id="myDropdown2" class="dropdown-content2 border-gray-200 bg-gray-50 rounded-lg px-3 py-3" style="color: #4F4F4F">
+            <div>
+              <div class="flex justify-between pb-2">
+                <span class="text-sm" ><b>University</b></span>
+                <button type="button" class="clear text-sm" onclick="clearr('dropdown2')">Clear</button>
+              </div>
+              <input id="unis" type="text" class="rounded-lg text-sm py-1" placeholder="Search">
+            </div>
+            <div id="input-selected-uni" class="px-2 pb-2">
+            </div>
+            <div id="not-selected-uni" class="not-selected-uni border-t px-2 pb-2">
+              <label class="checkbox-container">UOWD
+                <input type="checkbox" id="uni1" name="uni" value="UOWD" class="px-1" onchange="moveUni('uni1')">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">Heriot-Watt University
+                <input type="checkbox" id="uni2" name="uni" value="Heriot-Watt University" class="px-1" onchange="moveUni('uni2')">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">Middlesex University
+                <input type="checkbox" id="uni3" name="uni" value="Middlesex University" class="px-1" onchange="moveUni('uni3')">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">AUD
+                <input type="checkbox" id="uni4" name="uni" value="AUD" class="px-1" onchange="moveUni('uni4')">
+                <span class="checkmark"></span>
+              </label>
+              <label class="checkbox-container">Amity University
+                <input type="checkbox" id="uni5" name="uni" value="Amity University" class="px-1" onchange="moveUni('uni5')">
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+      `;
+    }
+
+  }
+
+</script>
+
+
+{% endblock %}
