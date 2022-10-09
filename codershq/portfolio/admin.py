@@ -2,4 +2,6 @@
 from django.contrib import admin
 from .models import Portfolio
 
-admin.site.register(Portfolio)
+@admin.register(Portfolio)
+class AuthorAdmin(admin.ModelAdmin):
+    pass
