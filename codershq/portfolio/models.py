@@ -19,21 +19,43 @@ class Portfolio(models.Model):
     GENDER_CHOICES = (
         ('M', 'Male'),
         ('F', 'Female'),
+        
     )
     EMPLOYMENT_TIME_CHOICES = (
         ('F', 'Fulltime'),
         ('P', 'Part-Time'),
     )
 
-    first_name = models.CharField(_("First Name"), blank=True, max_length=255)
-    last_name = models.CharField(_("Last Name"), blank=True, max_length=255)
+    first_name = models.CharField(_("First Name"), blank=False, max_length=255)
+    last_name = models.CharField(_("Last Name"), blank=False, max_length=255)
+    gender = models.CharField(
+        _("Gender"),
+        null=True,
+        blank=False,
+        max_length=1,
+        choices=GENDER_CHOICES,
+    )
+    nationality = CountryField(
+        blank_label='(select nationality)',
+        blank=False,
+    )
+    country_residence = CountryField(
+        blank_label='(select country)',
+        blank=False,
+    )
+    mobile_number = models.CharField(
+        _("Your mobile number"),
+        max_length=100,
+        blank=True,
+        null=True,
+        help_text=_("(eg: +97150XXXXXXX)"))
     about = models.TextField(
         _("About"),
         blank=True,
         help_text=_("Tell us a bit about yourself"),
         max_length=1500)
     is_seeking_job = models.BooleanField(
-        _("Seeking employment"),
+        _("Seeking employment?"),
         default=False,
         help_text=_("Are you looking for employment?"))
     is_working = models.BooleanField(
@@ -46,20 +68,7 @@ class Portfolio(models.Model):
         blank=True,
         null=True,
         help_text=_("(If currently employed)"))
-    nationality = CountryField(
-        blank_label='(select nationality)',
-        blank=True
-    )
-    country_residence = CountryField(
-        blank_label='(select country)',
-        blank=True
-    )
-    mobile_number = models.CharField(
-        _("Your mobile number"),
-        max_length=100,
-        blank=True,
-        null=True,
-        help_text=_("(eg: +97150XXXXXXX)"))
+
     github = models.CharField(
         _("Github account"),
         max_length=100,
@@ -81,13 +90,7 @@ class Portfolio(models.Model):
         blank=True,
         null=True,
         help_text=_("https://twitter.com/coders_hq"))
-    gender = models.CharField(
-        _("Gender"),
-        null=True,
-        blank=True,
-        max_length=1,
-        choices=GENDER_CHOICES,
-    )
+
     fav_language = models.CharField(
         _("Whats your favourite language?"),
         help_text=_("This can be a language or framework"),
