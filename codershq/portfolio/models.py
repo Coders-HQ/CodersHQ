@@ -5,6 +5,8 @@ from django_countries.fields import CountryField
 from django.core.validators import URLValidator
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+from codershq.api.utils.pluralsight import PluralSight
+
 
 def user_image_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
@@ -131,3 +133,17 @@ class Portfolio(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey('users.User', on_delete=models.CASCADE)
     updated_at = models.DateTimeField(auto_now=True)
+
+    @property
+    def ps(self):
+        """returns the ps user"""
+        return PluralSight.get_user(self.user.id)
+
+    @property
+    def ps_id(self):
+        """returns ps id"""
+        return PluralSight.get_psid(self.user.id)
+
+    @property
+    def skills(self):
+        return PluralSight.get_user_skill(self.user.id)

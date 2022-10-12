@@ -1,13 +1,12 @@
-from django.contrib.auth.models import User, Group
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group, User
+from django.contrib.auth.password_validation import validate_password
+from djangosaml2idp.models import ServiceProvider
 from rest_framework import serializers
+from rest_framework.validators import UniqueValidator
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from django.contrib.auth.models import User
-from rest_framework.validators import UniqueValidator
-from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth import get_user_model
 from codershq.users.models import User
-from djangosaml2idp.models import ServiceProvider
 
 User=get_user_model() # to point to the custom user model 
 
@@ -36,11 +35,6 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ['url', 'name']
 
-
-class SSOSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=ServiceProvider
-        fields='__all__'
 
 class RegisterSerializer(serializers.ModelSerializer):
 

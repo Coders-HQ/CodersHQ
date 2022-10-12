@@ -1,22 +1,24 @@
 from django.urls import path
 from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
     TokenRefreshView,
 )
 from . import views
-from .views import RegisterView, SSOView
+from .views import RegisterView
 
 
 app_name = "api"
 
 urlpatterns = [
-    path("events/", views.events, name="events"),
-
-    path('',views.getRoutes),
+    path('', views.getRoutes),
     path('token/', views.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/', RegisterView.as_view(), name='auth_register'),
-    path('sso/', SSOView.as_view(), name='sso'),
+]
 
-
+# assessment results
+urlpatterns += [
+    path("users/all/", views.users_all, name="users_all"),
+    path("assessment/skills/all/", views.skills_all, name="skills_all"),
+    path("users/skills/<int:id>/", views.user_id_skills, name="skill_id"),
+    path("assessment/analytics/", views.analytics_public, name="analytics_pub"),
 ]
