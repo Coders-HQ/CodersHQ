@@ -23,8 +23,10 @@ def getRoutes(request):
     routes = [
         '/api/token',
         '/api/token/refresh',
-        # reverse('saml_idp_init',kwargs = {'sp': 'tttt' }),
-        'http://localhost:8000/idp/sso/init?sp=IAMShowcase',
+        "users/all/",
+        "assessment/skills/all/",
+        "users/skills/<int:id>/",
+        "assessment/analytics/",
     ]
     return Response(routes)
 
@@ -55,9 +57,10 @@ def users_all(request):
     """
     all_users = Portfolio.objects.all()
     serialized_obj = serializers.serialize('json', all_users)
-    
+
     data = {"data": json.loads(serialized_obj)}
     return JsonResponse(data, safe=True)
+
 
 def skills_all(requests):
     """
@@ -66,13 +69,15 @@ def skills_all(requests):
     data = {"data": PluralSight.all_skills()}
     return JsonResponse(data, safe=True)
 
+
 def user_id_skills(requests, id):
     """
     return specific user skills based on id
     """
-    
+
     data = {"data": PluralSight.get_user_skill(id)}
     return JsonResponse(data, safe=True)
+
 
 def analytics_public(requests):
     """
@@ -83,15 +88,16 @@ def analytics_public(requests):
     data = {"data": analytics}
     return JsonResponse(data, safe=True)
 
+
 def analytics_private(requests):
     """
     return private analytics
     """
     pass
 
+
 def leaderboard(requests):
     """
     return top users based on skills
     """
     pass
-
