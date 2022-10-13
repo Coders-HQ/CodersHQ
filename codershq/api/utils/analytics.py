@@ -97,6 +97,12 @@ class Analytics:
 
         return Portfolio.objects.filter(gender='F', nationality='AE').count()
 
+    def looking_for_jobs(self):
+        """
+        return number of people looking for jobs
+        """
+        return Portfolio.objects.filter(is_seeking_job=True).count()
+
     def json(self):
         """
         return full data as a dict 
@@ -111,6 +117,7 @@ class Analytics:
             "total_local_males": self.total_local_males(),
             "total_female": self.total_female(),
             "total_local_female": self.total_local_female(),
+            "looking_for_jobs": self.looking_for_jobs(),
         }
 
         return data
