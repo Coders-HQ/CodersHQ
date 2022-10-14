@@ -33,6 +33,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="pages/comingSoon.html"),
         name="comingSoon",
     ),
+    path('api-auth/', include('rest_framework.urls')),
     path(
         "comingSoon2/",
         TemplateView.as_view(template_name="pages/comingSoon2.html"),
