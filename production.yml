@@ -18,6 +18,16 @@ services:
       - ./.envs/.production/.django
       - ./.envs/.production/.postgres
     command: /start
+    ports:
+      - 8080:5000
+    labels:
+      - traefik.http.routers.apis.rule=Host(`api.codershq.ae`)
+      - traefik.http.routers.apis.tls=true
+      - traefik.http.routers.apis.tls.certresolver=lets-encrypt
+      - traefik.port=8080
+    networks:
+      - chq-net
+      - internal
 
   postgres:
     build:
@@ -29,35 +39,31 @@ services:
       - production_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.production/.postgres
+    networks:
+      - chq-net
+      - internal
 
-  traefik:
-    build:
-      context: .
-      dockerfile: ./compose/production/traefik/Dockerfile
-    image: codershq_production_traefik
-    depends_on:
-      - django
-    volumes:
-      - production_traefik:/etc/traefik/acme:z
-    ports:
-      - "0.0.0.0:80:80"
-      - "0.0.0.0:443:443"
-      - "0.0.0.0:5555:5555"
 
   redis:
     image: redis:6
 
-  celeryworker:
-    <<: *django
-    image: codershq_production_celeryworker
-    command: /start-celeryworker
+  # celeryworker:
+  #   <<: *django
+  #   image: codershq_production_celeryworker
+  #   command: /start-celeryworker
 
-  celerybeat:
-    <<: *django
-    image: codershq_production_celerybeat
-    command: /start-celerybeat
+  # celerybeat:
+  #   <<: *django
+  #   image: codershq_production_celerybeat
+  #   command: /start-celerybeat
 
-  flower:
-    <<: *django
-    image: codershq_production_flower
-    command: /start-flower
+  # flower:
+  #   <<: *django
+  #   image: codershq_production_flower
+  #   command: /start-flower
+
+networks:
+  chq-net:
+    external: true
+  internal:
+    external: false
