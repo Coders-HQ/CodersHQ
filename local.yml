@@ -69,38 +69,38 @@ services:
     image: redis:6
     container_name: redis
 
-  celeryworker:
-    <<: *django
-    image: codershq_local_celeryworker
-    container_name: celeryworker
-    platform: linux/amd64
-    depends_on:
-      - redis
-      - postgres
-      - mailhog
-    ports: []
-    command: /start-celeryworker
+  # celeryworker:
+  #   <<: *django
+  #   image: codershq_local_celeryworker
+  #   container_name: celeryworker
+  #   platform: linux/amd64
+  #   depends_on:
+  #     - redis
+  #     - postgres
+  #     - mailhog
+  #   ports: []
+  #   command: /start-celeryworker
 
-  celerybeat:
-    <<: *django
-    image: codershq_local_celerybeat
-    container_name: celerybeat
-    platform: linux/amd64
-    depends_on:
-      - redis
-      - postgres
-      - mailhog
-    ports: []
-    command: /start-celerybeat
+  # celerybeat:
+  #   <<: *django
+  #   image: codershq_local_celerybeat
+  #   container_name: celerybeat
+  #   platform: linux/amd64
+  #   depends_on:
+  #     - redis
+  #     - postgres
+  #     - mailhog
+  #   ports: []
+  #   command: /start-celerybeat
 
-  flower:
-    <<: *django
-    image: codershq_local_flower
-    container_name: flower
-    platform: linux/amd64
-    ports:
-      - "5555:5555"
-    command: /start-flower
+  # flower:
+  #   <<: *django
+  #   image: codershq_local_flower
+  #   container_name: flower
+  #   platform: linux/amd64
+  #   ports:
+  #     - "5555:5555"
+  #   command: /start-flower
 
   node:
     build:

@@ -1,19 +1,24 @@
 import json
+
 from django.contrib.auth import get_user_model
 from django.core import serializers
 from django.http import JsonResponse
 from rest_framework import generics
-from rest_framework.decorators import api_view
-from rest_framework.permissions import AllowAny
+from rest_framework.decorators import (
+    api_view,
+    authentication_classes,
+    permission_classes,
+)
+from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenObtainPairView
-from django.contrib.admin.views.decorators import staff_member_required
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+
 from codershq.api.utils.analytics import Analytics
 from codershq.api.utils.pluralsight import PluralSight
 from codershq.portfolio.models import Portfolio
 from codershq.users.models import User
 
-from .serializers import MyTokenObtainPairSerializer, RegisterSerializer
+from .serializers import RegisterSerializer
 
 User = get_user_model()
 
@@ -32,16 +37,6 @@ def getRoutes(request):
 
 
 # -----------------------------------------------------------------
-# User Authentication:
-# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/customizing_token_claims.html
-
-
-class MyTokenObtainPairView(TokenObtainPairView):
-    permission_classes = (AllowAny,)
-    serializer_class = MyTokenObtainPairSerializer
-
-
-# -----------------------------------------------------------------
 
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -50,7 +45,9 @@ class RegisterView(generics.CreateAPIView):
 
 
 # -----------------------------------------------------------------
-@staff_member_required
+@api_view(['GET'])
+@authentication_classes([JSONWebTokenAuthentication])
+@permission_classes([IsAdminUser])
 def users_all(request):
     """
     return all users with pluralsight data
@@ -62,6 +59,7 @@ def users_all(request):
     return JsonResponse(data, safe=True)
 
 
+@api_view(['GET'])
 def skills_all(requests):
     """
     return all pluralsight skills taken as a json list
@@ -70,6 +68,7 @@ def skills_all(requests):
     return JsonResponse(data, safe=True)
 
 
+@api_view(['GET'])
 def user_id_skills(requests, id):
     """
     return specific user skills based on id
@@ -79,6 +78,7 @@ def user_id_skills(requests, id):
     return JsonResponse(data, safe=True)
 
 
+@api_view(['GET'])
 def analytics_public(requests):
     """
     return important analytics
@@ -89,6 +89,7 @@ def analytics_public(requests):
     return JsonResponse(data, safe=True)
 
 
+@api_view(['GET'])
 def analytics_private(requests):
     """
     return private analytics
@@ -96,6 +97,7 @@ def analytics_private(requests):
     pass
 
 
+@api_view(['GET'])
 def leaderboard(requests):
     """
     return top users based on skills

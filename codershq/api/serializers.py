@@ -4,24 +4,10 @@ from django.contrib.auth.password_validation import validate_password
 from djangosaml2idp.models import ServiceProvider
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from codershq.users.models import User
 
 User=get_user_model() # to point to the custom user model 
-
-
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    @classmethod
-    def get_token(cls, user):
-        token = super().get_token(user)
-        # Add custom claims
-        token['email'] = [user.email]
-        token['first_name'] = [user.first_name]
-        token['last_name'] = [user.last_name]
-        # ...
-        return token
-
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

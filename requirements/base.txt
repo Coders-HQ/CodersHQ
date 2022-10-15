@@ -24,9 +24,10 @@ django-redis==5.2.0  # https://github.com/jazzband/django-redis
 crispy-tailwind==0.5.0 # https://www.accordbox.com/blog/render-django-form-with-tailwind-css-style/
 # djangosaml2idp==0.7.2 # https://djangosaml2idp.readthedocs.io/en/latest/index.html
 djangosaml2idp@git+https://github.com/Musab0/djangosaml2idp.git@db208dc
-djangorestframework
-djangorestframework-simplejwt
-django-cors-headers
+djangorestframework==3.14.0 # https://pypi.org/project/djangorestframework/
+drf-jwt==1.19.2 # https://pypi.org/project/drf-jwt/
+django-cors-headers==3.13.0 # https://pypi.org/project/django-cors-headers/
+django-rest-auth[with_social]==0.9.5 # https://pypi.org/project/django-rest-auth/
 
 # Project
 # ------------------------------------------------------------------------------

@@ -6,7 +6,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
-from rest_framework.authtoken import views
+from rest_framework_jwt.views import obtain_jwt_token
 
 urlpatterns = [
     path(
@@ -33,7 +33,6 @@ urlpatterns = [
         TemplateView.as_view(template_name="pages/comingSoon.html"),
         name="comingSoon",
     ),
-    path('api-auth/', include('rest_framework.urls')),
     path(
         "comingSoon2/",
         TemplateView.as_view(template_name="pages/comingSoon2.html"),
@@ -54,8 +53,11 @@ urlpatterns = [
     path("assessment/", include("codershq.assessment.urls", namespace="assessment")),
     path("portfolio/", include("codershq.portfolio.urls", namespace="portfolio")),
 
-    path('api-token-auth', views.obtain_auth_token),
-
+    #  API
+    path('api-auth/', include('rest_framework.urls')),
+    path('api/rest-auth/', include('rest_auth.urls')),
+    path('api/rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('api-token-auth/', obtain_jwt_token),
     path("api/", include("codershq.api.urls", namespace="api")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
