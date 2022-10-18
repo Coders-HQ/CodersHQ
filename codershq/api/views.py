@@ -4,12 +4,13 @@ from django.contrib.auth import get_user_model
 from django.core import serializers
 from django.http import JsonResponse
 from rest_framework import generics
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.decorators import (
     api_view,
     authentication_classes,
     permission_classes,
 )
-from rest_framework.permissions import AllowAny, IsAdminUser
+from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
@@ -18,7 +19,7 @@ from codershq.api.utils.pluralsight import PluralSight
 from codershq.portfolio.models import Portfolio
 from codershq.users.models import User
 
-from .serializers import RegisterSerializer
+from .serializers import PortfolioSerializer, RegisterSerializer
 
 User = get_user_model()
 
@@ -46,7 +47,7 @@ class RegisterView(generics.CreateAPIView):
 
 # -----------------------------------------------------------------
 @api_view(['GET'])
-@authentication_classes([JSONWebTokenAuthentication])
+@authentication_classes([SessionAuthentication, BasicAuthentication,JSONWebTokenAuthentication])
 @permission_classes([IsAdminUser])
 def users_all(request):
     """
@@ -57,6 +58,20 @@ def users_all(request):
 
     data = {"data": json.loads(serialized_obj)}
     return JsonResponse(data, safe=True)
+
+
+@api_view(['GET'])
+@authentication_classes([SessionAuthentication, BasicAuthentication,JSONWebTokenAuthentication,])
+@permission_classes([IsAuthenticated])
+def user(request, username):
+    """
+    return current logged in user portfolio
+    """
+    user = User.objects.get(username=username)
+    portfolio = Portfolio.objects.get(user=user.id)
+    serializer = PortfolioSerializer(portfolio)
+    
+    return JsonResponse(serializer.data, safe=False)
 
 
 @api_view(['GET'])

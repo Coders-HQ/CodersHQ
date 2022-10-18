@@ -6,6 +6,7 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 from codershq.users.models import User
+from codershq.portfolio.models import Portfolio
 
 User=get_user_model() # to point to the custom user model 
 
@@ -15,12 +16,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['url', 'username', 'email', 'groups','id']
 
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Group
-        fields = ['url', 'name']
-
+        model = Portfolio
+        fields = '__all__'
 
 class RegisterSerializer(serializers.ModelSerializer):
 
