@@ -8,6 +8,7 @@ from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from django.views.generic.base import RedirectView
 from rest_framework_jwt.views import obtain_jwt_token
+from rest_auth.views import PasswordResetConfirmView, PasswordResetView
 
 urlpatterns = [
     path(
@@ -44,7 +45,7 @@ urlpatterns = [
     # User management
     path("users/", include("codershq.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
-    #SSO
+    # SSO
     path("idp/", include("djangosaml2idp.urls")),
     # Your stuff: custom urls includes go here
     path("", include("codershq.dashboard.urls", namespace="dashboard")),
@@ -56,9 +57,11 @@ urlpatterns = [
 
     #  API
     path('api-auth/', include('rest_framework.urls')),
-    path('api/rest-auth/registration/account-confirm-email/<str:key>/', confirm_email, name='account_confirm_email'),
-    path('api/rest-auth/', include('rest_auth.urls')),
-    path('api/rest-auth/registration/', include('rest_auth.registration.urls')),
+    path('rest-auth/registration/account-confirm-email/<str:key>/', confirm_email, name='account_confirm_email'),
+    path('rest-auth/', include('rest_auth.urls')),
+    path('rest-auth/registration/', include('rest_auth.registration.urls')),
+    # path('rest-auth/password/reset/', PasswordResetView.as_view(), name='rest_password_reset',),
+    path('rest-auth/password/reset/confirm/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='password_reset_confirm',),
 
     path('api-token-auth/', obtain_jwt_token),
     path("api/", include("codershq.api.urls", namespace="api")),
