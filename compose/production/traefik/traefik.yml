@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`codershq.ae`) || Host(`assessment.codershq.ae`)"
+      rule: "Host(`assessment.codershq.ae`)"
       entryPoints:
         - web-secure
       middlewares:
