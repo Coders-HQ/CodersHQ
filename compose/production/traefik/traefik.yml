@@ -22,7 +22,7 @@ certificatesResolvers:
   letsencrypt:
     # https://docs.traefik.io/master/https/acme/#lets-encrypt
     acme:
-      email: "x.suwaidi@gmail.com"
+      email: "rashed.alsuwaidi@ai.gov.ae"
       storage: /etc/traefik/acme/acme.json
       # https://docs.traefik.io/master/https/acme/#httpchallenge
       httpChallenge:
@@ -31,7 +31,7 @@ certificatesResolvers:
 http:
   routers:
     web-secure-router:
-      rule: "Host(`codershq.ae`) || Host(`www.codershq.ae`)"
+      rule: "Host(`codershq.ae`) || Host(`assessment.codershq.ae`)"
       entryPoints:
         - web-secure
       middlewares:
@@ -42,7 +42,7 @@ http:
         certResolver: letsencrypt
 
     flower-secure-router:
-      rule: "Host(`codershq.ae`)"
+      rule: "Host(`assessment.codershq.ae`)"
       entryPoints:
         - flower
       service: flower

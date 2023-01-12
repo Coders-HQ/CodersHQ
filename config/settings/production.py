@@ -27,7 +27,7 @@ MEDIA_URL = f"https://{AZURE_CUSTOM_DOMAIN}/{AZURE_CONTAINER}/"  # override MEDI
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["codershq.ae"])
+ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["assessment.codershq.ae"])
 
 # DATABASES
 # ------------------------------------------------------------------------------
@@ -209,7 +209,7 @@ from saml2.sigver import get_xmlsec_binary
 APPEND_SLASH = False
 
 
-BASE_URL = 'https://codershq.ae/idp'
+BASE_URL = 'https://assessment.codershq.ae/idp'
 
 SAML_IDP_CONFIG = {
     'debug' : DEBUG,
@@ -223,12 +223,12 @@ SAML_IDP_CONFIG = {
             'name': 'Django localhost IdP',
             'endpoints': {
                 'single_sign_on_service': [
-                    ('https://codershq.ae/idp/sso/post', saml2.BINDING_HTTP_POST),
-                    ('https://codershq.ae/idp/sso/redirect', saml2.BINDING_HTTP_REDIRECT),
+                    ('https://assessment.codershq.ae/idp/sso/post', saml2.BINDING_HTTP_POST),
+                    ('https://assessment.codershq.ae/idp/sso/redirect', saml2.BINDING_HTTP_REDIRECT),
                 ],
                 # 'single_logout_service': [
-                #     ("https://codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
-                #     ("https://codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
+                #     ("https://assessment.codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
+                #     ("https://assessment.codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
                 # ],
             },
             'name_id_format': [NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED],

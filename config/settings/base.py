@@ -256,7 +256,7 @@ EMAIL_TIMEOUT = 5
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
 # ADMINS = [
-#   ("""Rashed Al Suwaidi""", "x.suwaidi@gmail.com"),
+#   ("""Rashed Al Suwaidi""", "rashed.alsuwaidi@ai.gov.ae"),
 #   ("""Musab Obaid""", "musab.obaid@gmail.com")
 # ] #removed Rashed for the time being because of the spam emails.
 ADMINS = [("""Musab Obaid""", "musab.obaid@gmail.com")]
