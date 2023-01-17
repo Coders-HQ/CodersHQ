@@ -1,17 +1,10 @@
 {% extends "root.html" %}
 
 {% block data %}
-<div class="flex flex-col lg:flex-row">
 
-  {% include "_dashboard.html" %}
-
-  <div class="grow md:overflow-y-scroll md:max-h-screen">
-    {% include "_alert.html" %}
 
     {% block content %}
     <p>Use this document as a way to quick start any new project.</p>
     {% endblock content %}
-  </div>
-</div>
 
 {% endblock data %}
