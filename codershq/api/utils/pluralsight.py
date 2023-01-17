@@ -6,7 +6,7 @@ class PluralSight:
     """
 
     URL = "https://paas-api.pluralsight.com/graphql"
-    AUTH = "Bearer " + os.getenv('PLURAL_TOKEN')
+    AUTH = "Bearer " + os.getenv('PLURAL_TOKEN', default='test')
 
     @classmethod
     def all_skills(cls):

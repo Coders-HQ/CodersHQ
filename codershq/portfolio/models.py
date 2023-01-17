@@ -4,13 +4,15 @@ from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 from django.core.validators import URLValidator
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django import forms
+
 
 from codershq.api.utils.pluralsight import PluralSight
 
 
 def user_image_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/beat/author/<filename>
-    return "profile/image/{0}".format( filename)
+    return "profile/image/{0}".format(filename)
 
 
 class Portfolio(models.Model):
@@ -43,7 +45,7 @@ class Portfolio(models.Model):
         blank=False,
     )
     academic_qualification = models.CharField(
-        _("Your highest academic qualification"), blank=False, max_length=30
+        _("Your highest academic qualification"), help_text="e.g. MSc Sustainable Energy Technologies", blank=False, max_length=30
     )
     mobile_number = models.CharField(
         _("Your mobile number"),
@@ -109,17 +111,17 @@ class Portfolio(models.Model):
         blank=True,
     )
     fav_language = models.CharField(
-        _("Whats your favourite language?"),
+        _("Whats your favourite programming language?"),
         help_text=_("This can be a language or framework"),
         null=True,
         blank=True,
         max_length=50)
     about = models.TextField(
-        _("About"),
+        _("Use this space to tell us about yourself"),
         blank=True,
         help_text=_("Tell us a bit about yourself"),
         max_length=1500)
-    
+
     proud_project = models.TextField(
         _("Tell us about the project that you are most proud of"),
         blank=True,
