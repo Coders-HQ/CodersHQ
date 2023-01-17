@@ -68,3 +68,6 @@ pro-shell:
 
 pro-collectstatic:
 	docker-compose -f production.yml run --rm django python manage.py collectstatic
+
+pro-rebuild:
+	make pro-down && git pull && make pro-build && make pro-up
