@@ -1,11 +1,12 @@
-version: '3'
+# 🚫 Remove this: version: '3'
 
 volumes:
   local_postgres_data: {}
   local_postgres_data_backups: {}
+  static_volume: {}  # ✅ Define this here
 
 services:
-  django: &django
+  django:
     build:
       context: .
       dockerfile: ./compose/local/django/Dockerfile
@@ -17,6 +18,7 @@ services:
       - mailhog
     volumes:
       - .:/app:z
+      - static_volume:/app/staticfiles:z  # ✅ Now correctly defined
     env_file:
       - ./.envs/.local/.django
       - ./.envs/.local/.postgres
@@ -36,6 +38,17 @@ services:
       - local_postgres_data_backups:/backups:z
     env_file:
       - ./.envs/.local/.postgres
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    container_name: mailhog
+    platform: linux/amd64
+    ports:
+      - "8025:8025"
+
+  redis:
+    image: redis:6
+    container_name: redis
 
   # docs:
   #     container_name: docs
@@ -58,16 +71,7 @@ services:
   #       - '0.0.0.0'
 
 
-  mailhog:
-    image: mailhog/mailhog:v1.0.0
-    container_name: mailhog
-    platform: linux/amd64
-    ports:
-      - "8025:8025"
-
-  redis:
-    image: redis:6
-    container_name: redis
+  
 
   # celeryworker:
   #   <<: *django

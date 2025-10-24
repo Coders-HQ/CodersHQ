@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
-
+from django.conf import settings #importing setting
 from codershq.users.validators import validate_github_profile
 
 
@@ -110,3 +110,67 @@ def create_pluralSightEmail(sender, instance, created, **kwargs):
         User.objects.filter(pk=instance.id).update(pluralSightEmail=str(instance.id)+"@codershq.ae")
         User.objects.filter(pk=instance.id).update(pluralSightFirstName=str(instance.id))
         User.objects.filter(pk=instance.id).update(pluralSightLastName="codershq")
+# adding assesment module
+
+class Assessment(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    gender = models.CharField(max_length=20)
+    nationality = models.CharField(max_length=100)
+    country_residence = models.CharField(max_length=100)
+    mobile_number = models.CharField(max_length=20, blank=True)
+    seeking_employment = models.BooleanField(default=False)
+    currently_employed = models.BooleanField(default=False)
+    employer = models.CharField(max_length=255, blank=True)
+    years_of_experience = models.IntegerField(default=0)
+    work_preference = models.CharField(max_length=20, blank=True)
+
+    linkedin_account = models.URLField(blank=True)
+    personal_site = models.URLField(blank=True)
+    favorite_language = models.CharField(max_length=100, blank=True)
+    about_you = models.TextField(blank=True)
+    proud_project = models.TextField(blank=True)
+
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Assessment by {self.user.username}"
+
+#adding register form model
+
+# codershq/users/models.py
+
+class UserInterest(models.Model):
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="interests"
+    )
+
+    # 1️⃣ HQ Interests
+    learn = models.BooleanField(_("HQ Learn"), default=False)
+    assessment = models.BooleanField(_("HQ Assessment"), default=False)
+    meetups = models.BooleanField(_("HQ Meetups"), default=False)
+    challenges = models.BooleanField(_("HQ Challenges"), default=False)
+    hackathons = models.BooleanField(_("HQ Hackathons"), default=False)
+    conferences = models.BooleanField(_("HQ Conferences"), default=False)
+    get_inspired = models.BooleanField(_("HQ Get Inspired"), default=False)
+    internship = models.BooleanField(_("HQ Internships"), default=False)
+
+    # 2️⃣ Networking
+    open_source = models.BooleanField(_("Work collaboratively on open-source projects"), default=False)
+    jobs = models.BooleanField(_("Job Opportunities"), default=False)
+    golden_visa = models.BooleanField(_("Golden Visa Application"), default=False)
+    host_hackathon = models.BooleanField(_("Request to Conduct Hackathon"), default=False)
+    workstation_access = models.BooleanField(_("Request CHQ Workstation"), default=False)
+
+    # 3️⃣ Pick Your Interests
+    web_dev = models.BooleanField(_("Web Development"), default=False)
+    data_science = models.BooleanField(_("Data Science"), default=False)
+    app_dev = models.BooleanField(_("App Development"), default=False)
+    cloud = models.BooleanField(_("Cloud Computing"), default=False)
+    devops = models.BooleanField(_("DevOps"), default=False)
+    blockchain = models.BooleanField(_("Blockchain Technologies"), default=False)
+    cybersecurity = models.BooleanField(_("Cybersecurity"), default=False)
+    embedded_systems = models.BooleanField(_("Embedded Systems"), default=False)
+
+    def __str__(self):
+        return f"Interests of {self.user.username}"

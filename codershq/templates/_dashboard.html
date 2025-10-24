@@ -1,3 +1,4 @@
+{% load form_extras %}
 
 <!-- mobile menu using modal -->
 <div id="defaultModal" aria-hidden="true" class="fixed hidden z-50 justify-center items-center h-screen w-screen md:inset-0">
@@ -136,7 +137,54 @@
     </div>
 </div>
 <!-- end mobile menu -->
+ <!-- register form-->
+<!-- Button -->
+<button id="openInterestBox" type="button" class="btn btn-primary">
+  📋 Register Interest
+</button>
 
+<!-- Interest Box (hidden by default) -->
+<div id="interestBox" class="interest-box" style="display: none;">
+  <div class="box-content">
+    <div class="box-header">
+      <h5 class="box-title">Register Your Interests</h5>
+      <button type="button" id="closeInterestBox" class="btn-close">✖</button>
+    </div>
+    <div class="box-body">
+   <form method="post" id="interest-form">
+  {% csrf_token %}
+
+  {% for group in form.get_grouped_fields %}
+    <fieldset class="mb-4 p-3 border rounded-md">
+      <legend class="font-semibold text-lg mb-2">{{ group.title }}</legend>
+
+      {% for field_name, label in group.fields %}
+        <div class="flex items-center mb-2">
+          <input
+            type="checkbox"
+            name="{{ field_name }}"
+            id="{{ field_name }}"
+            class="mr-2"
+            {% if form.initial.field_name %}
+              checked
+            {% endif %}
+          />
+          <label for="{{ field_name }}">{{ label }}</label>
+        </div>
+      {% endfor %}
+    </fieldset>
+  {% endfor %}
+</form>
+
+
+      <div id="form-message" class="mt-2"></div>
+    </div>
+    <div class="box-footer">
+      <button type="button" id="cancelInterestBox" class="btn btn-secondary">Close</button>
+      <button type="submit" form="interest-form" class="btn btn-success">Save</button>
+    </div>
+  </div>
+</div>
 
 <!-- dashboard start -->
 <div class="block lg:hidden bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
@@ -340,11 +388,123 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                           </svg>
                     </span>
-                    <span class="ml-3">Login</span>
+                    <span class="ml-3">Login
+                        
+                    </span>
                 </a>
                 {% endif %}
             </li>
         </ul>
     </div>
+<!-- ✅ Keep your same JS -->
+<script>
+document.getElementById("interest-form")?.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const formData = new FormData(form);
+  const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+  fetch("", {
+    method: "POST",
+    headers: {
+      "X-CSRFToken": csrfToken,
+      "X-Requested-With": "XMLHttpRequest",
+    },
+    body: formData,
+  })
+  .then(response => {
+    if (!response.ok) return response.json().then(data => { throw data; });
+    return response.json();
+  })
+  .then(data => {
+    const messageDiv = document.getElementById("form-message");
+    messageDiv.innerText = data.message;
+    messageDiv.style.color = "green";
+
+    // ✅ Optional: clear checkboxes
+    form.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+    // Close box after short delay
+    setTimeout(() => {
+      document.getElementById("interestBox").style.display = "none";
+    }, 1200);
+  })
+  .catch(errorData => {
+    const messageDiv = document.getElementById("form-message");
+    const message = errorData.errors
+      ? Object.values(errorData.errors).flat().join(', ')
+      : "❌ Error saving form.";
+    messageDiv.innerText = message;
+    messageDiv.style.color = "red";
+  });
+});
+</script>
+
+<!-- ✅ Box open/close logic -->
+<script>
+const interestBox = document.getElementById("interestBox");
+const openBtn = document.getElementById("openInterestBox");
+const closeBtn = document.getElementById("closeInterestBox");
+const cancelBtn = document.getElementById("cancelInterestBox");
+
+openBtn.addEventListener("click", () => {
+  interestBox.style.display = "flex";
+});
+
+[closeBtn, cancelBtn].forEach(btn => {
+  btn.addEventListener("click", () => {
+    interestBox.style.display = "none";
+  });
+});
+</script>
+
+<!-- ✅ Basic styling (you can move this to your CSS file) -->
+<style>
+.interest-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.box-content {
+  background: white;
+  width: 600px;
+  max-width: 90%;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.box-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </div>
-<!-- dashboard end -->
+</body>
