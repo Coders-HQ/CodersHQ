@@ -1,4 +1,6 @@
 # General
+DJANGO_SETTINGS_MODULE=config.settings.local
+
 # ------------------------------------------------------------------------------
 USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
@@ -26,3 +28,7 @@ SLACK_TOKEN=xoxb-1835271736544-1830161031810-VovHkwU9mK3x8quSPkeG01iO
 # ASSESSMENT
 # ------------------------------------------------------------------------------
 ASSESSMENT_PASSWORD=test_password
+
+#adding database url
+DATABASE_URL=postgres://RHSQIZWBALCEoMwzlabSEAiqjgOFvLD:Ozs0ll0FqF2fHftZJ13vYWdrS1glWu3lCAA8yyHUkfJs70u6eTBcuisrGL8Ir2nA@postgres:5432/codershq
+CELERY_BROKER_URL=redis://redis:6379/0

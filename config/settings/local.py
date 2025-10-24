@@ -1,5 +1,24 @@
 from .base import *  # noqa
 from .base import env
+#adding static
+from pathlib import Path
+
+# BASE_DIR points to the project root, not config
+BASE_DIR = Path(__file__).resolve().parent.parent.parent  # project root
+
+# App-level static files
+STATICFILES_DIRS = [
+    BASE_DIR / "codershq" / "static",  # points to codershq/static
+]
+
+# Where collectstatic gathers files
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+STATIC_URL = "/static/"
+
+# Media files
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # GENERAL
 # ------------------------------------------------------------------------------

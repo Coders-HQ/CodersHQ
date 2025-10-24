@@ -1,0 +1,14 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Your Interests{% endblock %}
+
+{% block main %}
+<div class="card card-body">
+  <h2 class="mb-4">What are you interested in?</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Save Interests</button>
+  </form>
+</div>
+{% endblock %}
