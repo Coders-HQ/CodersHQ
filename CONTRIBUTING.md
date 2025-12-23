@@ -12,7 +12,7 @@ The **branch name** is your first opportunity to give your task context.
 
 It is recommended to combine [**Github issues**](https://github.com/Coders-HQ/CodersHQ/issues) with a short description that describes the task resolved in this branch, for example: `Coders-HQ-portfolio/challenge-form` or `Coders-HQ-eventbrite/adding-api`.
 
-If you don't have Github issue for you PR, then you may avoid the prefix, but keep in mind that more likely you have to create the issue first. 
+If you don't have Github issue for you PR, then you may avoid the prefix, but keep in mind that more likely you have to create the issue first.
 
 ## Commit your changes
 
@@ -34,17 +34,17 @@ Be sure to **request reviews** from the appropriate people. This might include t
 
 ## Getting a better review
 
-**Draft pull requests** in allow you to create a pull request that is still a work in progress and not ready for review. This is useful when you want to share your changes with others but aren't quite ready to merge them or request immediate feedback.    
+**Draft pull requests** in allow you to create a pull request that is still a work in progress and not ready for review. This is useful when you want to share your changes with others but aren't quite ready to merge them or request immediate feedback.
 https://github.blog/2019-02-14-introducing-draft-pull-requests/
 
-Once your pull request has been reviewed, be sure to **respond** to any feedback you receive. This might involve making additional changes to your code, addressing questions or concerns, or simply thanking reviewers for their feedback.  
+Once your pull request has been reviewed, be sure to **respond** to any feedback you receive. This might involve making additional changes to your code, addressing questions or concerns, or simply thanking reviewers for their feedback.
 
-By using the **re-request review** feature, you can prompt the reviewer to take another look at your changes and provide feedback if necessary.  
+By using the **re-request review** feature, you can prompt the reviewer to take another look at your changes and provide feedback if necessary.
 https://github.blog/changelog/2019-02-21-re-request-review-on-a-pull-request/
 
-The **CODEOWNERS** file in GitHub allows you to specify who is responsible for code in a specific part of your repository. You can use this file to automatically assign pull requests to the appropriate people or teams, and to ensure that the right people are notified when changes are made to certain files or directories.  
+The **CODEOWNERS** file in GitHub allows you to specify who is responsible for code in a specific part of your repository. You can use this file to automatically assign pull requests to the appropriate people or teams, and to ensure that the right people are notified when changes are made to certain files or directories.
 https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
- 
+
 We use **scheduled reminders** to Slack for abandoned pull requests to will receive reminders to the team's channel for PRs that are non-draft and have no activity for a couple of days.
 https://docs.github.com/en/organizations/organizing-members-into-teams/managing-scheduled-reminders-for-your-team
 
@@ -56,10 +56,10 @@ When your pull request is approved, be sure to **merge it responsibly**. This mi
 
 ### For curious minds
 
-- How to write a Git commit message:  
+- How to write a Git commit message:
 https://cbea.ms/git-commit/
 
-- 13 tips to make your PR easier to review:  
+- 13 tips to make your PR easier to review:
 https://blog.codacy.com/13-tips-to-make-your-pr-easier-to-review/
 
 Happy contributing!

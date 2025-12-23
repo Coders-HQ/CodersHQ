@@ -1,3 +1,4 @@
-from django.test import TestCase
+"""App tests.
 
-# Create your tests here.
+This module is intentionally empty for now.
+"""

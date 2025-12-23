@@ -1,8 +1,9 @@
 """
 Base settings to build other settings files upon.
 """
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
+
 import environ
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
@@ -64,8 +65,6 @@ DJANGO_APPS = [
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
     "django.forms",
-
-
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -75,14 +74,12 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.github",
-    'rest_auth.registration',
     "django_celery_beat",
     "ckeditor",
     "djangosaml2idp",
-    'rest_framework',
-    'rest_framework_jwt',
-    'rest_framework_jwt.blacklist',
-    'rest_auth',
+    "rest_framework",
+    "dj_rest_auth",
+    "dj_rest_auth.registration",
     "corsheaders",
 ]
 
@@ -122,7 +119,7 @@ LOGIN_REDIRECT_URL = "users:redirect"
 # LOGIN_REDIRECT_URL = "dashboard:home"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
-LOGOUT_URL= "account_logout"
+LOGOUT_URL = "account_logout"
 # PASSWORDS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers
@@ -284,10 +281,10 @@ LOGGING = {
             "formatter": "verbose",
         }
     },
-    'loggers': {
-        'djangosaml2idp': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+    "loggers": {
+        "djangosaml2idp": {
+            "handlers": ["console"],
+            "level": "DEBUG",
         },
     },
     "root": {"level": "INFO", "handlers": ["console"]},
@@ -339,25 +336,31 @@ STATICFILES_FINDERS += ["compressor.finders.CompressorFinder"]
 # ------------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------------
-#django REST Framework Simple JWT
-#https://django-rest-framework-simplejwt.readthedocs.io/en/latest/index.html
+# django REST Framework Simple JWT
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/index.html
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated'
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
     ),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
-    )
 }
 
 REST_USE_JWT = True
 
+# This project uses JWT (SimpleJWT) rather than DRF token authentication.
+REST_AUTH_TOKEN_MODEL = None
+
+SIMPLE_JWT = {
+    # Allow legacy clients that send `Authorization: JWT <token>`.
+    "AUTH_HEADER_TYPES": ("Bearer", "JWT"),
+}
+
 # AUTH_USER_MODEL = "user.User"
 
-#https://github.com/adamchainz/django-cors-headers
+# https://github.com/adamchainz/django-cors-headers
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",
     "http://localhost:8000",
@@ -367,7 +370,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:9000",
 ]
 
-CORS_ALLOW_ALL_ORIGINS=True
+CORS_ALLOW_ALL_ORIGINS = True
 
 # ------------------------------------------------------------------------------
 # Provider specific settings

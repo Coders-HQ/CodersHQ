@@ -51,12 +51,10 @@ Companies can be created by users and each company should have a specific set of
 * To view hackathon/challenge contributions and select desired winners
 
 ### Landing Page <img width="18" src="https://cdn-icons-png.flaticon.com/512/1497/1497762.png">
-</a> 
 
 The landing page should be a single page with basic information on the website and a login/signup redirect. The design of the landing page should be similar to the current draft landing page
 
 ### Dashboard <img width="25" src="https://icon-library.com/images/dashboard-icon-images/dashboard-icon-images-20.jpg">
-</a>
 
 The website should be built similar to a dashboard where the users have the ability to navigate to any section on the website and view new messages as a notification. The design should be intuitive and based on modern aesthetics
 

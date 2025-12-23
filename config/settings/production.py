@@ -198,7 +198,7 @@ LOGGING = {
 # ------------------------------------------------------------------------------
 # pySAML2 IDP
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 60 * 60 *2 # 2 hours
+SESSION_COOKIE_AGE = 60 * 60 * 2  # 2 hours
 
 
 # SAML IDP
@@ -209,48 +209,58 @@ from saml2.sigver import get_xmlsec_binary
 APPEND_SLASH = False
 
 
-BASE_URL = 'https://assessment.codershq.ae/idp'
+BASE_URL = "https://assessment.codershq.ae/idp"
 
 SAML_IDP_CONFIG = {
-    'debug' : DEBUG,
-    'xmlsec_binary': get_xmlsec_binary(['/opt/local/bin', '/usr/bin/xmlsec1']),
-    'entityid': '%s/metadata' % BASE_URL,
-    'name':'CodersHQ IdP',
-    'description': 'IdP to provide SSO through CodersHQ',
-
-    'service': {
-        'idp': {
-            'name': 'Django localhost IdP',
-            'endpoints': {
-                'single_sign_on_service': [
-                    ('https://assessment.codershq.ae/idp/sso/post', saml2.BINDING_HTTP_POST),
-                    ('https://assessment.codershq.ae/idp/sso/redirect', saml2.BINDING_HTTP_REDIRECT),
+    "debug": DEBUG,
+    "xmlsec_binary": get_xmlsec_binary(["/opt/local/bin", "/usr/bin/xmlsec1"]),
+    "entityid": "%s/metadata" % BASE_URL,
+    "name": "CodersHQ IdP",
+    "description": "IdP to provide SSO through CodersHQ",
+    "service": {
+        "idp": {
+            "name": "Django localhost IdP",
+            "endpoints": {
+                "single_sign_on_service": [
+                    (
+                        "https://assessment.codershq.ae/idp/sso/post",
+                        saml2.BINDING_HTTP_POST,
+                    ),
+                    (
+                        "https://assessment.codershq.ae/idp/sso/redirect",
+                        saml2.BINDING_HTTP_REDIRECT,
+                    ),
                 ],
                 # 'single_logout_service': [
                 #     ("https://assessment.codershq.ae/idp/slo/post/", saml2.BINDING_HTTP_POST),
                 #     ("https://assessment.codershq.ae/idp/slo/redirect/", saml2.BINDING_HTTP_REDIRECT)
                 # ],
             },
-            'name_id_format': [NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED],
-            'sign_response': True,
-            'sign_assertion': True,
-            'want_authn_requests_signed': True,
+            "name_id_format": [NAMEID_FORMAT_EMAILADDRESS, NAMEID_FORMAT_UNSPECIFIED],
+            "sign_response": True,
+            "sign_assertion": True,
+            "want_authn_requests_signed": True,
         },
     },
-
     # Signing
-    'key_file': str(ROOT_DIR /'certificates/production/private.key'),
-    'cert_file': str(ROOT_DIR /'certificates/production/public.cert'),
+    "key_file": str(ROOT_DIR / "certificates/production/private.key"),
+    "cert_file": str(ROOT_DIR / "certificates/production/public.cert"),
     # Encryption
-    'encryption_keypairs': [{
-        'key_file': str(ROOT_DIR /'certificates/production/private.key'),
-        'cert_file': str(ROOT_DIR / 'certificates/production/public.cert'),
-    }],
-    'valid_for': 365 * 24,
+    "encryption_keypairs": [
+        {
+            "key_file": str(ROOT_DIR / "certificates/production/private.key"),
+            "cert_file": str(ROOT_DIR / "certificates/production/public.cert"),
+        }
+    ],
+    "valid_for": 365 * 24,
 }
 
-SAML_IDP_DJANGO_USERNAME_FIELD = 'email'
-SAML_IDP_SP_FIELD_DEFAULT_ATTRIBUTE_MAPPING = {"pluralSightEmail": "email", "pluralSightFirstName": "firstName", "pluralSightLastName": "lastName"} #first field is from the user model, second field is the SAML attribute name
+SAML_IDP_DJANGO_USERNAME_FIELD = "email"
+SAML_IDP_SP_FIELD_DEFAULT_ATTRIBUTE_MAPPING = {
+    "pluralSightEmail": "email",
+    "pluralSightFirstName": "firstName",
+    "pluralSightLastName": "lastName",
+}  # first field is from the user model, second field is the SAML attribute name
 SAML_AUTHN_SIGN_ALG = saml2.xmldsig.SIG_RSA_SHA256
 SAML_AUTHN_DIGEST_ALG = saml2.xmldsig.DIGEST_SHA256
 # ------------------------------------------------------------------------------

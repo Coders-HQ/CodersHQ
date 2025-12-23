@@ -1,3 +1,4 @@
-from django.db import models
+"""Assessment models.
 
-# Create your models here.
+This app currently defines no database models.
+"""

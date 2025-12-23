@@ -1,3 +1,4 @@
-from django.contrib import admin
+"""Assessment admin.
 
-# Register your models here.
+No admin registrations currently.
+"""

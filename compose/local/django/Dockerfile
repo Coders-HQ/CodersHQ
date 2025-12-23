@@ -43,7 +43,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   libpq-dev \
   # Translations dependencies
   gettext \
-  # pysaml2 dependencies 
+  # pysaml2 dependencies
   build-essential libffi-dev libssl-dev \
   xmlsec1 \
   # cleaning up unused files

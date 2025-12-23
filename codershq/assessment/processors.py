@@ -3,12 +3,14 @@ from djangosaml2idp.processors import BaseProcessor
 
 class GroupProcessor(BaseProcessor):
     """
-        Example implementation of access control for users:
-        - superusers are allowed
-        - staff is allowed
-        - they have to belong to a certain group
+    Example implementation of access control for users:
+    - superusers are allowed
+    - staff is allowed
+    - they have to belong to a certain group
     """
+
     group = "ExampleGroup"
+
 
 #     def has_access(self, request):
 #         user = request.user

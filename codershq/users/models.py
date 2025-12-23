@@ -1,5 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
@@ -18,9 +20,15 @@ class User(AbstractUser):
     # https://docs.djangoproject.com/en/3.2/ref/contrib/auth/#fields
 
     # personal details
-    pluralSightEmail=models.CharField(_("PluralSight Email"), blank=True, max_length=255)
-    pluralSightFirstName=models.CharField(_("PluralSight First Name"), blank=True, max_length=255)
-    pluralSightLastName=models.CharField(_("PluralSight Last Name"), blank=True, max_length=255)
+    pluralSightEmail = models.CharField(
+        _("PluralSight Email"), blank=True, max_length=255
+    )
+    pluralSightFirstName = models.CharField(
+        _("PluralSight First Name"), blank=True, max_length=255
+    )
+    pluralSightLastName = models.CharField(
+        _("PluralSight Last Name"), blank=True, max_length=255
+    )
 
     name = models.CharField(_("Enter your name"), blank=True, max_length=255)
     bio = models.TextField(_("Bio"), blank=True, max_length=500)
@@ -44,8 +52,8 @@ class User(AbstractUser):
     #: First and last name do not cover name patterns around the globe
     # first_name = None  # type: ignore
     # last_name = None  # type: ignore
-    first_name =models.CharField(_("First Name"), blank=True, max_length=255)
-    last_name =models.CharField(_("Last Name"), blank=True, max_length=255)
+    first_name = models.CharField(_("First Name"), blank=True, max_length=255)
+    last_name = models.CharField(_("Last Name"), blank=True, max_length=255)
 
     def get_absolute_url(self):
         """Get url for user's detail view.
@@ -99,14 +107,14 @@ class UserTrophyRecord(models.Model):
     trophy_type = models.ForeignKey(UserTrophyType, on_delete=models.PROTECT)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-#TODO:Move this section to Signals.py 
-
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 
 @receiver(post_save, sender=User)
 def create_pluralSightEmail(sender, instance, created, **kwargs):
     if created:
-        User.objects.filter(pk=instance.id).update(pluralSightEmail=str(instance.id)+"@codershq.ae")
-        User.objects.filter(pk=instance.id).update(pluralSightFirstName=str(instance.id))
+        User.objects.filter(pk=instance.id).update(
+            pluralSightEmail=str(instance.id) + "@codershq.ae"
+        )
+        User.objects.filter(pk=instance.id).update(
+            pluralSightFirstName=str(instance.id)
+        )
         User.objects.filter(pk=instance.id).update(pluralSightLastName="codershq")

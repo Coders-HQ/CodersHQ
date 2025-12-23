@@ -1,10 +1,8 @@
-
 from codershq.api.utils.pluralsight import PluralSight
 from codershq.portfolio.models import Portfolio
 
 
 class Analytics:
-
     def __init__(self):
         self.all_skills = PluralSight.all_skills()
 
@@ -26,7 +24,7 @@ class Analytics:
 
         eg: [5,5,5,6,3]
 
-        which means 5 novice, etc 
+        which means 5 novice, etc
         """
         quintile_levels = []
         novice = 0
@@ -35,23 +33,25 @@ class Analytics:
         proficient_above_average = 0
         expert = 0
         for skill in self.all_skills:
-            quintile = skill['quintileLevel']
-            if quintile == 'novice':
+            quintile = skill["quintileLevel"]
+            if quintile == "novice":
                 novice += 1
-            elif quintile == 'proficient-emerging':
+            elif quintile == "proficient-emerging":
                 proficient_emerging += 1
-            elif quintile == 'proficient-average':
+            elif quintile == "proficient-average":
                 proficient_average += 1
-            elif quintile == 'proficient-above-average':
+            elif quintile == "proficient-above-average":
                 proficient_above_average += 1
-            elif quintile == 'expert':
+            elif quintile == "expert":
                 expert += 1
 
-        quintile_levels = [novice,
-                           proficient_emerging,
-                           proficient_average,
-                           proficient_above_average,
-                           expert]
+        quintile_levels = [
+            novice,
+            proficient_emerging,
+            proficient_average,
+            proficient_above_average,
+            expert,
+        ]
 
         return quintile_levels
 
@@ -59,7 +59,7 @@ class Analytics:
         """
         return total number of repeats
         """
-        retakes = [x for x in self.all_skills if x['measurementType'] == 'retake']
+        retakes = [x for x in self.all_skills if x["measurementType"] == "retake"]
         return len(retakes)
 
     def local_num(self):
@@ -67,35 +67,35 @@ class Analytics:
         return number of locals
         """
 
-        return Portfolio.objects.filter(nationality='AE').count()
+        return Portfolio.objects.filter(nationality="AE").count()
 
     def total_males(self):
         """
         return total males
         """
 
-        return Portfolio.objects.filter(gender='M').count()
+        return Portfolio.objects.filter(gender="M").count()
 
     def total_local_males(self):
         """
         return total males
         """
 
-        return Portfolio.objects.filter(gender='M', nationality='AE').count()
+        return Portfolio.objects.filter(gender="M", nationality="AE").count()
 
     def total_female(self):
         """
         return total female
         """
 
-        return Portfolio.objects.filter(gender='F').count()
+        return Portfolio.objects.filter(gender="F").count()
 
     def total_local_female(self):
         """
         return total female
         """
 
-        return Portfolio.objects.filter(gender='F', nationality='AE').count()
+        return Portfolio.objects.filter(gender="F", nationality="AE").count()
 
     def total_lfj(self):
         """
@@ -107,11 +107,11 @@ class Analytics:
         """
         return number of people looking for jobs
         """
-        return Portfolio.objects.filter(is_seeking_job=True, nationality='AE').count()
+        return Portfolio.objects.filter(is_seeking_job=True, nationality="AE").count()
 
     def json(self):
         """
-        return full data as a dict 
+        return full data as a dict
         """
         data = {
             "total_skill": self.total_skills(),

@@ -23,7 +23,7 @@
         <img width="80" alt="MIT License Badge" src="https://img.shields.io/badge/License-MIT-red.svg">
     </a>
     <a href="https://discord.gg/CPQHAZrg8b0">
-        <img width="80" alt="Discord Server Badge" src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white"> 
+        <img width="80" alt="Discord Server Badge" src="https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white">
     </a>
 </p>
 
@@ -50,7 +50,7 @@
 
 
  ## :wave: Introduction
- 
+
   <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
@@ -80,12 +80,16 @@ We also document the tasks in [Notion](https://suwaidi.notion.site/Coders-HQ-ae1
 ## ⚙️ Quick Setup
 
 
+> Note: The recommended command is `docker compose` (Docker Compose v2).
+> If your environment only has `docker-compose`, substitute accordingly.
+
+
 Make sure you have Docker version 2+ and then do the following to build the stack and update the databse :
 
-    $ docker-compose -f local.yml build
-    $ docker-compose -f local.yml run --rm django python manage.py makemigrations
-    $ docker-compose -f local.yml run --rm django python manage.py migrate
-    $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+    $ docker compose -f local.yml build
+    $ docker compose -f local.yml run --rm django python manage.py makemigrations
+    $ docker compose -f local.yml run --rm django python manage.py migrate
+    $ docker compose -f local.yml run --rm django python manage.py createsuperuser
 
 Follow the rest of the README for more information and use ``/admin`` to edit and create challenges.
 
@@ -133,7 +137,7 @@ and might reappear if you generate a project multiple times with the same name.
 
 This can take a while, especially the first time you run this particular command on your development system::
 
-    $ docker-compose -f local.yml build
+    $ docker compose -f local.yml build
 
 Generally, if you want to emulate production environment use [`production.yml`](production.yml) instead. And this is true for any other actions you might need to perform: whenever a switch is required, just do it!
 
@@ -150,7 +154,7 @@ This brings up both Django and PostgreSQL. The first time it is run it might tak
 
 Open a terminal at the project root and run the following for local development::
 
-    $ docker-compose -f local.yml up
+    $ docker compose -f local.yml up
 
 You can also set the environment variable ``COMPOSE_FILE`` pointing to [`local.yml`](local.yml) like this::
 
@@ -158,11 +162,11 @@ You can also set the environment variable ``COMPOSE_FILE`` pointing to [`local.y
 
 And then run::
 
-    $ docker-compose up
+    $ docker compose up
 
 To run in a detached (background) mode, just::
 
-    $ docker-compose up -d
+    $ docker compose up -d
 
 <div align="right">
 
@@ -173,10 +177,10 @@ To run in a detached (background) mode, just::
 ## Execute Management Commands
 
 
-As with any shell command that we wish to run in our container, this is done using the ``docker-compose -f local.yml run --rm`` command: ::
+As with any shell command that we wish to run in our container, this is done using the ``docker compose -f local.yml run --rm`` command: ::
 
-    $ docker-compose -f local.yml run --rm django python manage.py migrate
-    $ docker-compose -f local.yml run --rm django python manage.py createsuperuser
+    $ docker compose -f local.yml run --rm django python manage.py migrate
+    $ docker compose -f local.yml run --rm django python manage.py createsuperuser
 
 Here, ``django`` is the target service we are executing the commands against.
 
@@ -261,6 +265,20 @@ Container mailhog will start automatically when you will run all docker containe
 Please check `cookiecutter-django Docker documentation` for more details how to start all containers.
 
 With MailHog running, to view messages that are sent by your application, open your browser and go to ``http://127.0.0.1:8025``
+
+### API Authentication (JWT)
+
+The API uses JWT authentication (SimpleJWT).
+
+- Obtain tokens:
+    - `POST /api/token/` with JSON body `{"username": "<username>", "password": "<password>"}`
+    - Response includes `access` and `refresh`
+- Use the access token on requests:
+    - `Authorization: Bearer <access>` (legacy clients may also use `Authorization: JWT <access>`)
+- Refresh tokens:
+    - `POST /api/token/refresh/` with `{"refresh": "<refresh>"}`
+
+For backwards compatibility, `POST /api-token-auth/` is still available and returns a `token` field.
 
 ## Stargazers ⭐
 

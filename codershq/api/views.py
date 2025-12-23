@@ -13,23 +13,23 @@ from rest_framework.decorators import (
 from rest_framework.parsers import JSONParser
 from rest_framework.permissions import AllowAny, IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework_jwt.authentication import JSONWebTokenAuthentication
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from codershq.api.utils.analytics import Analytics
 from codershq.api.utils.pluralsight import PluralSight
 from codershq.portfolio.models import Portfolio
-from codershq.users.models import User
 
 from .serializers import PortfolioSerializer, RegisterSerializer
 
 User = get_user_model()
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def getRoutes(request):
     routes = [
-        '/api/token',
-        '/api/token/refresh',
+        "/api/token/",
+        "/api/token/refresh/",
+        "/api-token-auth/",
         "users/all/",
         "assessment/skills/all/",
         "users/skills/<int:id>/",
@@ -44,52 +44,53 @@ class RegisterView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
 
-@api_view(['GET'])
-@authentication_classes([SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication])
+@api_view(["GET"])
+@authentication_classes([SessionAuthentication, BasicAuthentication, JWTAuthentication])
 @permission_classes([IsAdminUser])
 def users_all(request):
     """
     return all users with pluralsight data
     """
     all_users = Portfolio.objects.all()
-    serialized_obj = serializers.serialize('json', all_users)
+    serialized_obj = serializers.serialize("json", all_users)
 
     data = {"data": json.loads(serialized_obj)}
     return JsonResponse(data, safe=True)
 
-@api_view(['GET'])
-@authentication_classes([SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication])
+
+@api_view(["GET"])
+@authentication_classes([SessionAuthentication, BasicAuthentication, JWTAuthentication])
 @permission_classes([IsAdminUser])
 def users_data(request):
     """
     return all users with pluralsight data
     """
     all_users = User.objects.all()
-    serialized_obj = serializers.serialize('json', all_users)
+    serialized_obj = serializers.serialize("json", all_users)
 
     data = {"data": json.loads(serialized_obj)}
     return JsonResponse(data, safe=True)
 
 
-@api_view(['GET','POST'])
-@authentication_classes([SessionAuthentication, BasicAuthentication, JSONWebTokenAuthentication, ])
+@api_view(["GET", "POST"])
+@authentication_classes([SessionAuthentication, BasicAuthentication, JWTAuthentication])
 @permission_classes([IsAuthenticated])
 def user(request, username):
     """
     return current logged in user portfolio
     """
-    if request.method == 'GET':
+    if request.method == "GET":
         user = User.objects.get(username=username)
         portfolio = Portfolio.objects.get(user=user.id)
         serializer = PortfolioSerializer(portfolio)
 
         return JsonResponse(serializer.data, safe=False)
-    elif request.method == 'POST':
+    elif request.method == "POST":
         data = JSONParser().parse(request)
         print(data)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def skills_all(requests):
     """
     return all pluralsight skills taken as a json list
@@ -98,7 +99,7 @@ def skills_all(requests):
     return JsonResponse(data, safe=True)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def user_id_skills(requests, id):
     """
     return specific user skills based on id
@@ -108,7 +109,7 @@ def user_id_skills(requests, id):
     return JsonResponse(data, safe=True)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def analytics_public(requests):
     """
     return important analytics
@@ -119,7 +120,7 @@ def analytics_public(requests):
     return JsonResponse(data, safe=True)
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def analytics_private(requests):
     """
     return private analytics
@@ -127,7 +128,7 @@ def analytics_private(requests):
     pass
 
 
-@api_view(['GET'])
+@api_view(["GET"])
 def leaderboard(requests):
     """
     return top users based on skills

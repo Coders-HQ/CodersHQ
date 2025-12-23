@@ -1,12 +1,15 @@
-import requests
 import os
+
+import requests
+
+
 class PluralSight:
     """
     Get everything related pluralsight
     """
 
     URL = "https://paas-api.pluralsight.com/graphql"
-    AUTH = "Bearer " + os.getenv('PLURAL_TOKEN', default='test')
+    AUTH = "Bearer " + os.getenv("PLURAL_TOKEN", default="test")
 
     @classmethod
     def all_skills(cls):
@@ -24,11 +27,11 @@ class PluralSight:
 
         request = requests.post(
             PluralSight.URL,
-            headers={'Authorization': PluralSight.AUTH},
-            json={'query': query}
+            headers={"Authorization": PluralSight.AUTH},
+            json={"query": query},
         )
 
-        return request.json()['data']['skillAssessmentResults']['nodes']
+        return request.json()["data"]["skillAssessmentResults"]["nodes"]
 
     @classmethod
     def get_user(cls, id):
@@ -36,10 +39,13 @@ class PluralSight:
         get specific user based on portfolio id
         """
 
-        query = """
+        query = (
+            """
         {
             users (filter: {
-                emails: \"""" + f'{id}@codershq.ae' + """\" 
+                emails: \""""
+            + f"{id}@codershq.ae"
+            + """\"
             }) {
                 nodes {
                     id
@@ -48,14 +54,15 @@ class PluralSight:
             }
         }
         """
+        )
 
         request = requests.post(
             PluralSight.URL,
-            headers={'Authorization': PluralSight.AUTH},
-            json={'query': query}
+            headers={"Authorization": PluralSight.AUTH},
+            json={"query": query},
         )
 
-        return request.json()['data']['users']['nodes']
+        return request.json()["data"]["users"]["nodes"]
 
     @classmethod
     def get_psid(cls, id):
@@ -72,12 +79,13 @@ class PluralSight:
         returns user skill based on pluralsight id
         """
 
-
-
-        query = """
+        query = (
+            """
         {
             skillAssessmentResults (filter: {
-                userIds: \"""" + psid + """\" 
+                userIds: \""""
+            + psid
+            + """\"
             }) {
                 nodes {
                     quintileLevel
@@ -87,15 +95,15 @@ class PluralSight:
             }
         }
         """
+        )
 
         request = requests.post(
             PluralSight.URL,
-            headers={'Authorization': PluralSight.AUTH},
-            json={'query': query}
+            headers={"Authorization": PluralSight.AUTH},
+            json={"query": query},
         )
 
-        return request.json()['data']['skillAssessmentResults']['nodes']
-
+        return request.json()["data"]["skillAssessmentResults"]["nodes"]
 
     @classmethod
     def get_user_skill(cls, id):

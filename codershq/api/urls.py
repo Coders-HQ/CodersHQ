@@ -1,13 +1,13 @@
 from django.urls import path
+
 from . import views
 from .views import RegisterView
-
 
 app_name = "api"
 
 urlpatterns = [
-    path('', views.getRoutes),
-    path('register/', RegisterView.as_view(), name='auth_register'),
+    path("", views.getRoutes),
+    path("register/", RegisterView.as_view(), name="auth_register"),
 ]
 
 # assessment results

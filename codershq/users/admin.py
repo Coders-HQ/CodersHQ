@@ -12,14 +12,23 @@ User = get_user_model()
 class UserAdmin(auth_admin.UserAdmin):
 
     form = UserChangeForm
-    add_form = UserCreationForm    
-    readonly_fields =('id',)
+    add_form = UserCreationForm
+    readonly_fields = ("id",)
 
     fieldsets = (
-        (None, {"fields": ("username", "password",'id')}),
-        (_("PluralSight info"), {"fields": ("pluralSightEmail","pluralSightFirstName","pluralSightLastName")}),
+        (None, {"fields": ("username", "password", "id")}),
+        (
+            _("PluralSight info"),
+            {
+                "fields": (
+                    "pluralSightEmail",
+                    "pluralSightFirstName",
+                    "pluralSightLastName",
+                )
+            },
+        ),
         (_("Profile Image"), {"fields": ("profile_image",)}),
-        (_("Personal info"), {"fields": ("name","first_name","last_name", "email")}),
+        (_("Personal info"), {"fields": ("name", "first_name", "last_name", "email")}),
         (
             _("Permissions"),
             {
@@ -34,5 +43,5 @@ class UserAdmin(auth_admin.UserAdmin):
         ),
         (_("Important dates"), {"fields": ("last_login", "date_joined")}),
     )
-    list_display = ["username", "email","date_joined", "is_superuser"]
+    list_display = ["username", "email", "date_joined", "is_superuser"]
     search_fields = ["name"]
